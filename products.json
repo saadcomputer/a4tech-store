@@ -20,6 +20,15 @@
       "brand": "A4Tech",
       "category": "Mouse"
     }
-  ],
+    {
+      "id": 3,
+      "name": "FM45S AIR",
+      "price": 2000,
+      "stock": "yes",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVPWOSHsf-pplWGMRdIlPHvUIWi4jUc03Pdw&s",
+      "description": "Dual-Function Air Mouse",
+      "brand": "A4Tech",
+      "category": "Mouse"
+    }  ],
   "lastUpdated": "2025-10-15T11:07:54.489Z"
 }
