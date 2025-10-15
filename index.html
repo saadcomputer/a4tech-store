@@ -6,7 +6,6 @@
     <title>A4Tech and Bloody Store</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Your existing CSS styles */
         * {
             margin: 0;
             padding: 0;
@@ -719,8 +718,7 @@
 
     <script>
         // Configuration
-        const DATA_FILE_URL = 'products.json'; // Same folder products.json file
-        const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes cache
+        const DATA_FILE_URL = 'products.json';
 
         // DOM Elements
         const productsGrid = document.getElementById('productsGrid');
@@ -763,53 +761,35 @@
         // Load products from JSON file
         async function loadProducts() {
             try {
-                // Check cache first
-                const cachedData = localStorage.getItem('cachedProducts');
-                const cacheTime = localStorage.getItem('cacheTime');
+                console.log('Loading products from:', DATA_FILE_URL);
                 
-                if (cachedData && cacheTime) {
-                    const timeDiff = Date.now() - parseInt(cacheTime);
-                    if (timeDiff < CACHE_DURATION) {
-                        products = JSON.parse(cachedData);
-                        const lastUpdate = localStorage.getItem('lastUpdate');
-                        lastUpdatedTime.textContent = lastUpdate || 'Recently';
-                        renderProducts();
-                        return;
-                    }
-                }
-                
-                // Fetch fresh data
+                // Add timestamp to prevent caching
                 const timestamp = new Date().getTime();
                 const response = await fetch(`${DATA_FILE_URL}?t=${timestamp}`);
                 
+                console.log('Response status:', response.status);
+                
                 if (!response.ok) {
-                    throw new Error('Failed to load products');
+                    throw new Error(`HTTP error! status: ${response.status}`);
                 }
                 
                 const data = await response.json();
+                console.log('Loaded products data:', data);
+                
                 products = data.products || [];
                 
-                // Update cache
-                localStorage.setItem('cachedProducts', JSON.stringify(products));
-                localStorage.setItem('cacheTime', Date.now().toString());
-                localStorage.setItem('lastUpdate', new Date().toLocaleString());
+                // Update last updated time
+                const now = new Date();
+                lastUpdatedTime.textContent = now.toLocaleString();
                 
-                lastUpdatedTime.textContent = new Date().toLocaleString();
                 renderProducts();
                 
             } catch (error) {
                 console.error('Error loading products:', error);
+                showMessage('Failed to load products. Please check if products.json exists.', 'error');
                 
-                // Fallback to cache if available
-                const cachedData = localStorage.getItem('cachedProducts');
-                if (cachedData) {
-                    products = JSON.parse(cachedData);
-                    lastUpdatedTime.textContent = 'Using cached data';
-                    renderProducts();
-                } else {
-                    // Ultimate fallback
-                    loadFallbackData();
-                }
+                // Fallback data
+                loadFallbackData();
             }
         }
 
@@ -818,24 +798,29 @@
             products = [
                 {
                     id: 1,
-                    name: "GH-30",
-                    price: 23200,
-                    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVPWOSHsf-pplWGMRdIlPHvUIWi4jUc03Pdw&s",
-                    description: "ROGUE Gaming Case (5 RGB FANS) (4mm Tempered Glass)",
-                    brand: "BLOODY",
-                    category: "Others",
+                    name: "Sample Product",
+                    price: 1000,
+                    image: "https://via.placeholder.com/250x250",
+                    description: "This is a sample product",
+                    brand: "A4Tech",
+                    category: "Mouse",
                     stock: "yes"
                 }
             ];
-            lastUpdatedTime.textContent = 'Using fallback data';
+            lastUpdatedTime.textContent = 'Using sample data - ' + new Date().toLocaleString();
             renderProducts();
         }
 
         // Show/hide loading
         function showLoading(show) {
             loadingElement.style.display = show ? 'block' : 'none';
-            productsGrid.style.display = show ? 'none' : 'grid';
-            productsList.style.display = 'none';
+            if (currentView === 'grid') {
+                productsGrid.style.display = show ? 'none' : 'grid';
+                productsList.style.display = 'none';
+            } else {
+                productsList.style.display = show ? 'none' : 'flex';
+                productsGrid.style.display = 'none';
+            }
         }
 
         // Render categories
@@ -1024,12 +1009,10 @@
             // Checkout
             checkoutBtn.addEventListener('click', checkout);
             
-            // Refresh button
+            // Refresh button - INSTANT REFRESH
             refreshBtn.addEventListener('click', async () => {
                 showLoading(true);
-                // Clear cache
-                localStorage.removeItem('cachedProducts');
-                localStorage.removeItem('cacheTime');
+                console.log('Manual refresh triggered');
                 await loadProducts();
                 showLoading(false);
                 showMessage('Products updated successfully!', 'success');
@@ -1161,7 +1144,7 @@
             message += `\nTotal: Rs. ${total.toFixed(2)}`;
             
             const encodedMessage = encodeURIComponent(message);
-            const phoneNumber = "923332200318"; // Your WhatsApp number
+            const phoneNumber = "923332200318";
             window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
         }
 
@@ -1183,10 +1166,7 @@
             }, 3000);
         }
 
-        // Auto-refresh every 0.0001 minutes
-        setInterval(() => {
-            loadProducts();
-        }, 10 * 60 * 1000);
+        // AUTO REFRESH DISABLED - No setInterval here
 
         // Initialize app
         document.addEventListener('DOMContentLoaded', init);
