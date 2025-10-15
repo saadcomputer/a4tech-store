@@ -2,14 +2,24 @@
   "products": [
     {
       "id": 1,
-      "name": "gh-303",
+      "name": "GH-300",
       "price": 200000,
       "stock": "yes",
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVPWOSHsf-pplWGMRdIlPHvUIWi4jUc03Pdw&s",
       "description": "ROGUE Gaming Case (5 RGB FANS) (4mm Tempered Glass)",
       "brand": "BLOODY",
       "category": "Others"
+    },
+    {
+      "id": 2,
+      "name": "FM45S AIR",
+      "price": 2000,
+      "stock": "yes",
+      "image": "https://www.a4tech.com/alanUpload/colorImg/img/202309/2604485602766344.jpg",
+      "description": "Dual-Function Air Mouse",
+      "brand": "A4Tech",
+      "category": "Mouse"
     }
   ],
-  "lastUpdated": "2025-10-15T10:27:47.538Z"
+  "lastUpdated": "2025-10-15T11:07:54.489Z"
 }
