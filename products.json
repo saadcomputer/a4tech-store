@@ -1,34 +1,245 @@
-{
-  "products": [
-    {
-      "id": 1,
-      "name": "GH-300",
-      "price": 200000,
-      "stock": "yes",
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVPWOSHsf-pplWGMRdIlPHvUIWi4jUc03Pdw&s",
-      "description": "ROGUE Gaming Case (5 RGB FANS) (4mm Tempered Glass)",
-      "brand": "BLOODY",
-      "category": "Others"
-    },
-    {
-      "id": 2,
-      "name": "FM45S AIR",
-      "price": 2000,
-      "stock": "yes",
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVPWOSHsf-pplWGMRdIlPHvUIWi4jUc03Pdw&s",
-      "description": "Dual-Function Air Mouse",
-      "brand": "A4Tech",
-      "category": "Mouse"
-    }
-    {
-      "id": 3,
-      "name": "FM45S AIR",
-      "price": 2000,
-      "stock": "yes",
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVPWOSHsf-pplWGMRdIlPHvUIWi4jUc03Pdw&s",
-      "description": "Dual-Function Air Mouse",
-      "brand": "A4Tech",
-      "category": "Mouse"
-    }  ],
-  "lastUpdated": "2025-10-15T11:07:54.489Z"
-}
+[
+  {
+    "id": 1,
+    "name": "GH-30",
+    "price": "23,200",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVPWOSHsf-pplWGMRdIlPHvUIWi4jUc03Pdw&s",
+    "description": "ROGUE Gaming Case (5 RGB FANS) (4mm Tempered Glass)",
+    "brand": "BLOODY",
+    "category": "Others"
+  },
+  {
+    "id": 2,
+    "name": "M90  (ANC)\nBlack+Red",
+    "price": "9,340",
+    "image": "https://vmart.pk/cdn/shop/files/A4tech-M90-TWS-ANC-Gaming-Earphones-3.jpg?v=1737461223",
+    "description": "",
+    "brand": "A4Tech",
+    "category": "Audio"
+  },
+  {
+    "id": 3,
+    "name": "M70  (ANC)\nBlack+Red\nBlack+BLUE",
+    "price": "8,470",
+    "image": "https://cdn.citilink.ru/I9PUbCnVO322r7hDf8R4mgdRRqmCvR8v-rLC5k4-JJI/resizing_type:fit/gravity:sm/width:400/height:400/plain/product-images/b45bf27e-25dd-42bc-9ed9-01856843f1db.jpg",
+    "description": "Optical gaming mouse with 7200 DPI",
+    "brand": "A4Tech",
+    "category": "Audio"
+  },
+  {
+    "id": 4,
+    "name": "B1700",
+    "price": "6,900",
+    "image": "https://computerchoice.pk/wp-content/uploads/2023/12/Bloody-B1700.jpg",
+    "description": "(B140 KEYBOARD\nES7 MOUSE AND\nBP50M MOUSEPAD)",
+    "brand": "A4Tech",
+    "category": "Keyboard"
+  },
+  {
+    "id": 5,
+    "name": "AT75",
+    "price": "14,600",
+    "image": "https://store.alnabaa.com/cdn/shop/files/AT75_1.webp?v=1751975429",
+    "description": "ALPHA\nOPTICAL SWITCH\n(MECHANICAL) \nVoice-Activated LED Lighting Bar",
+    "brand": "A4Tech",
+    "category": "Keyboard"
+  },
+  {
+    "id": 6,
+    "name": "AT87",
+    "price": "11,400",
+    "image": "https://m.media-amazon.com/images/I/71jBwPSDDXL._UF350,350_QL80_.jpg",
+    "description": "ALPHA\nRED SWITCH\n(MECHANICAL)",
+    "brand": "Bloody",
+    "category": "Keyboard"
+  },
+  {
+    "id": 7,
+    "name": "AT98",
+    "price": "11,800",
+    "image": "https://techarc.pk/wp-content/uploads/2025/05/bloody-at98-alpha-optical-mechanical-keyboard-rd-bk-1-techarc.pk_.webp",
+    "description": "ALPHA\nRED SWITCH\n(MECHANICAL)",
+    "brand": "Bloody",
+    "category": "Keyboard"
+  },
+  {
+    "id": 8,
+    "name": "B135N",
+    "price": "3,350",
+    "image": "https://www.startech.com.bd/image/cache/catalog/keyboard/a4tech/b135n/b135n-01-500x500.webp",
+    "description": "GAMING KEYBOARD",
+    "brand": "Bloody",
+    "category": "Keyboard"
+  },
+  {
+    "id": 9,
+    "name": "B310N  (BLACK)",
+    "price": "4,860",
+    "image": "https://winshop.pk/cdn/shop/files/B310N_3.png?v=1727376353&width=1080",
+    "description": "GAMING KEYBOARD",
+    "brand": "Bloody",
+    "category": "Keyboard"
+  },
+  {
+    "id": 10,
+    "name": "B500N",
+    "price": "5,600",
+    "image": "https://www.bloody.com/en/uploadfile/image/20190926/20190926095925_65714.jpg",
+    "description": "(BLACK) \nMECHA LIKE SWITCH",
+    "brand": "Bloody",
+    "category": "Keyboard"
+  },
+  {
+    "id": 11,
+    "name": "S87 \n(ENERGY RED)  (WHITE)",
+    "price": "10,700",
+    "image": "https://img.bloody.com/en/uploadfile/image/20231021/20231021103231_57966.jpg",
+    "description": "RED SWITCH\n(MECHANICAL)",
+    "brand": "Bloody",
+    "category": "Keyboard"
+  },
+  {
+    "id": 12,
+    "name": "WS98 (RED)",
+    "price": "13,000",
+    "image": "https://d1iv6qgcmtzm6l.cloudfront.net/products/lg_CgU7yXBKHrza6WE2zFIoyM2A16RKWbnIXaCnvSwb.jpg",
+    "description": "DUAL CORE WIRELESS   \nRED SWITCH\n(MECHANICAL)",
+    "brand": "Bloody",
+    "category": "Keyboard"
+  },
+  {
+    "id": 13,
+    "name": "S98 (BLACK)",
+    "price": "10,500",
+    "image": "https://img.bloody.com/en/uploadfile/image/20240528/20240528172135_82847.jpg",
+    "description": "RED SWITCH\n(MECHANICAL)",
+    "brand": "Bloody",
+    "category": "Keyboard"
+  },
+  {
+    "id": 14,
+    "name": "S98\n(NARAKA) (AVIATOR)",
+    "price": "12,300",
+    "image": "https://img.bloody.com/en/uploadfile/image/20230223/20230223100059_13175.jpg",
+    "description": "RED SWITCH (MECHANICAL)",
+    "brand": "Bloody",
+    "category": "Keyboard"
+  },
+  {
+    "id": 15,
+    "name": "S98 (PIXEL RED)",
+    "price": "9,650",
+    "image": "https://img.bloody.com/en/uploadfile/image/20240730/20240730112323_12584.jpg",
+    "description": "RED SWITCH\n(MECHANICAL)",
+    "brand": "Bloody",
+    "category": "Keyboard"
+  },
+  {
+    "id": 16,
+    "name": "S520N (ICY WHITE)",
+    "price": "8,500",
+    "image": "https://img.bloody.com/en/uploadfile/image/20241028/20241028100117_40569.png",
+    "description": "MECHA LIKE SWITCH",
+    "brand": "Bloody",
+    "category": "Keyboard"
+  },
+  {
+    "id": 17,
+    "name": "S520N (FIRE BLACK)",
+    "price": "8,450",
+    "image": "https://img.bloody.com/en/uploadfile/image/20241028/20241028100102_63187.png",
+    "description": "MECHA LIKE SWITCH",
+    "brand": "Bloody",
+    "category": "Keyboard"
+  },
+  {
+    "id": 18,
+    "name": "S520N \n(PUDING BLACK)",
+    "price": "8,500",
+    "image": "https://img.bloody.com/en/uploadfile/image/20241028/20241028100155_76914.png",
+    "description": "MECHA LIKE SWITCH",
+    "brand": "Bloody",
+    "category": "Keyboard"
+  },
+  {
+    "id": 19,
+    "name": "S310N\n(ENERGY RED)",
+    "price": "8,200",
+    "image": "https://img.bloody.com/en/uploadfile/image/20250814/20250814173728_46068.jpg",
+    "description": "MECHA LIKE SWITCH",
+    "brand": "Bloody",
+    "category": "Keyboard"
+  },
+  {
+    "id": 20,
+    "name": "S310N\n(ENERGY WHITE)",
+    "price": "8,200",
+    "image": "https://img.bloody.com/en/uploadfile/image/20250814/20250814101142_34318.jpg",
+    "description": "MECHA LIKE SWITCH",
+    "brand": "Bloody",
+    "category": "Keyboard"
+  },
+  {
+    "id": 21,
+    "name": "BP-45 W",
+    "price": "1,380",
+    "image": "https://img.bloody.com/en/uploadfile/image/20250808/20250808135701_67354.jpg",
+    "description": "CYPHER GHOST\nWaterproof Mouse Pad",
+    "brand": "Bloody",
+    "category": "Mousepad"
+  },
+  {
+    "id": 22,
+    "name": "BP-45 NARAKA",
+    "price": "1,330",
+    "image": "https://img.bloody.com/en/uploadfile/image/20230214/20230214164649_23551.jpg",
+    "description": "450*400*3mm",
+    "brand": "Bloody",
+    "category": "Mousepad"
+  },
+  {
+    "id": 23,
+    "name": "BP-45 MIDNIGHT",
+    "price": "1,300",
+    "image": "https://img.bloody.com/en/uploadfile/image/20240823/20240823095740_71007.jpg",
+    "description": "450*400*3mm",
+    "brand": "Bloody",
+    "category": "Mousepad"
+  },
+  {
+    "id": 24,
+    "name": "BP-45 PROXY BOOM FIRE",
+    "price": "1,300",
+    "image": "https://img.bloody.com/en/uploadfile/image/20240823/20240823095103_82556.jpg",
+    "description": "450*400*3mm",
+    "brand": "Bloody",
+    "category": "Mousepad"
+  },
+  {
+    "id": 25,
+    "name": "BP-45 PROXY BOOM INK",
+    "price": "1,300",
+    "image": "https://img.bloody.com/en/uploadfile/image/20240823/20240823095435_12065.jpg",
+    "description": "450*400*3mm",
+    "brand": "Bloody",
+    "category": "Mousepad"
+  },
+  {
+    "id": 26,
+    "name": "BP-30M",
+    "price": "1,160",
+    "image": "https://img.bloody.com/en/uploadfile/image/20220512/20220512154018_34955.jpg",
+    "description": "350*280*3mm",
+    "brand": "Bloody",
+    "category": "Mousepad"
+  },
+  {
+    "id": 27,
+    "name": "B-088S EXTENDED",
+    "price": "1,350",
+    "image": "https://img.bloody.com/en/uploadfile/image/20180914/20180914143433_91238.jpg",
+    "description": "(800 x 300 x 2 mm)",
+    "brand": "Bloody",
+    "category": "Mousepad"
+  }
+]
