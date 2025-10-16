@@ -688,7 +688,30 @@
                 if (response.ok) {
                     products = await response.json();
                     console.log('Products loaded from JSON file:', products.length);
-                    console.log('Products data:', products);
+                    
+                    // Validate and fix product prices
+                    products = products.map(product => {
+                        // Ensure price is a number
+                        let price = product.price;
+                        if (typeof price === 'string') {
+                            // Remove any non-numeric characters except decimal point
+                            price = price.replace(/[^\d.]/g, '');
+                        }
+                        price = parseFloat(price);
+                        
+                        // If price is still NaN, set to 0
+                        if (isNaN(price)) {
+                            console.warn(`Invalid price for product ${product.name}: ${product.price}, setting to 0`);
+                            price = 0;
+                        }
+                        
+                        return {
+                            ...product,
+                            price: price
+                        };
+                    });
+                    
+                    console.log('Validated products:', products);
                     
                     if (products.length > 0) {
                         showMessage(`Successfully loaded ${products.length} products from JSON file`, 'success');
@@ -946,6 +969,17 @@
             const product = products.find(p => p.id === productId);
             if (!product) return;
             
+            // Ensure price is a valid number
+            let price = product.price;
+            if (typeof price === 'string') {
+                price = price.replace(/[^\d.]/g, '');
+            }
+            price = parseFloat(price);
+            if (isNaN(price)) {
+                console.warn(`Invalid price for product ${product.name}: ${product.price}, setting to 0`);
+                price = 0;
+            }
+            
             const existingItem = cart.find(item => item.id === productId);
             
             if (existingItem) {
@@ -954,7 +988,7 @@
                 cart.push({
                     id: product.id,
                     name: product.name,
-                    price: product.price,
+                    price: price, // Use validated price
                     image: product.image,
                     quantity: 1
                 });
@@ -1008,7 +1042,17 @@
                 let total = 0;
                 
                 cart.forEach(item => {
-                    const itemTotal = item.price * item.quantity;
+                    // Ensure item price is a valid number
+                    let itemPrice = item.price;
+                    if (typeof itemPrice === 'string') {
+                        itemPrice = itemPrice.replace(/[^\d.]/g, '');
+                    }
+                    itemPrice = parseFloat(itemPrice);
+                    if (isNaN(itemPrice)) {
+                        itemPrice = 0;
+                    }
+                    
+                    const itemTotal = itemPrice * item.quantity;
                     total += itemTotal;
                     
                     cartHTML += `
@@ -1016,7 +1060,7 @@
                             <img src="${item.image}" alt="${item.name}" class="cart-item-image" onerror="this.src='https://via.placeholder.com/80x80?text=Image+Not+Found'">
                             <div class="cart-item-details">
                                 <h4 class="cart-item-title">${item.name}</h4>
-                                <div class="cart-item-price">Rs. ${item.price}</div>
+                                <div class="cart-item-price">Rs. ${itemPrice}</div>
                                 <div class="cart-item-quantity">
                                     <button class="quantity-btn" onclick="updateQuantity(${item.id}, -1)">
                                         <i class="fas fa-minus"></i>
@@ -1035,6 +1079,13 @@
                 });
                 
                 cartItems.innerHTML = cartHTML;
+                
+                // Ensure total is a valid number
+                if (isNaN(total)) {
+                    console.error('Total is NaN, resetting to 0');
+                    total = 0;
+                }
+                
                 cartTotal.textContent = `Rs. ${total.toFixed(2)}`;
                 floatingCartTotal.textContent = `Rs. ${total.toFixed(2)}`;
             }
@@ -1065,10 +1116,21 @@
             let total = 0;
             
             cart.forEach(item => {
-                const itemTotal = item.price * item.quantity;
+                // Ensure item price is valid
+                let itemPrice = item.price;
+                if (typeof itemPrice === 'string') {
+                    itemPrice = itemPrice.replace(/[^\d.]/g, '');
+                }
+                itemPrice = parseFloat(itemPrice);
+                if (isNaN(itemPrice)) itemPrice = 0;
+                
+                const itemTotal = itemPrice * item.quantity;
                 total += itemTotal;
-                message += `- ${item.name} (x${item.quantity}) - Rs. ${itemTotal}\n`;
+                message += `- ${item.name} (x${item.quantity}) - Rs. ${itemTotal.toFixed(2)}\n`;
             });
+            
+            // Ensure total is valid
+            if (isNaN(total)) total = 0;
             
             message += `\nTotal: Rs. ${total.toFixed(2)}`;
             
