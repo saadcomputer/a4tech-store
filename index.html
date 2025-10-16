@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A4Tech and Bloody Store</title>
+    <title>A4Tech and Bloody List</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -12,7 +12,7 @@
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
+
         body {
             background-color: #f5f5f5;
             color: #333;
@@ -25,6 +25,7 @@
             padding: 0 20px;
         }
 
+        /* Header */
         header {
             background: #00AEEF;
             color: white;
@@ -82,6 +83,7 @@
             font-weight: bold;
         }
 
+        /* Controls */
         .controls {
             display: flex;
             justify-content: space-between;
@@ -119,6 +121,7 @@
             width: 250px;
         }
 
+        /* Categories */
         .categories {
             display: flex;
             flex-wrap: wrap;
@@ -161,6 +164,15 @@
             display: flex;
         }
 
+        /* Loading */
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+            font-size: 1.2rem;
+        }
+
+        /* Grid View */
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -177,7 +189,6 @@
             display: flex;
             flex-direction: column;
             height: 100%;
-            position: relative;
         }
 
         .product-card:hover {
@@ -235,36 +246,7 @@
             background: #128C7E;
         }
 
-        .add-to-cart:disabled {
-            background: #cccccc;
-            cursor: not-allowed;
-        }
-
-        .out-of-stock {
-            background: #ff4757;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 5px;
-            width: 100%;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: not-allowed;
-        }
-
-        .stock-badge {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: #ff4757;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            z-index: 2;
-        }
-
+        /* List View */
         .products-list {
             display: none;
             flex-direction: column;
@@ -281,7 +263,6 @@
             justify-content: space-between;
             align-items: center;
             transition: transform 0.3s, box-shadow 0.3s;
-            position: relative;
         }
 
         .product-item:hover {
@@ -333,35 +314,7 @@
             background: #128C7E;
         }
 
-        .add-to-cart-list:disabled {
-            background: #cccccc;
-            cursor: not-allowed;
-        }
-
-        .out-of-stock-list {
-            background: #ff4757;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 5px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: not-allowed;
-            white-space: nowrap;
-        }
-
-        .stock-badge-list {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: #ff4757;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
-
+        /* Floating Cart Button */
         .floating-cart-btn {
             position: fixed;
             right: 20px;
@@ -391,6 +344,7 @@
             font-size: 1.1rem;
         }
 
+        /* Cart Popup */
         .cart-popup {
             position: fixed;
             top: 0;
@@ -572,23 +526,6 @@
             text-align: center;
         }
 
-        .loading {
-            text-align: center;
-            padding: 40px;
-            color: #666;
-            font-size: 1.2rem;
-            display: none;
-        }
-
-        .last-updated {
-            text-align: center;
-            padding: 10px;
-            background: #f8f9fa;
-            color: #666;
-            font-size: 0.9rem;
-            border-top: 1px solid #ddd;
-        }
-
         @media (max-width: 768px) {
             .products-grid {
                 grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -633,15 +570,10 @@
     <header>
         <div class="container">
             <div class="header-content">
-                <h1>A4Tech and Bloody Store</h1>
-                <div style="display: flex; align-items: center; gap: 15px;">
-                    <button id="refreshBtn" style="background: white; color: #00AEEF; border: none; padding: 8px 12px; border-radius: 5px; cursor: pointer; font-weight: 600;">
-                        <i class="fas fa-sync-alt"></i> Refresh
-                    </button>
-                    <div class="cart-icon" id="cartIcon">
-                        <i class="fas fa-shopping-cart"></i>
-                        <div class="cart-count" id="cartCount">0</div>
-                    </div>
+                <h1>A4Tech and Bloody List</h1>
+                <div class="cart-icon" id="cartIcon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <div class="cart-count" id="cartCount">0</div>
                 </div>
             </div>
         </div>
@@ -667,24 +599,16 @@
             <!-- Categories will be dynamically added here -->
         </div>
 
-        <!-- Loading -->
-        <div class="loading" id="loading">
-            <i class="fas fa-spinner fa-spin"></i> Loading products...
-        </div>
-
         <!-- Products Grid -->
         <div class="products-grid" id="productsGrid">
-            <!-- Products will be dynamically added here -->
+            <div class="loading">
+                <i class="fas fa-spinner fa-spin"></i> Loading products...
+            </div>
         </div>
 
         <!-- Products List -->
         <div class="products-list" id="productsList">
             <!-- Products will be dynamically added here -->
-        </div>
-        
-        <!-- Last Updated -->
-        <div class="last-updated" id="lastUpdated">
-            Last updated: <span id="lastUpdatedTime">Loading...</span>
         </div>
     </div>
 
@@ -717,9 +641,6 @@
     </div>
 
     <script>
-        // Configuration
-        const DATA_FILE_URL = 'products.json';
-
         // DOM Elements
         const productsGrid = document.getElementById('productsGrid');
         const productsList = document.getElementById('productsList');
@@ -737,90 +658,130 @@
         const listViewBtn = document.getElementById('listViewBtn');
         const floatingCartBtn = document.getElementById('floatingCartBtn');
         const floatingCartTotal = document.getElementById('floatingCartTotal');
-        const loadingElement = document.getElementById('loading');
-        const refreshBtn = document.getElementById('refreshBtn');
-        const lastUpdatedTime = document.getElementById('lastUpdatedTime');
 
-        // Global state
+        // Cart state
         let products = [];
         let cart = [];
         let currentCategory = 'All';
         let currentView = 'grid';
         let currentBrand = null;
 
-        // Initialize the app
-        async function init() {
-            showLoading(true);
-            await loadProducts();
-            renderCategories();
-            setupEventListeners();
-            updateCartUI();
-            showLoading(false);
-        }
+        // Default products data
+        const defaultProducts = [
+            {
+                id: 1,
+                name: "GH-30",
+                price: 23200,
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVPWOSHsf-pplWGMRdIlPHvUIWi4jUc03Pdw&s",
+                description: "ROGUE Gaming Case (5 RGB FANS) (4mm Tempered Glass)",
+                brand: "BLOODY",
+                category: "Others"
+            },
+            {
+                id: 2,
+                name: "M90  (ANC) Black+Red",
+                price: 9340,
+                image: "https://vmart.pk/cdn/shop/files/A4tech-M90-TWS-ANC-Gaming-Earphones-3.jpg?v=1737461223",
+                description: "High-quality ANC earphones",
+                brand: "A4Tech",
+                category: "Audio"
+            },
+            {
+                id: 3,
+                name: "M70  (ANC) Black+Red Black+BLUE",
+                price: 8470,
+                image: "https://cdn.citilink.ru/I9PUbCnVO322r7hDf8R4mgdRRqmCvR8v-rLC5k4-JJI/resizing_type:fit/gravity:sm/width:400/height:400/plain/product-images/b45bf27e-25dd-42bc-9ed9-01856843f1db.jpg",
+                description: "Optical gaming mouse with 7200 DPI",
+                brand: "A4Tech",
+                category: "Audio"
+            },
+            {
+                id: 4,
+                name: "B1700",
+                price: 6900,
+                image: "https://computerchoice.pk/wp-content/uploads/2023/12/Bloody-B1700.jpg",
+                description: "(B140 KEYBOARD ES7 MOUSE AND BP50M MOUSEPAD)",
+                brand: "A4Tech",
+                category: "Keyboard"
+            },
+            {
+                id: 5,
+                name: "AT75",
+                price: 14600,
+                image: "https://store.alnabaa.com/cdn/shop/files/AT75_1.webp?v=1751975429",
+                description: "ALPHA OPTICAL SWITCH (MECHANICAL)  Voice-Activated LED Lighting Bar",
+                brand: "A4Tech",
+                category: "Keyboard"
+            },
+            {
+                id: 6,
+                name: "AT87",
+                price: 11400,
+                image: "https://m.media-amazon.com/images/I/71jBwPSDDXL._UF350,350_QL80_.jpg",
+                description: "ALPHA RED SWITCH (MECHANICAL)",
+                brand: "Bloody",
+                category: "Keyboard"
+            },
+            {
+                id: 7,
+                name: "AT98",
+                price: 11800,
+                image: "https://techarc.pk/wp-content/uploads/2025/05/bloody-at98-alpha-optical-mechanical-keyboard-rd-bk-1-techarc.pk_.webp",
+                description: "ALPHA RED SWITCH (MECHANICAL)",
+                brand: "Bloody",
+                category: "Keyboard"
+            },
+            {
+                id: 8,
+                name: "B135N",
+                price: 3350,
+                image: "https://www.startech.com.bd/image/cache/catalog/keyboard/a4tech/b135n/b135n-01-500x500.webp",
+                description: "GAMING KEYBOARD",
+                brand: "Bloody",
+                category: "Keyboard"
+            },
+            {
+                id: 9,
+                name: "B310N  (BLACK)",
+                price: 4860,
+                image: "https://winshop.pk/cdn/shop/files/B310N_3.png?v=1727376353&width=1080",
+                description: "GAMING KEYBOARD",
+                brand: "Bloody",
+                category: "Keyboard"
+            },
+            {
+                id: 10,
+                name: "B500N",
+                price: 5600,
+                image: "https://www.bloody.com/en/uploadfile/image/20190926/20190926095925_65714.jpg",
+                description: "(BLACK)  MECHA LIKE SWITCH",
+                brand: "Bloody",
+                category: "Keyboard"
+            }
+        ];
 
-        // Load products from JSON file
+        // Load products from JSON file or use defaults
         async function loadProducts() {
             try {
-                console.log('Loading products from:', DATA_FILE_URL);
-                
-                // Add timestamp to prevent caching
-                const timestamp = new Date().getTime();
-                const response = await fetch(`${DATA_FILE_URL}?t=${timestamp}`);
-                
-                console.log('Response status:', response.status);
-                
+                const response = await fetch('products.json');
                 if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
+                    throw new Error('Products file not found');
                 }
-                
-                const data = await response.json();
-                console.log('Loaded products data:', data);
-                
-                products = data.products || [];
-                
-                // Update last updated time
-                const now = new Date();
-                lastUpdatedTime.textContent = now.toLocaleString();
-                
-                renderProducts();
-                
+                products = await response.json();
+                console.log('Products loaded from JSON file:', products.length);
             } catch (error) {
-                console.error('Error loading products:', error);
-                showMessage('Failed to load products. Please check if products.json exists.', 'error');
-                
-                // Fallback data
-                loadFallbackData();
+                console.log('Using default products');
+                products = defaultProducts;
             }
         }
 
-        // Fallback data
-        function loadFallbackData() {
-            products = [
-                {
-                    id: 1,
-                    name: "Sample Product",
-                    price: 1000,
-                    image: "https://via.placeholder.com/250x250",
-                    description: "This is a sample product",
-                    brand: "A4Tech",
-                    category: "Mouse",
-                    stock: "yes"
-                }
-            ];
-            lastUpdatedTime.textContent = 'Using sample data - ' + new Date().toLocaleString();
+        // Initialize the app
+        async function init() {
+            await loadProducts();
+            renderCategories();
             renderProducts();
-        }
-
-        // Show/hide loading
-        function showLoading(show) {
-            loadingElement.style.display = show ? 'block' : 'none';
-            if (currentView === 'grid') {
-                productsGrid.style.display = show ? 'none' : 'grid';
-                productsList.style.display = 'none';
-            } else {
-                productsList.style.display = show ? 'none' : 'flex';
-                productsGrid.style.display = 'none';
-            }
+            setupEventListeners();
+            updateCartUI();
         }
 
         // Render categories
@@ -830,20 +791,27 @@
             
             let categoriesHTML = '';
             
+            // All button
             categoriesHTML += `<button class="category-btn brand-btn active" data-category="All">All Products</button>`;
+            
+            // A4Tech brand button
             categoriesHTML += `<button class="category-btn brand-btn" data-category="A4Tech">
                 <img src="https://a4tech.com.pk/cdn/shop/files/Asset_2_2x_a2c2a49b-fe13-4968-9b0f-1912f73772ed_170x.png?v=1698154812" alt="A4Tech">
                 A4Tech
             </button>`;
+            
+            // Bloody brand button
             categoriesHTML += `<button class="category-btn brand-btn" data-category="Bloody">
                 <img src="https://lh3.googleusercontent.com/proxy/SN4kpKa8Sv67UxZxjo3XYtPCkokXimJO_6NwqyO9V1DiyUYSO7sSJTV6nCaSZ8QeSW_AvuOWpjfzl3fXpW0yphw" alt="Bloody">
                 Bloody
             </button>`;
             
+            // A4Tech subcategories (hidden by default)
             a4techSubcategories.forEach(sub => {
                 categoriesHTML += `<button class="category-btn subcategory" data-category="A4Tech-${sub}">${sub}</button>`;
             });
             
+            // Bloody subcategories (hidden by default)
             bloodySubcategories.forEach(sub => {
                 categoriesHTML += `<button class="category-btn subcategory" data-category="Bloody-${sub}">${sub}</button>`;
             });
@@ -851,12 +819,14 @@
             categoriesContainer.innerHTML = categoriesHTML;
         }
 
-        // Toggle subcategories
+        // Show/hide subcategories based on selected brand
         function toggleSubcategories(brand) {
+            // Hide all subcategories
             document.querySelectorAll('.subcategory').forEach(btn => {
                 btn.classList.remove('visible');
             });
             
+            // Show subcategories for selected brand
             if (brand && brand !== 'All') {
                 document.querySelectorAll(`.subcategory[data-category^="${brand}-"]`).forEach(btn => {
                     btn.classList.add('visible');
@@ -864,7 +834,7 @@
             }
         }
 
-        // Render products
+        // Render products based on current category and search
         function renderProducts() {
             let filteredProducts = products;
             
@@ -887,62 +857,67 @@
             if (searchTerm) {
                 filteredProducts = filteredProducts.filter(product => 
                     product.name.toLowerCase().includes(searchTerm) ||
-                    product.description.toLowerCase().includes(searchTerm) ||
-                    product.brand.toLowerCase().includes(searchTerm)
+                    product.description.toLowerCase().includes(searchTerm)
                 );
             }
             
-            // Render grid view
+            // Render products in grid view
             let gridHTML = '';
-            filteredProducts.forEach(product => {
-                const isOutOfStock = product.stock === "no";
-                const stockBadge = isOutOfStock ? '<div class="stock-badge">Out of Stock</div>' : '';
-                const buttonHTML = isOutOfStock ? 
-                    '<button class="out-of-stock" disabled>Out of Stock</button>' : 
-                    `<button class="add-to-cart" data-id="${product.id}">Add to Cart</button>`;
-                
-                gridHTML += `
-                    <div class="product-card">
-                        ${stockBadge}
-                        <img src="${product.image}" alt="${product.name}" class="product-image" onerror="this.src='https://via.placeholder.com/250x250?text=No+Image'">
-                        <div class="product-info">
-                            <h3 class="product-title">${product.name}</h3>
-                            <p class="product-description">${product.description}</p>
-                            <div class="product-price">Rs. ${product.price}</div>
-                            ${buttonHTML}
-                        </div>
+            if (filteredProducts.length === 0) {
+                gridHTML = `
+                    <div style="grid-column: 1 / -1; text-align: center; padding: 40px;">
+                        <i class="fas fa-box-open" style="font-size: 3rem; color: #ddd; margin-bottom: 15px;"></i>
+                        <h3>No products found</h3>
+                        <p>Try changing your search or category filters</p>
                     </div>
                 `;
-            });
+            } else {
+                filteredProducts.forEach(product => {
+                    gridHTML += `
+                        <div class="product-card">
+                            <img src="${product.image}" alt="${product.name}" class="product-image">
+                            <div class="product-info">
+                                <h3 class="product-title">${product.name}</h3>
+                                <p class="product-description">${product.description}</p>
+                                <div class="product-price">Rs. ${product.price}</div>
+                                <button class="add-to-cart" data-id="${product.id}">Add to Cart</button>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
             productsGrid.innerHTML = gridHTML;
             
-            // Render list view
+            // Render products in list view
             let listHTML = '';
-            filteredProducts.forEach(product => {
-                const isOutOfStock = product.stock === "no";
-                const stockBadge = isOutOfStock ? '<div class="stock-badge-list">Out of Stock</div>' : '';
-                const buttonHTML = isOutOfStock ? 
-                    '<button class="out-of-stock-list" disabled>Out of Stock</button>' : 
-                    `<button class="add-to-cart-list" data-id="${product.id}">Add to Cart</button>`;
-                
-                listHTML += `
-                    <div class="product-item">
-                        ${stockBadge}
-                        <img src="${product.image}" alt="${product.name}" class="product-image" style="width: 100px; height: 100px; margin-right: 15px;" onerror="this.src='https://via.placeholder.com/100x100?text=No+Image'">
-                        <div class="product-item-info">
-                            <h3 class="product-item-title">${product.name}</h3>
-                            <p class="product-item-description">${product.description}</p>
-                            <div class="product-item-price">Rs. ${product.price}</div>
-                        </div>
-                        <div class="product-item-action">
-                            ${buttonHTML}
-                        </div>
+            if (filteredProducts.length === 0) {
+                listHTML = `
+                    <div style="text-align: center; padding: 40px;">
+                        <i class="fas fa-box-open" style="font-size: 3rem; color: #ddd; margin-bottom: 15px;"></i>
+                        <h3>No products found</h3>
+                        <p>Try changing your search or category filters</p>
                     </div>
                 `;
-            });
+            } else {
+                filteredProducts.forEach(product => {
+                    listHTML += `
+                        <div class="product-item">
+                            <img src="${product.image}" alt="${product.name}" class="product-image" style="width: 100px; height: 100px; margin-right: 15px;">
+                            <div class="product-item-info">
+                                <h3 class="product-item-title">${product.name}</h3>
+                                <p class="product-item-description">${product.description}</p>
+                                <div class="product-item-price">Rs. ${product.price}</div>
+                            </div>
+                            <div class="product-item-action">
+                                <button class="add-to-cart-list" data-id="${product.id}">Add to Cart</button>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
             productsList.innerHTML = listHTML;
             
-            // Add event listeners
+            // Add event listeners to add to cart buttons
             document.querySelectorAll('.add-to-cart, .add-to-cart-list').forEach(button => {
                 button.addEventListener('click', function() {
                     const productId = parseInt(this.getAttribute('data-id'));
@@ -958,20 +933,31 @@
                 button.addEventListener('click', function() {
                     const category = this.getAttribute('data-category');
                     
+                    // Remove active class from all buttons
                     document.querySelectorAll('.category-btn').forEach(btn => {
                         btn.classList.remove('active');
                     });
                     
+                    // Add active class to clicked button
                     this.classList.add('active');
                     
+                    // Handle brand buttons
                     if (category === 'All' || category === 'A4Tech' || category === 'Bloody') {
                         currentBrand = category === 'All' ? null : category;
                         toggleSubcategories(currentBrand);
-                        currentCategory = category === 'All' ? 'All' : category;
+                        
+                        // If it's a brand button, set the category to the brand
+                        if (category !== 'All') {
+                            currentCategory = category;
+                        } else {
+                            currentCategory = 'All';
+                        }
                     } else {
+                        // It's a subcategory button
                         currentCategory = category;
                     }
                     
+                    // Re-render products
                     renderProducts();
                 });
             });
@@ -979,7 +965,7 @@
             // Search box
             searchBox.addEventListener('input', renderProducts);
             
-            // View toggle
+            // View toggle buttons
             gridViewBtn.addEventListener('click', function() {
                 if (currentView !== 'grid') {
                     currentView = 'grid';
@@ -1000,34 +986,26 @@
                 }
             });
             
-            // Cart
+            // Cart icon
             cartIcon.addEventListener('click', openCart);
+            
+            // Close cart
             closeCart.addEventListener('click', closeCartPopup);
+            
+            // Overlay
             overlay.addEventListener('click', closeCartPopup);
+            
+            // Floating cart button
             floatingCartBtn.addEventListener('click', openCart);
             
-            // Checkout
+            // Checkout button
             checkoutBtn.addEventListener('click', checkout);
-            
-            // Refresh button - INSTANT REFRESH
-            refreshBtn.addEventListener('click', async () => {
-                showLoading(true);
-                console.log('Manual refresh triggered');
-                await loadProducts();
-                showLoading(false);
-                showMessage('Products updated successfully!', 'success');
-            });
         }
 
-        // Cart functions
+        // Add product to cart
         function addToCart(productId) {
             const product = products.find(p => p.id === productId);
             if (!product) return;
-            
-            if (product.stock === "no") {
-                showMessage(`${product.name} is out of stock!`, 'error');
-                return;
-            }
             
             const existingItem = cart.find(item => item.id === productId);
             
@@ -1044,14 +1022,18 @@
             }
             
             updateCartUI();
+            
+            // Show success message
             showMessage(`${product.name} added to cart!`, 'success');
         }
 
+        // Remove product from cart
         function removeFromCart(productId) {
             cart = cart.filter(item => item.id !== productId);
             updateCartUI();
         }
 
+        // Update cart quantity
         function updateQuantity(productId, change) {
             const item = cart.find(item => item.id === productId);
             if (!item) return;
@@ -1065,10 +1047,13 @@
             }
         }
 
+        // Update cart UI
         function updateCartUI() {
+            // Update cart count
             const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
             cartCount.textContent = totalItems;
             
+            // Update cart items
             if (cart.length === 0) {
                 cartItems.innerHTML = `
                     <div class="empty-cart">
@@ -1087,7 +1072,7 @@
                     
                     cartHTML += `
                         <div class="cart-item">
-                            <img src="${item.image}" alt="${item.name}" class="cart-item-image" onerror="this.src='https://via.placeholder.com/80x80?text=No+Image'">
+                            <img src="${item.image}" alt="${item.name}" class="cart-item-image">
                             <div class="cart-item-details">
                                 <h4 class="cart-item-title">${item.name}</h4>
                                 <div class="cart-item-price">Rs. ${item.price}</div>
@@ -1114,18 +1099,21 @@
             }
         }
 
+        // Open cart
         function openCart() {
             cartPopup.classList.add('active');
             overlay.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
 
+        // Close cart
         function closeCartPopup() {
             cartPopup.classList.remove('active');
             overlay.classList.remove('active');
             document.body.style.overflow = 'auto';
         }
 
+        // Checkout via WhatsApp
         function checkout() {
             if (cart.length === 0) {
                 showMessage('Your cart is empty!', 'error');
@@ -1143,32 +1131,40 @@
             
             message += `\nTotal: Rs. ${total.toFixed(2)}`;
             
+            // Encode the message for URL
             const encodedMessage = encodeURIComponent(message);
-            const phoneNumber = "923332200318";
+            
+            // Replace with your WhatsApp number
+            const phoneNumber = "1234567890";
+            
+            // Open WhatsApp with the message
             window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
         }
 
+        // Show message
         function showMessage(text, type) {
+            // Remove existing messages
             const existingMessage = document.querySelector('.success-message, .error-message');
             if (existingMessage) {
                 existingMessage.remove();
             }
             
+            // Create new message
             const message = document.createElement('div');
             message.className = type === 'success' ? 'success-message' : 'error-message';
             message.textContent = text;
             
+            // Insert message after header
             const container = document.querySelector('.container');
             container.insertBefore(message, container.firstChild);
             
+            // Remove message after 3 seconds
             setTimeout(() => {
                 message.remove();
             }, 3000);
         }
 
-        // AUTO REFRESH DISABLED - No setInterval here
-
-        // Initialize app
+        // Initialize the app when DOM is loaded
         document.addEventListener('DOMContentLoaded', init);
     </script>
 </body>
