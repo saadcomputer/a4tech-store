@@ -241,5 +241,14 @@
     "description": "(800 x 300 x 2 mm)",
     "brand": "Bloody",
     "category": "Mousepad"
+  },
+  {
+    "id": 28,
+    "name": "B-08008S EXTENDED",
+    "price": "1,350",
+    "image": "https://img.bloody.com/en/uploadfile/image/20180914/20180914143433_91238.jpg",
+    "description": "(800 x 300 x 2 mm)",
+    "brand": "Bloody",
+    "category": "Mousepad"
   }
 ]
