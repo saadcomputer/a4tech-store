@@ -1,23 +1,5 @@
 [
   {
-    "id": 1,
-    "name": "GH-200",
-    "price": "23,000",
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVPWOSHsf-pplWGMRdIlPHvUIWi4jUc03Pdw&s",
-    "description": "ROGUE Gaming Case (5 RGB FANS) (4mm Tempered Glass)",
-    "brand": "BLOODY",
-    "category": "Others"
-  },
-  {
-    "id": 28,
-    "name": "Mm90  (ANC)\nBlack+Red",
-    "price": "9,340",
-    "image": "https://vmart.pk/cdn/shop/files/A4tech-M90-TWS-ANC-Gaming-Earphones-3.jpg?v=1737461223",
-    "description": "",
-    "brand": "A4Tech",
-    "category": "Audio"
-  },
-  {
     "id": 2,
     "name": "M90  (ANC)\nBlack+Red",
     "price": "9,340",
@@ -250,5 +232,23 @@
     "description": "(800 x 300 x 2 mm)",
     "brand": "Bloody",
     "category": "Mousepad"
+  },
+  {
+    "id": 28,
+    "name": "B-08008S EXTENDED",
+    "price": "1,350",
+    "image": "https://img.bloody.com/en/uploadfile/image/20180914/20180914143433_91238.jpg",
+    "description": "(800 x 300 x 2 mm)",
+    "brand": "Bloody",
+    "category": "Mousepad"
+  },
+  {
+    "id": 1760621217456,
+    "name": "303030",
+    "price": 300,
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVPWOSHsf-pplWGMRdIlPHvUIWi4jUc03Pdw&s",
+    "description": "11111",
+    "brand": "Bloody",
+    "category": "Webcam"
   }
 ]
