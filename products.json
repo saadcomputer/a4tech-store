@@ -1,11 +1,11 @@
 [
   {
     "id": 1,
-    "name": "testing-200",
-    "price": "23,000",
+    "name": "ghtesting-200",
+    "price": 200,
     "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVPWOSHsf-pplWGMRdIlPHvUIWi4jUc03Pdw&s",
     "description": "ROGUE Gaming Case (5 RGB FANS) (4mm Tempered Glass)",
-    "brand": "BLOODY",
+    "brand": "Bloody",
     "category": "Others"
   },
   {
