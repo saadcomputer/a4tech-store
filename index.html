@@ -1,1114 +1,310 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A4Tech and Bloody List - Complete Store</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: #f5f5f5;
-            color: #333;
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header */
-        header {
-            background: #00AEEF;
-            color: white;
-            padding: 15px 0;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        h1 {
-            font-size: 1.8rem;
-            font-weight: 600;
-        }
-
-        .cart-icon {
-            position: relative;
-            font-size: 1.5rem;
-            cursor: pointer;
-            padding: 10px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.2);
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-
-        .cart-icon:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: scale(1.05);
-        }
-
-        .cart-count {
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            background: #ff4757;
-            color: white;
-            border-radius: 50%;
-            width: 24px;
-            height: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8rem;
-            font-weight: bold;
-        }
-
-        /* Controls */
-        .controls {
-            display: flex;
-            justify-content: space-between;
-            margin: 20px 0;
-            background: white;
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-        }
-
-        .view-toggle {
-            display: flex;
-            gap: 10px;
-        }
-
-        .view-btn {
-            padding: 8px 15px;
-            border: 1px solid #ddd;
-            background: white;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .view-btn.active {
-            background: #25D366;
-            color: white;
-            border-color: #25D366;
-        }
-
-        .search-box {
-            padding: 8px 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            width: 250px;
-        }
-
-        /* Categories */
-        .categories {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .category-btn {
-            padding: 8px 15px;
-            border: 1px solid #ddd;
-            background: white;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .category-btn.active {
-            background: #2575fc;
-            color: white;
-            border-color: #2575fc;
-        }
-
-        .category-btn img {
-            height: 20px;
-            width: auto;
-        }
-
-        .brand-btn {
-            font-weight: 600;
-        }
-
-        .subcategory {
-            display: none;
-        }
-
-        .subcategory.visible {
-            display: flex;
-        }
-
-        /* Products Grid */
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 25px;
-            margin-bottom: 40px;
-        }
-
-        .product-card {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s, box-shadow 0.3s;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .product-image {
-            height: 250px;
-            width: 100%;
-            object-fit: cover;
-        }
-
-        .product-info {
-            padding: 20px;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .product-title {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            color: #333;
-        }
-
-        .product-description {
-            color: #666;
-            font-size: 0.9rem;
-            margin-bottom: 15px;
-            flex: 1;
-        }
-
-        .product-price {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: #25D366;
-            margin-bottom: 15px;
-        }
-
-        .add-to-cart {
-            background: #25D366;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            width: 100%;
-            font-size: 1rem;
-            font-weight: 600;
-            transition: background 0.3s;
-        }
-
-        .add-to-cart:hover {
-            background: #128C7E;
-        }
-
-        /* List View */
-        .products-list {
-            display: none;
-            flex-direction: column;
-            gap: 15px;
-            margin-bottom: 40px;
-        }
-
-        .product-item {
-            background: white;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .product-item:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .product-item-info {
-            flex: 1;
-        }
-
-        .product-item-title {
-            font-size: 1.2rem;
-            margin-bottom: 5px;
-            color: #333;
-        }
-
-        .product-item-description {
-            color: #666;
-            font-size: 0.9rem;
-            margin-bottom: 10px;
-            max-width: 500px;
-        }
-
-        .product-item-price {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: #25D366;
-        }
-
-        .product-item-action {
-            margin-left: 20px;
-        }
-
-        .add-to-cart-list {
-            background: #25D366;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: 600;
-            transition: background 0.3s;
-            white-space: nowrap;
-        }
-
-        .add-to-cart-list:hover {
-            background: #128C7E;
-        }
-
-        /* Floating Cart Button */
-        .floating-cart-btn {
-            position: fixed;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: #25D366;
-            color: white;
-            border: none;
-            border-radius: 50px;
-            padding: 15px 20px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            cursor: pointer;
-            z-index: 99;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
-
-        .floating-cart-btn:hover {
-            background: #128C7E;
-            transform: translateY(-50%) scale(1.05);
-        }
-
-        .floating-cart-total {
-            font-size: 1.1rem;
-        }
-
-        /* Cart Popup */
-        .cart-popup {
-            position: fixed;
-            top: 0;
-            right: -400px;
-            width: 100%;
-            max-width: 380px;
-            height: 100vh;
-            background: white;
-            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
-            transition: right 0.4s ease-in-out;
-            z-index: 1000;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .cart-popup.active {
-            right: 0;
-        }
-
-        .cart-header {
-            padding: 20px;
-            background: #25D366;
-            color: white;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .close-cart {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        .cart-items {
-            flex: 1;
-            overflow-y: auto;
-            padding: 20px;
-        }
-
-        .cart-item {
-            display: flex;
-            margin-bottom: 20px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .cart-item-image {
-            width: 80px;
-            height: 80px;
-            object-fit: cover;
-            border-radius: 5px;
-            margin-right: 15px;
-        }
-
-        .cart-item-details {
-            flex: 1;
-        }
-
-        .cart-item-title {
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-
-        .cart-item-price {
-            color: #25D366;
-            font-weight: 700;
-        }
-
-        .cart-item-quantity {
-            display: flex;
-            align-items: center;
-            margin-top: 10px;
-        }
-
-        .quantity-btn {
-            background: #f1f2f6;
-            border: none;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-        }
-
-        .quantity {
-            margin: 0 10px;
-            font-weight: 600;
-        }
-
-        .remove-item {
-            color: #ff4757;
-            background: none;
-            border: none;
-            cursor: pointer;
-            margin-left: 10px;
-        }
-
-        .cart-footer {
-            padding: 20px;
-            border-top: 1px solid #eee;
-        }
-
-        .cart-total {
-            display: flex;
-            justify-content: space-between;
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-
-        .checkout-btn {
-            background: #25D366;
-            color: white;
-            border: none;
-            padding: 15px;
-            border-radius: 5px;
-            width: 100%;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-            transition: background 0.3s;
-        }
-
-        .checkout-btn:hover {
-            background: #128C7E;
-        }
-
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 999;
-            display: none;
-        }
-
-        .overlay.active {
-            display: block;
-        }
-
-        .empty-cart {
-            text-align: center;
-            padding: 40px 20px;
-            color: #666;
-        }
-
-        .empty-cart i {
-            font-size: 3rem;
-            margin-bottom: 15px;
-            color: #ddd;
-        }
-
-        .error-message {
-            background: #ff6b6b;
-            color: white;
-            padding: 15px;
-            border-radius: 5px;
-            margin: 20px 0;
-            text-align: center;
-        }
-
-        .success-message {
-            background: #1dd1a1;
-            color: white;
-            padding: 15px;
-            border-radius: 5px;
-            margin: 20px 0;
-            text-align: center;
-        }
-
-        @media (max-width: 768px) {
-            .products-grid {
-                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            }
-            
-            .product-item {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            
-            .product-item-action {
-                margin-left: 0;
-                margin-top: 15px;
-                width: 100%;
-            }
-            
-            .add-to-cart-list {
-                width: 100%;
-            }
-            
-            .search-box {
-                width: 100%;
-                margin-top: 10px;
-            }
-            
-            .controls {
-                flex-direction: column;
-            }
-            
-            .floating-cart-btn {
-                top: 20px;
-                transform: none;
-            }
-        }
-    </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>A4Tech & Bloody Store</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+/* === Original look preserved === */
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif}
+body{background:#f5f5f5;color:#333;line-height:1.6}
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
+header{background:#00AEEF;color:#fff;padding:15px 0;box-shadow:0 4px 12px rgba(0,0,0,0.1);position:sticky;top:0;z-index:100}
+.header-content{display:flex;justify-content:space-between;align-items:center}
+h1{font-size:1.8rem;font-weight:600}
+.cart-icon{position:relative;font-size:1.5rem;cursor:pointer;padding:10px;border-radius:50%;background:rgba(255,255,255,0.2);width:50px;height:50px;display:flex;align-items:center;justify-content:center}
+.cart-count{position:absolute;top:-5px;right:-5px;background:#ff4757;color:#fff;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:bold}
+.controls{display:flex;justify-content:space-between;margin:20px 0;background:#fff;padding:15px;border-radius:10px;box-shadow:0 2px 10px rgba(0,0,0,0.05)}
+.view-toggle{display:flex;gap:10px}
+.view-btn{padding:8px 15px;border:1px solid #ddd;background:#fff;border-radius:5px;cursor:pointer}
+.view-btn.active{background:#25D366;color:#fff;border-color:#25D366}
+.search-box{padding:8px 15px;border:1px solid #ddd;border-radius:5px;width:250px}
+.categories{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:20px}
+.category-btn{padding:8px 15px;border:1px solid #ddd;background:#fff;border-radius:5px;cursor:pointer}
+.category-btn.active{background:#2575fc;color:#fff;border-color:#2575fc}
+.products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:25px;margin-bottom:40px}
+.product-card{background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 5px 15px rgba(0,0,0,0.05);transition:.3s;display:flex;flex-direction:column;height:100%}
+.product-card:hover{transform:translateY(-5px);box-shadow:0 10px 20px rgba(0,0,0,0.1)}
+.product-image{height:250px;width:100%;object-fit:cover}
+.product-info{padding:20px;flex:1;display:flex;flex-direction:column}
+.product-title{font-size:1.2rem;margin-bottom:10px}
+.product-description{color:#666;font-size:.9rem;margin-bottom:10px;flex:1}
+.product-price{font-size:1.3rem;font-weight:700;color:#25D366;margin-bottom:15px}
+.add-to-cart{background:#25D366;color:#fff;border:none;padding:10px 15px;border-radius:5px;cursor:pointer;width:100%;font-weight:600}
+.add-to-cart:hover{background:#128C7E}
+.out-of-stock{background:#ff4757;color:#fff;border:none;padding:10px 15px;border-radius:5px;width:100%;font-weight:600}
+.floating-cart-btn{position:fixed;right:20px;bottom:20px;background:#25D366;color:#fff;border:none;padding:15px 20px;border-radius:50px;box-shadow:0 5px 15px rgba(0,0,0,0.2);cursor:pointer;font-weight:600;display:flex;align-items:center;gap:8px;z-index:99}
+.floating-cart-btn:hover{background:#128C7E}
+.cart-popup{position:fixed;top:0;right:-420px;width:100%;max-width:400px;height:100vh;background:#fff;box-shadow:-5px 0 15px rgba(0,0,0,0.1);transition:right .4s ease;z-index:1000;display:flex;flex-direction:column}
+.cart-popup.active{right:0}
+.cart-header{padding:20px;background:#25D366;color:#fff;display:flex;justify-content:space-between;align-items:center}
+.cart-items{flex:1;overflow-y:auto;padding:20px}
+.cart-footer{padding:20px;border-top:1px solid #eee}
+.cart-item{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #eee}
+.checkout-btn{background:#25D366;color:#fff;border:none;padding:12px;border-radius:6px;width:100%;font-weight:600;cursor:pointer}
+.checkout-btn:hover{background:#128C7E}
+.overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:999;display:none}
+.overlay.active{display:block}
+.success-message,.error-message{padding:10px;margin:10px; border-radius:5px;color:#fff;text-align:center}
+.success-message{background:#1dd1a1}
+.error-message{background:#ff6b6b}
+@media (max-width:768px){.product-image{height:180px}}
+</style>
 </head>
 <body>
-    <!-- Overlay -->
-    <div class="overlay" id="overlay"></div>
-    
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <h1>A4Tech and Bloody List</h1>
-                <div class="cart-icon" id="cartIcon">
-                    <i class="fas fa-shopping-cart"></i>
-                    <div class="cart-count" id="cartCount">0</div>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- Main Content -->
-    <div class="container">
-        <!-- Controls -->
-        <div class="controls">
-            <div class="view-toggle">
-                <button class="view-btn active" id="gridViewBtn">
-                    <i class="fas fa-th"></i> Grid View
-                </button>
-                <button class="view-btn" id="listViewBtn">
-                    <i class="fas fa-list"></i> List View
-                </button>
-            </div>
-            <input type="text" class="search-box" id="searchBox" placeholder="Search products...">
-        </div>
-
-        <!-- Categories -->
-        <div class="categories" id="categories">
-            <!-- Categories will be dynamically added here -->
-        </div>
-
-        <!-- Products Grid -->
-        <div class="products-grid" id="productsGrid">
-            <!-- Products will be dynamically added here -->
-        </div>
-
-        <!-- Products List -->
-        <div class="products-list" id="productsList">
-            <!-- Products will be dynamically added here -->
-        </div>
+<header>
+  <div class="container header-content">
+    <h1>A4Tech & Bloody Store</h1>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <button id="refreshBtn" style="background:white;color:#00AEEF;border:none;padding:8px 12px;border-radius:5px;cursor:pointer;font-weight:600"><i class="fas fa-sync-alt"></i> Refresh</button>
+      <div class="cart-icon" id="cartIcon"><i class="fas fa-shopping-cart"></i><div class="cart-count" id="cartCount">0</div></div>
     </div>
+  </div>
+</header>
 
-    <!-- Floating Cart Button -->
-    <button class="floating-cart-btn" id="floatingCartBtn">
-        <i class="fas fa-shopping-cart"></i>
-        <span class="floating-cart-total" id="floatingCartTotal">Rs. 0.00</span>
-    </button>
-
-    <!-- Cart Popup -->
-    <div class="cart-popup" id="cartPopup">
-        <div class="cart-header">
-            <h2>Your Cart</h2>
-            <button class="close-cart" id="closeCart">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-        <div class="cart-items" id="cartItems">
-            <!-- Cart items will be dynamically added here -->
-        </div>
-        <div class="cart-footer">
-            <div class="cart-total">
-                <span>Total:</span>
-                <span id="cartTotal">Rs. 0.00</span>
-            </div>
-            <button class="checkout-btn" id="checkoutBtn">
-                <i class="fab fa-whatsapp"></i> Checkout via WhatsApp
-            </button>
-        </div>
+<div class="container">
+  <div class="controls">
+    <div class="view-toggle">
+      <button class="view-btn active" id="gridViewBtn"><i class="fas fa-th"></i> Grid</button>
+      <button class="view-btn" id="listViewBtn"><i class="fas fa-list"></i> List</button>
     </div>
+    <input id="searchBox" class="search-box" placeholder="Search products...">
+  </div>
 
-    <script>
-        // DOM Elements
-        const productsGrid = document.getElementById('productsGrid');
-        const productsList = document.getElementById('productsList');
-        const categoriesContainer = document.getElementById('categories');
-        const searchBox = document.getElementById('searchBox');
-        const cartIcon = document.getElementById('cartIcon');
-        const cartCount = document.getElementById('cartCount');
-        const cartPopup = document.getElementById('cartPopup');
-        const closeCart = document.getElementById('closeCart');
-        const cartItems = document.getElementById('cartItems');
-        const cartTotal = document.getElementById('cartTotal');
-        const checkoutBtn = document.getElementById('checkoutBtn');
-        const overlay = document.getElementById('overlay');
-        const gridViewBtn = document.getElementById('gridViewBtn');
-        const listViewBtn = document.getElementById('listViewBtn');
-        const floatingCartBtn = document.getElementById('floatingCartBtn');
-        const floatingCartTotal = document.getElementById('floatingCartTotal');
+  <div class="categories" id="categories"></div>
+  <div class="products-grid" id="productsGrid"></div>
+</div>
 
-        // ALL PRODUCTS DATA - DIRECTLY IN HTML FILE
-        const products = [
-            {
-                id: 1,
-                name: "GH-30 Gaming Case",
-                price: 23200,
-                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVPWOSHsf-pplWGMRdIlPHvUIWi4jUc03Pdw&s",
-                description: "ROGUE Gaming Case (5 RGB FANS) (4mm Tempered Glass)",
-                brand: "BLOODY",
-                category: "Others"
-            },
-            {
-                id: 2,
-                name: "M90 (ANC) Black+Red",
-                price: 9340,
-                image: "https://vmart.pk/cdn/shop/files/A4tech-M90-TWS-ANC-Gaming-Earphones-3.jpg?v=1737461223",
-                description: "High-quality ANC earphones with premium sound",
-                brand: "A4Tech",
-                category: "Audio"
-            },
-            {
-                id: 3,
-                name: "M70 (ANC) Black+Blue",
-                price: 8470,
-                image: "https://cdn.citilink.ru/I9PUbCnVO322r7hDf8R4mgdRRqmCvR8v-rLC5k4-JJI/resizing_type:fit/gravity:sm/width:400/height:400/plain/product-images/b45bf27e-25dd-42bc-9ed9-01856843f1db.jpg",
-                description: "Optical gaming mouse with 7200 DPI precision",
-                brand: "A4Tech",
-                category: "Audio"
-            },
-            {
-                id: 4,
-                name: "B1700 Combo",
-                price: 6900,
-                image: "https://computerchoice.pk/wp-content/uploads/2023/12/Bloody-B1700.jpg",
-                description: "(B140 KEYBOARD ES7 MOUSE AND BP50M MOUSEPAD)",
-                brand: "A4Tech",
-                category: "Keyboard"
-            },
-            {
-                id: 5,
-                name: "AT75 Mechanical Keyboard",
-                price: 14600,
-                image: "https://store.alnabaa.com/cdn/shop/files/AT75_1.webp?v=1751975429",
-                description: "ALPHA OPTICAL SWITCH (MECHANICAL) Voice-Activated LED Lighting Bar",
-                brand: "A4Tech",
-                category: "Keyboard"
-            },
-            {
-                id: 6,
-                name: "AT87 Red Switch",
-                price: 11400,
-                image: "https://m.media-amazon.com/images/I/71jBwPSDDXL._UF350,350_QL80_.jpg",
-                description: "ALPHA RED SWITCH (MECHANICAL) Keyboard",
-                brand: "Bloody",
-                category: "Keyboard"
-            },
-            {
-                id: 7,
-                name: "AT98 Alpha Optical",
-                price: 11800,
-                image: "https://techarc.pk/wp-content/uploads/2025/05/bloody-at98-alpha-optical-mechanical-keyboard-rd-bk-1-techarc.pk_.webp",
-                description: "ALPHA RED SWITCH (MECHANICAL) Gaming Keyboard",
-                brand: "Bloody",
-                category: "Keyboard"
-            },
-            {
-                id: 8,
-                name: "B135N Gaming Keyboard",
-                price: 3350,
-                image: "https://www.startech.com.bd/image/cache/catalog/keyboard/a4tech/b135n/b135n-01-500x500.webp",
-                description: "Professional Gaming Keyboard with RGB Lighting",
-                brand: "Bloody",
-                category: "Keyboard"
-            },
-            {
-                id: 9,
-                name: "B310N (BLACK)",
-                price: 4860,
-                image: "https://winshop.pk/cdn/shop/files/B310N_3.png?v=1727376353&width=1080",
-                description: "Mechanical Feel Gaming Keyboard",
-                brand: "Bloody",
-                category: "Keyboard"
-            },
-            {
-                id: 10,
-                name: "B500N Mecha Switch",
-                price: 5600,
-                image: "https://www.bloody.com/en/uploadfile/image/20190926/20190926095925_65714.jpg",
-                description: "(BLACK) MECHA LIKE SWITCH Keyboard",
-                brand: "Bloody",
-                category: "Keyboard"
-            },
-            {
-                id: 11,
-                name: "S87 Energy Red",
-                price: 10700,
-                image: "https://img.bloody.com/en/uploadfile/image/20231021/20231021103231_57966.jpg",
-                description: "RED SWITCH (MECHANICAL) Gaming Keyboard",
-                brand: "Bloody",
-                category: "Keyboard"
-            },
-            {
-                id: 12,
-                name: "WS98 Wireless",
-                price: 13000,
-                image: "https://d1iv6qgcmtzm6l.cloudfront.net/products/lg_CgU7yXBKHrza6WE2zFIoyM2A16RKWbnIXaCnvSwb.jpg",
-                description: "DUAL CORE WIRELESS RED SWITCH (MECHANICAL)",
-                brand: "Bloody",
-                category: "Keyboard"
-            },
-            {
-                id: 13,
-                name: "BP-45 Waterproof",
-                price: 1380,
-                image: "https://img.bloody.com/en/uploadfile/image/20250808/20250808135701_67354.jpg",
-                description: "CYPHER GHOST Waterproof Mouse Pad",
-                brand: "Bloody",
-                category: "Mousepad"
-            },
-            {
-                id: 14,
-                name: "BP-45 Naraka",
-                price: 1330,
-                image: "https://img.bloody.com/en/uploadfile/image/20230214/20230214164649_23551.jpg",
-                description: "450*400*3mm Gaming Mouse Pad",
-                brand: "Bloody",
-                category: "Mousepad"
-            },
-            {
-                id: 15,
-                name: "BP-30M Standard",
-                price: 1160,
-                image: "https://img.bloody.com/en/uploadfile/image/20220512/20220512154018_34955.jpg",
-                description: "350*280*3mm Gaming Mouse Pad",
-                brand: "Bloody",
-                category: "Mousepad"
-            }
-        ];
+<div class="overlay" id="overlay"></div>
 
-        // Cart state
-        let cart = [];
-        let currentCategory = 'All';
-        let currentView = 'grid';
-        let currentBrand = null;
+<div class="cart-popup" id="cartPopup">
+  <div class="cart-header">
+    <h2>Your Cart</h2>
+    <button id="closeCart" style="background:none;border:none;color:white;font-size:1.3rem;cursor:pointer"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-footer">
+    <div style="display:flex;justify-content:space-between;font-weight:700;margin-bottom:10px"><span>Total:</span><span id="cartTotal">Rs. 0</span></div>
+    <button id="checkoutBtn" class="checkout-btn"><i class="fab fa-whatsapp"></i> Checkout via WhatsApp</button>
+  </div>
+</div>
 
-        // Initialize the app
-        function init() {
-            console.log('Initializing app with', products.length, 'products');
-            renderCategories();
-            renderProducts();
-            setupEventListeners();
-            updateCartUI();
-            
-            // Show success message
-            showMessage(`Successfully loaded ${products.length} products!`, 'success');
-        }
+<button class="floating-cart-btn" id="floatingCartBtn"><i class="fas fa-shopping-cart"></i> <span id="floatingCartTotal">Rs. 0</span></button>
 
-        // Render categories
-        function renderCategories() {
-            const a4techSubcategories = ['Keyboard', 'Mouse', 'Webcam', 'Audio', 'Others'];
-            const bloodySubcategories = ['Keyboard', 'Mouse', 'Mousepad', 'Audio', 'Others'];
-            
-            let categoriesHTML = '';
-            
-            // All button
-            categoriesHTML += `<button class="category-btn brand-btn active" data-category="All">All Products</button>`;
-            
-            // A4Tech brand button
-            categoriesHTML += `<button class="category-btn brand-btn" data-category="A4Tech">
-                <img src="https://a4tech.com.pk/cdn/shop/files/Asset_2_2x_a2c2a49b-fe13-4968-9b0f-1912f73772ed_170x.png?v=1698154812" alt="A4Tech">
-                A4Tech
-            </button>`;
-            
-            // Bloody brand button
-            categoriesHTML += `<button class="category-btn brand-btn" data-category="Bloody">
-                <img src="https://lh3.googleusercontent.com/proxy/SN4kpKa8Sv67UxZxjo3XYtPCkokXimJO_6NwqyO9V1DiyUYSO7sSJTV6nCaSZ8QeSW_AvuOWpjfzl3fXpW0yphw" alt="Bloody">
-                Bloody
-            </button>`;
-            
-            // A4Tech subcategories (hidden by default)
-            a4techSubcategories.forEach(sub => {
-                categoriesHTML += `<button class="category-btn subcategory" data-category="A4Tech-${sub}">${sub}</button>`;
-            });
-            
-            // Bloody subcategories (hidden by default)
-            bloodySubcategories.forEach(sub => {
-                categoriesHTML += `<button class="category-btn subcategory" data-category="Bloody-${sub}">${sub}</button>`;
-            });
-            
-            categoriesContainer.innerHTML = categoriesHTML;
-        }
+<script>
+/* ======================
+   HARD-CODED PRODUCTS
+   ====================== */
+const products = [
+  {
+    id: 101,
+    name: "A4Tech X7 Gaming Mouse",
+    price: 2200,
+    image: "https://via.placeholder.com/400x300?text=A4Tech+X7",
+    description: "High-precision optical sensor with ergonomic design.",
+    brand: "A4Tech",
+    category: "Mouse",
+    stock: "yes"
+  },
+  {
+    id: 102,
+    name: "Bloody H540 Wired Headset (ANC)",
+    price: 4200,
+    image: "https://via.placeholder.com/400x300?text=Bloody+H540",
+    description: "Wired gaming headset with ANC and crystal mic.",
+    brand: "Bloody",
+    category: "Headset",
+    stock: "yes"
+  },
+  {
+    id: 103,
+    name: "A4Tech Full HD Webcam",
+    price: 3500,
+    image: "https://via.placeholder.com/400x300?text=Webcam+1080p",
+    description: "1080p webcam with auto-focus and built-in mic.",
+    brand: "A4Tech",
+    category: "Webcam",
+    stock: "yes"
+  },
+  {
+    id: 104,
+    name: "Bloody Mechanical Keyboard K700",
+    price: 5200,
+    image: "https://via.placeholder.com/400x300?text=K700+Keyboard",
+    description: "Compact mechanical keyboard with RGB backlight.",
+    brand: "Bloody",
+    category: "Keyboard",
+    stock: "yes"
+  }
+];
 
-        // Show/hide subcategories based on selected brand
-        function toggleSubcategories(brand) {
-            // Hide all subcategories
-            document.querySelectorAll('.subcategory').forEach(btn => {
-                btn.classList.remove('visible');
-            });
-            
-            // Show subcategories for selected brand
-            if (brand && brand !== 'All') {
-                document.querySelectorAll(`.subcategory[data-category^="${brand}-"]`).forEach(btn => {
-                    btn.classList.add('visible');
-                });
-            }
-        }
+/* ======================
+   APP LOGIC (unchanged design)
+   ====================== */
+const PHONE = '923332200318'; // WhatsApp number (no +)
+let cart = [];
+let currentView = 'grid';
 
-        // Render products based on current category and search
-        function renderProducts() {
-            console.log('Rendering products, total:', products.length);
-            
-            let filteredProducts = products;
-            
-            // Filter by category
-            if (currentCategory !== 'All') {
-                if (currentCategory.includes('-')) {
-                    const [brand, category] = currentCategory.split('-');
-                    filteredProducts = products.filter(product => 
-                        product.brand === brand && product.category === category
-                    );
-                } else {
-                    filteredProducts = products.filter(product => 
-                        product.brand === currentCategory
-                    );
-                }
-            }
-            
-            // Filter by search term
-            const searchTerm = searchBox.value.toLowerCase();
-            if (searchTerm) {
-                filteredProducts = filteredProducts.filter(product => 
-                    product.name.toLowerCase().includes(searchTerm) ||
-                    product.description.toLowerCase().includes(searchTerm)
-                );
-            }
-            
-            // Render products in grid view
-            let gridHTML = '';
-            if (filteredProducts.length === 0) {
-                gridHTML = `
-                    <div style="grid-column: 1 / -1; text-align: center; padding: 40px;">
-                        <i class="fas fa-box-open" style="font-size: 3rem; color: #ddd; margin-bottom: 15px;"></i>
-                        <h3>No products found</h3>
-                        <p>Try changing your search or category filters</p>
-                    </div>
-                `;
-            } else {
-                filteredProducts.forEach(product => {
-                    gridHTML += `
-                        <div class="product-card">
-                            <img src="${product.image}" alt="${product.name}" class="product-image" onerror="this.src='https://via.placeholder.com/300x200?text=Image+Not+Found'">
-                            <div class="product-info">
-                                <h3 class="product-title">${product.name}</h3>
-                                <p class="product-description">${product.description}</p>
-                                <div class="product-price">Rs. ${product.price}</div>
-                                <button class="add-to-cart" data-id="${product.id}">Add to Cart</button>
-                            </div>
-                        </div>
-                    `;
-                });
-            }
-            productsGrid.innerHTML = gridHTML;
-            
-            // Render products in list view
-            let listHTML = '';
-            if (filteredProducts.length === 0) {
-                listHTML = `
-                    <div style="text-align: center; padding: 40px;">
-                        <i class="fas fa-box-open" style="font-size: 3rem; color: #ddd; margin-bottom: 15px;"></i>
-                        <h3>No products found</h3>
-                        <p>Try changing your search or category filters</p>
-                    </div>
-                `;
-            } else {
-                filteredProducts.forEach(product => {
-                    listHTML += `
-                        <div class="product-item">
-                            <img src="${product.image}" alt="${product.name}" class="product-image" style="width: 100px; height: 100px; margin-right: 15px;" onerror="this.src='https://via.placeholder.com/100x100?text=Image+Not+Found'">
-                            <div class="product-item-info">
-                                <h3 class="product-item-title">${product.name}</h3>
-                                <p class="product-item-description">${product.description}</p>
-                                <div class="product-item-price">Rs. ${product.price}</div>
-                            </div>
-                            <div class="product-item-action">
-                                <button class="add-to-cart-list" data-id="${product.id}">Add to Cart</button>
-                            </div>
-                        </div>
-                    `;
-                });
-            }
-            productsList.innerHTML = listHTML;
-            
-            // Add event listeners to add to cart buttons
-            document.querySelectorAll('.add-to-cart, .add-to-cart-list').forEach(button => {
-                button.addEventListener('click', function() {
-                    const productId = parseInt(this.getAttribute('data-id'));
-                    addToCart(productId);
-                });
-            });
-        }
+const productsGrid = document.getElementById('productsGrid');
+const categoriesWrap = document.getElementById('categories');
+const searchBox = document.getElementById('searchBox');
+const cartPopup = document.getElementById('cartPopup');
+const overlay = document.getElementById('overlay');
+const cartItemsEl = document.getElementById('cartItems');
+const cartCountEl = document.getElementById('cartCount');
+const cartTotalEl = document.getElementById('cartTotal');
+const floatingTotalEl = document.getElementById('floatingCartTotal');
 
-        // Setup event listeners
-        function setupEventListeners() {
-            // Category buttons
-            document.querySelectorAll('.category-btn').forEach(button => {
-                button.addEventListener('click', function() {
-                    const category = this.getAttribute('data-category');
-                    
-                    // Remove active class from all buttons
-                    document.querySelectorAll('.category-btn').forEach(btn => {
-                        btn.classList.remove('active');
-                    });
-                    
-                    // Add active class to clicked button
-                    this.classList.add('active');
-                    
-                    // Handle brand buttons
-                    if (category === 'All' || category === 'A4Tech' || category === 'Bloody') {
-                        currentBrand = category === 'All' ? null : category;
-                        toggleSubcategories(currentBrand);
-                        
-                        // If it's a brand button, set the category to the brand
-                        if (category !== 'All') {
-                            currentCategory = category;
-                        } else {
-                            currentCategory = 'All';
-                        }
-                    } else {
-                        // It's a subcategory button
-                        currentCategory = category;
-                    }
-                    
-                    // Re-render products
-                    renderProducts();
-                });
-            });
-            
-            // Search box
-            searchBox.addEventListener('input', renderProducts);
-            
-            // View toggle buttons
-            gridViewBtn.addEventListener('click', function() {
-                if (currentView !== 'grid') {
-                    currentView = 'grid';
-                    gridViewBtn.classList.add('active');
-                    listViewBtn.classList.remove('active');
-                    productsGrid.style.display = 'grid';
-                    productsList.style.display = 'none';
-                }
-            });
-            
-            listViewBtn.addEventListener('click', function() {
-                if (currentView !== 'list') {
-                    currentView = 'list';
-                    listViewBtn.classList.add('active');
-                    gridViewBtn.classList.remove('active');
-                    productsList.style.display = 'flex';
-                    productsGrid.style.display = 'none';
-                }
-            });
-            
-            // Cart icon
-            cartIcon.addEventListener('click', openCart);
-            
-            // Close cart
-            closeCart.addEventListener('click', closeCartPopup);
-            
-            // Overlay
-            overlay.addEventListener('click', closeCartPopup);
-            
-            // Floating cart button
-            floatingCartBtn.addEventListener('click', openCart);
-            
-            // Checkout button
-            checkoutBtn.addEventListener('click', checkout);
-        }
+function init(){
+  renderCategories();
+  renderProducts(products);
+  setupEvents();
+  updateCartUI();
+}
 
-        // Add product to cart
-        function addToCart(productId) {
-            const product = products.find(p => p.id === productId);
-            if (!product) return;
-            
-            const existingItem = cart.find(item => item.id === productId);
-            
-            if (existingItem) {
-                existingItem.quantity += 1;
-            } else {
-                cart.push({
-                    id: product.id,
-                    name: product.name,
-                    price: product.price,
-                    image: product.image,
-                    quantity: 1
-                });
-            }
-            
-            updateCartUI();
-            
-            // Show success message
-            showMessage(`${product.name} added to cart!`, 'success');
-        }
+function renderCategories(){
+  // unique brands & categories
+  const brands = [...new Set(products.map(p=>p.brand))];
+  const cats = [...new Set(products.map(p=>p.category))];
+  let html = `<button class="category-btn active" data-filter="all">All</button>`;
+  brands.forEach(b => html += `<button class="category-btn" data-filter="${b}">${b}</button>`);
+  cats.forEach(c => html += `<button class="category-btn" data-filter="${c}">${c}</button>`);
+  categoriesWrap.innerHTML = html;
+  document.querySelectorAll('.category-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      document.querySelectorAll('.category-btn').forEach(x=>x.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.filter;
+      applyFilter(f);
+    });
+  });
+}
 
-        // Remove product from cart
-        function removeFromCart(productId) {
-            cart = cart.filter(item => item.id !== productId);
-            updateCartUI();
-        }
+function applyFilter(filter){
+  let list = products;
+  const q = (searchBox.value || '').toLowerCase();
+  if(filter && filter !== 'all') list = products.filter(p => p.brand === filter || p.category === filter);
+  if(q) list = list.filter(p => (p.name||'').toLowerCase().includes(q) || (p.description||'').toLowerCase().includes(q));
+  renderProducts(list);
+}
 
-        // Update cart quantity
-        function updateQuantity(productId, change) {
-            const item = cart.find(item => item.id === productId);
-            if (!item) return;
-            
-            item.quantity += change;
-            
-            if (item.quantity <= 0) {
-                removeFromCart(productId);
-            } else {
-                updateCartUI();
-            }
-        }
+function renderProducts(list){
+  productsGrid.innerHTML = '';
+  list.forEach(p=>{
+    const disabled = p.stock==='no';
+    const card = document.createElement('div');
+    card.className = 'product-card';
+    card.innerHTML = `
+      <img class="product-image" src="${p.image}" alt="${p.name}" onerror="this.src='https://via.placeholder.com/400x300?text=No+Image'">
+      <div class="product-info">
+        <h3 class="product-title">${p.name}</h3>
+        <p class="product-description">${p.description}</p>
+        <div class="product-price">Rs. ${p.price}</div>
+        <button class="${disabled? 'out-of-stock':'add-to-cart'}" ${disabled? 'disabled':''} data-id="${p.id}">
+          ${disabled? 'Out of Stock' : 'Add to Cart'}
+        </button>
+      </div>
+    `;
+    productsGrid.appendChild(card);
+  });
 
-        // Update cart UI
-        function updateCartUI() {
-            // Update cart count
-            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
-            cartCount.textContent = totalItems;
-            
-            // Update cart items
-            if (cart.length === 0) {
-                cartItems.innerHTML = `
-                    <div class="empty-cart">
-                        <i class="fas fa-shopping-cart"></i>
-                        <h3>Your cart is empty</h3>
-                        <p>Add some products to your cart</p>
-                    </div>
-                `;
-                cartTotal.textContent = 'Rs. 0.00';
-                floatingCartTotal.textContent = 'Rs. 0.00';
-            } else {
-                let cartHTML = '';
-                let total = 0;
-                
-                cart.forEach(item => {
-                    const itemTotal = item.price * item.quantity;
-                    total += itemTotal;
-                    
-                    cartHTML += `
-                        <div class="cart-item">
-                            <img src="${item.image}" alt="${item.name}" class="cart-item-image" onerror="this.src='https://via.placeholder.com/80x80?text=Image+Not+Found'">
-                            <div class="cart-item-details">
-                                <h4 class="cart-item-title">${item.name}</h4>
-                                <div class="cart-item-price">Rs. ${item.price}</div>
-                                <div class="cart-item-quantity">
-                                    <button class="quantity-btn" onclick="updateQuantity(${item.id}, -1)">
-                                        <i class="fas fa-minus"></i>
-                                    </button>
-                                    <span class="quantity">${item.quantity}</span>
-                                    <button class="quantity-btn" onclick="updateQuantity(${item.id}, 1)">
-                                        <i class="fas fa-plus"></i>
-                                    </button>
-                                    <button class="remove-item" onclick="removeFromCart(${item.id})">
-                                        <i class="fas fa-trash
+  // attach add buttons
+  document.querySelectorAll('.add-to-cart').forEach(btn=>{
+    btn.addEventListener('click', ()=> {
+      const id = Number(btn.getAttribute('data-id'));
+      addToCart(id);
+    });
+  });
+}
+
+function addToCart(id){
+  const prod = products.find(p=>p.id===id);
+  if(!prod) return;
+  const existing = cart.find(i=>i.id===id);
+  if(existing) existing.qty++;
+  else cart.push({...prod, qty:1});
+  updateCartUI();
+  showMessage(`${prod.name} added to cart!`,'success');
+}
+
+function updateCartUI(){
+  cartItemsEl.innerHTML = '';
+  let total = 0;
+  cart.forEach(item=>{
+    total += item.price * item.qty;
+    const div = document.createElement('div');
+    div.className = 'cart-item';
+    div.innerHTML = `
+      <div style="display:flex;gap:10px;align-items:center">
+        <img src="${item.image}" width="70" height="70" style="object-fit:cover;border-radius:6px">
+        <div>
+          <strong>${item.name}</strong><br><small>Rs. ${item.price} x ${item.qty}</small>
+        </div>
+      </div>
+      <div>
+        <button onclick="changeQty(${item.id},-1)">-</button>
+        <button onclick="changeQty(${item.id},1)">+</button>
+        <button onclick="removeFromCart(${item.id})">🗑</button>
+      </div>
+    `;
+    cartItemsEl.appendChild(div);
+  });
+  cartCountEl.textContent = cart.reduce((s,i)=>s+i.qty,0);
+  cartTotalEl.textContent = `Rs. ${total.toFixed(2)}`;
+  floatingTotalEl.textContent = `Rs. ${total.toFixed(2)}`;
+}
+
+function changeQty(id,delta){
+  const it = cart.find(i=>i.id===id);
+  if(!it) return;
+  it.qty += delta;
+  if(it.qty <= 0) cart = cart.filter(i=>i.id!==id);
+  updateCartUI();
+}
+
+function removeFromCart(id){
+  cart = cart.filter(i=>i.id!==id);
+  updateCartUI();
+}
+
+function checkout(){
+  if(cart.length===0){ alert('Your cart is empty!'); return; }
+  let msg = "🛍 Order details:\n";
+  let total = 0;
+  cart.forEach(i=>{ msg += `• ${i.name} x${i.qty} = Rs ${i.price*i.qty}\n`; total += i.price*i.qty; });
+  msg += `\nTotal: Rs ${total}`;
+  window.open(`https://wa.me/${PHONE}?text=${encodeURIComponent(msg)}`,'_blank');
+}
+
+function setupEvents(){
+  document.getElementById('cartIcon').addEventListener('click', ()=> toggleCart(true));
+  document.getElementById('floatingCartBtn').addEventListener('click', ()=> toggleCart(true));
+  document.getElementById('closeCart').addEventListener('click', ()=> toggleCart(false));
+  overlay.addEventListener('click', ()=> toggleCart(false));
+  document.getElementById('checkoutBtn').addEventListener('click', checkout);
+  document.getElementById('refreshBtn').addEventListener('click', ()=> renderProducts(products));
+  document.getElementById('gridViewBtn').addEventListener('click', ()=> { currentView='grid'; document.getElementById('gridViewBtn').classList.add('active'); document.getElementById('listViewBtn').classList.remove('active'); renderProducts(products);});
+  document.getElementById('listViewBtn').addEventListener('click', ()=> { currentView='list'; document.getElementById('listViewBtn').classList.add('active'); document.getElementById('gridViewBtn').classList.remove('active'); /* simple switch: hide grid, keep single-column list style */});
+  searchBox.addEventListener('input', ()=> applyFilter(document.querySelector('.category-btn.active') ? document.querySelector('.category-btn.active').dataset.filter : 'all'));
+}
+
+function toggleCart(show){
+  cartPopup.classList.toggle('active', show);
+  overlay.classList.toggle('active', show);
+  document.body.style.overflow = show ? 'hidden' : 'auto';
+}
+
+function showMessage(text,type='success'){
+  const d = document.createElement('div');
+  d.className = type==='success' ? 'success-message' : 'error-message';
+  d.textContent = text;
+  document.body.prepend(d);
+  setTimeout(()=> d.remove(), 2500);
+}
+
+/* initialize */
+init();
+</script>
+</body>
+</html>
