@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>A4Tech & Bloody Store</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
@@ -33,7 +33,6 @@ h1{font-size:1.8rem;font-weight:600}
 .product-price{font-size:1.2rem;font-weight:700;color:#25D366;margin-bottom:10px}
 .add-to-cart{background:#25D366;color:#fff;border:none;padding:10px;border-radius:5px;cursor:pointer;font-weight:600}
 .add-to-cart:hover{background:#128C7E}
-.out-of-stock{background:#ff4757;color:#fff;border:none;padding:10px;border-radius:5px;font-weight:600}
 .floating-cart-btn{position:fixed;right:20px;bottom:20px;background:#25D366;color:#fff;border:none;padding:14px 18px;border-radius:40px;box-shadow:0 5px 15px rgba(0,0,0,0.2);cursor:pointer;display:flex;align-items:center;gap:8px;font-weight:600;z-index:99}
 .cart-popup{position:fixed;top:0;right:-420px;width:100%;max-width:380px;height:100vh;background:#fff;box-shadow:-5px 0 15px rgba(0,0,0,0.1);transition:right .4s ease;z-index:1000;display:flex;flex-direction:column;border-radius:10px 0 0 10px}
 .cart-popup.active{right:0}
@@ -93,10 +92,10 @@ h1{font-size:1.8rem;font-weight:600}
 <script>
 const PHONE='923332200318';
 const products=[
-{id:1,name:'A4Tech Gaming Mouse',price:2200,image:'https://a4tech.com/alanUpload/product/202508/2211510752793696.jpg',description:'High precision gaming mouse.',brand:'A4Tech',category:'Mouse',stock:'yes'},
-{id:2,name:'A4Tech Webcam',price:3500,image:'https://a4tech.com/alanUpload/product/202508/2211510752793696'.jpg',description:'1080p webcam with autofocus.',brand:'A4Tech',category:'Webcam',stock:'yes'},
-{id:3,name:'Bloody Wired Headset',price:4200,image:'https://a4tech.com/alanUpload/product/202508/2211510752793696.jpg',description:'ANC wired headset with mic.',brand:'Bloody',category:'Headset',stock:'yes'},
-{id:4,name:'Bloody Mechanical Keyboard',price:5200,image:'https://a4tech.com/alanUpload/product/202508/2211510752793696.jpg',description:'RGB mechanical keyboard.',brand:'Bloody',category:'Keyboard',stock:'yes'}
+{id:1,name:'A4Tech Gaming Mouse',price:2200,description:'High precision gaming mouse',brand:'A4Tech',category:'Mouse',image:'https://a4tech.com/alanUpload/product/202508/2211510752793696.jpg',stock:'yes'},
+{id:2,name:'A4Tech Gaming Mouse',price:3500,description:'1080p webcam with autofocus',brand:'A4Tech',category:'Webcam',image:'https://a4tech.com/alanUpload/product/202508/2211510752793696.jpg',stock:'yes'},
+{id:3,name:'A4Tech Gaming Mouse',price:4200,description:'ANC wired headset with mic',brand:'Bloody',category:'Headset',image:'https://a4tech.com/alanUpload/product/202508/2211510752793696.jpg',stock:'yes'},
+{id:4,name:'A4Tech Gaming Mouse',price:5200,description:'RGB mechanical keyboard',brand:'Bloody',category:'Keyboard',image:'https://a4tech.com/alanUpload/product/202508/2211510752793696.jpg',stock:'yes'}
 ];
 let cart=[],currentBrand=null,currentView='grid';
 const brandWrap=document.getElementById('brandButtons'),catWrap=document.getElementById('categoryButtons'),grid=document.getElementById('productsGrid'),list=document.getElementById('productsList'),cartPopup=document.getElementById('cartPopup'),overlay=document.getElementById('overlay'),cartItems=document.getElementById('cartItems'),cartCount=document.getElementById('cartCount'),cartTotal=document.getElementById('cartTotal'),floatingTotal=document.getElementById('floatingCartTotal'),searchBox=document.getElementById('searchBox');
@@ -126,29 +125,12 @@ const card=`<div class="product-card"><img class="product-image" src="${p.image}
 const item=`<div class="product-item" style="display:flex;align-items:center;gap:15px;padding:10px"><img src="${p.image}" style="width:100px;height:100px;object-fit:cover;border-radius:8px"><div style="flex:1"><h3>${p.name}</h3><p>${p.description}</p><div style="color:#25D366;font-weight:700">Rs. ${p.price}</div></div><button class="add-to-cart" data-id="${p.id}">Add</button></div>`;
 grid.innerHTML+=card;list.innerHTML+=item;
 });
-attachAddButtons();
-showView();
+attachAddButtons();showView();
 }
-function attachAddButtons(){
-document.querySelectorAll('.add-to-cart').forEach(btn=>btn.onclick=()=>{const id=+btn.dataset.id;addToCart(id);});
-}
-function showView(){
-grid.style.display=currentView==='grid'?'grid':'none';
-list.style.display=currentView==='list'?'flex':'none';
-}
-function addToCart(id){
-const p=products.find(x=>x.id===id);
-if(!p)return;
-const ex=cart.find(i=>i.id===id);
-ex?ex.qty++:cart.push({...p,qty:1});
-updateCart();
-}
-function updateCart(){
-cartItems.innerHTML='';let total=0;
-cart.forEach(i=>{total+=i.price*i.qty;cartItems.innerHTML+=`<div class="cart-item"><img src="${i.image}"><div style="flex:1"><strong>${i.name}</strong><br><small>Rs.${i.price} x ${i.qty}</small></div><div><button onclick="qty(${i.id},-1)">−</button><button onclick="qty(${i.id},1)">+</button><button onclick="del(${i.id})"><i class='fas fa-trash'></i></button></div></div>`;});
-cartCount.textContent=cart.reduce((a,b)=>a+b.qty,0);
-cartTotal.textContent=`Rs. ${total}`;floatingTotal.textContent=`Rs. ${total}`;
-}
+function attachAddButtons(){document.querySelectorAll('.add-to-cart').forEach(btn=>btn.onclick=()=>{const id=+btn.dataset.id;addToCart(id);});}
+function showView(){grid.style.display=currentView==='grid'?'grid':'none';list.style.display=currentView==='list'?'flex':'none';}
+function addToCart(id){const p=products.find(x=>x.id===id);if(!p)return;const ex=cart.find(i=>i.id===id);ex?ex.qty++:cart.push({...p,qty:1});updateCart();}
+function updateCart(){cartItems.innerHTML='';let total=0;cart.forEach(i=>{total+=i.price*i.qty;cartItems.innerHTML+=`<div class="cart-item"><img src="${i.image}"><div style="flex:1"><strong>${i.name}</strong><br><small>Rs.${i.price} x ${i.qty}</small></div><div><button onclick="qty(${i.id},-1)">−</button><button onclick="qty(${i.id},1)">+</button><button onclick="del(${i.id})"><i class='fas fa-trash'></i></button></div></div>`;});cartCount.textContent=cart.reduce((a,b)=>a+b.qty,0);cartTotal.textContent=`Rs. ${total}`;floatingTotal.textContent=`Rs. ${total}`;}
 function qty(id,d){const it=cart.find(i=>i.id===id);if(!it)return;it.qty+=d;if(it.qty<=0)cart=cart.filter(i=>i.id!==id);updateCart();}
 function del(id){cart=cart.filter(i=>i.id!==id);updateCart();}
 function checkout(){if(!cart.length)return alert('Cart empty');let msg='🛍 Order:\n';let t=0;cart.forEach(i=>{msg+=`• ${i.name} x${i.qty} = Rs ${i.price*i.qty}\n`;t+=i.price*i.qty;});msg+=`\nTotal: Rs ${t}`;window.open(`https://wa.me/${PHONE}?text=${encodeURIComponent(msg)}`,'_blank');}
@@ -162,10 +144,7 @@ overlay.onclick=()=>toggleCart(false);
 document.getElementById('checkoutBtn').onclick=checkout;
 searchBox.oninput=()=>renderProducts(products);
 }
-function setViewBtn(){
-document.getElementById('gridViewBtn').classList.toggle('active',currentView==='grid');
-document.getElementById('listViewBtn').classList.toggle('active',currentView==='list');
-}
+function setViewBtn(){document.getElementById('gridViewBtn').classList.toggle('active',currentView==='grid');document.getElementById('listViewBtn').classList.toggle('active',currentView==='list');}
 function toggleCart(s){cartPopup.classList.toggle('active',s);overlay.classList.toggle('active',s);}
 init();
 </script>
