@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
 <title>A4Tech & Bloody Store</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
@@ -15,15 +15,19 @@ h1{font-size:1.8rem;font-weight:600}
 .cart-icon{position:relative;font-size:1.4rem;cursor:pointer;padding:10px;border-radius:50%;background:rgba(255,255,255,0.2)}
 .cart-count{position:absolute;top:-5px;right:-5px;background:#ff4757;color:#fff;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:bold}
 .controls{display:flex;justify-content:space-between;margin:20px 0;background:#fff;padding:15px;border-radius:10px;box-shadow:0 2px 10px rgba(0,0,0,0.05)}
+.view-toggle{display:flex;gap:10px}
+.view-btn{padding:8px 15px;border:1px solid #ddd;background:#fff;border-radius:5px;cursor:pointer}
+.view-btn.active{background:#25D366;color:#fff;border-color:#25D366}
 .search-box{padding:8px 15px;border:1px solid #ddd;border-radius:5px;width:250px}
 .brand-buttons,.category-buttons{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:20px}
 .brand-btn,.category-btn{padding:8px 15px;border:1px solid #ddd;background:#fff;border-radius:5px;cursor:pointer;transition:.3s}
 .brand-btn.active,.category-btn.active{background:#2575fc;color:#fff;border-color:#2575fc}
 .products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:25px;margin-bottom:40px}
-.product-card{background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 5px 15px rgba(0,0,0,0.05);transition:.3s;display:flex;flex-direction:column;height:100%}
-.product-card:hover{transform:translateY(-5px);box-shadow:0 10px 20px rgba(0,0,0,0.1)}
-.product-image{height:240px;width:100%;object-fit:cover}
-.product-info{padding:15px;flex:1;display:flex;flex-direction:column}
+.products-list{display:none;flex-direction:column;gap:15px;margin-bottom:40px}
+.product-card,.product-item{background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 5px 15px rgba(0,0,0,0.05);transition:.3s}
+.product-card:hover,.product-item:hover{transform:translateY(-5px);box-shadow:0 10px 20px rgba(0,0,0,0.1)}
+.product-image{width:100%;height:240px;object-fit:cover}
+.product-info{padding:15px;display:flex;flex-direction:column}
 .product-title{font-size:1.1rem;margin-bottom:6px}
 .product-description{color:#666;font-size:.9rem;margin-bottom:8px;flex:1}
 .product-price{font-size:1.2rem;font-weight:700;color:#25D366;margin-bottom:10px}
@@ -31,7 +35,6 @@ h1{font-size:1.8rem;font-weight:600}
 .add-to-cart:hover{background:#128C7E}
 .out-of-stock{background:#ff4757;color:#fff;border:none;padding:10px;border-radius:5px;font-weight:600}
 .floating-cart-btn{position:fixed;right:20px;bottom:20px;background:#25D366;color:#fff;border:none;padding:14px 18px;border-radius:40px;box-shadow:0 5px 15px rgba(0,0,0,0.2);cursor:pointer;display:flex;align-items:center;gap:8px;font-weight:600;z-index:99}
-.floating-cart-btn:hover{background:#128C7E}
 .cart-popup{position:fixed;top:0;right:-420px;width:100%;max-width:380px;height:100vh;background:#fff;box-shadow:-5px 0 15px rgba(0,0,0,0.1);transition:right .4s ease;z-index:1000;display:flex;flex-direction:column;border-radius:10px 0 0 10px}
 .cart-popup.active{right:0}
 .cart-header{padding:18px;background:#25D366;color:#fff;display:flex;justify-content:space-between;align-items:center;border-radius:10px 0 0 0}
@@ -39,12 +42,9 @@ h1{font-size:1.8rem;font-weight:600}
 .cart-footer{padding:15px;border-top:1px solid #eee;background:#f9f9f9;border-radius:0 0 0 10px}
 .cart-item{display:flex;gap:10px;align-items:center;margin-bottom:15px;padding-bottom:10px;border-bottom:1px solid #eee}
 .cart-item img{width:70px;height:70px;object-fit:cover;border-radius:8px}
-.cart-item div strong{font-size:.95rem}
 .checkout-btn{background:#25D366;color:#fff;border:none;padding:12px;border-radius:6px;width:100%;font-weight:600;cursor:pointer;font-size:1rem}
-.checkout-btn:hover{background:#128C7E}
 .overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:999;display:none}
 .overlay.active{display:block}
-.success-message{background:#1dd1a1;color:#fff;padding:10px;border-radius:5px;margin:10px;text-align:center}
 @media(max-width:768px){.product-image{height:180px}.controls{flex-direction:column;gap:10px}.search-box{width:100%}}
 </style>
 </head>
@@ -60,11 +60,18 @@ h1{font-size:1.8rem;font-weight:600}
 
 <div class="container">
   <div class="controls">
+    <div class="view-toggle">
+      <button class="view-btn active" id="gridViewBtn"><i class="fas fa-th"></i> Grid</button>
+      <button class="view-btn" id="listViewBtn"><i class="fas fa-list"></i> List</button>
+    </div>
     <input id="searchBox" class="search-box" placeholder="Search products...">
   </div>
+
   <div class="brand-buttons" id="brandButtons"></div>
   <div class="category-buttons" id="categoryButtons" style="display:none;"></div>
+
   <div class="products-grid" id="productsGrid"></div>
+  <div class="products-list" id="productsList"></div>
 </div>
 
 <div class="overlay" id="overlay"></div>
@@ -86,140 +93,80 @@ h1{font-size:1.8rem;font-weight:600}
 <script>
 const PHONE='923332200318';
 const products=[
- {id:1,name:'A4Tech X7 Gaming Mouse',price:2200,image:'https://via.placeholder.com/400x300?text=A4Tech+X7',description:'High precision mouse for gaming.',brand:'A4Tech',category:'Mouse',stock:'yes'},
- {id:2,name:'A4Tech Full HD Webcam',price:3500,image:'https://via.placeholder.com/400x300?text=A4Tech+Webcam',description:'1080p webcam with autofocus.',brand:'A4Tech',category:'Webcam',stock:'yes'},
- {id:3,name:'Bloody H540 Wired Headset',price:4200,image:'https://via.placeholder.com/400x300?text=Bloody+H540',description:'ANC wired headset with clear mic.',brand:'Bloody',category:'Headset',stock:'yes'},
- {id:4,name:'Bloody Mechanical Keyboard K700',price:5200,image:'https://via.placeholder.com/400x300?text=Bloody+K700',description:'RGB mechanical keyboard.',brand:'Bloody',category:'Keyboard',stock:'yes'}
+{id:1,name:'A4Tech X7 Gaming Mouse',price:2200,image:'https://via.placeholder.com/400x300?text=A4Tech+X7',description:'High precision gaming mouse.',brand:'A4Tech',category:'Mouse',stock:'yes'},
+{id:2,name:'A4Tech Full HD Webcam',price:3500,image:'https://via.placeholder.com/400x300?text=A4Tech+Webcam',description:'1080p webcam with autofocus.',brand:'A4Tech',category:'Webcam',stock:'yes'},
+{id:3,name:'Bloody H540 Wired Headset',price:4200,image:'https://via.placeholder.com/400x300?text=Bloody+H540',description:'ANC wired headset with mic.',brand:'Bloody',category:'Headset',stock:'yes'},
+{id:4,name:'Bloody K700 Mechanical Keyboard',price:5200,image:'https://via.placeholder.com/400x300?text=Bloody+K700',description:'RGB mechanical keyboard.',brand:'Bloody',category:'Keyboard',stock:'yes'}
 ];
-let cart=[],currentBrand=null;
-const brandWrap=document.getElementById('brandButtons'),
-categoryWrap=document.getElementById('categoryButtons'),
-productsGrid=document.getElementById('productsGrid'),
-cartPopup=document.getElementById('cartPopup'),
-overlay=document.getElementById('overlay'),
-cartItems=document.getElementById('cartItems'),
-cartCount=document.getElementById('cartCount'),
-cartTotal=document.getElementById('cartTotal'),
-floatingTotal=document.getElementById('floatingCartTotal'),
-searchBox=document.getElementById('searchBox');
+let cart=[],currentBrand=null,currentView='grid';
+const brandWrap=document.getElementById('brandButtons'),catWrap=document.getElementById('categoryButtons'),grid=document.getElementById('productsGrid'),list=document.getElementById('productsList'),cartPopup=document.getElementById('cartPopup'),overlay=document.getElementById('overlay'),cartItems=document.getElementById('cartItems'),cartCount=document.getElementById('cartCount'),cartTotal=document.getElementById('cartTotal'),floatingTotal=document.getElementById('floatingCartTotal'),searchBox=document.getElementById('searchBox');
 
-function init(){
- renderBrands();
- renderProducts(products);
- setupEvents();
-}
+function init(){renderBrands();renderProducts(products);setup();}
 function renderBrands(){
- const brands=[...new Set(products.map(p=>p.brand))];
- brandWrap.innerHTML=brands.map(b=>`<button class="brand-btn" data-brand="${b}">${b}</button>`).join('');
- document.querySelectorAll('.brand-btn').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-   document.querySelectorAll('.brand-btn').forEach(x=>x.classList.remove('active'));
-   btn.classList.add('active');
-   currentBrand=btn.dataset.brand;
-   renderCategories(currentBrand);
-  });
- });
+const brands=[...new Set(products.map(p=>p.brand))];
+brandWrap.innerHTML=brands.map(b=>`<button class="brand-btn" data-brand="${b}">${b}</button>`).join('');
+document.querySelectorAll('.brand-btn').forEach(btn=>{
+btn.onclick=()=>{document.querySelectorAll('.brand-btn').forEach(x=>x.classList.remove('active'));btn.classList.add('active');currentBrand=btn.dataset.brand;renderCats(currentBrand);};
+});
 }
-function renderCategories(brand){
- const cats=[...new Set(products.filter(p=>p.brand===brand).map(p=>p.category))];
- categoryWrap.style.display='flex';
- categoryWrap.innerHTML=cats.map(c=>`<button class="category-btn" data-cat="${c}">${c}</button>`).join('');
- document.querySelectorAll('.category-btn').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-   document.querySelectorAll('.category-btn').forEach(x=>x.classList.remove('active'));
-   btn.classList.add('active');
-   const cat=btn.dataset.cat;
-   renderProducts(products.filter(p=>p.brand===brand&&p.category===cat));
-  });
- });
+function renderCats(brand){
+const cats=[...new Set(products.filter(p=>p.brand===brand).map(p=>p.category))];
+catWrap.style.display='flex';
+catWrap.innerHTML=cats.map(c=>`<button class="category-btn" data-cat="${c}">${c}</button>`).join('');
+document.querySelectorAll('.category-btn').forEach(btn=>{
+btn.onclick=()=>{document.querySelectorAll('.category-btn').forEach(x=>x.classList.remove('active'));btn.classList.add('active');const cat=btn.dataset.cat;renderProducts(products.filter(p=>p.brand===brand&&p.category===cat));};
+});
 }
-function renderProducts(list){
- productsGrid.innerHTML='';
- const q=searchBox.value.toLowerCase();
- const filtered=list.filter(p=>p.name.toLowerCase().includes(q)||p.description.toLowerCase().includes(q));
- filtered.forEach(p=>{
-  const card=document.createElement('div');
-  card.className='product-card';
-  card.innerHTML=`
-  <img class="product-image" src="${p.image}" alt="${p.name}" onerror="this.src='https://via.placeholder.com/400x300?text=No+Image'">
-  <div class="product-info">
-    <h3 class="product-title">${p.name}</h3>
-    <p class="product-description">${p.description}</p>
-    <div class="product-price">Rs. ${p.price}</div>
-    <button class="${p.stock==='no'?'out-of-stock':'add-to-cart'}" ${p.stock==='no'?'disabled':''} data-id="${p.id}">${p.stock==='no'?'Out of Stock':'Add to Cart'}</button>
-  </div>`;
-  productsGrid.appendChild(card);
- });
- document.querySelectorAll('.add-to-cart').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-   const id=+btn.dataset.id;addToCart(id);
-  });
- });
+function renderProducts(listData){
+grid.innerHTML='';list.innerHTML='';
+const term=searchBox.value.toLowerCase();
+const filtered=listData.filter(p=>p.name.toLowerCase().includes(term)||p.description.toLowerCase().includes(term));
+filtered.forEach(p=>{
+const card=`<div class="product-card"><img class="product-image" src="${p.image}" alt="${p.name}"><div class="product-info"><h3 class="product-title">${p.name}</h3><p class="product-description">${p.description}</p><div class="product-price">Rs. ${p.price}</div><button class="add-to-cart" data-id="${p.id}">Add to Cart</button></div></div>`;
+const item=`<div class="product-item" style="display:flex;align-items:center;gap:15px;padding:10px"><img src="${p.image}" style="width:100px;height:100px;object-fit:cover;border-radius:8px"><div style="flex:1"><h3>${p.name}</h3><p>${p.description}</p><div style="color:#25D366;font-weight:700">Rs. ${p.price}</div></div><button class="add-to-cart" data-id="${p.id}">Add</button></div>`;
+grid.innerHTML+=card;list.innerHTML+=item;
+});
+attachAddButtons();
+showView();
+}
+function attachAddButtons(){
+document.querySelectorAll('.add-to-cart').forEach(btn=>btn.onclick=()=>{const id=+btn.dataset.id;addToCart(id);});
+}
+function showView(){
+grid.style.display=currentView==='grid'?'grid':'none';
+list.style.display=currentView==='list'?'flex':'none';
 }
 function addToCart(id){
- const p=products.find(x=>x.id===id);
- if(!p)return;
- const e=cart.find(i=>i.id===id);
- e?e.qty++:cart.push({...p,qty:1});
- updateCartUI();
- showMsg(`${p.name} added to cart!`);
+const p=products.find(x=>x.id===id);
+if(!p)return;
+const ex=cart.find(i=>i.id===id);
+ex?ex.qty++:cart.push({...p,qty:1});
+updateCart();
 }
-function updateCartUI(){
- cartItems.innerHTML='';
- let total=0;
- cart.forEach(i=>{
-  total+=i.price*i.qty;
-  const d=document.createElement('div');
-  d.className='cart-item';
-  d.innerHTML=`
-   <img src="${i.image}" alt="">
-   <div style="flex:1">
-    <strong>${i.name}</strong><br>
-    <small>Rs. ${i.price} × ${i.qty}</small>
-   </div>
-   <div>
-    <button onclick="chgQty(${i.id},-1)">−</button>
-    <button onclick="chgQty(${i.id},1)">+</button>
-    <button onclick="rmv(${i.id})"><i class='fas fa-trash'></i></button>
-   </div>`;
-  cartItems.appendChild(d);
- });
- cartCount.textContent=cart.reduce((s,i)=>s+i.qty,0);
- cartTotal.textContent=`Rs. ${total}`;
- floatingTotal.textContent=`Rs. ${total}`;
+function updateCart(){
+cartItems.innerHTML='';let total=0;
+cart.forEach(i=>{total+=i.price*i.qty;cartItems.innerHTML+=`<div class="cart-item"><img src="${i.image}"><div style="flex:1"><strong>${i.name}</strong><br><small>Rs.${i.price} x ${i.qty}</small></div><div><button onclick="qty(${i.id},-1)">−</button><button onclick="qty(${i.id},1)">+</button><button onclick="del(${i.id})"><i class='fas fa-trash'></i></button></div></div>`;});
+cartCount.textContent=cart.reduce((a,b)=>a+b.qty,0);
+cartTotal.textContent=`Rs. ${total}`;floatingTotal.textContent=`Rs. ${total}`;
 }
-function chgQty(id,delta){
- const it=cart.find(i=>i.id===id);
- if(!it)return;
- it.qty+=delta;if(it.qty<=0)cart=cart.filter(i=>i.id!==id);
- updateCartUI();
+function qty(id,d){const it=cart.find(i=>i.id===id);if(!it)return;it.qty+=d;if(it.qty<=0)cart=cart.filter(i=>i.id!==id);updateCart();}
+function del(id){cart=cart.filter(i=>i.id!==id);updateCart();}
+function checkout(){if(!cart.length)return alert('Cart empty');let msg='🛍 Order:\n';let t=0;cart.forEach(i=>{msg+=`• ${i.name} x${i.qty} = Rs ${i.price*i.qty}\n`;t+=i.price*i.qty;});msg+=`\nTotal: Rs ${t}`;window.open(`https://wa.me/${PHONE}?text=${encodeURIComponent(msg)}`,'_blank');}
+function setup(){
+document.getElementById('gridViewBtn').onclick=()=>{currentView='grid';setViewBtn();showView();};
+document.getElementById('listViewBtn').onclick=()=>{currentView='list';setViewBtn();showView();};
+document.getElementById('cartIcon').onclick=()=>toggleCart(true);
+document.getElementById('floatingCartBtn').onclick=()=>toggleCart(true);
+document.getElementById('closeCart').onclick=()=>toggleCart(false);
+overlay.onclick=()=>toggleCart(false);
+document.getElementById('checkoutBtn').onclick=checkout;
+searchBox.oninput=()=>renderProducts(products);
 }
-function rmv(id){cart=cart.filter(i=>i.id!==id);updateCartUI();}
-function checkout(){
- if(cart.length===0)return alert('Cart empty!');
- let msg="🛍 Order details:\n",t=0;
- cart.forEach(i=>{msg+=`• ${i.name} x${i.qty} = Rs ${i.price*i.qty}\n`;t+=i.price*i.qty;});
- msg+=`\nTotal: Rs ${t}`;
- window.open(`https://wa.me/${PHONE}?text=${encodeURIComponent(msg)}`,'_blank');
+function setViewBtn(){
+document.getElementById('gridViewBtn').classList.toggle('active',currentView==='grid');
+document.getElementById('listViewBtn').classList.toggle('active',currentView==='list');
 }
-function setupEvents(){
- document.getElementById('cartIcon').onclick=()=>toggleCart(true);
- document.getElementById('floatingCartBtn').onclick=()=>toggleCart(true);
- document.getElementById('closeCart').onclick=()=>toggleCart(false);
- overlay.onclick=()=>toggleCart(false);
- document.getElementById('checkoutBtn').onclick=checkout;
- searchBox.oninput=()=>renderProducts(products);
-}
-function toggleCart(show){
- cartPopup.classList.toggle('active',show);
- overlay.classList.toggle('active',show);
- document.body.style.overflow=show?'hidden':'auto';
-}
-function showMsg(txt){
- const d=document.createElement('div');
- d.className='success-message';d.textContent=txt;
- document.body.prepend(d);setTimeout(()=>d.remove(),2000);
-}
+function toggleCart(s){cartPopup.classList.toggle('active',s);overlay.classList.toggle('active',s);}
 init();
 </script>
 </body>
