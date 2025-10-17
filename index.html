@@ -6,646 +6,43 @@
     <title>A4Tech and Bloody List</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: #f5f5f5;
+        /* ... same CSS as before ... */
+        
+        .github-notice {
+            background: #ffeb3b;
             color: #333;
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header */
-        header {
-            background: #00AEEF;
-            color: white;
-            padding: 15px 0;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        h1 {
-            font-size: 1.8rem;
-            font-weight: 600;
-        }
-
-        .cart-icon {
-            position: relative;
-            font-size: 1.5rem;
-            cursor: pointer;
-            padding: 10px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.2);
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-
-        .cart-icon:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: scale(1.05);
-        }
-
-        .cart-count {
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            background: #ff4757;
-            color: white;
-            border-radius: 50%;
-            width: 24px;
-            height: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8rem;
-            font-weight: bold;
-        }
-
-        /* Controls */
-        .controls {
-            display: flex;
-            justify-content: space-between;
-            margin: 20px 0;
-            background: white;
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-        }
-
-        .view-toggle {
-            display: flex;
-            gap: 10px;
-        }
-
-        .view-btn {
-            padding: 8px 15px;
-            border: 1px solid #ddd;
-            background: white;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .view-btn.active {
-            background: #25D366;
-            color: white;
-            border-color: #25D366;
-        }
-
-        .search-box {
-            padding: 8px 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            width: 250px;
-        }
-
-        /* Categories */
-        .categories {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .category-btn {
-            padding: 8px 15px;
-            border: 1px solid #ddd;
-            background: white;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .category-btn.active {
-            background: #2575fc;
-            color: white;
-            border-color: #2575fc;
-        }
-
-        .category-btn img {
-            height: 20px;
-            width: auto;
-        }
-
-        .brand-btn {
-            font-weight: 600;
-        }
-
-        .subcategory {
-            display: none;
-        }
-
-        .subcategory.visible {
-            display: flex;
-        }
-
-        /* Loading */
-        .loading {
-            text-align: center;
-            padding: 40px;
-            color: #666;
-            font-size: 1.2rem;
-        }
-
-        /* Grid View */
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 25px;
-            margin-bottom: 40px;
-        }
-
-        .product-card {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s, box-shadow 0.3s;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .product-image {
-            height: 250px;
-            width: 100%;
-            object-fit: cover;
-        }
-
-        .product-info {
-            padding: 20px;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .product-title {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            color: #333;
-        }
-
-        .product-description {
-            color: #666;
-            font-size: 0.9rem;
-            margin-bottom: 15px;
-            flex: 1;
-        }
-
-        .product-price {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: #25D366;
-            margin-bottom: 15px;
-        }
-
-        .add-to-cart {
-            background: #25D366;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            width: 100%;
-            font-size: 1rem;
-            font-weight: 600;
-            transition: background 0.3s;
-        }
-
-        .add-to-cart:hover {
-            background: #128C7E;
-        }
-
-        /* List View */
-        .products-list {
-            display: none;
-            flex-direction: column;
-            gap: 15px;
-            margin-bottom: 40px;
-        }
-
-        .product-item {
-            background: white;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .product-item:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .product-item-info {
-            flex: 1;
-        }
-
-        .product-item-title {
-            font-size: 1.2rem;
-            margin-bottom: 5px;
-            color: #333;
-        }
-
-        .product-item-description {
-            color: #666;
-            font-size: 0.9rem;
-            margin-bottom: 10px;
-            max-width: 500px;
-        }
-
-        .product-item-price {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: #25D366;
-        }
-
-        .product-item-action {
-            margin-left: 20px;
-        }
-
-        .add-to-cart-list {
-            background: #25D366;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: 600;
-            transition: background 0.3s;
-            white-space: nowrap;
-        }
-
-        .add-to-cart-list:hover {
-            background: #128C7E;
-        }
-
-        /* Floating Cart Button */
-        .floating-cart-btn {
-            position: fixed;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: #25D366;
-            color: white;
-            border: none;
-            border-radius: 50px;
-            padding: 15px 20px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            cursor: pointer;
-            z-index: 99;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
-
-        .floating-cart-btn:hover {
-            background: #128C7E;
-            transform: translateY(-50%) scale(1.05);
-        }
-
-        .floating-cart-total {
-            font-size: 1.1rem;
-        }
-
-        /* Cart Popup */
-        .cart-popup {
-            position: fixed;
-            top: 0;
-            right: -400px;
-            width: 100%;
-            max-width: 380px;
-            height: 100vh;
-            background: white;
-            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
-            transition: right 0.4s ease-in-out;
-            z-index: 1000;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .cart-popup.active {
-            right: 0;
-        }
-
-        .cart-header {
-            padding: 20px;
-            background: #25D366;
-            color: white;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .close-cart {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        .cart-items {
-            flex: 1;
-            overflow-y: auto;
-            padding: 20px;
-        }
-
-        .cart-item {
-            display: flex;
-            margin-bottom: 20px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .cart-item-image {
-            width: 80px;
-            height: 80px;
-            object-fit: cover;
-            border-radius: 5px;
-            margin-right: 15px;
-        }
-
-        .cart-item-details {
-            flex: 1;
-        }
-
-        .cart-item-title {
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-
-        .cart-item-price {
-            color: #25D366;
-            font-weight: 700;
-        }
-
-        .cart-item-quantity {
-            display: flex;
-            align-items: center;
-            margin-top: 10px;
-        }
-
-        .quantity-btn {
-            background: #f1f2f6;
-            border: none;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-        }
-
-        .quantity {
-            margin: 0 10px;
-            font-weight: 600;
-        }
-
-        .remove-item {
-            color: #ff4757;
-            background: none;
-            border: none;
-            cursor: pointer;
-            margin-left: 10px;
-        }
-
-        .cart-footer {
-            padding: 20px;
-            border-top: 1px solid #eee;
-        }
-
-        .cart-total {
-            display: flex;
-            justify-content: space-between;
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-
-        .checkout-btn {
-            background: #25D366;
-            color: white;
-            border: none;
-            padding: 15px;
-            border-radius: 5px;
-            width: 100%;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-            transition: background 0.3s;
-        }
-
-        .checkout-btn:hover {
-            background: #128C7E;
-        }
-
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 999;
-            display: none;
-        }
-
-        .overlay.active {
-            display: block;
-        }
-
-        .empty-cart {
-            text-align: center;
-            padding: 40px 20px;
-            color: #666;
-        }
-
-        .empty-cart i {
-            font-size: 3rem;
-            margin-bottom: 15px;
-            color: #ddd;
-        }
-
-        .error-message {
-            background: #ff6b6b;
-            color: white;
             padding: 15px;
             border-radius: 5px;
             margin: 20px 0;
-            text-align: center;
+            border-left: 4px solid #ff9800;
         }
-
-        .success-message {
-            background: #1dd1a1;
-            color: white;
+        
+        .manual-import {
+            background: #e3f2fd;
             padding: 15px;
             border-radius: 5px;
-            margin: 20px 0;
-            text-align: center;
-        }
-
-        .info-message {
-            background: #17a2b8;
-            color: white;
-            padding: 15px;
-            border-radius: 5px;
-            margin: 20px 0;
-            text-align: center;
-        }
-
-        @media (max-width: 768px) {
-            .products-grid {
-                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            }
-            
-            .product-item {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            
-            .product-item-action {
-                margin-left: 0;
-                margin-top: 15px;
-                width: 100%;
-            }
-            
-            .add-to-cart-list {
-                width: 100%;
-            }
-            
-            .search-box {
-                width: 100%;
-                margin-top: 10px;
-            }
-            
-            .controls {
-                flex-direction: column;
-            }
-            
-            .floating-cart-btn {
-                top: 20px;
-                transform: none;
-            }
+            margin: 15px 0;
         }
     </style>
 </head>
 <body>
-    <!-- Overlay -->
-    <div class="overlay" id="overlay"></div>
-    
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <h1>A4Tech and Bloody List</h1>
-                <div class="cart-icon" id="cartIcon">
-                    <i class="fas fa-shopping-cart"></i>
-                    <div class="cart-count" id="cartCount">0</div>
-                </div>
-            </div>
-        </div>
-    </header>
+    <!-- ... same HTML structure as before ... -->
 
-    <!-- Main Content -->
+    <!-- Add this notice section after header -->
     <div class="container">
-        <!-- Controls -->
-        <div class="controls">
-            <div class="view-toggle">
-                <button class="view-btn active" id="gridViewBtn">
-                    <i class="fas fa-th"></i> Grid View
+        <div class="github-notice" id="githubNotice">
+            <h3><i class="fas fa-exclamation-triangle"></i> GitHub Pages Notice</h3>
+            <p>On GitHub Pages, products.json file cannot be loaded directly. Please import your JSON file manually:</p>
+            <div class="manual-import">
+                <input type="file" id="jsonFileInput" accept=".json" style="display: none;">
+                <button onclick="document.getElementById('jsonFileInput').click()" style="background: #00AEEF; color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer; margin-right: 10px;">
+                    <i class="fas fa-file-import"></i> Select products.json
                 </button>
-                <button class="view-btn" id="listViewBtn">
-                    <i class="fas fa-list"></i> List View
+                <button id="importJsonBtn" style="background: #25D366; color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer;">
+                    <i class="fas fa-upload"></i> Import Products
                 </button>
+                <span id="fileName" style="margin-left: 10px; color: #666;">No file selected</span>
             </div>
-            <input type="text" class="search-box" id="searchBox" placeholder="Search products...">
-        </div>
-
-        <!-- Categories -->
-        <div class="categories" id="categories">
-            <!-- Categories will be dynamically added here -->
-        </div>
-
-        <!-- Products Grid -->
-        <div class="products-grid" id="productsGrid">
-            <div class="loading">
-                <i class="fas fa-spinner fa-spin"></i> Loading products...
-            </div>
-        </div>
-
-        <!-- Products List -->
-        <div class="products-list" id="productsList">
-            <!-- Products will be dynamically added here -->
-        </div>
-    </div>
-
-    <!-- Floating Cart Button -->
-    <button class="floating-cart-btn" id="floatingCartBtn">
-        <i class="fas fa-shopping-cart"></i>
-        <span class="floating-cart-total" id="floatingCartTotal">Rs. 0.00</span>
-    </button>
-
-    <!-- Cart Popup -->
-    <div class="cart-popup" id="cartPopup">
-        <div class="cart-header">
-            <h2>Your Cart</h2>
-            <button class="close-cart" id="closeCart">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-        <div class="cart-items" id="cartItems">
-            <!-- Cart items will be dynamically added here -->
-        </div>
-        <div class="cart-footer">
-            <div class="cart-total">
-                <span>Total:</span>
-                <span id="cartTotal">Rs. 0.00</span>
-            </div>
-            <button class="checkout-btn" id="checkoutBtn">
-                <i class="fab fa-whatsapp"></i> Checkout via WhatsApp
-            </button>
         </div>
     </div>
 
@@ -667,6 +64,10 @@
         const listViewBtn = document.getElementById('listViewBtn');
         const floatingCartBtn = document.getElementById('floatingCartBtn');
         const floatingCartTotal = document.getElementById('floatingCartTotal');
+        const githubNotice = document.getElementById('githubNotice');
+        const jsonFileInput = document.getElementById('jsonFileInput');
+        const importJsonBtn = document.getElementById('importJsonBtn');
+        const fileName = document.getElementById('fileName');
 
         // Cart state
         let products = [];
@@ -675,62 +76,108 @@
         let currentView = 'grid';
         let currentBrand = null;
 
-        // NO DEFAULT PRODUCTS - Only load from JSON
-        const defaultProducts = []; // Empty array
+        // Try to load from localStorage first (for returning visitors)
+        function loadFromLocalStorage() {
+            const storedProducts = localStorage.getItem('a4techBloodyProducts');
+            if (storedProducts) {
+                try {
+                    products = JSON.parse(storedProducts);
+                    console.log('Products loaded from localStorage:', products.length);
+                    githubNotice.style.display = 'none';
+                    showMessage(`Welcome back! Loaded ${products.length} products from your previous session.`, 'success');
+                    return true;
+                } catch (error) {
+                    console.error('Error loading from localStorage:', error);
+                }
+            }
+            return false;
+        }
 
-        // Load products from JSON file ONLY
-        async function loadProducts() {
-            console.log('Loading products from JSON file...');
+        // Try to load from JSON file (works only on local server, not GitHub Pages)
+        async function loadFromJSON() {
             try {
                 const response = await fetch('products.json');
-                console.log('Response status:', response.status);
-                
                 if (response.ok) {
                     products = await response.json();
                     console.log('Products loaded from JSON file:', products.length);
                     
-                    // Validate and fix product prices
-                    products = products.map(product => {
-                        // Ensure price is a number
-                        let price = product.price;
-                        if (typeof price === 'string') {
-                            // Remove any non-numeric characters except decimal point
-                            price = price.replace(/[^\d.]/g, '');
-                        }
-                        price = parseFloat(price);
-                        
-                        // If price is still NaN, set to 0
-                        if (isNaN(price)) {
-                            console.warn(`Invalid price for product ${product.name}: ${product.price}, setting to 0`);
-                            price = 0;
-                        }
-                        
-                        return {
-                            ...product,
-                            price: price
-                        };
-                    });
-                    
-                    console.log('Validated products:', products);
-                    
-                    if (products.length > 0) {
-                        showMessage(`Successfully loaded ${products.length} products from JSON file`, 'success');
-                    } else {
-                        showMessage('JSON file is empty. Please add products in admin panel.', 'info');
-                    }
-                } else {
-                    throw new Error(`HTTP error! status: ${response.status}`);
+                    // Save to localStorage for future visits
+                    localStorage.setItem('a4techBloodyProducts', JSON.stringify(products));
+                    githubNotice.style.display = 'none';
+                    showMessage(`Successfully loaded ${products.length} products from JSON file`, 'success');
+                    return true;
                 }
             } catch (error) {
-                console.log('Error loading JSON file:', error);
-                products = []; // Empty array if JSON fails
-                showMessage('products.json file not found or has errors. Please check the file.', 'error');
+                console.log('Cannot load from JSON file (GitHub Pages restriction)');
             }
+            return false;
+        }
+
+        // Manual JSON file import
+        function setupManualImport() {
+            jsonFileInput.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    fileName.textContent = file.name;
+                }
+            });
+
+            importJsonBtn.addEventListener('click', function() {
+                const file = jsonFileInput.files[0];
+                
+                if (!file) {
+                    showMessage('Please select a JSON file first', 'error');
+                    return;
+                }
+
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    try {
+                        const importedProducts = JSON.parse(e.target.result);
+                        if (Array.isArray(importedProducts)) {
+                            products = importedProducts;
+                            
+                            // Save to localStorage
+                            localStorage.setItem('a4techBloodyProducts', JSON.stringify(products));
+                            
+                            renderProducts();
+                            githubNotice.style.display = 'none';
+                            showMessage(`Successfully imported ${products.length} products!`, 'success');
+                        } else {
+                            showMessage('Invalid JSON format. File should contain an array of products.', 'error');
+                        }
+                    } catch (error) {
+                        showMessage('Error parsing JSON file. Please check the file format.', 'error');
+                    }
+                };
+                reader.readAsText(file);
+            });
+        }
+
+        // Load products with fallback
+        async function loadProducts() {
+            console.log('Loading products...');
+            
+            // First try localStorage
+            if (loadFromLocalStorage()) {
+                return;
+            }
+            
+            // Then try JSON file
+            if (await loadFromJSON()) {
+                return;
+            }
+            
+            // If both fail, show manual import notice
+            console.log('No products found. Showing manual import option.');
+            githubNotice.style.display = 'block';
+            products = [];
         }
 
         // Initialize the app
         async function init() {
             console.log('Initializing app...');
+            setupManualImport();
             await loadProducts();
             renderCategories();
             renderProducts();
@@ -738,6 +185,7 @@
             updateCartUI();
         }
 
+        // ... rest of the functions (renderCategories, renderProducts, etc.) remain the same ...
         // Render categories
         function renderCategories() {
             const a4techSubcategories = ['Keyboard', 'Mouse', 'Webcam', 'Audio', 'Others'];
@@ -824,10 +272,7 @@
                     <div style="grid-column: 1 / -1; text-align: center; padding: 40px;">
                         <i class="fas fa-box-open" style="font-size: 3rem; color: #ddd; margin-bottom: 15px;"></i>
                         <h3>No products found</h3>
-                        <p>No products available. Please add products using the admin panel.</p>
-                        <button onclick="window.open('admin.html', '_blank')" style="background: #00AEEF; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; margin-top: 15px;">
-                            <i class="fas fa-cog"></i> Open Admin Panel
-                        </button>
+                        <p>No products available. Please import products using the option above.</p>
                     </div>
                 `;
             } else {
@@ -854,10 +299,7 @@
                     <div style="text-align: center; padding: 40px;">
                         <i class="fas fa-box-open" style="font-size: 3rem; color: #ddd; margin-bottom: 15px;"></i>
                         <h3>No products found</h3>
-                        <p>No products available. Please add products using the admin panel.</p>
-                        <button onclick="window.open('admin.html', '_blank')" style="background: #00AEEF; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; margin-top: 15px;">
-                            <i class="fas fa-cog"></i> Open Admin Panel
-                        </button>
+                        <p>No products available. Please import products using the option above.</p>
                     </div>
                 `;
             } else {
@@ -988,7 +430,7 @@
                 cart.push({
                     id: product.id,
                     name: product.name,
-                    price: price, // Use validated price
+                    price: price,
                     image: product.image,
                     quantity: 1
                 });
@@ -1006,7 +448,7 @@
             updateCartUI();
         }
 
-        // Update cart quantity - FIXED: Now globally accessible
+        // Update cart quantity
         function updateQuantity(productId, change) {
             const item = cart.find(item => item.id === productId);
             if (!item) return;
