@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel - A4Tech and Bloody</title>
+    <title>A4Tech and Bloody List - Complete Store</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -47,327 +47,525 @@
             font-weight: 600;
         }
 
-        .admin-nav {
-            display: flex;
-            gap: 15px;
-        }
-
-        .nav-btn {
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .nav-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
-        }
-
-        /* Main Content */
-        .admin-content {
-            margin: 30px 0;
-        }
-
-        .section {
-            background: white;
-            border-radius: 10px;
-            padding: 25px;
-            margin-bottom: 30px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-
-        .section-title {
+        .cart-icon {
+            position: relative;
             font-size: 1.5rem;
-            margin-bottom: 20px;
-            color: #00AEEF;
-            border-bottom: 2px solid #f0f0f0;
-            padding-bottom: 10px;
-        }
-
-        /* Form Styles */
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 10px 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 1rem;
-        }
-
-        .form-row {
-            display: flex;
-            gap: 20px;
-        }
-
-        .form-col {
-            flex: 1;
-        }
-
-        .btn {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
             cursor: pointer;
-            font-weight: 600;
+            padding: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             transition: all 0.3s ease;
         }
 
-        .btn-primary {
-            background: #00AEEF;
-            color: white;
+        .cart-icon:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
         }
 
-        .btn-primary:hover {
-            background: #0088cc;
-        }
-
-        .btn-success {
-            background: #25D366;
-            color: white;
-        }
-
-        .btn-success:hover {
-            background: #128C7E;
-        }
-
-        .btn-danger {
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
             background: #ff4757;
             color: white;
-        }
-
-        .btn-danger:hover {
-            background: #ff3742;
-        }
-
-        .btn-secondary {
-            background: #6c757d;
-            color: white;
-        }
-
-        .btn-secondary:hover {
-            background: #5a6268;
-        }
-
-        .btn-warning {
-            background: #ffc107;
-            color: black;
-        }
-
-        .btn-warning:hover {
-            background: #e0a800;
-        }
-
-        /* Table Styles */
-        .table-responsive {
-            overflow-x: auto;
-        }
-
-        .products-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .products-table th,
-        .products-table td {
-            padding: 12px 15px;
-            text-align: left;
-            border-bottom: 1px solid #eee;
-        }
-
-        .products-table th {
-            background: #f8f9fa;
-            font-weight: 600;
-        }
-
-        .products-table tr:hover {
-            background: #f8f9fa;
-        }
-
-        .product-image-small {
-            width: 60px;
-            height: 60px;
-            object-fit: cover;
-            border-radius: 5px;
-        }
-
-        .action-buttons {
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
             display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        /* Controls */
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .view-toggle {
+            display: flex;
+            gap: 10px;
+        }
+
+        .view-btn {
+            padding: 8px 15px;
+            border: 1px solid #ddd;
+            background: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .view-btn.active {
+            background: #25D366;
+            color: white;
+            border-color: #25D366;
+        }
+
+        .search-box {
+            padding: 8px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 250px;
+        }
+
+        /* Categories */
+        .categories {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .category-btn {
+            padding: 8px 15px;
+            border: 1px solid #ddd;
+            background: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
             gap: 8px;
         }
 
-        /* Import/Export Section */
-        .import-export-actions {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-            flex-wrap: wrap;
+        .category-btn.active {
+            background: #2575fc;
+            color: white;
+            border-color: #2575fc;
         }
 
-        .file-input {
+        .category-btn img {
+            height: 20px;
+            width: auto;
+        }
+
+        .brand-btn {
+            font-weight: 600;
+        }
+
+        .subcategory {
             display: none;
         }
 
-        .file-label {
-            display: inline-block;
-            padding: 10px 20px;
-            background: #00AEEF;
+        .subcategory.visible {
+            display: flex;
+        }
+
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-image {
+            height: 250px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .product-description {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            flex: 1;
+        }
+
+        .product-price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #25D366;
+            margin-bottom: 15px;
+        }
+
+        .add-to-cart {
+            background: #25D366;
             color: white;
+            border: none;
+            padding: 10px 15px;
             border-radius: 5px;
             cursor: pointer;
+            width: 100%;
+            font-size: 1rem;
             font-weight: 600;
             transition: background 0.3s;
         }
 
-        .file-label:hover {
-            background: #0088cc;
+        .add-to-cart:hover {
+            background: #128C7E;
         }
 
-        /* Instructions */
-        .instructions {
-            background: #e7f3ff;
-            border-left: 4px solid #00AEEF;
-            padding: 15px;
-            margin: 20px 0;
-            border-radius: 5px;
+        /* List View */
+        .products-list {
+            display: none;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 40px;
         }
 
-        .instructions ol {
+        .product-item {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-item-info {
+            flex: 1;
+        }
+
+        .product-item-title {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .product-item-description {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            max-width: 500px;
+        }
+
+        .product-item-price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #25D366;
+        }
+
+        .product-item-action {
             margin-left: 20px;
         }
 
-        .instructions li {
-            margin-bottom: 8px;
+        .add-to-cart-list {
+            background: #25D366;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: background 0.3s;
+            white-space: nowrap;
         }
 
-        /* Messages */
-        .message {
+        .add-to-cart-list:hover {
+            background: #128C7E;
+        }
+
+        /* Floating Cart Button */
+        .floating-cart-btn {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #25D366;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 15px 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            z-index: 99;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .floating-cart-btn:hover {
+            background: #128C7E;
+            transform: translateY(-50%) scale(1.05);
+        }
+
+        .floating-cart-total {
+            font-size: 1.1rem;
+        }
+
+        /* Cart Popup */
+        .cart-popup {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 100%;
+            max-width: 380px;
+            height: 100vh;
+            background: white;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            transition: right 0.4s ease-in-out;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cart-popup.active {
+            right: 0;
+        }
+
+        .cart-header {
+            padding: 20px;
+            background: #25D366;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .cart-item {
+            display: flex;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cart-item-image {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-right: 15px;
+        }
+
+        .cart-item-details {
+            flex: 1;
+        }
+
+        .cart-item-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .cart-item-price {
+            color: #25D366;
+            font-weight: 700;
+        }
+
+        .cart-item-quantity {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .quantity-btn {
+            background: #f1f2f6;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .quantity {
+            margin: 0 10px;
+            font-weight: 600;
+        }
+
+        .remove-item {
+            color: #ff4757;
+            background: none;
+            border: none;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        .cart-footer {
+            padding: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .checkout-btn {
+            background: #25D366;
+            color: white;
+            border: none;
             padding: 15px;
             border-radius: 5px;
-            margin: 15px 0;
-            text-align: center;
+            width: 100%;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            transition: background 0.3s;
         }
 
-        .success-message {
-            background: #1dd1a1;
-            color: white;
+        .checkout-btn:hover {
+            background: #128C7E;
         }
 
-        .error-message {
-            background: #ff6b6b;
-            color: white;
-        }
-
-        .warning-message {
-            background: #ffc107;
-            color: black;
-        }
-
-        /* Modal */
-        .modal {
-            display: none;
+        .overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             background: rgba(0, 0, 0, 0.5);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
+            z-index: 999;
+            display: none;
         }
 
-        .modal-content {
-            background: white;
-            border-radius: 10px;
-            width: 90%;
-            max-width: 600px;
-            max-height: 90vh;
-            overflow-y: auto;
-            padding: 25px;
-            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+        .overlay.active {
+            display: block;
         }
 
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .close-modal {
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
+        .empty-cart {
+            text-align: center;
+            padding: 40px 20px;
             color: #666;
         }
 
-        /* JSON Display */
-        .json-display {
-            background: #f8f9fa;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            padding: 15px;
-            margin: 15px 0;
-            max-height: 300px;
-            overflow-y: auto;
-            font-family: 'Courier New', monospace;
-            font-size: 0.9rem;
-            white-space: pre-wrap;
+        .empty-cart i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: #ddd;
         }
 
-        /* Responsive */
+        .error-message {
+            background: #ff6b6b;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .success-message {
+            background: #1dd1a1;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
         @media (max-width: 768px) {
-            .form-row {
-                flex-direction: column;
-                gap: 0;
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             }
             
-            .admin-nav {
+            .product-item {
                 flex-direction: column;
-                gap: 10px;
+                align-items: flex-start;
             }
             
-            .action-buttons {
+            .product-item-action {
+                margin-left: 0;
+                margin-top: 15px;
+                width: 100%;
+            }
+            
+            .add-to-cart-list {
+                width: 100%;
+            }
+            
+            .search-box {
+                width: 100%;
+                margin-top: 10px;
+            }
+            
+            .controls {
                 flex-direction: column;
             }
             
-            .import-export-actions {
-                flex-direction: column;
+            .floating-cart-btn {
+                top: 20px;
+                transform: none;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
+    
     <!-- Header -->
     <header>
         <div class="container">
             <div class="header-content">
-                <h1>A4Tech and Bloody - Admin Panel</h1>
-                <div class="admin-nav">
-                    <button class="nav-btn" id="manageProductsBtn">
-                        <i class="fas fa-boxes"></i> Manage Products
-                    </button>
-                    <button class="nav-btn" id="importExportBtn">
-                        <i class="fas fa-file-import"></i> Import/Export
-                    </button>
-                    <button class="nav-btn" id="previewSiteBtn">
-                        <i class="fas fa-eye"></i> Preview Site
-                    </button>
+                <h1>A4Tech and Bloody List</h1>
+                <div class="cart-icon" id="cartIcon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <div class="cart-count" id="cartCount">0</div>
                 </div>
             </div>
         </div>
@@ -375,505 +573,542 @@
 
     <!-- Main Content -->
     <div class="container">
-        <div class="admin-content">
-            <!-- Instructions -->
-            <div class="instructions">
-                <h3><i class="fas fa-info-circle"></i> Important Instructions:</h3>
-                <ol>
-                    <li>Admin panel se products manage karein</li>
-                    <li>"Export & Update JSON" button click karein</li>
-                    <li>Download hue JSON file ko apne folder mein <strong>products.json</strong> ke naam se save karein</li>
-                    <li>Index.html automatically naye products show karega</li>
-                </ol>
+        <!-- Controls -->
+        <div class="controls">
+            <div class="view-toggle">
+                <button class="view-btn active" id="gridViewBtn">
+                    <i class="fas fa-th"></i> Grid View
+                </button>
+                <button class="view-btn" id="listViewBtn">
+                    <i class="fas fa-list"></i> List View
+                </button>
             </div>
+            <input type="text" class="search-box" id="searchBox" placeholder="Search products...">
+        </div>
 
-            <!-- Manage Products Section -->
-            <div class="section" id="manageProductsSection">
-                <h2 class="section-title">Manage Products</h2>
-                
-                <div class="form-group">
-                    <button class="btn btn-primary" id="addProductBtn">
-                        <i class="fas fa-plus"></i> Add New Product
-                    </button>
-                    <button class="btn btn-warning" id="loadFromJSONBtn">
-                        <i class="fas fa-sync"></i> Load from Current JSON
-                    </button>
-                </div>
-                
-                <div class="table-responsive">
-                    <table class="products-table">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Image</th>
-                                <th>Name</th>
-                                <th>Brand</th>
-                                <th>Category</th>
-                                <th>Price</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody id="productsTableBody">
-                            <!-- Products will be dynamically added here -->
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+        <!-- Categories -->
+        <div class="categories" id="categories">
+            <!-- Categories will be dynamically added here -->
+        </div>
 
-            <!-- Import/Export Section -->
-            <div class="section" id="importExportSection" style="display: none;">
-                <h2 class="section-title">Import/Export Products</h2>
-                
-                <div class="form-group">
-                    <h3>Export Products</h3>
-                    <p>Download a JSON file with all current products.</p>
-                    <div class="import-export-actions">
-                        <button class="btn btn-success" id="exportProductsBtn">
-                            <i class="fas fa-file-export"></i> Export & Update JSON
-                        </button>
-                        <button class="btn btn-secondary" id="downloadTemplateBtn">
-                            <i class="fas fa-download"></i> Download Template
-                        </button>
-                    </div>
-                    
-                    <div class="json-display" id="jsonPreview">
-                        {/* JSON preview will appear here */}
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <h3>Import Products</h3>
-                    <p>Upload a JSON file to replace all current products.</p>
-                    <input type="file" id="importFile" class="file-input" accept=".json">
-                    <label for="importFile" class="file-label">
-                        <i class="fas fa-file-import"></i> Choose File
-                    </label>
-                    <span id="fileName">No file chosen</span>
-                    <div class="import-export-actions">
-                        <button class="btn btn-primary" id="importProductsBtn" disabled>
-                            <i class="fas fa-upload"></i> Import Products
-                        </button>
-                    </div>
-                </div>
-            </div>
+        <!-- Products Grid -->
+        <div class="products-grid" id="productsGrid">
+            <!-- Products will be dynamically added here -->
+        </div>
+
+        <!-- Products List -->
+        <div class="products-list" id="productsList">
+            <!-- Products will be dynamically added here -->
         </div>
     </div>
 
-    <!-- Add/Edit Product Modal -->
-    <div class="modal" id="productModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 id="modalTitle">Add New Product</h2>
-                <button class="close-modal" id="closeModal">&times;</button>
+    <!-- Floating Cart Button -->
+    <button class="floating-cart-btn" id="floatingCartBtn">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="floating-cart-total" id="floatingCartTotal">Rs. 0.00</span>
+    </button>
+
+    <!-- Cart Popup -->
+    <div class="cart-popup" id="cartPopup">
+        <div class="cart-header">
+            <h2>Your Cart</h2>
+            <button class="close-cart" id="closeCart">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be dynamically added here -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cartTotal">Rs. 0.00</span>
             </div>
-            <form id="productForm">
-                <input type="hidden" id="productId">
-                
-                <div class="form-row">
-                    <div class="form-col">
-                        <div class="form-group">
-                            <label class="form-label" for="productName">Product Name</label>
-                            <input type="text" class="form-control" id="productName" required>
-                        </div>
-                    </div>
-                    <div class="form-col">
-                        <div class="form-group">
-                            <label class="form-label" for="productPrice">Price (Rs.)</label>
-                            <input type="number" class="form-control" id="productPrice" min="0" step="0.01" required>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="form-row">
-                    <div class="form-col">
-                        <div class="form-group">
-                            <label class="form-label" for="productBrand">Brand</label>
-                            <select class="form-control" id="productBrand" required>
-                                <option value="">Select Brand</option>
-                                <option value="A4Tech">A4Tech</option>
-                                <option value="Bloody">Bloody</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-col">
-                        <div class="form-group">
-                            <label class="form-label" for="productCategory">Category</label>
-                            <select class="form-control" id="productCategory" required>
-                                <option value="">Select Category</option>
-                                <option value="Keyboard">Keyboard</option>
-                                <option value="Mouse">Mouse</option>
-                                <option value="Mousepad">Mousepad</option>
-                                <option value="Audio">Audio</option>
-                                <option value="Webcam">Webcam</option>
-                                <option value="Others">Others</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label" for="productImage">Image URL</label>
-                    <input type="url" class="form-control" id="productImage" required>
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label" for="productDescription">Description</label>
-                    <textarea class="form-control" id="productDescription" rows="3" required></textarea>
-                </div>
-                
-                <div class="form-group">
-                    <button type="submit" class="btn btn-success" id="saveProductBtn">
-                        <i class="fas fa-save"></i> Save Product
-                    </button>
-                    <button type="button" class="btn btn-secondary" id="cancelProductBtn">
-                        Cancel
-                    </button>
-                </div>
-            </form>
+            <button class="checkout-btn" id="checkoutBtn">
+                <i class="fab fa-whatsapp"></i> Checkout via WhatsApp
+            </button>
         </div>
     </div>
 
     <script>
         // DOM Elements
-        const manageProductsBtn = document.getElementById('manageProductsBtn');
-        const importExportBtn = document.getElementById('importExportBtn');
-        const previewSiteBtn = document.getElementById('previewSiteBtn');
-        const manageProductsSection = document.getElementById('manageProductsSection');
-        const importExportSection = document.getElementById('importExportSection');
-        const addProductBtn = document.getElementById('addProductBtn');
-        const loadFromJSONBtn = document.getElementById('loadFromJSONBtn');
-        const productsTableBody = document.getElementById('productsTableBody');
-        const productModal = document.getElementById('productModal');
-        const modalTitle = document.getElementById('modalTitle');
-        const productForm = document.getElementById('productForm');
-        const productId = document.getElementById('productId');
-        const productName = document.getElementById('productName');
-        const productPrice = document.getElementById('productPrice');
-        const productBrand = document.getElementById('productBrand');
-        const productCategory = document.getElementById('productCategory');
-        const productImage = document.getElementById('productImage');
-        const productDescription = document.getElementById('productDescription');
-        const saveProductBtn = document.getElementById('saveProductBtn');
-        const cancelProductBtn = document.getElementById('cancelProductBtn');
-        const closeModal = document.getElementById('closeModal');
-        const exportProductsBtn = document.getElementById('exportProductsBtn');
-        const importFile = document.getElementById('importFile');
-        const fileName = document.getElementById('fileName');
-        const importProductsBtn = document.getElementById('importProductsBtn');
-        const downloadTemplateBtn = document.getElementById('downloadTemplateBtn');
-        const jsonPreview = document.getElementById('jsonPreview');
+        const productsGrid = document.getElementById('productsGrid');
+        const productsList = document.getElementById('productsList');
+        const categoriesContainer = document.getElementById('categories');
+        const searchBox = document.getElementById('searchBox');
+        const cartIcon = document.getElementById('cartIcon');
+        const cartCount = document.getElementById('cartCount');
+        const cartPopup = document.getElementById('cartPopup');
+        const closeCart = document.getElementById('closeCart');
+        const cartItems = document.getElementById('cartItems');
+        const cartTotal = document.getElementById('cartTotal');
+        const checkoutBtn = document.getElementById('checkoutBtn');
+        const overlay = document.getElementById('overlay');
+        const gridViewBtn = document.getElementById('gridViewBtn');
+        const listViewBtn = document.getElementById('listViewBtn');
+        const floatingCartBtn = document.getElementById('floatingCartBtn');
+        const floatingCartTotal = document.getElementById('floatingCartTotal');
 
-        // Products data - Load from localStorage or JSON file
-        let products = [];
+        // ALL PRODUCTS DATA - DIRECTLY IN HTML FILE
+        const products = [
+            {
+                id: 1,
+                name: "GH-30 Gaming Case",
+                price: 23200,
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVPWOSHsf-pplWGMRdIlPHvUIWi4jUc03Pdw&s",
+                description: "ROGUE Gaming Case (5 RGB FANS) (4mm Tempered Glass)",
+                brand: "BLOODY",
+                category: "Others"
+            },
+            {
+                id: 2,
+                name: "M90 (ANC) Black+Red",
+                price: 9340,
+                image: "https://vmart.pk/cdn/shop/files/A4tech-M90-TWS-ANC-Gaming-Earphones-3.jpg?v=1737461223",
+                description: "High-quality ANC earphones with premium sound",
+                brand: "A4Tech",
+                category: "Audio"
+            },
+            {
+                id: 3,
+                name: "M70 (ANC) Black+Blue",
+                price: 8470,
+                image: "https://cdn.citilink.ru/I9PUbCnVO322r7hDf8R4mgdRRqmCvR8v-rLC5k4-JJI/resizing_type:fit/gravity:sm/width:400/height:400/plain/product-images/b45bf27e-25dd-42bc-9ed9-01856843f1db.jpg",
+                description: "Optical gaming mouse with 7200 DPI precision",
+                brand: "A4Tech",
+                category: "Audio"
+            },
+            {
+                id: 4,
+                name: "B1700 Combo",
+                price: 6900,
+                image: "https://computerchoice.pk/wp-content/uploads/2023/12/Bloody-B1700.jpg",
+                description: "(B140 KEYBOARD ES7 MOUSE AND BP50M MOUSEPAD)",
+                brand: "A4Tech",
+                category: "Keyboard"
+            },
+            {
+                id: 5,
+                name: "AT75 Mechanical Keyboard",
+                price: 14600,
+                image: "https://store.alnabaa.com/cdn/shop/files/AT75_1.webp?v=1751975429",
+                description: "ALPHA OPTICAL SWITCH (MECHANICAL) Voice-Activated LED Lighting Bar",
+                brand: "A4Tech",
+                category: "Keyboard"
+            },
+            {
+                id: 6,
+                name: "AT87 Red Switch",
+                price: 11400,
+                image: "https://m.media-amazon.com/images/I/71jBwPSDDXL._UF350,350_QL80_.jpg",
+                description: "ALPHA RED SWITCH (MECHANICAL) Keyboard",
+                brand: "Bloody",
+                category: "Keyboard"
+            },
+            {
+                id: 7,
+                name: "AT98 Alpha Optical",
+                price: 11800,
+                image: "https://techarc.pk/wp-content/uploads/2025/05/bloody-at98-alpha-optical-mechanical-keyboard-rd-bk-1-techarc.pk_.webp",
+                description: "ALPHA RED SWITCH (MECHANICAL) Gaming Keyboard",
+                brand: "Bloody",
+                category: "Keyboard"
+            },
+            {
+                id: 8,
+                name: "B135N Gaming Keyboard",
+                price: 3350,
+                image: "https://www.startech.com.bd/image/cache/catalog/keyboard/a4tech/b135n/b135n-01-500x500.webp",
+                description: "Professional Gaming Keyboard with RGB Lighting",
+                brand: "Bloody",
+                category: "Keyboard"
+            },
+            {
+                id: 9,
+                name: "B310N (BLACK)",
+                price: 4860,
+                image: "https://winshop.pk/cdn/shop/files/B310N_3.png?v=1727376353&width=1080",
+                description: "Mechanical Feel Gaming Keyboard",
+                brand: "Bloody",
+                category: "Keyboard"
+            },
+            {
+                id: 10,
+                name: "B500N Mecha Switch",
+                price: 5600,
+                image: "https://www.bloody.com/en/uploadfile/image/20190926/20190926095925_65714.jpg",
+                description: "(BLACK) MECHA LIKE SWITCH Keyboard",
+                brand: "Bloody",
+                category: "Keyboard"
+            },
+            {
+                id: 11,
+                name: "S87 Energy Red",
+                price: 10700,
+                image: "https://img.bloody.com/en/uploadfile/image/20231021/20231021103231_57966.jpg",
+                description: "RED SWITCH (MECHANICAL) Gaming Keyboard",
+                brand: "Bloody",
+                category: "Keyboard"
+            },
+            {
+                id: 12,
+                name: "WS98 Wireless",
+                price: 13000,
+                image: "https://d1iv6qgcmtzm6l.cloudfront.net/products/lg_CgU7yXBKHrza6WE2zFIoyM2A16RKWbnIXaCnvSwb.jpg",
+                description: "DUAL CORE WIRELESS RED SWITCH (MECHANICAL)",
+                brand: "Bloody",
+                category: "Keyboard"
+            },
+            {
+                id: 13,
+                name: "BP-45 Waterproof",
+                price: 1380,
+                image: "https://img.bloody.com/en/uploadfile/image/20250808/20250808135701_67354.jpg",
+                description: "CYPHER GHOST Waterproof Mouse Pad",
+                brand: "Bloody",
+                category: "Mousepad"
+            },
+            {
+                id: 14,
+                name: "BP-45 Naraka",
+                price: 1330,
+                image: "https://img.bloody.com/en/uploadfile/image/20230214/20230214164649_23551.jpg",
+                description: "450*400*3mm Gaming Mouse Pad",
+                brand: "Bloody",
+                category: "Mousepad"
+            },
+            {
+                id: 15,
+                name: "BP-30M Standard",
+                price: 1160,
+                image: "https://img.bloody.com/en/uploadfile/image/20220512/20220512154018_34955.jpg",
+                description: "350*280*3mm Gaming Mouse Pad",
+                brand: "Bloody",
+                category: "Mousepad"
+            }
+        ];
 
-        // Initialize the admin panel
-        async function initAdmin() {
-            await loadProducts();
+        // Cart state
+        let cart = [];
+        let currentCategory = 'All';
+        let currentView = 'grid';
+        let currentBrand = null;
+
+        // Initialize the app
+        function init() {
+            console.log('Initializing app with', products.length, 'products');
+            renderCategories();
+            renderProducts();
             setupEventListeners();
-            showSection('manage');
-            updateJSONPreview();
+            updateCartUI();
+            
+            // Show success message
+            showMessage(`Successfully loaded ${products.length} products!`, 'success');
         }
 
-        // Load products from JSON file or localStorage
-        async function loadProducts() {
-            try {
-                // First try to load from JSON file
-                const response = await fetch('products.json');
-                if (response.ok) {
-                    products = await response.json();
-                    showMessage('Products loaded from JSON file successfully!', 'success');
+        // Render categories
+        function renderCategories() {
+            const a4techSubcategories = ['Keyboard', 'Mouse', 'Webcam', 'Audio', 'Others'];
+            const bloodySubcategories = ['Keyboard', 'Mouse', 'Mousepad', 'Audio', 'Others'];
+            
+            let categoriesHTML = '';
+            
+            // All button
+            categoriesHTML += `<button class="category-btn brand-btn active" data-category="All">All Products</button>`;
+            
+            // A4Tech brand button
+            categoriesHTML += `<button class="category-btn brand-btn" data-category="A4Tech">
+                <img src="https://a4tech.com.pk/cdn/shop/files/Asset_2_2x_a2c2a49b-fe13-4968-9b0f-1912f73772ed_170x.png?v=1698154812" alt="A4Tech">
+                A4Tech
+            </button>`;
+            
+            // Bloody brand button
+            categoriesHTML += `<button class="category-btn brand-btn" data-category="Bloody">
+                <img src="https://lh3.googleusercontent.com/proxy/SN4kpKa8Sv67UxZxjo3XYtPCkokXimJO_6NwqyO9V1DiyUYSO7sSJTV6nCaSZ8QeSW_AvuOWpjfzl3fXpW0yphw" alt="Bloody">
+                Bloody
+            </button>`;
+            
+            // A4Tech subcategories (hidden by default)
+            a4techSubcategories.forEach(sub => {
+                categoriesHTML += `<button class="category-btn subcategory" data-category="A4Tech-${sub}">${sub}</button>`;
+            });
+            
+            // Bloody subcategories (hidden by default)
+            bloodySubcategories.forEach(sub => {
+                categoriesHTML += `<button class="category-btn subcategory" data-category="Bloody-${sub}">${sub}</button>`;
+            });
+            
+            categoriesContainer.innerHTML = categoriesHTML;
+        }
+
+        // Show/hide subcategories based on selected brand
+        function toggleSubcategories(brand) {
+            // Hide all subcategories
+            document.querySelectorAll('.subcategory').forEach(btn => {
+                btn.classList.remove('visible');
+            });
+            
+            // Show subcategories for selected brand
+            if (brand && brand !== 'All') {
+                document.querySelectorAll(`.subcategory[data-category^="${brand}-"]`).forEach(btn => {
+                    btn.classList.add('visible');
+                });
+            }
+        }
+
+        // Render products based on current category and search
+        function renderProducts() {
+            console.log('Rendering products, total:', products.length);
+            
+            let filteredProducts = products;
+            
+            // Filter by category
+            if (currentCategory !== 'All') {
+                if (currentCategory.includes('-')) {
+                    const [brand, category] = currentCategory.split('-');
+                    filteredProducts = products.filter(product => 
+                        product.brand === brand && product.category === category
+                    );
                 } else {
-                    throw new Error('JSON file not found');
-                }
-            } catch (error) {
-                // If JSON file not found, try localStorage
-                const storedProducts = localStorage.getItem('a4techBloodyProducts');
-                if (storedProducts) {
-                    products = JSON.parse(storedProducts);
-                    showMessage('Products loaded from browser storage!', 'warning');
-                } else {
-                    // If nothing found, use empty array
-                    products = [];
-                    showMessage('No products found. Start by adding products or importing from JSON.', 'warning');
+                    filteredProducts = products.filter(product => 
+                        product.brand === currentCategory
+                    );
                 }
             }
-            renderProductsTable();
-        }
-
-        // Save products to localStorage
-        function saveProductsToStorage() {
-            localStorage.setItem('a4techBloodyProducts', JSON.stringify(products));
-        }
-
-        // Render products table
-        function renderProductsTable() {
-            let tableHTML = '';
             
-            if (products.length === 0) {
-                tableHTML = `
-                    <tr>
-                        <td colspan="7" style="text-align: center; padding: 40px;">
-                            <i class="fas fa-box-open" style="font-size: 3rem; color: #ddd; margin-bottom: 15px;"></i>
-                            <h3>No products found</h3>
-                            <p>Add your first product to get started</p>
-                        </td>
-                    </tr>
+            // Filter by search term
+            const searchTerm = searchBox.value.toLowerCase();
+            if (searchTerm) {
+                filteredProducts = filteredProducts.filter(product => 
+                    product.name.toLowerCase().includes(searchTerm) ||
+                    product.description.toLowerCase().includes(searchTerm)
+                );
+            }
+            
+            // Render products in grid view
+            let gridHTML = '';
+            if (filteredProducts.length === 0) {
+                gridHTML = `
+                    <div style="grid-column: 1 / -1; text-align: center; padding: 40px;">
+                        <i class="fas fa-box-open" style="font-size: 3rem; color: #ddd; margin-bottom: 15px;"></i>
+                        <h3>No products found</h3>
+                        <p>Try changing your search or category filters</p>
+                    </div>
                 `;
             } else {
-                products.forEach(product => {
-                    tableHTML += `
-                        <tr>
-                            <td>${product.id}</td>
-                            <td>
-                                <img src="${product.image}" alt="${product.name}" class="product-image-small">
-                            </td>
-                            <td>${product.name}</td>
-                            <td>${product.brand}</td>
-                            <td>${product.category}</td>
-                            <td>Rs. ${product.price}</td>
-                            <td>
-                                <div class="action-buttons">
-                                    <button class="btn btn-primary" onclick="editProduct(${product.id})">
-                                        <i class="fas fa-edit"></i> Edit
-                                    </button>
-                                    <button class="btn btn-danger" onclick="deleteProduct(${product.id})">
-                                        <i class="fas fa-trash"></i> Delete
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
+                filteredProducts.forEach(product => {
+                    gridHTML += `
+                        <div class="product-card">
+                            <img src="${product.image}" alt="${product.name}" class="product-image" onerror="this.src='https://via.placeholder.com/300x200?text=Image+Not+Found'">
+                            <div class="product-info">
+                                <h3 class="product-title">${product.name}</h3>
+                                <p class="product-description">${product.description}</p>
+                                <div class="product-price">Rs. ${product.price}</div>
+                                <button class="add-to-cart" data-id="${product.id}">Add to Cart</button>
+                            </div>
+                        </div>
                     `;
                 });
             }
+            productsGrid.innerHTML = gridHTML;
             
-            productsTableBody.innerHTML = tableHTML;
-            updateJSONPreview();
-        }
-
-        // Update JSON preview
-        function updateJSONPreview() {
-            jsonPreview.textContent = JSON.stringify(products, null, 2);
-        }
-
-        // Show section
-        function showSection(section) {
-            if (section === 'manage') {
-                manageProductsSection.style.display = 'block';
-                importExportSection.style.display = 'none';
-            } else if (section === 'import') {
-                manageProductsSection.style.display = 'none';
-                importExportSection.style.display = 'block';
-            }
-        }
-
-        // Open modal for adding product
-        function openAddProductModal() {
-            modalTitle.textContent = 'Add New Product';
-            productForm.reset();
-            productId.value = '';
-            productModal.style.display = 'flex';
-        }
-
-        // Open modal for editing product
-        function editProduct(id) {
-            const product = products.find(p => p.id === id);
-            if (!product) return;
-            
-            modalTitle.textContent = 'Edit Product';
-            productId.value = product.id;
-            productName.value = product.name;
-            productPrice.value = product.price;
-            productBrand.value = product.brand;
-            productCategory.value = product.category;
-            productImage.value = product.image;
-            productDescription.value = product.description;
-            
-            productModal.style.display = 'flex';
-        }
-
-        // Delete product
-        function deleteProduct(id) {
-            if (confirm('Are you sure you want to delete this product?')) {
-                products = products.filter(p => p.id !== id);
-                saveProductsToStorage();
-                renderProductsTable();
-                showMessage('Product deleted successfully!', 'success');
-            }
-        }
-
-        // Save product (add or update)
-        function saveProduct(e) {
-            e.preventDefault();
-            
-            const id = productId.value ? parseInt(productId.value) : Date.now();
-            const productData = {
-                id: id,
-                name: productName.value,
-                price: parseFloat(productPrice.value),
-                image: productImage.value,
-                description: productDescription.value,
-                brand: productBrand.value,
-                category: productCategory.value
-            };
-            
-            if (productId.value) {
-                // Update existing product
-                const index = products.findIndex(p => p.id === id);
-                if (index !== -1) {
-                    products[index] = productData;
-                }
+            // Render products in list view
+            let listHTML = '';
+            if (filteredProducts.length === 0) {
+                listHTML = `
+                    <div style="text-align: center; padding: 40px;">
+                        <i class="fas fa-box-open" style="font-size: 3rem; color: #ddd; margin-bottom: 15px;"></i>
+                        <h3>No products found</h3>
+                        <p>Try changing your search or category filters</p>
+                    </div>
+                `;
             } else {
-                // Add new product
-                products.push(productData);
+                filteredProducts.forEach(product => {
+                    listHTML += `
+                        <div class="product-item">
+                            <img src="${product.image}" alt="${product.name}" class="product-image" style="width: 100px; height: 100px; margin-right: 15px;" onerror="this.src='https://via.placeholder.com/100x100?text=Image+Not+Found'">
+                            <div class="product-item-info">
+                                <h3 class="product-item-title">${product.name}</h3>
+                                <p class="product-item-description">${product.description}</p>
+                                <div class="product-item-price">Rs. ${product.price}</div>
+                            </div>
+                            <div class="product-item-action">
+                                <button class="add-to-cart-list" data-id="${product.id}">Add to Cart</button>
+                            </div>
+                        </div>
+                    `;
+                });
             }
+            productsList.innerHTML = listHTML;
             
-            saveProductsToStorage();
-            renderProductsTable();
-            productModal.style.display = 'none';
-            
-            showMessage(
-                productId.value ? 'Product updated successfully!' : 'Product added successfully!',
-                'success'
-            );
-        }
-
-        // Export products to JSON file
-        function exportProducts() {
-            const dataStr = JSON.stringify(products, null, 2);
-            const dataBlob = new Blob([dataStr], {type: 'application/json'});
-            
-            const url = URL.createObjectURL(dataBlob);
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = 'products.json';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            URL.revokeObjectURL(url);
-            
-            showMessage('JSON file downloaded! Replace your products.json file with this downloaded file.', 'success');
-        }
-
-        // Import products from JSON file
-        function importProducts() {
-            const file = importFile.files[0];
-            if (!file) return;
-            
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                try {
-                    const importedProducts = JSON.parse(e.target.result);
-                    
-                    if (Array.isArray(importedProducts)) {
-                        products = importedProducts;
-                        saveProductsToStorage();
-                        renderProductsTable();
-                        showMessage('Products imported successfully!', 'success');
-                    } else {
-                        showMessage('Invalid file format. Please upload a valid JSON file.', 'error');
-                    }
-                } catch (error) {
-                    showMessage('Error parsing JSON file. Please check the file format.', 'error');
-                }
-            };
-            reader.readAsText(file);
-        }
-
-        // Download template
-        function downloadTemplate() {
-            const template = [
-                {
-                    "id": 1,
-                    "name": "Product Name",
-                    "price": 1000,
-                    "image": "https://example.com/image.jpg",
-                    "description": "Product description",
-                    "brand": "A4Tech",
-                    "category": "Keyboard"
-                }
-            ];
-            
-            const dataStr = JSON.stringify(template, null, 2);
-            const dataBlob = new Blob([dataStr], {type: 'application/json'});
-            
-            const url = URL.createObjectURL(dataBlob);
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = 'product-template.json';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            URL.revokeObjectURL(url);
-        }
-
-        // Force load from JSON file
-        async function forceLoadFromJSON() {
-            try {
-                const response = await fetch('products.json');
-                if (response.ok) {
-                    products = await response.json();
-                    saveProductsToStorage();
-                    renderProductsTable();
-                    showMessage('Products loaded from JSON file successfully!', 'success');
-                } else {
-                    throw new Error('JSON file not found');
-                }
-            } catch (error) {
-                showMessage('Error loading from JSON file. Make sure products.json exists.', 'error');
-            }
-        }
-
-        // Show message
-        function showMessage(text, type) {
-            // Remove existing messages
-            const existingMessage = document.querySelector('.message');
-            if (existingMessage) {
-                existingMessage.remove();
-            }
-            
-            // Create new message
-            const message = document.createElement('div');
-            message.className = `message ${type === 'success' ? 'success-message' : type === 'warning' ? 'warning-message' : 'error-message'}`;
-            message.innerHTML = `<i class="fas fa-${type === 'success' ? 'check' : type === 'warning' ? 'exclamation-triangle' : 'exclamation-circle'}"></i> ${text}`;
-            
-            // Insert message after header
-            const container = document.querySelector('.container');
-            container.insertBefore(message, container.firstChild);
-            
-            // Remove message after 5 seconds
-            setTimeout(() => {
-                if (message.parentNode) {
-                    message.remove();
-                }
-            }, 5000);
+            // Add event listeners to add to cart buttons
+            document.querySelectorAll('.add-to-cart, .add-to-cart-list').forEach(button => {
+                button.addEventListener('click', function() {
+                    const productId = parseInt(this.getAttribute('data-id'));
+                    addToCart(productId);
+                });
+            });
         }
 
         // Setup event listeners
         function setupEventListeners() {
-            // Navigation buttons
-            manageProductsBtn.addEventListener('click', () => showSection('manage'));
-            importExportBtn.addEventListener('click', () => showSection('import'));
-            previewSiteBtn.addEventListener('click', () => window.open('index.html', '_blank'));
-            
-            // Product modal
-            addProductBtn.addEventListener('click', openAddProductModal);
-            productForm.addEventListener('submit', saveProduct);
-            cancelProductBtn.addEventListener('click', () => productModal.style.display = 'none');
-            closeModal.addEventListener('click', () => productModal.style.display = 'none');
-            
-            // Import/Export
-            exportProductsBtn.addEventListener('click', exportProducts);
-            importFile.addEventListener('change', function() {
-                fileName.textContent = this.files[0] ? this.files[0].name : 'No file chosen';
-                importProductsBtn.disabled = !this.files[0];
+            // Category buttons
+            document.querySelectorAll('.category-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const category = this.getAttribute('data-category');
+                    
+                    // Remove active class from all buttons
+                    document.querySelectorAll('.category-btn').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Handle brand buttons
+                    if (category === 'All' || category === 'A4Tech' || category === 'Bloody') {
+                        currentBrand = category === 'All' ? null : category;
+                        toggleSubcategories(currentBrand);
+                        
+                        // If it's a brand button, set the category to the brand
+                        if (category !== 'All') {
+                            currentCategory = category;
+                        } else {
+                            currentCategory = 'All';
+                        }
+                    } else {
+                        // It's a subcategory button
+                        currentCategory = category;
+                    }
+                    
+                    // Re-render products
+                    renderProducts();
+                });
             });
-            importProductsBtn.addEventListener('click', importProducts);
-            downloadTemplateBtn.addEventListener('click', downloadTemplate);
-            loadFromJSONBtn.addEventListener('click', forceLoadFromJSON);
+            
+            // Search box
+            searchBox.addEventListener('input', renderProducts);
+            
+            // View toggle buttons
+            gridViewBtn.addEventListener('click', function() {
+                if (currentView !== 'grid') {
+                    currentView = 'grid';
+                    gridViewBtn.classList.add('active');
+                    listViewBtn.classList.remove('active');
+                    productsGrid.style.display = 'grid';
+                    productsList.style.display = 'none';
+                }
+            });
+            
+            listViewBtn.addEventListener('click', function() {
+                if (currentView !== 'list') {
+                    currentView = 'list';
+                    listViewBtn.classList.add('active');
+                    gridViewBtn.classList.remove('active');
+                    productsList.style.display = 'flex';
+                    productsGrid.style.display = 'none';
+                }
+            });
+            
+            // Cart icon
+            cartIcon.addEventListener('click', openCart);
+            
+            // Close cart
+            closeCart.addEventListener('click', closeCartPopup);
+            
+            // Overlay
+            overlay.addEventListener('click', closeCartPopup);
+            
+            // Floating cart button
+            floatingCartBtn.addEventListener('click', openCart);
+            
+            // Checkout button
+            checkoutBtn.addEventListener('click', checkout);
         }
 
-        // Initialize the admin panel when DOM is loaded
-        document.addEventListener('DOMContentLoaded', initAdmin);
-    </script>
-</body>
-</html>
+        // Add product to cart
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+            
+            const existingItem = cart.find(item => item.id === productId);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    id: product.id,
+                    name: product.name,
+                    price: product.price,
+                    image: product.image,
+                    quantity: 1
+                });
+            }
+            
+            updateCartUI();
+            
+            // Show success message
+            showMessage(`${product.name} added to cart!`, 'success');
+        }
+
+        // Remove product from cart
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCartUI();
+        }
+
+        // Update cart quantity
+        function updateQuantity(productId, change) {
+            const item = cart.find(item => item.id === productId);
+            if (!item) return;
+            
+            item.quantity += change;
+            
+            if (item.quantity <= 0) {
+                removeFromCart(productId);
+            } else {
+                updateCartUI();
+            }
+        }
+
+        // Update cart UI
+        function updateCartUI() {
+            // Update cart count
+            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+            cartCount.textContent = totalItems;
+            
+            // Update cart items
+            if (cart.length === 0) {
+                cartItems.innerHTML = `
+                    <div class="empty-cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        <h3>Your cart is empty</h3>
+                        <p>Add some products to your cart</p>
+                    </div>
+                `;
+                cartTotal.textContent = 'Rs. 0.00';
+                floatingCartTotal.textContent = 'Rs. 0.00';
+            } else {
+                let cartHTML = '';
+                let total = 0;
+                
+                cart.forEach(item => {
+                    const itemTotal = item.price * item.quantity;
+                    total += itemTotal;
+                    
+                    cartHTML += `
+                        <div class="cart-item">
+                            <img src="${item.image}" alt="${item.name}" class="cart-item-image" onerror="this.src='https://via.placeholder.com/80x80?text=Image+Not+Found'">
+                            <div class="cart-item-details">
+                                <h4 class="cart-item-title">${item.name}</h4>
+                                <div class="cart-item-price">Rs. ${item.price}</div>
+                                <div class="cart-item-quantity">
+                                    <button class="quantity-btn" onclick="updateQuantity(${item.id}, -1)">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <span class="quantity">${item.quantity}</span>
+                                    <button class="quantity-btn" onclick="updateQuantity(${item.id}, 1)">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                    <button class="remove-item" onclick="removeFromCart(${item.id})">
+                                        <i class="fas fa-trash
