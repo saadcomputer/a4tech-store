@@ -1,900 +1,818 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A4Tech Bloody Store</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>A4Tech Bloody Store</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+/* ===== existing styles (preserved) ===== */
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif}
+:root{
+  --primary:#00AEEF;--secondary:#25D366;--accent:#FF6B35;--dark:#2C3E50;--light:#F8F9FA;
+  --card:white;--text:#2C3E50;
+}
+body.dark{--light:#1E1E1E;--card:#2C2C2C;--text:#F8F9FA;background:var(--light);color:var(--text);transition:0.3s}
+body{background:var(--light);color:var(--text);transition:0.3s;line-height:1.6}
+.container{max-width:1100px;margin:0 auto;padding:0 20px}
 
-        :root {
-            --primary: #00AEEF;
-            --secondary: #25D366;
-            --accent: #FF6B35;
-            --dark: #2C3E50;
-            --light: #F8F9FA;
-        }
+/* Header */
+header{background:linear-gradient(135deg,var(--primary),#0088CC);color:white;padding:15px 0;box-shadow:0 4px 12px rgba(0,0,0,0.1)}
+.header-inner{display:flex;justify-content:space-between;align-items:center}
+header h1{font-size:1.8rem;font-weight:700}
+header .header-buttons{display:flex;gap:10px}
+header button{background:white;color:var(--primary);border:none;padding:8px 12px;border-radius:6px;font-weight:600;cursor:pointer;transition:0.3s}
+header button:hover{background:var(--primary);color:white}
 
-        body {
-            background-color: var(--light);
-            color: var(--dark);
-            line-height: 1.6;
-        }
+/* Brand & Category */
+.brands,.categories{display:flex;justify-content:center;flex-wrap:wrap;gap:15px;margin:25px 0 10px}
+.brand-btn,.category-btn{padding:10px 20px;border:none;border-radius:8px;background:white;color:var(--dark);font-weight:600;cursor:pointer;transition:0.3s;box-shadow:0 3px 6px rgba(0,0,0,0.1)}
+.brand-btn.active{background:var(--primary);color:white}
+.category-btn.active{background:var(--secondary);color:white}
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+/* Products */
+.products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;margin:20px 0;transition:0.3s}
+.products-grid.list-view{display:block}
+.products-grid.list-view .product-card{display:flex;align-items:center;gap:15px}
+.products-grid.list-view .product-image{width:160px;height:160px;object-fit:cover;border-radius:10px}
+.product-card{background:var(--card);border-radius:12px;overflow:hidden;box-shadow:0 5px 15px rgba(0,0,0,0.1);transition:0.3s;display:flex;flex-direction:column}
+.product-card:hover{transform:translateY(-4px)}
+.product-image{width:100%;height:200px;object-fit:cover}
+.product-info{padding:15px;display:flex;flex-direction:column;gap:8px}
+.product-title{font-size:1.1rem;margin:6px 0;font-weight:600}
+.product-description{font-size:0.9rem;color:#6C757D;margin-bottom:8px}
+.product-price{font-weight:700;color:var(--secondary);margin-bottom:8px}
+.add-to-cart{background:var(--secondary);color:white;border:none;padding:8px 12px;border-radius:8px;font-weight:600;cursor:pointer;transition:0.3s}
+.add-to-cart:hover{background:#128C7E}
 
-        /* Header */
-        header {
-            background: linear-gradient(135deg, var(--primary), #0088CC);
-            color: white;
-            padding: 20px 0;
-            text-align: center;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
+/* Cart */
+.cart-section{background:var(--card);padding:20px;border-radius:12px;margin:30px 0;box-shadow:0 6px 20px rgba(0,0,0,0.1)}
+.cart-item{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #ddd;gap:10px}
+.cart-item-image{width:60px;height:60px;object-fit:cover;border-radius:8px}
+.cart-total{display:flex;justify-content:space-between;font-weight:700;margin-top:10px}
+.checkout-btn{background:var(--primary);color:white;border:none;padding:12px;border-radius:10px;width:100%;font-weight:600;margin-top:10px}
+.checkout-btn:hover{background:#0088CC}
 
-        header h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
+/* Quantity controls in cart */
+.qty-controls{display:flex;align-items:center;gap:8px}
+.qty-btn{width:30px;height:30px;border-radius:6px;border:1px solid #ddd;background:white;cursor:pointer;display:inline-flex;align-items:center;justify-content:center}
+.delete-btn{background:none;border:none;color:#ff4d4f;cursor:pointer;font-size:1.1rem}
 
-        /* Brands Section */
-        .brands {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin: 30px 0;
-            flex-wrap: wrap;
-        }
+/* Admin Modal & small helpers */
+#adminModal{position:fixed;inset:0;background:rgba(0,0,0,0.5);display:none;align-items:center;justify-content:center;padding:20px;z-index:9999}
+#adminModal .panel{background:var(--card);width:100%;max-width:1000px;border-radius:10px;padding:18px;max-height:90vh;overflow:auto;box-shadow:0 10px 40px rgba(0,0,0,0.3)}
+.admin-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.admin-controls{display:flex;gap:8px;flex-wrap:wrap}
+.field{display:flex;flex-direction:column;margin-bottom:8px}
+.field label{font-size:0.85rem;margin-bottom:6px;color:#333}
+.field input[type="text"],.field input[type="number"],.field textarea,.field select{padding:8px;border-radius:6px;border:1px solid #ddd;width:100%}
+.small{font-size:0.85rem;color:#666}
+.table{width:100%;border-collapse:collapse;margin-top:8px}
+.table th,.table td{padding:8px;border:1px solid #eee;text-align:left}
+.btn{padding:8px 10px;border:none;border-radius:6px;cursor:pointer;font-weight:600}
+.btn-danger{background:#ff4d4f;color:white}
+.btn-primary{background:var(--primary);color:white}
+.inline{display:inline-flex;gap:6px;align-items:center}
 
-        .brand-btn {
-            padding: 15px 30px;
-            border: none;
-            border-radius: 10px;
-            background: white;
-            color: var(--dark);
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .brand-btn.active {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(0, 174, 239, 0.3);
-        }
-
-        .brand-btn img {
-            height: 25px;
-            width: auto;
-        }
-
-        /* Categories */
-        .categories {
-            display: none;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin: 20px 0 30px;
-        }
-
-        .categories.visible {
-            display: flex;
-        }
-
-        .category-btn {
-            padding: 12px 25px;
-            border: 2px solid #E9ECEF;
-            background: white;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 600;
-        }
-
-        .category-btn.active {
-            background: var(--secondary);
-            color: white;
-            border-color: var(--secondary);
-        }
-
-        /* Products Grid */
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 25px;
-            margin-bottom: 50px;
-        }
-
-        .product-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        .product-image {
-            height: 200px;
-            width: 100%;
-            object-fit: cover;
-        }
-
-        .product-info {
-            padding: 20px;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .product-brand {
-            color: var(--primary);
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 5px;
-            text-transform: uppercase;
-        }
-
-        .product-title {
-            font-size: 1.2rem;
-            margin-bottom: 8px;
-            color: var(--dark);
-            font-weight: 600;
-        }
-
-        .product-description {
-            color: #6C757D;
-            font-size: 0.9rem;
-            margin-bottom: 15px;
-            flex: 1;
-        }
-
-        .product-price {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--secondary);
-            margin-bottom: 15px;
-        }
-
-        .add-to-cart {
-            background: var(--secondary);
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 8px;
-            cursor: pointer;
-            width: 100%;
-            font-size: 1rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .add-to-cart:hover {
-            background: #128C7E;
-        }
-
-        /* Cart Section */
-        .cart-section {
-            background: white;
-            border-radius: 15px;
-            padding: 25px;
-            margin: 30px 0;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-        }
-
-        .cart-section h2 {
-            text-align: center;
-            margin-bottom: 20px;
-            color: var(--dark);
-            font-size: 1.8rem;
-        }
-
-        .cart-items {
-            margin-bottom: 20px;
-        }
-
-        .cart-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 0;
-            border-bottom: 1px solid #E9ECEF;
-        }
-
-        .cart-item:last-child {
-            border-bottom: none;
-        }
-
-        .cart-item-info {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            flex: 1;
-        }
-
-        .cart-item-image {
-            width: 60px;
-            height: 60px;
-            object-fit: cover;
-            border-radius: 8px;
-        }
-
-        .cart-item-details h4 {
-            margin-bottom: 5px;
-            font-weight: 600;
-        }
-
-        .cart-item-price {
-            color: var(--secondary);
-            font-weight: 700;
-        }
-
-        .cart-item-controls {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .quantity-controls {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .quantity-btn {
-            background: #F8F9FA;
-            border: 2px solid #E9ECEF;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .quantity-btn:hover {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
-        }
-
-        .quantity {
-            font-weight: 600;
-            min-width: 30px;
-            text-align: center;
-        }
-
-        .remove-item {
-            color: #FF4757;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 5px;
-            border-radius: 5px;
-            transition: background 0.3s;
-        }
-
-        .remove-item:hover {
-            background: rgba(255, 71, 87, 0.1);
-        }
-
-        .cart-total {
-            display: flex;
-            justify-content: space-between;
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin: 20px 0;
-            padding-top: 20px;
-            border-top: 2px solid #E9ECEF;
-        }
-
-        .checkout-btn {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 15px;
-            border-radius: 10px;
-            width: 100%;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .checkout-btn:hover {
-            background: #0088CC;
-        }
-
-        .empty-cart {
-            text-align: center;
-            padding: 40px 20px;
-            color: #6C757D;
-        }
-
-        .empty-cart i {
-            font-size: 3rem;
-            margin-bottom: 15px;
-            color: #DEE2E6;
-        }
-
-        /* Messages */
-        .message {
-            padding: 15px 20px;
-            border-radius: 10px;
-            margin: 20px 0;
-            text-align: center;
-            font-weight: 600;
-            animation: slideDown 0.3s ease;
-        }
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .success-message {
-            background: #1DD1A1;
-            color: white;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .brands {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .brand-btn {
-                width: 200px;
-                justify-content: center;
-            }
-            
-            .products-grid {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            }
-            
-            .cart-item {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 15px;
-            }
-            
-            .cart-item-controls {
-                width: 100%;
-                justify-content: space-between;
-            }
-        }
-    </style>
+/* responsive */
+@media(max-width:700px){
+  .header-inner{flex-direction:column;gap:10px}
+  .admin-top{flex-direction:column;align-items:flex-start;gap:10px}
+  .product-card{flex-direction:row}
+  .product-image{width:140px;height:140px}
+  .product-info{flex:1}
+}
+</style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <h1>A4Tech Bloody Store</h1>
-        </div>
-    </header>
 
-    <!-- Main Content -->
-    <div class="container">
-        <!-- Brands Section -->
-        <div class="brands">
-            <button class="brand-btn active" data-brand="All">
-                <i class="fas fa-boxes"></i> All Products
-            </button>
-            <button class="brand-btn" data-brand="A4Tech">
-                <img src="https://a4tech.com.pk/cdn/shop/files/Asset_2_2x_a2c2a49b-fe13-4968-9b0f-1912f73772ed_170x.png?v=1698154812" alt="A4Tech">
-                A4Tech
-            </button>
-            <button class="brand-btn" data-brand="Bloody">
-                <img src="https://lh3.googleusercontent.com/proxy/SN4kpKa8Sv67UxZxjo3XYtPCkokXimJO_6NwqyO9V1DiyUYSO7sSJTV6nCaSZ8QeSW_AvuOWpjfzl3fXpW0yphw" alt="Bloody">
-                Bloody
-            </button>
-        </div>
+<!-- Header -->
+<header>
+  <div class="container header-inner">
+    <h1>A4Tech Bloody Store</h1>
+    <div class="header-buttons">
+      <button id="themeBtn"><i class="fas fa-moon"></i> Dark</button>
+      <button id="viewBtn"><i class="fas fa-list"></i> List</button>
+      <button id="openAdminBtn"><i class="fas fa-user-shield"></i> Admin</button>
+    </div>
+  </div>
+</header>
 
-        <!-- Categories -->
-        <div class="categories" id="categories">
-            <!-- Categories will be dynamically added here -->
-        </div>
+<!-- Main container -->
+<div class="container">
+  <div class="brands" id="brandsContainer">
+    <button class="brand-btn active" data-brand="All">All Products</button>
+    <!-- brand buttons generated dynamically -->
+  </div>
 
-        <!-- Products Grid -->
-        <div class="products-grid" id="productsGrid">
-            <!-- Products will be dynamically added here -->
-        </div>
+  <div class="categories" id="categories"></div>
 
-        <!-- Cart Section -->
-        <div class="cart-section">
-            <h2><i class="fas fa-shopping-cart"></i> Your Cart</h2>
-            <div class="cart-items" id="cartItems">
-                <div class="empty-cart">
-                    <i class="fas fa-shopping-cart"></i>
-                    <h3>Your cart is empty</h3>
-                    <p>Add some products to your cart</p>
-                </div>
-            </div>
-            <div class="cart-total">
-                <span>Total:</span>
-                <span id="cartTotal">Rs. 0.00</span>
-            </div>
-            <button class="checkout-btn" id="checkoutBtn">
-                <i class="fab fa-whatsapp"></i> Checkout via WhatsApp
-            </button>
-        </div>
+  <div class="products-grid" id="productsGrid"></div>
+
+  <div class="cart-section">
+    <h2>Your Cart</h2>
+    <div id="cartItems">Your cart is empty</div>
+    <div class="cart-total">
+      <span>Total:</span><span id="cartTotal">Rs. 0.00</span>
+    </div>
+    <button class="checkout-btn" id="checkoutBtn"><i class="fab fa-whatsapp"></i> Checkout</button>
+  </div>
+</div>
+
+<!-- Admin Modal -->
+<div id="adminModal" role="dialog" aria-modal="true">
+  <div class="panel" aria-label="Admin Panel">
+    <div class="admin-top">
+      <strong style="font-size:1.1rem">Admin Panel — Edit Products / Brands / Categories</strong>
+      <div class="admin-controls">
+        <button id="closeAdminBtn" class="btn">Close</button>
+        <button id="applyBtn" class="btn btn-primary">Apply Changes (Live)</button>
+        <button id="downloadBtn" class="btn">Download Updated HTML</button>
+        <button id="resetBtn" class="btn btn-danger" title="Reset to default demo data">Reset Demo Data</button>
+      </div>
     </div>
 
-    <script>
-        // DOM Elements
-        const categoriesContainer = document.getElementById('categories');
-        const productsGrid = document.getElementById('productsGrid');
-        const cartItems = document.getElementById('cartItems');
-        const cartTotal = document.getElementById('cartTotal');
-        const checkoutBtn = document.getElementById('checkoutBtn');
+    <!-- Brands management -->
+    <section style="margin-bottom:14px">
+      <h3 style="margin-bottom:8px">Brands</h3>
+      <div style="display:flex;gap:8px;align-items:center;margin-bottom:10px">
+        <input id="newBrandInput" placeholder="New brand name" type="text" />
+        <button id="addBrandBtn" class="btn">Add Brand</button>
+      </div>
+      <div id="brandsList" class="small"></div>
+    </section>
 
-        // ALL PRODUCTS DATA
-        const products = [
-            // A4Tech Products
-            {
-                id: 1,
-                name: "M90 ANC Earphones",
-                price: 9340,
-                image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=300&fit=crop",
-                description: "High-quality ANC earphones with premium sound quality",
-                brand: "A4Tech",
-                category: "Audio"
-            },
-            {
-                id: 2,
-                name: "M70 Gaming Mouse",
-                price: 8470,
-                image: "https://images.unsplash.com/photo-1527814050087-3793815479db?w=400&h=300&fit=crop",
-                description: "Optical gaming mouse with 7200 DPI precision",
-                brand: "A4Tech",
-                category: "Mouse"
-            },
-            {
-                id: 3,
-                name: "B1700 Combo Pack",
-                price: 6900,
-                image: "https://images.unsplash.com/photo-1541140532154-b024d705b90a?w=400&h=300&fit=crop",
-                description: "Complete gaming setup including keyboard and mouse",
-                brand: "A4Tech",
-                category: "Keyboard"
-            },
-            {
-                id: 4,
-                name: "AT75 Mechanical Keyboard",
-                price: 14600,
-                image: "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=400&h=300&fit=crop",
-                description: "ALPHA OPTICAL SWITCH mechanical keyboard",
-                brand: "A4Tech",
-                category: "Keyboard"
-            },
-            {
-                id: 5,
-                name: "Gaming Headset Pro",
-                price: 7500,
-                image: "https://images.unsplash.com/photo-1585298723682-7115561c51b7?w=400&h=300&fit=crop",
-                description: "7.1 Surround Sound gaming headset",
-                brand: "A4Tech",
-                category: "Audio"
-            },
-            {
-                id: 6,
-                name: "Webcam HD Pro",
-                price: 5200,
-                image: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=400&h=300&fit=crop",
-                description: "1080p HD webcam with microphone",
-                brand: "A4Tech",
-                category: "Webcam"
-            },
-            {
-                id: 7,
-                name: "Wireless Mouse",
-                price: 3200,
-                image: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=400&h=300&fit=crop",
-                description: "Wireless optical mouse with long battery life",
-                brand: "A4Tech",
-                category: "Mouse"
-            },
-            {
-                id: 8,
-                name: "USB Speaker Set",
-                price: 4500,
-                image: "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=400&h=300&fit=crop",
-                description: "2.1 Channel USB powered speakers",
-                brand: "A4Tech",
-                category: "Audio"
-            },
+    <!-- Categories management (NEW) -->
+    <section style="margin-bottom:14px">
+      <h3 style="margin-bottom:8px">Categories (brand-specific)</h3>
+      <div style="display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap">
+        <select id="catBrandSelect" style="padding:8px;border-radius:6px;border:1px solid #ddd"></select>
+        <input id="newCategoryInput" placeholder="New category name" type="text" />
+        <button id="addCategoryBtn" class="btn">Add Category</button>
+      </div>
+      <div id="categoriesList" class="small"></div>
+    </section>
 
-            // Bloody Products
-            {
-                id: 9,
-                name: "AT87 Red Switch Keyboard",
-                price: 11400,
-                image: "https://images.unsplash.com/photo-1541140532154-b024d705b90a?w=400&h=300&fit=crop",
-                description: "ALPHA RED SWITCH mechanical keyboard",
-                brand: "Bloody",
-                category: "Keyboard"
-            },
-            {
-                id: 10,
-                name: "AT98 Alpha Optical",
-                price: 11800,
-                image: "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=400&h=300&fit=crop",
-                description: "ALPHA RED SWITCH mechanical gaming keyboard",
-                brand: "Bloody",
-                category: "Keyboard"
-            },
-            {
-                id: 11,
-                name: "B135N Gaming Keyboard",
-                price: 3350,
-                image: "https://images.unsplash.com/photo-1541140532154-b024d705b90a?w=400&h=300&fit=crop",
-                description: "Professional gaming keyboard with RGB lighting",
-                brand: "Bloody",
-                category: "Keyboard"
-            },
-            {
-                id: 12,
-                name: "B310N Mechanical Keyboard",
-                price: 4860,
-                image: "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=400&h=300&fit=crop",
-                description: "Mechanical feel gaming keyboard",
-                brand: "Bloody",
-                category: "Keyboard"
-            },
-            {
-                id: 13,
-                name: "BP-45 Waterproof Pad",
-                price: 1380,
-                image: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=400&h=300&fit=crop",
-                description: "Waterproof Mouse Pad with smooth tracking surface",
-                brand: "Bloody",
-                category: "Mousepad"
-            },
-            {
-                id: 14,
-                name: "BP-45 Naraka Edition",
-                price: 1330,
-                image: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=400&h=300&fit=crop",
-                description: "Gaming mouse pad with special Naraka design",
-                brand: "Bloody",
-                category: "Mousepad"
-            },
-            {
-                id: 15,
-                name: "Gaming Mouse Bloody",
-                price: 6200,
-                image: "https://images.unsplash.com/photo-1527814050087-3793815479db?w=400&h=300&fit=crop",
-                description: "High precision gaming mouse with RGB",
-                brand: "Bloody",
-                category: "Mouse"
-            },
-            {
-                id: 16,
-                name: "Bloody Headphones",
-                price: 8800,
-                image: "https://images.unsplash.com/photo-1585298723682-7115561c51b7?w=400&h=300&fit=crop",
-                description: "Gaming headphones with surround sound",
-                brand: "Bloody",
-                category: "Audio"
-            }
-        ];
+    <!-- Products table -->
+    <section>
+      <h3 style="margin-bottom:8px">Products</h3>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px">
+        <div style="flex:1;min-width:200px" class="field">
+          <label>Title</label>
+          <input id="pTitle" type="text" placeholder="Product title">
+        </div>
+        <div style="width:140px" class="field">
+          <label>Price</label>
+          <input id="pPrice" type="number" placeholder="Price">
+        </div>
+        <div style="width:200px" class="field">
+          <label>Brand</label>
+          <select id="pBrand"></select>
+        </div>
+        <div style="width:200px" class="field">
+          <label>Category</label>
+          <select id="pCategory"></select>
+        </div>
+        <div style="flex-basis:100%" class="field">
+          <label>Image URL</label>
+          <input id="pImage" type="text" placeholder="https://...">
+        </div>
+        <div style="flex-basis:100%" class="field">
+          <label>Description</label>
+          <textarea id="pDesc" rows="2" placeholder="Short description"></textarea>
+        </div>
+      </div>
 
-        // Cart state
-        let cart = [];
-        let currentBrand = 'All';
-        let currentCategory = 'All';
+      <div style="display:flex;gap:8px;margin-bottom:10px">
+        <button id="addProductBtn" class="btn btn-primary">Add Product</button>
+        <button id="clearFormBtn" class="btn">Clear Form</button>
+      </div>
 
-        // Initialize the app
-        function init() {
-            renderProducts();
-            setupEventListeners();
-            updateCartUI();
-        }
+      <table class="table" id="productsTable">
+        <thead><tr><th>ID</th><th>Title</th><th>Brand</th><th>Category</th><th>Price</th><th>Actions</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </section>
 
-        // Setup event listeners
-        function setupEventListeners() {
-            // Brand buttons
-            document.querySelectorAll('.brand-btn').forEach(button => {
-                button.addEventListener('click', function() {
-                    const brand = this.getAttribute('data-brand');
-                    
-                    // Remove active class from all buttons
-                    document.querySelectorAll('.brand-btn').forEach(btn => {
-                        btn.classList.remove('active');
-                    });
-                    
-                    // Add active class to clicked button
-                    this.classList.add('active');
-                    
-                    // Handle brand selection
-                    currentBrand = brand;
-                    
-                    // Show/hide categories based on brand
-                    if (brand === 'All') {
-                        categoriesContainer.classList.remove('visible');
-                        currentCategory = 'All';
-                    } else {
-                        renderCategories(brand);
-                        categoriesContainer.classList.add('visible');
-                        currentCategory = 'All';
-                    }
-                    
-                    // Re-render products
-                    renderProducts();
-                });
-            });
+    <hr style="margin:12px 0">
 
-            // Checkout button
-            checkoutBtn.addEventListener('click', checkout);
-        }
+    <div class="small" style="color:#666">
+      <strong>How it works:</strong> Use Admin to add/edit products, brands & categories. When adding a category you must select a brand. Click <em>Apply Changes</em> to update the live page, or click <em>Download Updated HTML</em> to create a single HTML file that contains your changes (no external files required). The downloaded file is ready to replace your current index.html.
+    </div>
+  </div>
+</div>
 
-        // Render categories for specific brand
-        function renderCategories(brand) {
-            const categories = ['Keyboard', 'Mouse', 'Audio', 'Mousepad', 'Webcam'];
-            
-            let categoriesHTML = '';
-            categories.forEach(category => {
-                categoriesHTML += `<button class="category-btn" data-category="${category}">${category}</button>`;
-            });
-            
-            categoriesContainer.innerHTML = categoriesHTML;
-            
-            // Add event listeners to category buttons
-            document.querySelectorAll('.category-btn').forEach(button => {
-                button.addEventListener('click', function() {
-                    const category = this.getAttribute('data-category');
-                    
-                    // Remove active class from all buttons
-                    document.querySelectorAll('.category-btn').forEach(btn => {
-                        btn.classList.remove('active');
-                    });
-                    
-                    // Add active class to clicked button
-                    this.classList.add('active');
-                    
-                    currentCategory = category;
-                    renderProducts();
-                });
-            });
-        }
+<script>
+/* ========== ADMIN PASSWORD (ONLY ADDED) ========== */
+const ADMIN_PASSWORD = "2214721"; // <-- admin password (as requested)
 
-        // Render products based on current brand and category
-        function renderProducts() {
-            let filteredProducts = products;
-            
-            // Filter by brand
-            if (currentBrand !== 'All') {
-                filteredProducts = filteredProducts.filter(product => product.brand === currentBrand);
-            }
-            
-            // Filter by category
-            if (currentCategory !== 'All') {
-                filteredProducts = filteredProducts.filter(product => product.category === currentCategory);
-            }
-            
-            // Render products in grid
-            let gridHTML = '';
-            if (filteredProducts.length === 0) {
-                gridHTML = `
-                    <div style="grid-column: 1 / -1; text-align: center; padding: 40px;">
-                        <i class="fas fa-box-open" style="font-size: 3rem; color: #ddd; margin-bottom: 15px;"></i>
-                        <h3>No products found</h3>
-                        <p>Try changing your brand or category filters</p>
-                    </div>
-                `;
-            } else {
-                filteredProducts.forEach(product => {
-                    gridHTML += `
-                        <div class="product-card">
-                            <img src="${product.image}" alt="${product.name}" class="product-image">
-                            <div class="product-info">
-                                <div class="product-brand">${product.brand}</div>
-                                <h3 class="product-title">${product.name}</h3>
-                                <p class="product-description">${product.description}</p>
-                                <div class="product-price">Rs. ${product.price}</div>
-                                <button class="add-to-cart" data-id="${product.id}">Add to Cart</button>
-                            </div>
-                        </div>
-                    `;
-                });
-            }
-            productsGrid.innerHTML = gridHTML;
-            
-            // Add event listeners to add to cart buttons
-            document.querySelectorAll('.add-to-cart').forEach(button => {
-                button.addEventListener('click', function() {
-                    const productId = parseInt(this.getAttribute('data-id'));
-                    addToCart(productId);
-                });
-            });
-        }
+/* ========== Data (initial demo data) ========== */
+let products = [
+  {id:1,name:"M90 ANC Earphones",price:9340,image:"https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400",description:"High-quality ANC earphones",brand:"A4Tech",category:"Audio"},
+  {id:2,name:"M70 Gaming Mouse",price:8470,image:"https://images.unsplash.com/photo-1527814050087-3793815479db?w=400",description:"Gaming mouse",brand:"A4Tech",category:"Mouse"},
+  {id:3,name:"B1700 Combo Pack",price:6900,image:"https://images.unsplash.com/photo-1541140532154-b024d705b90a?w=400",description:"Keyboard + Mouse combo",brand:"A4Tech",category:"Keyboard"},
+  {id:4,name:"Bloody Headphones",price:8800,image:"https://images.unsplash.com/photo-1585298723682-7115561c51b7?w=400",description:"Gaming headset",brand:"Bloody",category:"Audio"},
+  {id:5,name:"BP-45 Mouse Pad",price:1380,image:"https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=400",description:"Waterproof Mouse Pad",brand:"Bloody",category:"Mousepad"}
+];
 
-        // Add product to cart
-        function addToCart(productId) {
-            const product = products.find(p => p.id === productId);
-            if (!product) return;
-            
-            const existingItem = cart.find(item => item.id === productId);
-            
-            if (existingItem) {
-                existingItem.quantity += 1;
-            } else {
-                cart.push({
-                    id: product.id,
-                    name: product.name,
-                    price: product.price,
-                    image: product.image,
-                    quantity: 1
-                });
-            }
-            
-            updateCartUI();
-            showMessage(`${product.name} added to cart!`, 'success');
-        }
+let brands = ["All","A4Tech","Bloody"]; // 'All' reserved
+let categories = {
+  "A4Tech": ["Audio","Mouse","Keyboard"],
+  "Bloody": ["Audio","Keyboard","Mousepad"]
+};
+let cart = [], currentBrand = "All", currentCategory = "All";
 
-        // Remove product from cart
-        function removeFromCart(productId) {
-            cart = cart.filter(item => item.id !== productId);
-            updateCartUI();
-        }
+/* ========== Element refs ========== */
+const grid = document.getElementById('productsGrid');
+const cartItems = document.getElementById('cartItems');
+const cartTotal = document.getElementById('cartTotal');
+const themeBtn = document.getElementById('themeBtn');
+const viewBtn = document.getElementById('viewBtn');
+const openAdminBtn = document.getElementById('openAdminBtn');
+const adminModal = document.getElementById('adminModal');
+const closeAdminBtn = document.getElementById('closeAdminBtn');
+const applyBtn = document.getElementById('applyBtn');
+const downloadBtn = document.getElementById('downloadBtn');
+const resetBtn = document.getElementById('resetBtn');
 
-        // Update cart quantity
-        function updateQuantity(productId, change) {
-            const item = cart.find(item => item.id === productId);
-            if (!item) return;
-            
-            item.quantity += change;
-            
-            if (item.quantity <= 0) {
-                removeFromCart(productId);
-            } else {
-                updateCartUI();
-            }
-        }
+const brandsContainer = document.getElementById('brandsContainer');
+const categoriesContainer = document.getElementById('categories');
 
-        // Update cart UI
-        function updateCartUI() {
-            if (cart.length === 0) {
-                cartItems.innerHTML = `
-                    <div class="empty-cart">
-                        <i class="fas fa-shopping-cart"></i>
-                        <h3>Your cart is empty</h3>
-                        <p>Add some products to your cart</p>
-                    </div>
-                `;
-                cartTotal.textContent = 'Rs. 0.00';
-            } else {
-                let cartHTML = '';
-                let total = 0;
-                
-                cart.forEach(item => {
-                    const itemTotal = item.price * item.quantity;
-                    total += itemTotal;
-                    
-                    cartHTML += `
-                        <div class="cart-item">
-                            <div class="cart-item-info">
-                                <img src="${item.image}" alt="${item.name}" class="cart-item-image">
-                                <div class="cart-item-details">
-                                    <h4>${item.name}</h4>
-                                    <div class="cart-item-price">Rs. ${item.price}</div>
-                                </div>
-                            </div>
-                            <div class="cart-item-controls">
-                                <div class="quantity-controls">
-                                    <button class="quantity-btn" onclick="updateQuantity(${item.id}, -1)">
-                                        <i class="fas fa-minus"></i>
-                                    </button>
-                                    <span class="quantity">${item.quantity}</span>
-                                    <button class="quantity-btn" onclick="updateQuantity(${item.id}, 1)">
-                                        <i class="fas fa-plus"></i>
-                                    </button>
-                                </div>
-                                <button class="remove-item" onclick="removeFromCart(${item.id})">
-                                    <i class="fas fa-trash"></i>
-                                </button>
-                            </div>
-                        </div>
-                    `;
-                });
-                
-                cartItems.innerHTML = cartHTML;
-                cartTotal.textContent = `Rs. ${total.toFixed(2)}`;
-            }
-        }
+const productsTableBody = document.querySelector('#productsTable tbody');
+const pTitle = document.getElementById('pTitle');
+const pPrice = document.getElementById('pPrice');
+const pBrand = document.getElementById('pBrand');
+const pCategory = document.getElementById('pCategory');
+const pImage = document.getElementById('pImage');
+const pDesc = document.getElementById('pDesc');
+const addProductBtn = document.getElementById('addProductBtn');
+const clearFormBtn = document.getElementById('clearFormBtn');
 
-        // Checkout via WhatsApp
-        function checkout() {
-            if (cart.length === 0) {
-                showMessage('Your cart is empty!', 'error');
-                return;
-            }
-            
-            let message = "Hello! I'd like to place an order:\n\n";
-            let total = 0;
-            
-            cart.forEach(item => {
-                const itemTotal = item.price * item.quantity;
-                total += itemTotal;
-                message += `- ${item.name} (x${item.quantity}) - Rs. ${itemTotal}\n`;
-            });
-            
-            message += `\nTotal: Rs. ${total.toFixed(2)}`;
-            
-            // Encode the message for URL
-            const encodedMessage = encodeURIComponent(message);
-            
-            // Replace with your WhatsApp number
-            const phoneNumber = "1234567890";
-            
-            // Open WhatsApp with the message
-            window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
-        }
+const newBrandInput = document.getElementById('newBrandInput');
+const addBrandBtn = document.getElementById('addBrandBtn');
+const brandsList = document.getElementById('brandsList');
 
-        // Show message
-        function showMessage(text, type) {
-            // Remove existing messages
-            const existingMessage = document.querySelector('.message');
-            if (existingMessage) {
-                existingMessage.remove();
-            }
-            
-            // Create new message
-            const message = document.createElement('div');
-            message.className = `message ${type === 'success' ? 'success-message' : 'error-message'}`;
-            message.innerHTML = `<i class="fas fa-${type === 'success' ? 'check' : 'exclamation-triangle'}"></i> ${text}`;
-            
-            // Insert message after header
-            const container = document.querySelector('.container');
-            container.insertBefore(message, container.firstChild);
-            
-            // Remove message after 3 seconds
-            setTimeout(() => {
-                if (message.parentNode) {
-                    message.remove();
-                }
-            }, 3000);
-        }
+const catBrandSelect = document.getElementById('catBrandSelect');
+const newCategoryInput = document.getElementById('newCategoryInput');
+const addCategoryBtn = document.getElementById('addCategoryBtn');
+const categoriesList = document.getElementById('categoriesList');
 
-        // Make functions globally accessible for onclick events
-        window.updateQuantity = updateQuantity;
-        window.removeFromCart = removeFromCart;
+/* ========== Rendering functions ========== */
+function renderProducts(){
+  let list = products.slice();
+  if(currentBrand !== "All") list = list.filter(p => p.brand === currentBrand);
+  if(currentCategory !== "All") list = list.filter(p => p.category === currentCategory);
+  if(list.length === 0){
+    grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:40px;color:#666"><i class="fas fa-box-open" style="font-size:2rem"></i><div>No products</div></div>`;
+    return;
+  }
+  grid.innerHTML = list.map(p=>`
+    <div class="product-card" data-id="${p.id}">
+      <img src="${escapeHtml(p.image)}" class="product-image" alt="${escapeHtml(p.name)}">
+      <div class="product-info">
+        <h3 class="product-title">${escapeHtml(p.name)}</h3>
+        <p class="product-description">${escapeHtml(p.description)}</p>
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div class="product-price">Rs. ${Number(p.price).toFixed(2)}</div>
+          <div>
+            <button class="add-to-cart" onclick="addToCart(${p.id})">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>`).join('');
+}
 
-        // Initialize the app when DOM is loaded
-        document.addEventListener('DOMContentLoaded', init);
-    </script>
+/* Render brand buttons and admin brand list */
+function renderBrandsButtons(){
+  // ensure unique brands and keep All at front
+  const setB = Array.from(new Set(brands.filter(b=>b!=="All")));
+  brands = ["All", ...setB];
+  brandsContainer.innerHTML = brands.map(b=>`<button class="brand-btn ${b===currentBrand?'active':''}" data-brand="${escapeHtml(b)}">${escapeHtml(b)}</button>`).join('');
+  document.querySelectorAll('.brand-btn').forEach(b=>{
+    b.onclick = ()=>{
+      document.querySelectorAll('.brand-btn').forEach(x=>x.classList.remove('active'));
+      b.classList.add('active');
+      currentBrand = b.dataset.brand;
+      currentCategory = "All";
+      renderCategories(currentBrand);
+      renderProducts();
+    };
+  });
+  // admin brands list for deletion
+  brandsList.innerHTML = brands.slice(1).map(b=>`<div style="display:flex;gap:8px;align-items:center;margin-bottom:6px">
+    <span style="flex:1">${escapeHtml(b)}</span>
+    <button class="btn" data-brand="${escapeHtml(b)}" onclick="removeBrand(event)">Delete</button>
+  </div>`).join('');
+}
+
+/* Render categories for top-of-page, brand-specific */
+function renderCategories(brand){
+  if(!brand || brand==="All"){ categoriesContainer.innerHTML=""; return; }
+  const cats = categories[brand] ? Array.from(new Set(categories[brand])) : [];
+  if(cats.length===0){ categoriesContainer.innerHTML=""; return; }
+  categoriesContainer.innerHTML = cats.map(c=>`<button class="category-btn ${c===currentCategory?'active':''}" data-cat="${escapeHtml(c)}">${escapeHtml(c)}</button>`).join('');
+  document.querySelectorAll('.category-btn').forEach(btn=>{
+    btn.onclick = ()=>{
+      document.querySelectorAll('.category-btn').forEach(x=>x.classList.remove('active'));
+      btn.classList.add('active');
+      currentCategory = btn.dataset.cat;
+      renderProducts();
+    };
+  });
+}
+
+/* ========== Cart functions (with + / - / delete) ========== */
+window.addToCart = function(id){
+  const p = products.find(x=>x.id===id);
+  if(!p) return;
+  const ex = cart.find(x=>x.id===id);
+  if(ex) ex.qty++; else cart.push({...p,qty:1});
+  updateCart();
+};
+
+function changeQty(id, delta){
+  const it = cart.find(x=>x.id===id);
+  if(!it) return;
+  it.qty += delta;
+  if(it.qty <= 0){
+    // remove
+    cart = cart.filter(x=>x.id!==id);
+  }
+  updateCart();
+}
+
+function removeFromCart(id){
+  cart = cart.filter(x=>x.id!==id);
+  updateCart();
+}
+
+function updateCart(){
+  if(!cart.length){ cartItems.innerHTML = "Your cart is empty"; cartTotal.textContent = "Rs. 0.00"; return; }
+  let total = 0;
+  cartItems.innerHTML = cart.map(i=>{
+    total += i.price * i.qty;
+    return `<div class="cart-item" data-id="${i.id}">
+      <img src="${escapeHtml(i.image)}" class="cart-item-image">
+      <div style="flex:1">
+        <div style="font-weight:700">${escapeHtml(i.name)}</div>
+        <div style="margin-top:6px;display:flex;align-items:center;gap:10px">
+          <div class="qty-controls">
+            <button class="qty-btn" onclick="changeQty(${i.id}, -1)"><i class="fas fa-minus"></i></button>
+            <div style="min-width:30px;text-align:center;font-weight:600">${i.qty}</div>
+            <button class="qty-btn" onclick="changeQty(${i.id}, 1)"><i class="fas fa-plus"></i></button>
+          </div>
+          <div style="margin-left:12px;font-weight:700;color:var(--secondary)">Rs. ${(i.price * i.qty).toFixed(2)}</div>
+        </div>
+      </div>
+      <div>
+        <button class="delete-btn" title="Remove" onclick="removeFromCart(${i.id})"><i class="fas fa-trash"></i></button>
+      </div>
+    </div>`;
+  }).join('');
+  cartTotal.textContent = `Rs. ${total.toFixed(2)}`;
+}
+
+/* ========== Theme & View buttons ========== */
+themeBtn.onclick = ()=>{
+  document.body.classList.toggle('dark');
+  themeBtn.innerHTML = document.body.classList.contains('dark') ? '<i class="fas fa-sun"></i> Light' : '<i class="fas fa-moon"></i> Dark';
+};
+
+viewBtn.onclick = ()=>{
+  grid.classList.toggle('list-view');
+  viewBtn.innerHTML = grid.classList.contains('list-view') ? '<i class="fas fa-th"></i> Grid' : '<i class="fas fa-list"></i> List';
+};
+
+/* ========== Admin behavior ========== */
+/* Password-protected open */
+openAdminBtn.onclick = ()=>{
+  const input = prompt("Enter Admin Password:");
+  if(input === ADMIN_PASSWORD){
+    openAdmin();
+  } else if(input === null){
+    return;
+  } else {
+    alert("❌ Incorrect password!");
+  }
+};
+
+function openAdmin(){
+  populateAdminFormSelects();
+  refreshProductsTable();
+  renderBrandsButtons();
+  renderCategories(currentBrand);
+  populateCatBrandSelect();
+  adminModal.style.display = 'flex';
+}
+function closeAdmin(){ adminModal.style.display = 'none'; }
+closeAdminBtn.onclick = closeAdmin;
+
+/* Add brand */
+addBrandBtn.onclick = ()=>{
+  const v = (newBrandInput.value||"").trim();
+  if(!v) return alert('Enter brand name');
+  if(v==="All") return alert('Brand name "All" reserved');
+  if(brands.includes(v)) return alert('Brand exists');
+  brands.push(v);
+  // initialize categories container for brand
+  if(!categories[v]) categories[v] = [];
+  newBrandInput.value = "";
+  renderBrandsButtons();
+  populateAdminFormSelects();
+  populateCatBrandSelect();
+};
+
+/* Remove brand */
+window.removeBrand = function(e){
+  const name = e.currentTarget.dataset.brand;
+  if(!confirm('Delete brand "'+name+'"? This will NOT remove products automatically.')) return;
+  brands = brands.filter(b=>b!==name);
+  // remove categories mapping for that brand
+  delete categories[name];
+  // if products belong to that brand, keep them (per your request to not auto-delete)
+  renderBrandsButtons();
+  populateAdminFormSelects();
+  populateCatBrandSelect();
+  renderCategories(currentBrand);
+  renderProducts();
+};
+
+/* Add category (brand required) */
+addCategoryBtn.onclick = ()=>{
+  const brand = (catBrandSelect.value||"").trim();
+  const cat = (newCategoryInput.value||"").trim();
+  if(!brand) return alert('Select brand first');
+  if(!cat) return alert('Enter category name');
+  if(!categories[brand]) categories[brand] = [];
+  if(categories[brand].includes(cat)) return alert('Category already exists for this brand');
+  categories[brand].push(cat);
+  newCategoryInput.value = "";
+  renderCategoriesList(); // admin list
+  populateAdminFormSelects();
+  populateCatBrandSelect();
+  if(currentBrand === brand) renderCategories(brand);
+};
+
+/* Remove category (admin) */
+window.removeCategoryAdmin = function(e){
+  const brand = e.currentTarget.dataset.brand;
+  const cat = e.currentTarget.dataset.cat;
+  if(!confirm(`Delete category "${cat}" from brand "${brand}"?`)) return;
+  if(categories[brand]) categories[brand] = categories[brand].filter(c=>c!==cat);
+  renderCategoriesList();
+  populateAdminFormSelects();
+  if(currentBrand === brand) renderCategories(brand);
+};
+
+/* render categories list in admin */
+function renderCategoriesList(){
+  const rows = [];
+  for(const b of brands.filter(x=>x!=="All")){
+    const cats = categories[b] || [];
+    if(cats.length===0) continue;
+    rows.push(`<div style="margin-bottom:8px"><strong>${escapeHtml(b)}:</strong> ${cats.map(c=>`<span style="display:inline-block;margin-right:8px">${escapeHtml(c)} <button class="btn" data-brand="${escapeHtml(b)}" data-cat="${escapeHtml(c)}" onclick="removeCategoryAdmin(event)">Delete</button></span>`).join('')}</div>`);
+  }
+  categoriesList.innerHTML = rows.join('') || '<div style="color:#666">No categories yet</div>';
+}
+
+/* Admin product form helpers */
+function populateAdminFormSelects(){
+  // brands select for product form
+  pBrand.innerHTML = brands.filter(b=>b!=="All").map(b=>`<option>${escapeHtml(b)}</option>`).join('');
+  // categories select values collected from products + categories map
+  const allCats = Array.from(new Set(products.map(p=>p.category).concat([].concat(...Object.values(categories)))));
+  pCategory.innerHTML = allCats.map(c=>`<option>${escapeHtml(c)}</option>`).join('');
+}
+
+/* populate brand select for category admin */
+function populateCatBrandSelect(){
+  catBrandSelect.innerHTML = brands.filter(b=>b!=="All").map(b=>`<option>${escapeHtml(b)}</option>`).join('');
+}
+
+/* Add product */
+function defaultAddHandler(){
+  const name = (pTitle.value||"").trim();
+  const price = Number(pPrice.value) || 0;
+  const brandVal = (pBrand.value||"").trim();
+  const categoryVal = (pCategory.value||"").trim();
+  const img = (pImage.value||"").trim() || 'https://via.placeholder.com/400x300?text=No+Image';
+  const desc = (pDesc.value||"").trim();
+  if(!name || !brandVal || !categoryVal){ return alert('Please fill title, brand and category'); }
+  const newId = products.length? Math.max(...products.map(p=>p.id))+1 : 1;
+  products.push({id:newId,name,price,image:img,description:desc,brand:brandVal,category:categoryVal});
+  if(!brands.includes(brandVal)) {
+    brands.push(brandVal);
+    if(!categories[brandVal]) categories[brandVal] = [];
+  }
+  // ensure category present in categories map
+  if(!categories[brandVal]) categories[brandVal] = [];
+  if(categoryVal && !categories[brandVal].includes(categoryVal)) categories[brandVal].push(categoryVal);
+  clearForm();
+  populateAdminFormSelects();
+  refreshProductsTable();
+  renderBrandsButtons();
+  renderCategories(currentBrand);
+  renderProducts();
+}
+addProductBtn.onclick = defaultAddHandler;
+
+/* Clear form */
+clearFormBtn.onclick = ()=> clearForm();
+function clearForm(){
+  pTitle.value=''; pPrice.value=''; pImage.value=''; pDesc.value='';
+  if(pBrand.options.length) pBrand.selectedIndex = 0;
+  if(pCategory.options.length) pCategory.selectedIndex = 0;
+}
+
+/* Refresh products table */
+function refreshProductsTable(){
+  productsTableBody.innerHTML = products.map(p=>`<tr>
+    <td>${p.id}</td>
+    <td>${escapeHtml(p.name)}</td>
+    <td>${escapeHtml(p.brand)}</td>
+    <td>${escapeHtml(p.category)}</td>
+    <td>Rs. ${Number(p.price).toFixed(2)}</td>
+    <td class="inline">
+      <button class="btn" onclick="editProduct(${p.id})">Edit</button>
+      <button class="btn btn-danger" onclick="deleteProduct(${p.id})">Delete</button>
+    </td>
+  </tr>`).join('');
+}
+
+/* Edit product */
+window.editProduct = function(id){
+  const p = products.find(x=>x.id===id);
+  if(!p) return;
+  pTitle.value = p.name;
+  pPrice.value = p.price;
+  pImage.value = p.image;
+  pDesc.value = p.description;
+  populateAdminFormSelects();
+  // ensure brand exists in select
+  if([...pBrand.options].some(o=>o.value===p.brand)) pBrand.value = p.brand;
+  else { pBrand.innerHTML += `<option>${escapeHtml(p.brand)}</option>`; pBrand.value = p.brand; }
+  if([...pCategory.options].some(o=>o.value===p.category)) pCategory.value = p.category;
+  else { pCategory.innerHTML += `<option>${escapeHtml(p.category)}</option>`; pCategory.value = p.category; }
+  addProductBtn.textContent = 'Update Product';
+  addProductBtn.onclick = ()=>{
+    p.name = (pTitle.value||"").trim();
+    p.price = Number(pPrice.value) || 0;
+    p.image = (pImage.value||"").trim() || 'https://via.placeholder.com/400x300?text=No+Image';
+    p.description = (pDesc.value||"").trim();
+    p.brand = (pBrand.value||"").trim();
+    p.category = (pCategory.value||"").trim();
+    if(!p.name || !p.brand || !p.category) return alert('Please fill title, brand and category');
+    if(!brands.includes(p.brand)) brands.push(p.brand);
+    // ensure category mapping
+    if(!categories[p.brand]) categories[p.brand] = [];
+    if(p.category && !categories[p.brand].includes(p.category)) categories[p.brand].push(p.category);
+    populateAdminFormSelects();
+    addProductBtn.textContent = 'Add Product';
+    addProductBtn.onclick = defaultAddHandler;
+    clearForm();
+    refreshProductsTable();
+    renderBrandsButtons();
+    renderCategories(currentBrand);
+    renderProducts();
+  };
+};
+
+const defaultAddHandlerRef = defaultAddHandler;
+
+/* Delete product */
+window.deleteProduct = function(id){
+  if(!confirm('Delete product ID '+id+' ?')) return;
+  products = products.filter(p=>p.id!==id);
+  refreshProductsTable();
+  renderProducts();
+  renderCategories(currentBrand);
+};
+
+/* Reset demo data */
+resetBtn.onclick = ()=>{
+  if(!confirm('Reset demo data? This will replace current in-memory data.')) return;
+  products = [
+    {id:1,name:"M90 ANC Earphones",price:9340,image:"https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400",description:"High-quality ANC earphones",brand:"A4Tech",category:"Audio"},
+    {id:2,name:"M70 Gaming Mouse",price:8470,image:"https://images.unsplash.com/photo-1527814050087-3793815479db?w=400",description:"Gaming mouse",brand:"A4Tech",category:"Mouse"},
+    {id:3,name:"B1700 Combo Pack",price:6900,image:"https://images.unsplash.com/photo-1541140532154-b024d705b90a?w=400",description:"Keyboard + Mouse combo",brand:"A4Tech",category:"Keyboard"},
+    {id:4,name:"Bloody Headphones",price:8800,image:"https://images.unsplash.com/photo-1585298723682-7115561c51b7?w=400",description:"Gaming headset",brand:"Bloody",category:"Audio"},
+    {id:5,name:"BP-45 Mouse Pad",price:1380,image:"https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=400",description:"Waterproof Mouse Pad",brand:"Bloody",category:"Mousepad"}
+  ];
+  brands = ["All","A4Tech","Bloody"];
+  categories = {
+    "A4Tech": ["Audio","Mouse","Keyboard"],
+    "Bloody": ["Audio","Keyboard","Mousepad"]
+  };
+  cart = [];
+  currentBrand = "All";
+  currentCategory = "All";
+  renderBrandsButtons();
+  renderCategories(currentBrand);
+  renderProducts();
+  updateCart();
+  refreshProductsTable();
+  populateAdminFormSelects();
+  populateCatBrandSelect();
+  renderCategoriesList();
+};
+
+/* Apply Changes live */
+applyBtn.onclick = ()=>{
+  renderBrandsButtons();
+  renderCategories(currentBrand);
+  renderProducts();
+  updateCart();
+  renderCategoriesList();
+  alert('Changes applied to the live page.');
+};
+
+/* Download Updated HTML */
+downloadBtn.onclick = ()=>{ downloadUpdatedHTML(); };
+
+/* Build a single HTML string that embeds current 'products', 'brands', and 'categories' */
+function downloadUpdatedHTML(){
+  const data = { products: products, brands: brands, categories: categories };
+  const headContent = `
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>A4Tech Bloody Store</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+${getInlineStyles()}
+</style>`.trim();
+
+  const bodyContent = escapeBackticks(`
+<body>
+  <header>
+    <div class="container header-inner">
+      <h1>A4Tech Bloody Store</h1>
+      <div class="header-buttons">
+        <button id="themeBtn"><i class="fas fa-moon"></i> Dark</button>
+        <button id="viewBtn"><i class="fas fa-list"></i> List</button>
+      </div>
+    </div>
+  </header>
+  <div class="container">
+    <div class="brands" id="brandsContainer"></div>
+    <div class="categories" id="categories"></div>
+    <div class="products-grid" id="productsGrid"></div>
+    <div class="cart-section">
+      <h2>Your Cart</h2>
+      <div id="cartItems">Your cart is empty</div>
+      <div class="cart-total"><span>Total:</span><span id="cartTotal">Rs. 0.00</span></div>
+      <button class="checkout-btn" id="checkoutBtn"><i class="fab fa-whatsapp"></i> Checkout</button>
+    </div>
+  </div>
+
+  <script>
+    const products = ${JSON.stringify(data.products)};
+    const brands = ${JSON.stringify(data.brands)};
+    const categories = ${JSON.stringify(data.categories)};
+    ${getExportScript()}
+  <\/script>
+</body>
+  `);
+
+  const finalHtml = `<!doctype html><html lang="en"><head>${headContent}</head>${bodyContent}</html>`;
+  const blob = new Blob([finalHtml], {type: 'text/html'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'index.html';
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
+}
+
+function getInlineStyles(){
+  const styles = Array.from(document.querySelectorAll('style')).map(s=>s.innerText).join('\n');
+  return styles;
+}
+
+function getExportScript(){
+  return `
+  (function(){
+    function escapeHtml(s){return String(s).replace(/[&<>"]/g, function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+    const grid = document.getElementById('productsGrid');
+    const brandsContainer = document.getElementById('brandsContainer');
+    const categoriesContainer = document.getElementById('categories');
+    const cartItems = document.getElementById('cartItems');
+    const cartTotal = document.getElementById('cartTotal');
+    let currentBrand = 'All', currentCategory = 'All', cart = [];
+
+    function renderProducts(){
+      let list = products.slice();
+      if(currentBrand !== 'All') list = list.filter(p=>p.brand===currentBrand);
+      if(currentCategory !== 'All') list = list.filter(p=>p.category===currentCategory);
+      if(list.length===0){
+        grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;color:#666"><i class="fas fa-box-open" style="font-size:2rem"></i><div>No products</div></div>';
+        return;
+      }
+      grid.innerHTML = list.map(p=>\`<div class="product-card"><img src="\${escapeHtml(p.image)}" class="product-image" alt="\${escapeHtml(p.name)}"><div class="product-info"><h3 class="product-title">\${escapeHtml(p.name)}</h3><p class="product-description">\${escapeHtml(p.description)}</p><div style="display:flex;justify-content:space-between;align-items:center"><div class="product-price">Rs. \${Number(p.price).toFixed(2)}</div><div><button class="add-to-cart" onclick="addToCart(\${p.id})">Add to Cart</button></div></div></div></div>\`).join('');
+    }
+
+    function renderBrandsButtons(){
+      const unique = Array.from(new Set(brands.filter(b=>b!=='All')));
+      const list = ['All', ...unique];
+      brandsContainer.innerHTML = list.map(b=>\`<button class="brand-btn" data-brand="\${escapeHtml(b)}">\${escapeHtml(b)}</button>\`).join('');
+      document.querySelectorAll('.brand-btn').forEach(b=>{
+        b.onclick = ()=>{
+          document.querySelectorAll('.brand-btn').forEach(x=>x.classList.remove('active'));
+          b.classList.add('active');
+          currentBrand = b.dataset.brand;
+          currentCategory='All';
+          renderCategories(currentBrand);
+          renderProducts();
+        };
+      });
+    }
+
+    function renderCategories(brand){
+      if(!brand || brand==='All'){ categoriesContainer.innerHTML = ''; return;}
+      const cats = Array.from(new Set((categories[brand]||[])));
+      categoriesContainer.innerHTML = cats.map(c=>\`<button class="category-btn" data-cat="\${escapeHtml(c)}">\${escapeHtml(c)}</button>\`).join('');
+      document.querySelectorAll('.category-btn').forEach(btn=>{
+        btn.onclick = ()=>{
+          document.querySelectorAll('.category-btn').forEach(x=>x.classList.remove('active'));
+          btn.classList.add('active');
+          currentCategory = btn.dataset.cat;
+          renderProducts();
+        };
+      });
+    }
+
+    window.addToCart = function(id){
+      const p = products.find(x=>x.id===id);
+      if(!p) return;
+      const ex = cart.find(x=>x.id===id);
+      if(ex) ex.qty++; else cart.push({...p,qty:1});
+      updateCart();
+    };
+
+    function changeQty(id, delta){
+      const it = cart.find(x=>x.id===id);
+      if(!it) return;
+      it.qty += delta;
+      if(it.qty <= 0) cart = cart.filter(x=>x.id!==id);
+      updateCart();
+    }
+
+    function removeFromCart(id){ cart = cart.filter(x=>x.id!==id); updateCart(); }
+
+    function updateCart(){
+      if(!cart.length){ cartItems.innerHTML = 'Your cart is empty'; cartTotal.textContent='Rs. 0.00'; return; }
+      let total = 0;
+      cartItems.innerHTML = cart.map(i=>{
+        total += i.price * i.qty;
+        return '<div class=\"cart-item\"><img src=\"'+escapeHtml(i.image)+'\" class=\"cart-item-image\"><div style=\"flex:1\"><div style=\"font-weight:700\">'+escapeHtml(i.name)+'</div><div style=\"margin-top:6px;display:flex;align-items:center;gap:10px\"><div class=\"qty-controls\"><button class=\"qty-btn\" onclick=\"changeQty('+i.id+', -1)\"><i class=\"fas fa-minus\"></i></button><div style=\"min-width:30px;text-align:center;font-weight:600\">'+i.qty+'</div><button class=\"qty-btn\" onclick=\"changeQty('+i.id+', 1)\"><i class=\"fas fa-plus\"></i></button></div><div style=\"margin-left:12px;font-weight:700;color:var(--secondary)\">Rs. '+(Number(i.price*i.qty).toFixed(2))+'</div></div></div><div><button class=\"delete-btn\" onclick=\"removeFromCart('+i.id+')\"><i class=\"fas fa-trash\"></i></button></div></div>';
+      }).join('');
+      cartTotal.textContent = 'Rs. '+total.toFixed(2);
+    }
+
+    const themeBtn = document.getElementById('themeBtn');
+    const viewBtn = document.getElementById('viewBtn');
+    themeBtn.onclick = ()=>{ document.body.classList.toggle('dark'); themeBtn.innerHTML = document.body.classList.contains('dark')?'<i class=\"fas fa-sun\"></i> Light':'<i class=\"fas fa-moon\"></i> Dark';};
+    viewBtn.onclick = ()=>{ grid.classList.toggle('list-view'); viewBtn.innerHTML = grid.classList.contains('list-view')?'<i class=\"fas fa-th\"></i> Grid':'<i class=\"fas fa-list\"></i> List';};
+
+    renderBrandsButtons();
+    renderCategories('All');
+    renderProducts();
+  })();
+  `;
+}
+
+/* Utility helpers */
+function escapeHtml(s){ return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function escapeBackticks(s){ return s.replace(/`/g,'\\`'); }
+
+/* ========== Initialization ========== */
+(function init(){
+  renderBrandsButtons();
+  renderCategories(currentBrand);
+  renderProducts();
+  updateCart();
+  refreshProductsTable();
+  populateAdminFormSelects();
+  populateCatBrandSelect();
+  renderCategoriesList();
+})();
+
+/* ========== Extras: allow clicking outside admin to close ========== */
+adminModal.addEventListener('click', (e)=>{
+  if(e.target === adminModal){ closeAdmin(); }
+});
+
+/* ========== Checkout (existing behavior) ========== */
+document.getElementById('checkoutBtn').addEventListener('click', ()=>{
+  if(cart.length === 0){ alert('Your cart is empty!'); return; }
+  let message = "Hello! I'd like to place an order:%0A%0A";
+  let total = 0;
+  cart.forEach(item=>{ total += item.price*item.qty; message += `- ${item.name} (x${item.qty}) - Rs. ${item.price*item.qty}%0A`; });
+  message += `%0ATotal: Rs. ${total.toFixed(2)}`;
+  const phoneNumber = '1234567890'; // change to your number if needed
+  window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+});
+</script>
 </body>
 </html>
