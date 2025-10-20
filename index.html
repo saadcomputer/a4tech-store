@@ -3,9 +3,10 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>A4Tech Bloody Store</title>
+<title>A4Tech Bloody Store — Admin Ready</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
+/* ---------- Basic style (kept and extended from your original) ---------- */
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif}
 :root{
   --primary:#00AEEF;--secondary:#25D366;--accent:#FF6B35;
@@ -20,7 +21,7 @@ header{background:linear-gradient(135deg,var(--primary),#0088CC);color:white;pad
 .header-inner{display:flex;justify-content:space-between;align-items:center}
 header h1{font-size:1.8rem;font-weight:700}
 header .header-buttons{display:flex;gap:10px}
-header button{background:white;color:var(--primary);border:none;padding:8px 12px;border-radius:6px;font-weight:600;cursor:pointer;transition:0.3s}
+header button{background:white;color:var(--primary);border:none;padding:8px 12px;border-radius:6px;font-weight:600;cursor:pointer;transition:0.25s}
 header button:hover{background:var(--primary);color:white}
 
 /* Brand & Search */
@@ -66,14 +67,33 @@ header button:hover{background:var(--primary);color:white}
 .qty-btn{width:28px;height:28px;border-radius:6px;border:1px solid #ddd;background:white;cursor:pointer;display:inline-flex;align-items:center;justify-content:center}
 .delete-btn{background:none;border:none;color:#ff4d4f;cursor:pointer;font-size:1.1rem}
 
-/* Header Cart Icon */
-#cartIcon{display:none;position:relative}
-#cartIcon .count{position:absolute;top:-8px;right:-8px;background:#ff4d4f;color:white;border-radius:50%;padding:2px 6px;font-size:0.8rem}
+/* Admin Modal */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);display:none;align-items:center;justify-content:center;z-index:9999}
+.modal{width:95%;max-width:1000px;background:var(--card);border-radius:12px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,0.3)}
+.modal-header{display:flex;justify-content:space-between;align-items:center;padding:14px;border-bottom:1px solid #eee}
+.modal-body{padding:16px;max-height:70vh;overflow:auto}
+.modal-tabs{display:flex;gap:10px;border-bottom:1px solid #eee;padding-bottom:10px;margin-bottom:12px}
+.tab-btn{padding:8px 12px;border-radius:8px;border:none;background:#f1f1f1;cursor:pointer}
+.tab-btn.active{background:var(--primary);color:white}
+.form-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.input,select,textarea{padding:8px;border-radius:8px;border:1px solid #ccc;min-width:0}
+.table{width:100%;border-collapse:collapse}
+.table th, .table td{padding:8px;border-bottom:1px solid #eee;text-align:left}
+.small-btn{padding:6px 10px;border-radius:8px;border:none;cursor:pointer}
+.btn-danger{background:#ff4d4f;color:white}
+.btn-primary{background:var(--primary);color:white}
+.inline-actions{display:flex;gap:6px;align-items:center}
 
 /* Responsive */
 @media(max-width:700px){
   .brand-search-row{flex-direction:column;align-items:flex-start;gap:10px}
+  .modal{width:98%}
 }
+
+/* little helpers */
+.small-muted{font-size:0.85rem;color:#666}
+.flex{display:flex;gap:10px;align-items:center}
+.right{margin-left:auto}
 </style>
 </head>
 <body>
@@ -82,10 +102,10 @@ header button:hover{background:var(--primary);color:white}
   <div class="container header-inner">
     <h1>A4Tech Bloody Store</h1>
     <div class="header-buttons">
-      <button id="themeBtn"><i class="fas fa-moon"></i></button>
-      <button id="viewBtn"><i class="fas fa-list"></i></button>
-      <button id="cartIcon"><i class="fas fa-shopping-cart"></i><span class="count" id="cartCount">0</span></button>
-      <button id="openAdminBtn"><i class="fas fa-user-shield"></i></button>
+      <button id="themeBtn" title="Toggle theme"><i class="fas fa-moon"></i></button>
+      <button id="viewBtn" title="Toggle view"><i class="fas fa-list"></i></button>
+      <button id="cartIcon" title="Cart"><i class="fas fa-shopping-cart"></i><span class="count" id="cartCount">0</span></button>
+      <button id="openAdminBtn" title="Open Admin"><i class="fas fa-user-shield"></i> Admin</button>
     </div>
   </div>
 </header>
@@ -110,59 +130,268 @@ header button:hover{background:var(--primary);color:white}
     <button class="checkout-btn" id="checkoutBtn"><i class="fab fa-whatsapp"></i> Checkout</button>
   </div>
 
-  <!-- Admin modal etc. will come here (unchanged) -->
+</div>
+
+<!-- Admin Modal -->
+<div class="modal-overlay" id="adminModal">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="adminTitle">
+    <div class="modal-header">
+      <div>
+        <strong id="adminTitle">Admin Panel</strong>
+        <div class="small-muted">Manage products, brands & categories</div>
+      </div>
+      <div>
+        <button id="exportBtn" class="small-btn" title="Export data">Export JSON</button>
+        <button id="closeAdminBtn" class="small-btn btn-danger"><i class="fas fa-times"></i> Close</button>
+      </div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-tabs" id="modalTabs">
+        <button class="tab-btn active" data-tab="products">Products</button>
+        <button class="tab-btn" data-tab="brands">Brands</button>
+        <button class="tab-btn" data-tab="categories">Categories</button>
+        <button class="tab-btn" data-tab="import">Import</button>
+      </div>
+
+      <!-- PRODUCTS TAB -->
+      <div id="tab-products" class="tab-content">
+        <div style="display:flex;gap:10px;margin-bottom:8px;align-items:center">
+          <button class="small-btn btn-primary" id="addProductBtn"><i class="fas fa-plus"></i> Add Product</button>
+          <button class="small-btn" id="reloadDefaultsBtn" title="Load demo products">Load Demo</button>
+          <div class="small-muted right">Changes saved automatically to localStorage</div>
+        </div>
+
+        <div id="productFormWrap" style="margin-bottom:12px;display:none;border:1px solid #eee;padding:10px;border-radius:8px">
+          <h4 id="productFormTitle">Add Product</h4>
+          <div class="form-row">
+            <input id="pName" class="input" placeholder="Product name" />
+            <input id="pPrice" class="input" placeholder="Price (numbers only)" />
+            <input id="pImage" class="input" placeholder="Image URL" />
+          </div>
+          <div class="form-row">
+            <select id="pBrand" class="input"></select>
+            <select id="pCategory" class="input"></select>
+            <input id="pDesc" class="input" placeholder="Short description" />
+          </div>
+          <div style="display:flex;gap:8px;margin-top:8px">
+            <button id="saveProductBtn" class="small-btn btn-primary">Save</button>
+            <button id="cancelProductBtn" class="small-btn">Cancel</button>
+            <div class="small-muted right" id="productFormMsg"></div>
+          </div>
+        </div>
+
+        <div style="overflow:auto">
+          <table class="table" id="productsTable">
+            <thead>
+              <tr>
+                <th>Name</th><th>Brand</th><th>Category</th><th>Price</th><th>Actions</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- BRANDS TAB -->
+      <div id="tab-brands" class="tab-content" style="display:none">
+        <div style="display:flex;gap:8px;align-items:center;margin-bottom:10px">
+          <input id="newBrandInput" class="input" placeholder="New brand name" />
+          <button id="addBrandBtn" class="small-btn btn-primary">Add Brand</button>
+          <div class="small-muted">Add brand then assign categories to it below.</div>
+        </div>
+        <div style="overflow:auto">
+          <table class="table" id="brandsTable">
+            <thead><tr><th>Brand</th><th>Actions</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- CATEGORIES TAB -->
+      <div id="tab-categories" class="tab-content" style="display:none">
+        <div style="display:flex;gap:8px;align-items:center;margin-bottom:10px">
+          <select id="catBrandSelect" class="input"></select>
+          <input id="newCatInput" class="input" placeholder="New category for selected brand" />
+          <button id="addCatBtn" class="small-btn btn-primary">Add Category</button>
+        </div>
+        <div style="overflow:auto">
+          <table class="table" id="catsTable">
+            <thead><tr><th>Brand</th><th>Category</th><th>Actions</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- IMPORT TAB -->
+      <div id="tab-import" class="tab-content" style="display:none">
+        <div style="display:flex;gap:8px;flex-direction:column">
+          <div>
+            <label class="small-muted">Paste exported JSON here (products, brands, categories) and click Import</label>
+            <textarea id="importArea" style="width:100%;height:160px;padding:10px;border-radius:8px;border:1px solid #ccc"></textarea>
+          </div>
+          <div style="display:flex;gap:8px;margin-top:8px">
+            <button id="importBtn" class="small-btn btn-primary">Import</button>
+            <button id="clearStorageBtn" class="small-btn btn-danger">Clear Local Storage</button>
+            <button id="showStorageBtn" class="small-btn">Show Storage</button>
+          </div>
+          <div id="importMsg" class="small-muted" style="margin-top:6px"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
 
 <script>
-/* ===== ADMIN PASSWORD ===== */
+/* ----------------------------- ADMIN PASSWORD ----------------------------- */
 const ADMIN_PASSWORD = "2214721";
 
-/* ===== Demo data ===== */
-let products = [
+/* ----------------------------- Default Demo Data ----------------------------- */
+const DEMO_PRODUCTS = [
   {id:1,name:"M90 ANC Earphones",price:9340,image:"https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400",description:"High-quality ANC earphones",brand:"A4Tech",category:"Audio"},
   {id:2,name:"M70 Gaming Mouse",price:8470,image:"https://images.unsplash.com/photo-1527814050087-3793815479db?w=400",description:"Gaming mouse",brand:"A4Tech",category:"Mouse"},
   {id:3,name:"B1700 Combo Pack",price:6900,image:"https://images.unsplash.com/photo-1541140532154-b024d705b90a?w=400",description:"Keyboard + Mouse combo",brand:"A4Tech",category:"Keyboard"},
   {id:4,name:"Bloody Headphones",price:8800,image:"https://images.unsplash.com/photo-1585298723682-7115561c51b7?w=400",description:"Gaming headset",brand:"Bloody",category:"Audio"},
   {id:5,name:"BP-45 Mouse Pad",price:1380,image:"https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=400",description:"Waterproof Mouse Pad",brand:"Bloody",category:"Mousepad"}
 ];
-let brands = ["All","A4Tech","Bloody"];
-let categories = {
+const DEMO_BRANDS = ["All","A4Tech","Bloody"];
+const DEMO_CATEGORIES = {
   "A4Tech":["Audio","Mouse","Keyboard"],
   "Bloody":["Audio","Keyboard","Mousepad"]
 };
+
+/* ----------------------------- App State ----------------------------- */
+let products = [];
+let brands = [];
+let categories = {}; // {brand: [cat1,cat2]}
+
 let cart = [];
-let currentBrand="All",currentCategory="All",isList=false;
+let currentBrand = "All";
+let currentCategory = "All";
+let isList = false;
 
-/* ====== Elements ====== */
-const grid=document.getElementById("productsGrid");
-const brandsContainer=document.getElementById("brandsContainer");
-const categoriesContainer=document.getElementById("categories");
-const cartItems=document.getElementById("cartItems");
-const cartTotal=document.getElementById("cartTotal");
-const cartIcon=document.getElementById("cartIcon");
-const cartCount=document.getElementById("cartCount");
-const cartSection=document.getElementById("cartSection");
-const searchBox=document.getElementById("searchBox");
+/* ----------------------------- DOM refs ----------------------------- */
+const grid = document.getElementById("productsGrid");
+const brandsContainer = document.getElementById("brandsContainer");
+const categoriesContainer = document.getElementById("categories");
+const cartItems = document.getElementById("cartItems");
+const cartTotal = document.getElementById("cartTotal");
+const cartIcon = document.getElementById("cartIcon");
+const cartCount = document.getElementById("cartCount");
+const cartSection = document.getElementById("cartSection");
+const searchBox = document.getElementById("searchBox");
 
-/* ===== Render functions ===== */
+/* Admin modal elements */
+const adminModal = document.getElementById("adminModal");
+const closeAdminBtn = document.getElementById("closeAdminBtn");
+const openAdminBtn = document.getElementById("openAdminBtn");
+const modalTabs = document.getElementById("modalTabs");
+const tabButtons = modalTabs.querySelectorAll(".tab-btn");
+
+/* Products tab refs */
+const productsTableBody = document.querySelector("#productsTable tbody");
+const addProductBtn = document.getElementById("addProductBtn");
+const productFormWrap = document.getElementById("productFormWrap");
+const productFormTitle = document.getElementById("productFormTitle");
+const pName = document.getElementById("pName");
+const pPrice = document.getElementById("pPrice");
+const pImage = document.getElementById("pImage");
+const pBrand = document.getElementById("pBrand");
+const pCategory = document.getElementById("pCategory");
+const pDesc = document.getElementById("pDesc");
+const saveProductBtn = document.getElementById("saveProductBtn");
+const cancelProductBtn = document.getElementById("cancelProductBtn");
+const productFormMsg = document.getElementById("productFormMsg");
+const reloadDefaultsBtn = document.getElementById("reloadDefaultsBtn");
+
+/* Brands tab refs */
+const newBrandInput = document.getElementById("newBrandInput");
+const addBrandBtn = document.getElementById("addBrandBtn");
+const brandsTableBody = document.querySelector("#brandsTable tbody");
+
+/* Categories tab refs */
+const catBrandSelect = document.getElementById("catBrandSelect");
+const newCatInput = document.getElementById("newCatInput");
+const addCatBtn = document.getElementById("addCatBtn");
+const catsTableBody = document.querySelector("#catsTable tbody");
+
+/* Import tab refs */
+const importArea = document.getElementById("importArea");
+const importBtn = document.getElementById("importBtn");
+const clearStorageBtn = document.getElementById("clearStorageBtn");
+const showStorageBtn = document.getElementById("showStorageBtn");
+const importMsg = document.getElementById("importMsg");
+const exportBtn = document.getElementById("exportBtn");
+
+/* ----------------------------- Utilities ----------------------------- */
+function uid(){return Math.floor(Date.now() + Math.random()*9999);}
+
+function saveToStorage(){
+  localStorage.setItem("store_products", JSON.stringify(products));
+  localStorage.setItem("store_brands", JSON.stringify(brands));
+  localStorage.setItem("store_categories", JSON.stringify(categories));
+}
+
+function loadFromStorage(){
+  const p = localStorage.getItem("store_products");
+  const b = localStorage.getItem("store_brands");
+  const c = localStorage.getItem("store_categories");
+  if(p && b && c){
+    try{
+      products = JSON.parse(p);
+      brands = JSON.parse(b);
+      categories = JSON.parse(c);
+      return true;
+    }catch(e){
+      console.error("Failed to parse storage", e);
+    }
+  }
+  return false;
+}
+
+function loadDefaults(){
+  products = JSON.parse(JSON.stringify(DEMO_PRODUCTS));
+  brands = JSON.parse(JSON.stringify(DEMO_BRANDS));
+  categories = JSON.parse(JSON.stringify(DEMO_CATEGORIES));
+  saveToStorage();
+  renderAll();
+}
+
+/* ----------------------------- Render functions ----------------------------- */
 function renderBrands(){
-  brandsContainer.innerHTML='<button class="brand-btn '+(currentBrand=="All"?"active":"")+'" data-brand="All">All</button>'+
-    brands.filter(b=>b!=="All").map(b=>`<button class="brand-btn ${b===currentBrand?"active":""}" data-brand="${b}">${b}</button>`).join("");
+  // render brand buttons row (All + rest)
+  brandsContainer.innerHTML = brands.map(b => {
+    return `<button class="brand-btn ${b===currentBrand?'active':''}" data-brand="${b}">${b}</button>`;
+  }).join("");
+  // update brand selects in forms
+  pBrand.innerHTML = brands.filter(b=>b!=="All").map(b=>`<option value="${b}">${b}</option>`).join("");
+  // category brand select for category management
+  catBrandSelect.innerHTML = brands.filter(b=>b!=="All").map(b=>`<option value="${b}">${b}</option>`).join("");
 }
+
 function renderCategories(){
-  if(currentBrand==="All"){categoriesContainer.innerHTML="";return;}
-  const list=categories[currentBrand]||[];
-  categoriesContainer.innerHTML=list.map(c=>`<button class="category-btn ${c===currentCategory?"active":""}" data-cat="${c}">${c}</button>`).join("");
+  if(currentBrand==="All"){
+    categoriesContainer.innerHTML = "";
+    return;
+  }
+  const list = categories[currentBrand] || [];
+  categoriesContainer.innerHTML = list.map(c=>`<button class="category-btn ${c===currentCategory?'active':''}" data-cat="${c}">${c}</button>`).join("");
 }
+
 function renderProducts(){
-  let list=products.slice();
-  if(currentBrand!=="All") list=list.filter(p=>p.brand===currentBrand);
-  if(currentCategory!=="All") list=list.filter(p=>p.category===currentCategory);
-  const term=searchBox.value.trim().toLowerCase();
-  if(term) list=list.filter(p=>p.name.toLowerCase().includes(term)||p.description.toLowerCase().includes(term));
-  if(list.length===0){grid.innerHTML='<div style="text-align:center;padding:40px;color:#777"><i class="fas fa-box-open"></i><div>No products found</div></div>';return;}
+  let list = products.slice();
+  if(currentBrand!=="All") list = list.filter(p=>p.brand===currentBrand);
+  if(currentCategory!=="All") list = list.filter(p=>p.category===currentCategory);
+  const term = searchBox.value.trim().toLowerCase();
+  if(term) list = list.filter(p => (p.name||"").toLowerCase().includes(term) || (p.description||"").toLowerCase().includes(term));
+
+  if(list.length===0){
+    grid.innerHTML = '<div style="text-align:center;padding:40px;color:#777"><i class="fas fa-box-open"></i><div>No products found</div></div>';
+    return;
+  }
   if(isList){
     grid.classList.add("list-view");
-    grid.innerHTML=`<table style="width:100%;border-collapse:collapse">
+    grid.innerHTML = `<table style="width:100%;border-collapse:collapse">
       <tr style="background:var(--primary);color:white;text-align:left">
         <th style="padding:8px">Name</th>
         <th style="padding:8px">Brand</th>
@@ -179,22 +408,26 @@ function renderProducts(){
           <td style="padding:8px"><button class="add-to-cart" onclick="addToCart(${p.id})">Add</button></td>
         </tr>`).join("")}
     </table>`;
-  }else{
+  } else {
     grid.classList.remove("list-view");
-    grid.innerHTML=list.map(p=>`
+    grid.innerHTML = list.map(p=>`
       <div class="product-card">
-        <img src="${p.image}" class="product-image" alt="${p.name}">
+        <img src="${p.image||''}" class="product-image" alt="${p.name}" onerror="this.src='https://via.placeholder.com/400x200?text=No+Image'">
         <div class="product-info">
           <h3 class="product-title">${p.name}</h3>
-          <p class="product-description">${p.description}</p>
+          <p class="product-description">${p.description||''}</p>
           <div style="display:flex;justify-content:space-between;align-items:center">
-            <div class="product-price">Rs. ${p.price}</div>
+            <div style="display:flex;flex-direction:column">
+              <div class="small-muted">${p.brand} • ${p.category}</div>
+              <div class="product-price">Rs. ${p.price}</div>
+            </div>
             <button class="add-to-cart" onclick="addToCart(${p.id})">Add to Cart</button>
           </div>
         </div>
       </div>`).join("");
   }
 }
+
 function renderCart(){
   if(cart.length===0){
     cartItems.innerHTML="Your cart is empty";
@@ -204,8 +437,8 @@ function renderCart(){
     return;
   }
   cartIcon.style.display="inline-block";
-  cartCount.innerText=cart.reduce((a,c)=>a+c.qty,0);
-  cartItems.innerHTML=cart.map(item=>`
+  cartCount.innerText = cart.reduce((a,c)=>a+c.qty,0);
+  cartItems.innerHTML = cart.map(item=>`
     <div class="cart-item">
       <div style="flex:1">${item.name}</div>
       <div class="qty-controls">
@@ -216,68 +449,391 @@ function renderCart(){
       <div>Rs. ${(item.price*item.qty).toFixed(2)}</div>
       <button class="delete-btn" onclick="removeFromCart(${item.id})"><i class="fas fa-trash"></i></button>
     </div>`).join("");
-  const total=cart.reduce((a,c)=>a+c.price*c.qty,0);
-  cartTotal.innerText="Rs. "+total.toFixed(2);
+  const total = cart.reduce((a,c)=>a+c.price*c.qty,0);
+  cartTotal.innerText = "Rs. "+total.toFixed(2);
 }
 
-/* ===== Functions ===== */
+/* ----------------------------- Cart functions (same as before) ----------------------------- */
 function addToCart(id){
-  const prod=products.find(p=>p.id===id);
-  if(!prod)return;
-  const found=cart.find(c=>c.id===id);
-  if(found)found.qty++; else cart.push({...prod,qty:1});
+  const prod = products.find(p=>p.id===id);
+  if(!prod) return;
+  const found = cart.find(c=>c.id===id);
+  if(found) found.qty++; else cart.push({...prod,qty:1});
   renderCart();
 }
 function changeQty(id,delta){
-  const item=cart.find(c=>c.id===id);
-  if(!item)return;
-  item.qty+=delta;
-  if(item.qty<=0) cart=cart.filter(c=>c.id!==id);
+  const item = cart.find(c=>c.id===id);
+  if(!item) return;
+  item.qty += delta;
+  if(item.qty <= 0) cart = cart.filter(c=>c.id!==id);
   renderCart();
 }
 function removeFromCart(id){
-  cart=cart.filter(c=>c.id!==id);
+  cart = cart.filter(c=>c.id!==id);
   renderCart();
 }
-document.getElementById("checkoutBtn").onclick=()=>{
-  if(cart.length===0)return alert("Cart is empty!");
-  const msg=cart.map(c=>`${c.name} x${c.qty} = Rs.${c.price*c.qty}`).join("%0A");
-  const total=cart.reduce((a,c)=>a+c.price*c.qty,0);
-  const url=`https://wa.me/923332200318?text=🛍%20Order%20Details:%0A${msg}%0A%0ATotal:%20Rs.${total}`;
+document.getElementById("checkoutBtn").onclick = () => {
+  if(cart.length===0) return alert("Cart is empty!");
+  const msg = cart.map(c=>`${c.name} x${c.qty} = Rs.${c.price*c.qty}`).join("%0A");
+  const total = cart.reduce((a,c)=>a+c.price*c.qty,0);
+  const url = `https://wa.me/923332200318?text=🛍%20Order%20Details:%0A${msg}%0A%0ATotal:%20Rs.${total}`;
   window.open(url,"_blank");
 }
 
-/* ===== Event Listeners ===== */
-brandsContainer.addEventListener("click",e=>{
-  if(!e.target.matches(".brand-btn"))return;
-  currentBrand=e.target.dataset.brand;
-  currentCategory="All";
-  renderBrands();renderCategories();renderProducts();
+/* ----------------------------- Admin modal events & logic ----------------------------- */
+openAdminBtn.addEventListener("click", () => {
+  const pass = prompt("Enter admin password:");
+  if(pass === null) return;
+  if(pass === ADMIN_PASSWORD){
+    showAdminModal();
+  } else {
+    alert("Incorrect password!");
+  }
 });
-categoriesContainer.addEventListener("click",e=>{
-  if(!e.target.matches(".category-btn"))return;
-  currentCategory=e.target.dataset.cat;
-  renderCategories();renderProducts();
-});
-searchBox.addEventListener("input",()=>renderProducts());
 
-document.getElementById("viewBtn").onclick=()=>{
-  isList=!isList;
-  document.getElementById("viewBtn").innerHTML=isList?'<i class="fas fa-border-all"></i>':'<i class="fas fa-list"></i>';
+closeAdminBtn.addEventListener("click", () => {
+  hideAdminModal();
+});
+
+function showAdminModal(){
+  adminModal.style.display = "flex";
+  // default to products tab
+  setActiveTab("products");
+  refreshAdminLists();
+}
+
+function hideAdminModal(){
+  adminModal.style.display = "none";
+}
+
+/* Modal tab switching */
+modalTabs.addEventListener("click", (e) => {
+  if(!e.target.matches(".tab-btn")) return;
+  const tab = e.target.dataset.tab;
+  setActiveTab(tab);
+});
+function setActiveTab(tab){
+  tabButtons.forEach(b=>b.classList.toggle("active", b.dataset.tab===tab));
+  // hide/show content divs
+  document.querySelectorAll(".tab-content").forEach(div => div.style.display = "none");
+  const el = document.getElementById("tab-"+tab);
+  if(el) el.style.display = "block";
+  if(tab === "products"){
+    productFormWrap.style.display = "none";
+  }
+  if(tab === "categories"){
+    populateCatsTable();
+  }
+}
+
+/* ----------------------------- Admin: Products CRUD ----------------------------- */
+let editingProductId = null;
+
+addProductBtn.addEventListener("click", () => {
+  editingProductId = null;
+  productFormTitle.innerText = "Add Product";
+  pName.value = ""; pPrice.value = ""; pImage.value = ""; pDesc.value = "";
+  if(brands.length > 1) pBrand.value = brands[1]; // choose first real brand
+  pCategory.innerHTML = (categories[pBrand.value] || []).map(c=>`<option value="${c}">${c}</option>`).join("");
+  productFormMsg.innerText = "";
+  productFormWrap.style.display = "block";
+});
+
+pBrand.addEventListener("change", () => {
+  const list = categories[pBrand.value] || [];
+  pCategory.innerHTML = list.map(c=>`<option value="${c}">${c}</option>`).join("");
+});
+
+cancelProductBtn.addEventListener("click", () => {
+  productFormWrap.style.display = "none";
+});
+
+saveProductBtn.addEventListener("click", () => {
+  const name = pName.value.trim();
+  const price = parseFloat(pPrice.value);
+  const image = pImage.value.trim();
+  const desc = pDesc.value.trim();
+  const brandVal = pBrand.value;
+  const catVal = pCategory.value;
+
+  if(!name) { productFormMsg.innerText = "Name required"; return; }
+  if(Number.isNaN(price)) { productFormMsg.innerText = "Enter valid price"; return; }
+  if(!brandVal || brandVal==="All"){ productFormMsg.innerText = "Select brand"; return; }
+  if(!catVal){ productFormMsg.innerText = "Select category"; return; }
+
+  if(editingProductId){
+    // update
+    const idx = products.findIndex(p=>p.id===editingProductId);
+    if(idx>=0){
+      products[idx] = {...products[idx], name, price, image, description:desc, brand:brandVal, category:catVal};
+      productFormMsg.innerText = "Updated";
+    }
+  } else {
+    const newProd = {id: uid(), name, price, image, description:desc, brand:brandVal, category:catVal};
+    products.push(newProd);
+    productFormMsg.innerText = "Added";
+  }
+  saveToStorage();
+  renderAll();
+  productFormWrap.style.display = "none";
+  setTimeout(()=>productFormMsg.innerText="", 1500);
+});
+
+/* Render products table in admin */
+function populateProductsTable(){
+  productsTableBody.innerHTML = products.map(p=>`
+    <tr>
+      <td>${escapeHtml(p.name || "")}</td>
+      <td>${escapeHtml(p.brand || "")}</td>
+      <td>${escapeHtml(p.category || "")}</td>
+      <td>Rs. ${p.price}</td>
+      <td class="inline-actions">
+        <button class="small-btn" onclick="adminEditProduct(${p.id})"><i class="fas fa-edit"></i> Edit</button>
+        <button class="small-btn btn-danger" onclick="adminDeleteProduct(${p.id})"><i class="fas fa-trash"></i> Delete</button>
+      </td>
+    </tr>
+  `).join("");
+}
+
+/* Admin edit/delete callable from row buttons */
+window.adminEditProduct = function(id){
+  const prod = products.find(p=>p.id===id);
+  if(!prod) return alert("Product not found");
+  editingProductId = id;
+  productFormTitle.innerText = "Edit Product";
+  pName.value = prod.name;
+  pPrice.value = prod.price;
+  pImage.value = prod.image || "";
+  pDesc.value = prod.description || "";
+  // populate brand & categories selects
+  pBrand.innerHTML = brands.filter(b=>b!=="All").map(b=>`<option value="${b}" ${b===prod.brand?"selected":""}>${b}</option>`).join("");
+  pBrand.dispatchEvent(new Event('change'));
+  // ensure category exists
+  const list = categories[prod.brand] || [];
+  pCategory.innerHTML = list.map(c=>`<option value="${c}" ${c===prod.category?"selected":""}>${c}</option>`).join("");
+  productFormWrap.style.display = "block";
+  productFormMsg.innerText = "";
+};
+
+window.adminDeleteProduct = function(id){
+  if(!confirm("Delete product?")) return;
+  products = products.filter(p=>p.id!==id);
+  saveToStorage();
+  renderAll();
+};
+
+/* ----------------------------- Admin: Brands CRUD ----------------------------- */
+addBrandBtn.addEventListener("click", () => {
+  const q = newBrandInput.value.trim();
+  if(!q) return;
+  if(brands.includes(q)){
+    alert("Brand already exists");
+    return;
+  }
+  brands.push(q);
+  // create empty categories array for new brand
+  categories[q] = categories[q] || [];
+  saveToStorage();
+  newBrandInput.value = "";
+  refreshAdminLists();
+});
+
+/* populate brands table */
+function populateBrandsTable(){
+  brandsTableBody.innerHTML = brands.filter(b=>b!=="All").map(b=>`
+    <tr>
+      <td>${escapeHtml(b)}</td>
+      <td>
+        <button class="small-btn btn-danger" onclick="adminDeleteBrand('${escapeJs(b)}')"><i class="fas fa-trash"></i> Delete</button>
+      </td>
+    </tr>
+  `).join("");
+}
+
+/* Delete brand: remove brand and its categories; also remove brand from products */
+window.adminDeleteBrand = function(b){
+  if(!confirm("Delete brand and its categories? This will remove brand from products as well.")) return;
+  // remove from brands
+  brands = brands.filter(x=>x!==b);
+  // delete categories entry
+  delete categories[b];
+  // remove brand from products (set to All or remove product) - we'll remove products of that brand
+  products = products.filter(p=>p.brand !== b);
+  saveToStorage();
+  refreshAdminLists();
+  renderAll();
+};
+
+/* ----------------------------- Admin: Categories CRUD ----------------------------- */
+addCatBtn.addEventListener("click", () => {
+  const brand = catBrandSelect.value;
+  const cat = newCatInput.value.trim();
+  if(!brand) return alert("Select brand");
+  if(!cat) return;
+  categories[brand] = categories[brand] || [];
+  if(categories[brand].includes(cat)) return alert("Category exists");
+  categories[brand].push(cat);
+  newCatInput.value = "";
+  saveToStorage();
+  refreshAdminLists();
+});
+
+function populateCatsTable(){
+  // list all brand/category pairs
+  catsTableBody.innerHTML = Object.keys(categories).map(brand => {
+    return (categories[brand]||[]).map(cat => `
+      <tr>
+        <td>${escapeHtml(brand)}</td>
+        <td>${escapeHtml(cat)}</td>
+        <td><button class="small-btn btn-danger" onclick="adminDeleteCategory('${escapeJs(brand)}','${escapeJs(cat)}')"><i class="fas fa-trash"></i> Delete</button></td>
+      </tr>
+    `).join("");
+  }).join("");
+}
+
+window.adminDeleteCategory = function(brand,cat){
+  if(!confirm("Delete category? Products in this category will be removed.")) return;
+  categories[brand] = (categories[brand]||[]).filter(c=>c!==cat);
+  // remove products that used the deleted category
+  products = products.filter(p => !(p.brand===brand && p.category===cat));
+  saveToStorage();
+  refreshAdminLists();
+  renderAll();
+};
+
+/* ----------------------------- Import / Export / Storage tools ----------------------------- */
+exportBtn.addEventListener("click", () => {
+  const data = {products, brands, categories};
+  const blob = new Blob([JSON.stringify(data, null, 2)], {type:'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'store-export.json';
+  a.click();
+  URL.revokeObjectURL(url);
+});
+
+importBtn.addEventListener("click", () => {
+  const txt = importArea.value.trim();
+  if(!txt) return importMsg.innerText = "Paste JSON to import.";
+  try{
+    const obj = JSON.parse(txt);
+    if(!obj.products || !obj.brands || !obj.categories) return importMsg.innerText = "Invalid format. Expect {products, brands, categories}.";
+    products = obj.products;
+    brands = obj.brands;
+    categories = obj.categories;
+    saveToStorage();
+    importMsg.innerText = "Imported successfully.";
+    refreshAdminLists();
+    renderAll();
+  }catch(e){
+    importMsg.innerText = "Invalid JSON.";
+  }
+});
+
+clearStorageBtn.addEventListener("click", () => {
+  if(!confirm("Clear localStorage? This will reset data.")) return;
+  localStorage.removeItem("store_products");
+  localStorage.removeItem("store_brands");
+  localStorage.removeItem("store_categories");
+  loadDefaults();
+  alert("Storage cleared and demo data loaded.");
+});
+
+showStorageBtn.addEventListener("click", () => {
+  const data = {products, brands, categories};
+  alert(JSON.stringify(data, null, 2).slice(0,2000) + (JSON.stringify(data, null, 2).length>2000 ? "\n\n(too long, truncated)" : ""));
+});
+
+/* reload demo button */
+reloadDefaultsBtn.addEventListener("click", () => {
+  if(!confirm("Load demo products/brands/categories? This will overwrite current data.")) return;
+  loadDefaults();
+});
+
+/* ----------------------------- Helpers & render orchestration ----------------------------- */
+function refreshAdminLists(){
+  renderBrands();
+  renderCategories();
+  populateProductsTable();
+  populateBrandsTable();
+  populateCatsTable();
+}
+
+function renderAll(){
+  renderBrands();
+  renderCategories();
+  renderProducts();
+  renderCart();
+  populateProductsTable();
+  populateBrandsTable();
+  populateCatsTable();
+}
+
+/* escape helpers to avoid html injection in admin display */
+function escapeHtml(str){
+  if(!str) return "";
+  return str.replace(/[&<>"']/g, function(m){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]);});
+}
+function escapeJs(str){ return (str||"").replace(/'/g,"\\'").replace(/"/g,'\\"'); }
+
+/* ----------------------------- Init (load data) ----------------------------- */
+(function init(){
+  const ok = loadFromStorage();
+  if(!ok){
+    // first load: use demo
+    products = JSON.parse(JSON.stringify(DEMO_PRODUCTS));
+    brands = JSON.parse(JSON.stringify(DEMO_BRANDS));
+    categories = JSON.parse(JSON.stringify(DEMO_CATEGORIES));
+    saveToStorage();
+  } else {
+    // ensure "All" exists
+    if(!brands.includes("All")) brands.unshift("All");
+  }
+  renderAll();
+})();
+
+/* ----------------------------- UI events outside admin ----------------------------- */
+brandsContainer.addEventListener("click", e=>{
+  if(!e.target.matches(".brand-btn")) return;
+  currentBrand = e.target.dataset.brand;
+  currentCategory = "All";
+  renderBrands(); renderCategories(); renderProducts();
+});
+
+categoriesContainer.addEventListener("click", e=>{
+  if(!e.target.matches(".category-btn")) return;
+  currentCategory = e.target.dataset.cat;
+  renderCategories(); renderProducts();
+});
+
+searchBox.addEventListener("input", ()=>renderProducts());
+
+document.getElementById("viewBtn").onclick = ()=>{
+  isList = !isList;
+  document.getElementById("viewBtn").innerHTML = isList?'<i class="fas fa-border-all"></i>':'<i class="fas fa-list"></i>';
   renderProducts();
 };
-document.getElementById("themeBtn").onclick=()=>{
+document.getElementById("themeBtn").onclick = ()=>{
   document.body.classList.toggle("dark");
 };
-cartIcon.onclick=()=>{
-  cartSection.scrollIntoView({behavior:"smooth"});
-};
+cartIcon.onclick = ()=> cartSection.scrollIntoView({behavior:"smooth"});
 
-/* ===== Initialize ===== */
-renderBrands();
-renderCategories();
-renderProducts();
-renderCart();
+/* ----------------------------- Utility: re-render on storage change (optional) ----------------------------- */
+// If multiple windows/tabs update storage, reflect changes
+window.addEventListener("storage", (e)=>{
+  if(e.key && (e.key.startsWith("store_"))){
+    loadFromStorage();
+    renderAll();
+  }
+});
+
+/* ----------------------------- Minor safety: ensure global functions exist for inline onclicks ----------------------------- */
+window.addToCart = addToCart;
+window.changeQty = changeQty;
+window.removeFromCart = removeFromCart;
+
 </script>
 </body>
 </html>
+``
