@@ -27,32 +27,68 @@
       "brand": "Bloody",
       "category": "Audio"
     },
-        {
+    {
       "id": 17610474182288,
-      "name": "GH-30 ROGUE Gaming Case (5 RGB FANS)",
-      "price": 23200,
-      "image": "images/gh30.jpg",
-      "description": "4mm Tempered Glass Panels, 7 Expansion Slot, Maximize Cooling Airflow.",
+      "name": "B1700 Combo Set (B140 KEYBOARD ES7 MOUSE AND BP50M MOUSEPAD)",
+      "price": 6900,
+      "image": "images/b1700.jpg",
+      "description": "(Full Adjustable Neon Backlit Keyboard) (Mouse Sensor: PixArt Optical Engine, Resolution: 100~6,000 CPI) (Mousepad 350*280*3 mm)",
       "brand": "Bloody",
-      "category": "Others"
+      "category": "Keyboard"
     },
     {
       "id": 17610482027910,
-      "name": "M90 (ANC) Black+Red",
-      "price": 9350,
-      "image": "images/m90.jpg",
-      "description": "Bluetooth V5.1, Active Noise Cancellation, Independent Transmission, Game / Music Modes, ENC Noise Cancelling,  Wireless Charging",
+      "name": "5 AT75 ALPHA OPTICAL SWITCH (MECHANICAL) Voice-Activated LED Lighting Bar",
+      "price": 14600,
+      "image": "images/at75.jpg",
+      "description": "Switch Type: Linear, Durability: 100 Million Keystrokes, Initial Force: 48 ± 3 cN Min, Total Travel Distance: 3.8 ± 0.2 mm, Actuation Point Customization Range: 0.8 ~ 3.0 mm, Report Rate: 1000Hz/1ms, Keycaps: PBT Keycaps, Backlit: 7 RGB Backlit Effects",
       "brand": "Bloody",
-      "category": "Audio"
+      "category": "Keyboard"
     },
     {
       "id": 1761042936406,
-      "name": "M70 (ANC) Black+Red",
-      "price": 8470,
-      "image": "images/m70red.jpg",
-      "description": "Independent Transmission, , Game / Music Modes, Bluetooth V5.2, , TYPE-C, , ENC Noise Cancelling",
+      "name": "AT87 ALPHA RED SWITCH (MECHANICAL)",
+      "price": 11400,
+      "image": "images/at87.jpg",
+      "description": "Switch Type: Linear, Durability: 100 Million Keystrokes, Initial Force: 48 ± 3 cN Min, Total Travel Distance: 3.8 ± 0.2 mm, Actuation Point Customization Range: 0.8 ~ 3.0 mm, Report Rate: 1000Hz/1ms, Keycaps: PBT Keycaps, Backlit: 7 RGB Backlit Effects",
       "brand": "Bloody",
-      "category": "Audio"
+      "category": "Keyboard"
+    },
+    {
+      "id": 1761052860419,
+      "name": "AT98 ALPHA RED SWITCH (MECHANICAL)",
+      "price": 11800,
+      "image": "",
+      "description": "Switch Type: Linear, Durability: 100 Million Keystrokes, Initial Force: 48 ± 3 cN Min, Total Travel Distance: 3.8 ± 0.2 mm, Actuation Point Customization Range: 0.8 ~ 3.0 mm, Report Rate: 1000Hz/1ms, Keycaps: PBT Keycaps, Backlit: 7 RGB Backlit Effects",
+      "brand": "Bloody",
+      "category": "Keyboard"
+    },
+    {
+      "id": 1761052920144,
+      "name": "B135N",
+      "price": 3350,
+      "image": "b135n",
+      "description": "PERFORMANCE Report Rate: 1000Hz Backlit: Neon Water-Resistant: Double Secured Space-Bar: Screw Enhanced Connector: USB Cable Length: 1.8m Windows 7/ 8/ 8.1/ 10/ 11",
+      "brand": "Bloody",
+      "category": "Keyboard"
+    },
+    {
+      "id": 1761052981468,
+      "name": "B500N (BLACK)",
+      "price": 5600,
+      "image": "b500n",
+      "description": "Bloody Neon Mecha-Like Switch Gaming Keyboard USB Grey US Layout, Multi-Key Rollover, Centered Backlight Design, 1000Hz Report Rate, Screw Enhanced Space-Bar, Anti-Slippery Lift, Report Rate: 1000Hz Backlit：Neon, Water-Resistant：Double Secured, Space-Bar: Screw Enhanced, Connector: USB , Cable Length : 1.8m Windows 7/ 8 / 8.1 / 10",
+      "brand": "Bloody",
+      "category": "Keyboard"
+    },
+    {
+      "id": 1761053315257,
+      "name": "S87 RGB (ENERGY RED) RED SWITCH (MECHANICAL)",
+      "price": 10700,
+      "image": "s87red",
+      "description": "Hot-Swappable, Extreme Quiet Typing, Two Adjustable Feet, 10 Backlit Effects, 7 Game Modes Storage,3-Direction Cable Management, PERFORMANCE Key Style: BLMS Red Plus Switch, Key Response：1 ms, Connector: USB, Backlit: RGB, Cable Length: 1.8 m, Windows 7/ 8 /8.1 / 10 /11",
+      "brand": "Bloody",
+      "category": "Keyboard"
     }
   ],
   "brands": [
