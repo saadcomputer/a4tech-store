@@ -8,6 +8,24 @@
       "description": "4mm Tempered Glass Panels, 7 Expansion Slot, Maximize Cooling Airflow.",
       "brand": "Bloody",
       "category": "Others"
+    },
+    {
+      "id": 1761048027910,
+      "name": "M90 (ANC) Black+Red",
+      "price": 9350,
+      "image": "images/m90.jpg",
+      "description": "Bluetooth V5.1, Active Noise Cancellation, Independent Transmission, Game / Music Modes, ENC Noise Cancelling,  Wireless Charging",
+      "brand": "Bloody",
+      "category": "Audio"
+    },
+    {
+      "id": 1761049936406,
+      "name": "M70 (ANC) Black+Red",
+      "price": 8470,
+      "image": "images/m70red.jpg",
+      "description": "Independent Transmission, , Game / Music Modes, Bluetooth V5.2, , TYPE-C, , ENC Noise Cancelling",
+      "brand": "Bloody",
+      "category": "Audio"
     }
   ],
   "brands": [
