@@ -2,29 +2,29 @@
   "products": [
     {
       "id": 1,
-      "name": "M90",
-      "price": 90,
+      "name": "M9000",
+      "price": 90000,
       "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400",
       "description": "High-quality ANC earphones",
-      "brand": "Bloody",
+      "brand": "A4Tech",
       "category": "Audio"
     },
     {
       "id": 2,
-      "name": "M70",
-      "price": 70,
+      "name": "M7000",
+      "price": 700000,
       "image": "https://images.unsplash.com/photo-1527814050087-3793815479db?w=400",
       "description": "Gaming mouse",
-      "brand": "Bloody",
-      "category": "Audio"
+      "brand": "A4Tech",
+      "category": "Mouse"
     },
     {
       "id": 3,
-      "name": "B1700",
-      "price": 1700,
+      "name": "B1700 Combo Pack",
+      "price": 6900,
       "image": "https://images.unsplash.com/photo-1541140532154-b024d705b90a?w=400",
       "description": "Keyboard + Mouse combo",
-      "brand": "Bloody",
+      "brand": "A4Tech",
       "category": "Keyboard"
     },
     {
