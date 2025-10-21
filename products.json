@@ -6,7 +6,7 @@
       "price": 90,
       "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400",
       "description": "High-quality ANC earphones",
-      "brand": "A4Tech",
+      "brand": "Bloody",
       "category": "Audio"
     },
     {
@@ -20,11 +20,11 @@
     },
     {
       "id": 3,
-      "name": "B1700 Combo Pack",
-      "price": 6900,
+      "name": "B1700",
+      "price": 1700,
       "image": "https://images.unsplash.com/photo-1541140532154-b024d705b90a?w=400",
       "description": "Keyboard + Mouse combo",
-      "brand": "A4Tech",
+      "brand": "Bloody",
       "category": "Keyboard"
     },
     {
