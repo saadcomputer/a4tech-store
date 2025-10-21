@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>A4Tech Bloody List Dt 21-10-2025 </title>
+<title>A4Tech Bloody Products List</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
 /* ---------- Basic style (kept and extended from your original) ---------- */
@@ -18,8 +18,10 @@ body{background:var(--light);color:var(--text);transition:0.3s;line-height:1.6}
 
 /* Header */
 header{background:linear-gradient(135deg,var(--primary),#0088CC);color:white;padding:15px 0;box-shadow:0 4px 12px rgba(0,0,0,0.1)}
-.header-inner{display:flex;justify-content:space-between;align-items:center}
+.header-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}
+.header-left{display:flex;flex-direction:column}
 header h1{font-size:1.8rem;font-weight:700}
+header h2{font-size:0.95rem;font-weight:500;opacity:0.95;margin-top:4px}
 header .header-buttons{display:flex;gap:10px}
 header button{background:white;color:var(--primary);border:none;padding:8px 12px;border-radius:6px;font-weight:600;cursor:pointer;transition:0.25s}
 header button:hover{background:var(--primary);color:white}
@@ -100,7 +102,11 @@ header button:hover{background:var(--primary);color:white}
 
 <header>
   <div class="container header-inner">
-    <h1>A4Tech Bloody List</h1>
+    <div class="header-left">
+      <h1>A4Tech Bloody Products List</h1>
+      <!-- Manual editable subtitle: change this text directly in the HTML when you want to update the date -->
+      <h2 id="manualLastUpdated">Last Updated: 21-Oct-2025</h2>
+    </div>
     <div class="header-buttons">
       <button id="themeBtn" title="Toggle theme"><i class="fas fa-moon"></i></button>
       <button id="viewBtn" title="Toggle view"><i class="fas fa-list"></i></button>
@@ -158,7 +164,7 @@ header button:hover{background:var(--primary);color:white}
         <div style="display:flex;gap:10px;margin-bottom:8px;align-items:center">
           <button class="small-btn btn-primary" id="addProductBtn"><i class="fas fa-plus"></i> Add Product</button>
           <button class="small-btn" id="reloadDefaultsBtn" title="Load demo products">Load Demo</button>
-          <div class="small-muted right">Changes saved automatically to localStorage</div>
+          <div class="small-muted right">Use Export to publish changes to products.json</div>
         </div>
 
         <div id="productFormWrap" style="margin-bottom:12px;display:none;border:1px solid #eee;padding:10px;border-radius:8px">
@@ -209,18 +215,18 @@ header button:hover{background:var(--primary);color:white}
 
       <!-- CATEGORIES TAB -->
       <div id="tab-categories" class="tab-content" style="display:none">
-        <div style="display:flex;gap:8px;align-items:center;margin-bottom:10px">
-          <select id="catBrandSelect" class="input"></select>
-          <input id="newCatInput" class="input" placeholder="New category for selected brand" />
-          <button id="addCatBtn" class="small-btn btn-primary">Add Category</button>
-        </div>
-        <div style="overflow:auto">
-          <table class="table" id="catsTable">
-            <thead><tr><th>Brand</th><th>Category</th><th>Actions</th></tr></thead>
-            <tbody></tbody>
-          </table>
-        </div>
-      </div>
+    <div style="display:flex;gap:8px;align-items:center;margin-bottom:10px">
+      <select id="catBrandSelect" class="input"></select>
+      <input id="newCatInput" class="input" placeholder="New category for selected brand" />
+      <button id="addCatBtn" class="small-btn btn-primary">Add Category</button>
+    </div>
+    <div style="overflow:auto">
+      <table class="table" id="catsTable">
+        <thead><tr><th>Brand</th><th>Category</th><th>Actions</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
 
       <!-- IMPORT TAB -->
       <div id="tab-import" class="tab-content" style="display:none">
@@ -246,7 +252,7 @@ header button:hover{background:var(--primary);color:white}
 /* ----------------------------- ADMIN PASSWORD ----------------------------- */
 const ADMIN_PASSWORD = "2214721";
 
-/* ----------------------------- Default Demo Data ----------------------------- */
+/* ----------------------------- Default Demo Data (fallback only) ----------------------------- */
 const DEMO_PRODUCTS = [
   {id:1,name:"M90 ANC Earphones",price:9340,image:"https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400",description:"High-quality ANC earphones",brand:"A4Tech",category:"Audio"},
   {id:2,name:"M70 Gaming Mouse",price:8470,image:"https://images.unsplash.com/photo-1527814050087-3793815479db?w=400",description:"Gaming mouse",brand:"A4Tech",category:"Mouse"},
@@ -326,83 +332,42 @@ const exportBtn = document.getElementById("exportBtn");
 /* ----------------------------- Utilities ----------------------------- */
 function uid(){return Math.floor(Date.now() + Math.random()*9999);}
 
-function saveToStorage(){
-  localStorage.setItem("store_products", JSON.stringify(products));
-  localStorage.setItem("store_brands", JSON.stringify(brands));
-  localStorage.setItem("store_categories", JSON.stringify(categories));
-}
+// disable localStorage persistence - we use products.json as source of truth
+function saveToStorage(){ /* intentionally empty - do not persist to localStorage */ }
 
 function loadFromStorage(){
-  const p = localStorage.getItem("store_products");
-  const b = localStorage.getItem("store_brands");
-  const c = localStorage.getItem("store_categories");
-  if(p && b && c){
-    try{
-      products = JSON.parse(p);
-      brands = JSON.parse(b);
-      categories = JSON.parse(c);
-      return true;
-    }catch(e){
-      console.error("Failed to parse storage", e);
-    }
-  }
+  // kept for fallback but not used as primary; returns false to indicate not used
   return false;
 }
 
-/* ----------------------------- NEW: load from products.json (instead of localStorage) ----------------------------- */
+/* ----------------------------- Load from products.json (primary source) ----------------------------- */
 async function loadFromJSON(){
   try{
-    const resp = await fetch('products.json?' + new Date().getTime());
+    const resp = await fetch('products.json?nocache=' + new Date().getTime());
     if(!resp.ok) throw new Error('Fetch failed: ' + resp.status);
     const data = await resp.json();
-    // adopt structure from your exported JSON
     products = data.products || [];
     brands = data.brands || [];
     categories = data.categories || {};
-    // ensure "All" present
     if(!brands.includes("All")) brands.unshift("All");
-    // set last updated text (use response headers date if present, otherwise now)
-    const updatedEl = document.getElementById('lastUpdated');
-    try {
-      // try to parse Last-Modified header if server provides it
-      const lm = resp.headers.get('Last-Modified');
-      if(lm){
-        updatedEl.innerText = 'Last Updated: ' + new Date(lm).toLocaleString();
-      } else {
-        updatedEl.innerText = 'Last Updated: ' + new Date().toLocaleString();
-      }
-    } catch(e){
-      updatedEl.innerText = 'Last Updated: ' + new Date().toLocaleString();
-    }
+    // render using loaded data
     renderAll();
   }catch(err){
     console.error('Failed loading products.json', err);
-    // fallback to localStorage or demo if JSON not available
-    const ok = loadFromStorage();
-    if(ok){
-      document.getElementById('lastUpdated').innerText = 'Last Updated: (from localStorage)';
-      renderAll();
-    } else {
-      // use demo defaults
-      products = JSON.parse(JSON.stringify(DEMO_PRODUCTS));
-      brands = JSON.parse(JSON.stringify(DEMO_BRANDS));
-      categories = JSON.parse(JSON.stringify(DEMO_CATEGORIES));
-      saveToStorage();
-      document.getElementById('lastUpdated').innerText = 'Last Updated: (default demo)';
-      renderAll();
-    }
+    // fallback to demo data only (and render)
+    products = JSON.parse(JSON.stringify(DEMO_PRODUCTS));
+    brands = JSON.parse(JSON.stringify(DEMO_BRANDS));
+    categories = JSON.parse(JSON.stringify(DEMO_CATEGORIES));
+    renderAll();
   }
 }
 
 /* ----------------------------- Render functions ----------------------------- */
 function renderBrands(){
-  // render brand buttons row (All + rest)
   brandsContainer.innerHTML = brands.map(b => {
     return `<button class="brand-btn ${b===currentBrand?'active':''}" data-brand="${b}">${b}</button>`;
   }).join("");
-  // update brand selects in forms
   pBrand.innerHTML = brands.filter(b=>b!=="All").map(b=>`<option value="${b}">${b}</option>`).join("");
-  // category brand select for category management
   catBrandSelect.innerHTML = brands.filter(b=>b!=="All").map(b=>`<option value="${b}">${b}</option>`).join("");
 }
 
@@ -490,7 +455,7 @@ function renderCart(){
   cartTotal.innerText = "Rs. "+total.toFixed(2);
 }
 
-/* ----------------------------- Cart functions (same as before) ----------------------------- */
+/* ----------------------------- Cart functions ----------------------------- */
 function addToCart(id){
   const prod = products.find(p=>p.id===id);
   if(!prod) return;
@@ -534,7 +499,6 @@ closeAdminBtn.addEventListener("click", () => {
 
 function showAdminModal(){
   adminModal.style.display = "flex";
-  // default to products tab
   setActiveTab("products");
   refreshAdminLists();
 }
@@ -551,7 +515,6 @@ modalTabs.addEventListener("click", (e) => {
 });
 function setActiveTab(tab){
   tabButtons.forEach(b=>b.classList.toggle("active", b.dataset.tab===tab));
-  // hide/show content divs
   document.querySelectorAll(".tab-content").forEach(div => div.style.display = "none");
   const el = document.getElementById("tab-"+tab);
   if(el) el.style.display = "block";
@@ -570,7 +533,7 @@ addProductBtn.addEventListener("click", () => {
   editingProductId = null;
   productFormTitle.innerText = "Add Product";
   pName.value = ""; pPrice.value = ""; pImage.value = ""; pDesc.value = "";
-  if(brands.length > 1) pBrand.value = brands[1]; // choose first real brand
+  if(brands.length > 1) pBrand.value = brands[1];
   pCategory.innerHTML = (categories[pBrand.value] || []).map(c=>`<option value="${c}">${c}</option>`).join("");
   productFormMsg.innerText = "";
   productFormWrap.style.display = "block";
@@ -599,7 +562,6 @@ saveProductBtn.addEventListener("click", () => {
   if(!catVal){ productFormMsg.innerText = "Select category"; return; }
 
   if(editingProductId){
-    // update
     const idx = products.findIndex(p=>p.id===editingProductId);
     if(idx>=0){
       products[idx] = {...products[idx], name, price, image, description:desc, brand:brandVal, category:catVal};
@@ -610,7 +572,7 @@ saveProductBtn.addEventListener("click", () => {
     products.push(newProd);
     productFormMsg.innerText = "Added";
   }
-  saveToStorage();
+  // do NOT persist to localStorage; user should Export JSON to publish changes
   renderAll();
   productFormWrap.style.display = "none";
   setTimeout(()=>productFormMsg.innerText="", 1500);
@@ -642,10 +604,8 @@ window.adminEditProduct = function(id){
   pPrice.value = prod.price;
   pImage.value = prod.image || "";
   pDesc.value = prod.description || "";
-  // populate brand & categories selects
   pBrand.innerHTML = brands.filter(b=>b!=="All").map(b=>`<option value="${b}" ${b===prod.brand?"selected":""}>${b}</option>`).join("");
   pBrand.dispatchEvent(new Event('change'));
-  // ensure category exists
   const list = categories[prod.brand] || [];
   pCategory.innerHTML = list.map(c=>`<option value="${c}" ${c===prod.category?"selected":""}>${c}</option>`).join("");
   productFormWrap.style.display = "block";
@@ -655,7 +615,6 @@ window.adminEditProduct = function(id){
 window.adminDeleteProduct = function(id){
   if(!confirm("Delete product?")) return;
   products = products.filter(p=>p.id!==id);
-  saveToStorage();
   renderAll();
 };
 
@@ -668,9 +627,7 @@ addBrandBtn.addEventListener("click", () => {
     return;
   }
   brands.push(q);
-  // create empty categories array for new brand
   categories[q] = categories[q] || [];
-  saveToStorage();
   newBrandInput.value = "";
   refreshAdminLists();
 });
@@ -690,13 +647,9 @@ function populateBrandsTable(){
 /* Delete brand: remove brand and its categories; also remove brand from products */
 window.adminDeleteBrand = function(b){
   if(!confirm("Delete brand and its categories? This will remove brand from products as well.")) return;
-  // remove from brands
   brands = brands.filter(x=>x!==b);
-  // delete categories entry
   delete categories[b];
-  // remove brand from products (set to All or remove product) - we'll remove products of that brand
   products = products.filter(p=>p.brand !== b);
-  saveToStorage();
   refreshAdminLists();
   renderAll();
 };
@@ -711,12 +664,10 @@ addCatBtn.addEventListener("click", () => {
   if(categories[brand].includes(cat)) return alert("Category exists");
   categories[brand].push(cat);
   newCatInput.value = "";
-  saveToStorage();
   refreshAdminLists();
 });
 
 function populateCatsTable(){
-  // list all brand/category pairs
   catsTableBody.innerHTML = Object.keys(categories).map(brand => {
     return (categories[brand]||[]).map(cat => `
       <tr>
@@ -731,14 +682,12 @@ function populateCatsTable(){
 window.adminDeleteCategory = function(brand,cat){
   if(!confirm("Delete category? Products in this category will be removed.")) return;
   categories[brand] = (categories[brand]||[]).filter(c=>c!==cat);
-  // remove products that used the deleted category
   products = products.filter(p => !(p.brand===brand && p.category===cat));
-  saveToStorage();
   refreshAdminLists();
   renderAll();
 };
 
-/* ----------------------------- Import / Export / Storage tools ----------------------------- */
+/* ----------------------------- Import / Export ----------------------------- */
 exportBtn.addEventListener("click", () => {
   const data = {products, brands, categories};
   const blob = new Blob([JSON.stringify(data, null, 2)], {type:'application/json'});
@@ -759,22 +708,22 @@ importBtn.addEventListener("click", () => {
     products = obj.products;
     brands = obj.brands;
     categories = obj.categories;
-    saveToStorage();
-    importMsg.innerText = "Imported successfully.";
     refreshAdminLists();
     renderAll();
+    importMsg.innerText = "Imported to current session (not saved to server).";
   }catch(e){
     importMsg.innerText = "Invalid JSON.";
   }
 });
 
 clearStorageBtn.addEventListener("click", () => {
-  if(!confirm("Clear localStorage? This will reset data.")) return;
-  localStorage.removeItem("store_products");
-  localStorage.removeItem("store_brands");
-  localStorage.removeItem("store_categories");
-  loadDefaults();
-  alert("Storage cleared and demo data loaded.");
+  if(!confirm("Reset data to demo defaults?")) return;
+  products = JSON.parse(JSON.stringify(DEMO_PRODUCTS));
+  brands = JSON.parse(JSON.stringify(DEMO_BRANDS));
+  categories = JSON.parse(JSON.stringify(DEMO_CATEGORIES));
+  refreshAdminLists();
+  renderAll();
+  alert("Reset to demo data (local only).");
 });
 
 showStorageBtn.addEventListener("click", () => {
@@ -785,7 +734,11 @@ showStorageBtn.addEventListener("click", () => {
 /* reload demo button */
 reloadDefaultsBtn.addEventListener("click", () => {
   if(!confirm("Load demo products/brands/categories? This will overwrite current data.")) return;
-  loadDefaults();
+  products = JSON.parse(JSON.stringify(DEMO_PRODUCTS));
+  brands = JSON.parse(JSON.stringify(DEMO_BRANDS));
+  categories = JSON.parse(JSON.stringify(DEMO_CATEGORIES));
+  refreshAdminLists();
+  renderAll();
 });
 
 /* ----------------------------- Helpers & render orchestration ----------------------------- */
@@ -807,7 +760,7 @@ function renderAll(){
   populateCatsTable();
 }
 
-/* escape helpers to avoid html injection in admin display */
+/* escape helpers */
 function escapeHtml(str){
   if(!str) return "";
   return str.replace(/[&<>"']/g, function(m){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]);});
@@ -816,7 +769,7 @@ function escapeJs(str){ return (str||"").replace(/'/g,"\\'").replace(/"/g,'\\"')
 
 /* ----------------------------- Init (load data) ----------------------------- */
 (function init(){
-  // Load data from products.json (if available). This replaces previous localStorage-first behavior.
+  // primary source = products.json in same folder
   loadFromJSON();
 })();
 
@@ -846,16 +799,7 @@ document.getElementById("themeBtn").onclick = ()=>{
 };
 cartIcon.onclick = ()=> cartSection.scrollIntoView({behavior:"smooth"});
 
-/* ----------------------------- Utility: re-render on storage change (optional) ----------------------------- */
-// If multiple windows/tabs update storage, reflect changes
-window.addEventListener("storage", (e)=>{
-  if(e.key && (e.key.startsWith("store_"))){
-    loadFromStorage();
-    renderAll();
-  }
-});
-
-/* ----------------------------- Minor safety: ensure global functions exist for inline onclicks ----------------------------- */
+/* ensure global functions exist for inline onclicks */
 window.addToCart = addToCart;
 window.changeQty = changeQty;
 window.removeFromCart = removeFromCart;
