@@ -2,48 +2,12 @@
   "products": [
     {
       "id": 1,
-      "name": "M9000",
-      "price": 90000,
-      "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400",
-      "description": "High-quality ANC earphones",
-      "brand": "A4Tech",
-      "category": "Audio"
-    },
-    {
-      "id": 2,
-      "name": "M7000",
-      "price": 700000,
-      "image": "https://images.unsplash.com/photo-1527814050087-3793815479db?w=400",
-      "description": "Gaming mouse",
-      "brand": "A4Tech",
-      "category": "Mouse"
-    },
-    {
-      "id": 3,
-      "name": "B1700 Combo Pack",
-      "price": 6900,
-      "image": "https://images.unsplash.com/photo-1541140532154-b024d705b90a?w=400",
-      "description": "Keyboard + Mouse combo",
-      "brand": "A4Tech",
-      "category": "Keyboard"
-    },
-    {
-      "id": 4,
-      "name": "Bloody Headphones",
-      "price": 8800,
-      "image": "https://images.unsplash.com/photo-1585298723682-7115561c51b7?w=400",
-      "description": "Gaming headset",
+      "name": "1 GH-30 ROGUE Gaming Case (5 RGB FANS)",
+      "price": 23200,
+      "image": "https://img.bloody.com/en/uploadfile/image/20210308/20210308103518_58688.jpg",
+      "description": "4mm Tempered Glass Panels, 7 Expansion Slot, Maximize Cooling Airflow, Motherboards: Standard ATX, Micro-ATX, ITX, Power Supply: ATX Power, Video Card: Up to 310 mm (Length), Expansion Slot: 7 Slots, CPU Cooler: Up to 165 mm (Height),Input / Output Panel: HD Audio, USB 3.0*1, USB2.0*1, Hardware Space: 3.5\" HDD*1 & 2.5”SSD*1, Airflow / Liquid Cooler System: Front 120 mm Fan*3 / Rear 120 mm Fan*2/ Top 120 mm Fan*2 or 240 mm Liquid Radiator (Pre-Installed 5 RGB 120mm Fans: Front*2, Rear*2, Top*1)",
       "brand": "Bloody",
-      "category": "Audio"
-    },
-    {
-      "id": 5,
-      "name": "BP-45 Mouse Pad",
-      "price": 1380,
-      "image": "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=400",
-      "description": "Waterproof Mouse Pad",
-      "brand": "Bloody",
-      "category": "Mousepad"
+      "category": "Others"
     }
   ],
   "brands": [
@@ -55,12 +19,16 @@
     "A4Tech": [
       "Audio",
       "Mouse",
-      "Keyboard"
+      "Keyboard",
+      "Webcam",
+      "Others"
     ],
     "Bloody": [
       "Audio",
       "Keyboard",
-      "Mousepad"
+      "Mousepad",
+      "Mouse",
+      "Others"
     ]
   }
 }
