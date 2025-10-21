@@ -1,11 +1,11 @@
 {
   "products": [
     {
-      "id": 1,
+      "id": 1761047418288,
       "name": "GH-30 ROGUE Gaming Case (5 RGB FANS)",
       "price": 23200,
       "image": "images/gh30.jpg",
-      "description": "4mm Tempered Glass Panels, 7 Expansion Slot, Maximize Cooling Airflow.
+      "description": "4mm Tempered Glass Panels, 7 Expansion Slot, Maximize Cooling Airflow.",
       "brand": "Bloody",
       "category": "Others"
     }
@@ -19,15 +19,12 @@
     "A4Tech": [
       "Audio",
       "Mouse",
-      "Keyboard",
-      "Webcam",
-      "Others"
+      "Keyboard"
     ],
     "Bloody": [
       "Audio",
       "Keyboard",
       "Mousepad",
-      "Mouse",
       "Others"
     ]
   }
