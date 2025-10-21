@@ -111,6 +111,8 @@ header button:hover{background:var(--primary);color:white}
 </header>
 
 <div class="container">
+  <!-- Last Updated (added) -->
+  <div id="lastUpdated" style="text-align:right;font-size:0.95rem;color:#fff;margin-top:8px;padding:6px 0;"></div>
 
   <div class="brand-search-row">
     <div class="brands" id="brandsContainer">
@@ -349,12 +351,49 @@ function loadFromStorage(){
   return false;
 }
 
-function loadDefaults(){
-  products = JSON.parse(JSON.stringify(DEMO_PRODUCTS));
-  brands = JSON.parse(JSON.stringify(DEMO_BRANDS));
-  categories = JSON.parse(JSON.stringify(DEMO_CATEGORIES));
-  saveToStorage();
-  renderAll();
+/* ----------------------------- NEW: load from products.json (instead of localStorage) ----------------------------- */
+async function loadFromJSON(){
+  try{
+    const resp = await fetch('products.json?' + new Date().getTime());
+    if(!resp.ok) throw new Error('Fetch failed: ' + resp.status);
+    const data = await resp.json();
+    // adopt structure from your exported JSON
+    products = data.products || [];
+    brands = data.brands || [];
+    categories = data.categories || {};
+    // ensure "All" present
+    if(!brands.includes("All")) brands.unshift("All");
+    // set last updated text (use response headers date if present, otherwise now)
+    const updatedEl = document.getElementById('lastUpdated');
+    try {
+      // try to parse Last-Modified header if server provides it
+      const lm = resp.headers.get('Last-Modified');
+      if(lm){
+        updatedEl.innerText = 'Last Updated: ' + new Date(lm).toLocaleString();
+      } else {
+        updatedEl.innerText = 'Last Updated: ' + new Date().toLocaleString();
+      }
+    } catch(e){
+      updatedEl.innerText = 'Last Updated: ' + new Date().toLocaleString();
+    }
+    renderAll();
+  }catch(err){
+    console.error('Failed loading products.json', err);
+    // fallback to localStorage or demo if JSON not available
+    const ok = loadFromStorage();
+    if(ok){
+      document.getElementById('lastUpdated').innerText = 'Last Updated: (from localStorage)';
+      renderAll();
+    } else {
+      // use demo defaults
+      products = JSON.parse(JSON.stringify(DEMO_PRODUCTS));
+      brands = JSON.parse(JSON.stringify(DEMO_BRANDS));
+      categories = JSON.parse(JSON.stringify(DEMO_CATEGORIES));
+      saveToStorage();
+      document.getElementById('lastUpdated').innerText = 'Last Updated: (default demo)';
+      renderAll();
+    }
+  }
 }
 
 /* ----------------------------- Render functions ----------------------------- */
@@ -708,7 +747,7 @@ exportBtn.addEventListener("click", () => {
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
-  a.download = 'store-export.json';
+  a.download = 'products.json';
   a.click();
   URL.revokeObjectURL(url);
 });
@@ -779,18 +818,8 @@ function escapeJs(str){ return (str||"").replace(/'/g,"\\'").replace(/"/g,'\\"')
 
 /* ----------------------------- Init (load data) ----------------------------- */
 (function init(){
-  const ok = loadFromStorage();
-  if(!ok){
-    // first load: use demo
-    products = JSON.parse(JSON.stringify(DEMO_PRODUCTS));
-    brands = JSON.parse(JSON.stringify(DEMO_BRANDS));
-    categories = JSON.parse(JSON.stringify(DEMO_CATEGORIES));
-    saveToStorage();
-  } else {
-    // ensure "All" exists
-    if(!brands.includes("All")) brands.unshift("All");
-  }
-  renderAll();
+  // Load data from products.json (if available). This replaces previous localStorage-first behavior.
+  loadFromJSON();
 })();
 
 /* ----------------------------- UI events outside admin ----------------------------- */
@@ -836,4 +865,3 @@ window.removeFromCart = removeFromCart;
 </script>
 </body>
 </html>
-``
