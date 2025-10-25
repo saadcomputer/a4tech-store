@@ -48,7 +48,7 @@ header button:hover{background:var(--primary);color:white}
 .products-grid.list-view .product-image{display:none}
 .product-card{background:var(--card);border-radius:12px;overflow:hidden;box-shadow:0 5px 15px rgba(0,0,0,0.1);transition:0.3s;display:flex;flex-direction:column}
 .product-card:hover{transform:translateY(-4px)}
-.product-image{width:100%;height:200px;object-fit:cover}
+.product-image{width:100%;height:280px;object-fit:cover;aspect-ratio:1/1} /* Square images */
 .product-info{padding:15px;display:flex;flex-direction:column;gap:6px}
 .product-title{font-size:1.1rem;font-weight:600}
 .product-description{font-size:0.9rem;color:#6C757D}
@@ -135,10 +135,11 @@ header button:hover{background:var(--primary);color:white}
 }
 
 .list-view-image {
-    width: 100px; /* Increased size */
-    height: 100px; /* Increased size */
+    width: 100px;
+    height: 100px;
     object-fit: cover;
     border-radius: 6px;
+    aspect-ratio: 1/1; /* Square images */
 }
 
 .list-view-description {
@@ -176,32 +177,50 @@ header button:hover{background:var(--primary);color:white}
 /* Column widths for list view */
 .list-view-table th:nth-child(1),
 .list-view-table td:nth-child(1) {
-    width: 100px; /* Image column */
+    width: 60px; /* S.No column */
 }
 
 .list-view-table th:nth-child(2),
 .list-view-table td:nth-child(2) {
-    width: 180px; /* Name column */
+    width: 100px; /* Image column */
 }
 
 .list-view-table th:nth-child(3),
 .list-view-table td:nth-child(3) {
-    width: 100px; /* Price column */
+    width: 150px; /* Model column */
 }
 
 .list-view-table th:nth-child(4),
 .list-view-table td:nth-child(4) {
-    width: 120px; /* Carton Packing column */
+    width: 100px; /* Price column */
 }
 
 .list-view-table th:nth-child(5),
 .list-view-table td:nth-child(5) {
-    width: auto; /* Description column - takes remaining space */
+    width: 120px; /* Carton Packing column */
 }
 
 .list-view-table th:nth-child(6),
 .list-view-table td:nth-child(6) {
+    width: auto; /* Description column - takes remaining space */
+}
+
+.list-view-table th:nth-child(7),
+.list-view-table td:nth-child(7) {
     width: 120px; /* Action column */
+}
+
+/* Heading row styles - UPDATED COLOR */
+.heading-row {
+    background: #16697f !important; /* Updated color */
+    color: white;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.heading-row td {
+    padding: 15px 8px;
+    text-align: center;
 }
 </style>
 </head>
@@ -272,6 +291,7 @@ header button:hover{background:var(--primary);color:white}
         <button class="tab-btn active" data-tab="products">Products</button>
         <button class="tab-btn" data-tab="brands">Brands</button>
         <button class="tab-btn" data-tab="categories">Categories</button>
+        <button class="tab-btn" data-tab="headings">Headings</button>
         <button class="tab-btn" data-tab="import">Import</button>
       </div>
 
@@ -293,9 +313,12 @@ header button:hover{background:var(--primary);color:white}
           <div class="form-row">
             <select id="pBrand" class="input"></select>
             <select id="pCategory" class="input"></select>
-            <input id="pCartonPacking" class="input" placeholder="Carton Packing (e.g., 12 pcs)" />
+            <select id="pHeading" class="input">
+              <option value="">No Heading</option>
+            </select>
           </div>
           <div class="form-row">
+            <input id="pCartonPacking" class="input" placeholder="Carton Packing (e.g., 12 pcs)" />
             <input id="pDesc" class="input" placeholder="Short description" style="flex:1" />
           </div>
           <div style="display:flex;gap:8px;margin-top:8px">
@@ -309,7 +332,7 @@ header button:hover{background:var(--primary);color:white}
           <table class="table" id="productsTable">
             <thead>
               <tr>
-                <th>Name</th><th>Brand</th><th>Category</th><th>Price</th><th>Carton Packing</th><th>Actions</th>
+                <th>Name</th><th>Brand</th><th>Category</th><th>Price</th><th>Carton Packing</th><th>Heading</th><th>Actions</th>
               </tr>
             </thead>
             <tbody></tbody>
@@ -347,6 +370,21 @@ header button:hover{background:var(--primary);color:white}
     </div>
   </div>
 
+      <!-- HEADINGS TAB -->
+      <div id="tab-headings" class="tab-content" style="display:none">
+        <div style="display:flex;gap:8px;align-items:center;margin-bottom:10px">
+          <input id="newHeadingInput" class="input" placeholder="New heading name" />
+          <button id="addHeadingBtn" class="small-btn btn-primary">Add Heading</button>
+          <div class="small-muted">Add headings to organize products in list view</div>
+        </div>
+        <div style="overflow:auto">
+          <table class="table" id="headingsTable">
+            <thead><tr><th>Heading</th><th>Actions</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+
       <!-- IMPORT TAB -->
       <div id="tab-import" class="tab-content" style="display:none">
         <div style="display:flex;gap:8px;flex-direction:column">
@@ -373,22 +411,24 @@ const ADMIN_PASSWORD = "2214721";
 
 /* ----------------------------- Default Demo Data (fallback only) ----------------------------- */
 const DEMO_PRODUCTS = [
-  {id:1,name:"M90 ANC Earphones",price:9340,image:"https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400",description:"High-quality ANC earphones with noise cancellation and superior sound quality",brand:"A4Tech",category:"Audio", cartonPacking: "12 pcs"},
-  {id:2,name:"M70 Gaming Mouse",price:8470,image:"https://images.unsplash.com/photo-1527814050087-3793815479db?w=400",description:"Professional gaming mouse with high DPI and customizable RGB lighting",brand:"A4Tech",category:"Mouse", cartonPacking: "24 pcs"},
-  {id:3,name:"B1700 Combo Pack",price:6900,image:"https://images.unsplash.com/photo-1541140532154-b024d705b90a?w=400",description:"Keyboard and mouse combo perfect for office and gaming use",brand:"A4Tech",category:"Keyboard", cartonPacking: "10 pcs"},
-  {id:4,name:"Bloody Headphones",price:8800,image:"https://images.unsplash.com/photo-1585298723682-7115561c51b7?w=400",description:"High-quality gaming headset with surround sound and comfortable ear cushions",brand:"Bloody",category:"Audio", cartonPacking: "12 pcs"},
-  {id:5,name:"BP-45 Mouse Pad",price:1380,image:"https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=400",description:"Large waterproof mouse pad with smooth surface for precise mouse movements",brand:"Bloody",category:"Mousepad", cartonPacking: "50 pcs"}
+  {id:1,name:"M90 ANC Earphones",price:9340,image:"https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400",description:"High-quality ANC earphones with noise cancellation and superior sound quality",brand:"A4Tech",category:"Audio", cartonPacking: "12 pcs", heading: "Audio Products"},
+  {id:2,name:"M70 Gaming Mouse",price:8470,image:"https://images.unsplash.com/photo-1527814050087-3793815479db?w=400",description:"Professional gaming mouse with high DPI and customizable RGB lighting",brand:"A4Tech",category:"Mouse", cartonPacking: "24 pcs", heading: "Gaming Peripherals"},
+  {id:3,name:"B1700 Combo Pack",price:6900,image:"https://images.unsplash.com/photo-1541140532154-b024d705b90a?w=400",description:"Keyboard and mouse combo perfect for office and gaming use",brand:"A4Tech",category:"Keyboard", cartonPacking: "10 pcs", heading: "Combo Packs"},
+  {id:4,name:"Bloody Headphones",price:8800,image:"https://images.unsplash.com/photo-1585298723682-7115561c51b7?w=400",description:"High-quality gaming headset with surround sound and comfortable ear cushions",brand:"Bloody",category:"Audio", cartonPacking: "12 pcs", heading: "Audio Products"},
+  {id:5,name:"BP-45 Mouse Pad",price:1380,image:"https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=400",description:"Large waterproof mouse pad with smooth surface for precise mouse movements",brand:"Bloody",category:"Mousepad", cartonPacking: "50 pcs", heading: "Accessories"}
 ];
 const DEMO_BRANDS = ["All","A4Tech","Bloody"];
 const DEMO_CATEGORIES = {
   "A4Tech":["Audio","Mouse","Keyboard"],
   "Bloody":["Audio","Keyboard","Mousepad"]
 };
+const DEMO_HEADINGS = ["Audio Products", "Gaming Peripherals", "Combo Packs", "Accessories"];
 
 /* ----------------------------- App State ----------------------------- */
 let products = [];
 let brands = [];
 let categories = {}; // {brand: [cat1,cat2]}
+let headings = [];
 
 let cart = [];
 let currentBrand = "All";
@@ -426,6 +466,7 @@ const pBrand = document.getElementById("pBrand");
 const pCategory = document.getElementById("pCategory");
 const pDesc = document.getElementById("pDesc");
 const pCartonPacking = document.getElementById("pCartonPacking");
+const pHeading = document.getElementById("pHeading");
 const saveProductBtn = document.getElementById("saveProductBtn");
 const cancelProductBtn = document.getElementById("cancelProductBtn");
 const productFormMsg = document.getElementById("productFormMsg");
@@ -441,6 +482,11 @@ const catBrandSelect = document.getElementById("catBrandSelect");
 const newCatInput = document.getElementById("newCatInput");
 const addCatBtn = document.getElementById("addCatBtn");
 const catsTableBody = document.querySelector("#catsTable tbody");
+
+/* Headings tab refs */
+const newHeadingInput = document.getElementById("newHeadingInput");
+const addHeadingBtn = document.getElementById("addHeadingBtn");
+const headingsTableBody = document.querySelector("#headingsTable tbody");
 
 /* Import tab refs */
 const importArea = document.getElementById("importArea");
@@ -470,6 +516,7 @@ async function loadFromJSON(){
     products = data.products || [];
     brands = data.brands || [];
     categories = data.categories || {};
+    headings = data.headings || [];
     if(!brands.includes("All")) brands.unshift("All");
     // render using loaded data
     renderAll();
@@ -479,6 +526,7 @@ async function loadFromJSON(){
     products = JSON.parse(JSON.stringify(DEMO_PRODUCTS));
     brands = JSON.parse(JSON.stringify(DEMO_BRANDS));
     categories = JSON.parse(JSON.stringify(DEMO_CATEGORIES));
+    headings = JSON.parse(JSON.stringify(DEMO_HEADINGS));
     renderAll();
   }
 }
@@ -514,31 +562,57 @@ function renderProducts(){
   }
   if(isList){
     grid.classList.add("list-view");
-    grid.innerHTML = `
+    
+    // Group products by heading
+    const groupedProducts = {};
+    list.forEach(product => {
+      const heading = product.heading || 'Other Products';
+      if (!groupedProducts[heading]) {
+        groupedProducts[heading] = [];
+      }
+      groupedProducts[heading].push(product);
+    });
+    
+    let tableHTML = `
       <table class="list-view-table">
         <tr style="background:var(--primary);color:white;text-align:left">
+          <th style="padding:8px">S.No</th>
           <th style="padding:8px">Image</th>
-          <th style="padding:8px">Name</th>
+          <th style="padding:8px">Model</th>
           <th style="padding:8px">Price</th>
           <th style="padding:8px">Carton Packing</th>
           <th style="padding:8px">Description</th>
           <th style="padding:8px">Action</th>
-        </tr>
-        ${list.map(p=>`
-          <tr style="border-bottom:1px solid #ddd">
-            <td style="padding:8px"><img src="${p.image||''}" class="list-view-image" alt="${p.name}" onerror="this.src='https://via.placeholder.com/100x100?text=No+Image'"></td>
-            <td style="padding:8px">${p.name}</td>
-            <td style="padding:8px">Rs. ${p.price}</td>
-            <td style="padding:8px">${p.cartonPacking || 'N/A'}</td>
-            <td style="padding:8px" class="list-view-description">${p.description||''}</td>
-            <td style="padding:8px"><button class="add-to-cart" onclick="addToCartWithNotification(${p.id})">Add to Cart</button></td>
-          </tr>`).join("")}
-      </table>`;
+        </tr>`;
+    
+    let serialNo = 1;
+    Object.keys(groupedProducts).forEach(heading => {
+      // Add heading row
+      tableHTML += `
+        <tr class="heading-row">
+          <td colspan="7" style="padding:8px">${heading}</td>
+        </tr>`;
+      
+      // Add products for this heading
+      tableHTML += groupedProducts[heading].map(p => `
+        <tr style="border-bottom:1px solid #ddd">
+          <td style="padding:8px">${serialNo++}</td>
+          <td style="padding:8px"><img src="${p.image||''}" class="list-view-image" alt="${p.name}" onerror="this.src='https://via.placeholder.com/100x100?text=No+Image'"></td>
+          <td style="padding:8px">${p.name}</td>
+          <td style="padding:8px">Rs. ${p.price}</td>
+          <td style="padding:8px">${p.cartonPacking || 'N/A'}</td>
+          <td style="padding:8px" class="list-view-description">${p.description||''}</td>
+          <td style="padding:8px"><button class="add-to-cart" onclick="addToCartWithNotification(${p.id})">Add to Cart</button></td>
+        </tr>`).join("");
+    });
+    
+    tableHTML += '</table>';
+    grid.innerHTML = tableHTML;
   } else {
     grid.classList.remove("list-view");
     grid.innerHTML = list.map(p=>`
       <div class="product-card">
-        <img src="${p.image||''}" class="product-image" alt="${p.name}" onerror="this.src='https://via.placeholder.com/400x200?text=No+Image'">
+        <img src="${p.image||''}" class="product-image" alt="${p.name}" onerror="this.src='https://via.placeholder.com/400x400?text=No+Image'">
         <div class="product-info">
           <h3 class="product-title">${p.name}</h3>
           <!-- Description removed from grid view as requested -->
@@ -674,6 +748,7 @@ addProductBtn.addEventListener("click", () => {
   pName.value = ""; pPrice.value = ""; pImage.value = ""; pDesc.value = ""; pCartonPacking.value = "";
   if(brands.length > 1) pBrand.value = brands[1];
   pCategory.innerHTML = (categories[pBrand.value] || []).map(c=>`<option value="${c}">${c}</option>`).join("");
+  pHeading.innerHTML = '<option value="">No Heading</option>' + headings.map(h=>`<option value="${h}">${h}</option>`).join("");
   productFormMsg.innerText = "";
   productFormWrap.style.display = "block";
 });
@@ -693,6 +768,7 @@ saveProductBtn.addEventListener("click", () => {
   const image = pImage.value.trim();
   const desc = pDesc.value.trim();
   const cartonPacking = pCartonPacking.value.trim();
+  const heading = pHeading.value;
   const brandVal = pBrand.value;
   const catVal = pCategory.value;
 
@@ -704,11 +780,11 @@ saveProductBtn.addEventListener("click", () => {
   if(editingProductId){
     const idx = products.findIndex(p=>p.id===editingProductId);
     if(idx>=0){
-      products[idx] = {...products[idx], name, price, image, description:desc, cartonPacking, brand:brandVal, category:catVal};
+      products[idx] = {...products[idx], name, price, image, description:desc, cartonPacking, heading, brand:brandVal, category:catVal};
       productFormMsg.innerText = "Updated";
     }
   } else {
-    const newProd = {id: uid(), name, price, image, description:desc, cartonPacking, brand:brandVal, category:catVal};
+    const newProd = {id: uid(), name, price, image, description:desc, cartonPacking, heading, brand:brandVal, category:catVal};
     products.push(newProd);
     productFormMsg.innerText = "Added";
   }
@@ -727,6 +803,7 @@ function populateProductsTable(){
       <td>${escapeHtml(p.category || "")}</td>
       <td>Rs. ${p.price}</td>
       <td>${escapeHtml(p.cartonPacking || "")}</td>
+      <td>${escapeHtml(p.heading || "")}</td>
       <td class="inline-actions">
         <button class="small-btn" onclick="adminEditProduct(${p.id})"><i class="fas fa-edit"></i> Edit</button>
         <button class="small-btn btn-danger" onclick="adminDeleteProduct(${p.id})"><i class="fas fa-trash"></i> Delete</button>
@@ -750,6 +827,7 @@ window.adminEditProduct = function(id){
   pBrand.dispatchEvent(new Event('change'));
   const list = categories[prod.brand] || [];
   pCategory.innerHTML = list.map(c=>`<option value="${c}" ${c===prod.category?"selected":""}>${c}</option>`).join("");
+  pHeading.innerHTML = '<option value="">No Heading</option>' + headings.map(h=>`<option value="${h}" ${h===prod.heading?"selected":""}>${h}</option>`).join("");
   productFormWrap.style.display = "block";
   productFormMsg.innerText = "";
 };
@@ -829,9 +907,47 @@ window.adminDeleteCategory = function(brand,cat){
   renderAll();
 };
 
+/* ----------------------------- Admin: Headings CRUD ----------------------------- */
+addHeadingBtn.addEventListener("click", () => {
+  const q = newHeadingInput.value.trim();
+  if(!q) return;
+  if(headings.includes(q)){
+    alert("Heading already exists");
+    return;
+  }
+  headings.push(q);
+  newHeadingInput.value = "";
+  refreshAdminLists();
+});
+
+/* populate headings table */
+function populateHeadingsTable(){
+  headingsTableBody.innerHTML = headings.map(h=>`
+    <tr>
+      <td>${escapeHtml(h)}</td>
+      <td>
+        <button class="small-btn btn-danger" onclick="adminDeleteHeading('${escapeJs(h)}')"><i class="fas fa-trash"></i> Delete</button>
+      </td>
+    </tr>
+  `).join("");
+}
+
+/* Delete heading: remove heading from products */
+window.adminDeleteHeading = function(h){
+  if(!confirm("Delete heading? Products with this heading will have their heading removed.")) return;
+  headings = headings.filter(x=>x!==h);
+  products.forEach(p => {
+    if(p.heading === h) {
+      p.heading = '';
+    }
+  });
+  refreshAdminLists();
+  renderAll();
+};
+
 /* ----------------------------- Import / Export ----------------------------- */
 exportBtn.addEventListener("click", () => {
-  const data = {products, brands, categories};
+  const data = {products, brands, categories, headings};
   const blob = new Blob([JSON.stringify(data, null, 2)], {type:'application/json'});
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
@@ -850,6 +966,7 @@ importBtn.addEventListener("click", () => {
     products = obj.products;
     brands = obj.brands;
     categories = obj.categories;
+    headings = obj.headings || [];
     refreshAdminLists();
     renderAll();
     importMsg.innerText = "Imported to current session (not saved to server).";
@@ -863,13 +980,14 @@ clearStorageBtn.addEventListener("click", () => {
   products = JSON.parse(JSON.stringify(DEMO_PRODUCTS));
   brands = JSON.parse(JSON.stringify(DEMO_BRANDS));
   categories = JSON.parse(JSON.stringify(DEMO_CATEGORIES));
+  headings = JSON.parse(JSON.stringify(DEMO_HEADINGS));
   refreshAdminLists();
   renderAll();
   alert("Reset to demo data (local only).");
 });
 
 showStorageBtn.addEventListener("click", () => {
-  const data = {products, brands, categories};
+  const data = {products, brands, categories, headings};
   alert(JSON.stringify(data, null, 2).slice(0,2000) + (JSON.stringify(data, null, 2).length>2000 ? "\n\n(too long, truncated)" : ""));
 });
 
@@ -879,6 +997,7 @@ reloadDefaultsBtn.addEventListener("click", () => {
   products = JSON.parse(JSON.stringify(DEMO_PRODUCTS));
   brands = JSON.parse(JSON.stringify(DEMO_BRANDS));
   categories = JSON.parse(JSON.stringify(DEMO_CATEGORIES));
+  headings = JSON.parse(JSON.stringify(DEMO_HEADINGS));
   refreshAdminLists();
   renderAll();
 });
@@ -890,6 +1009,7 @@ function refreshAdminLists(){
   populateProductsTable();
   populateBrandsTable();
   populateCatsTable();
+  populateHeadingsTable();
 }
 
 function renderAll(){
@@ -900,6 +1020,7 @@ function renderAll(){
   populateProductsTable();
   populateBrandsTable();
   populateCatsTable();
+  populateHeadingsTable();
 }
 
 /* escape helpers */
@@ -936,6 +1057,7 @@ document.getElementById("viewBtn").onclick = ()=>{
   document.getElementById("viewBtn").innerHTML = isList?'<i class="fas fa-border-all"></i>':'<i class="fas fa-list"></i>';
   renderProducts();
 };
+
 document.getElementById("themeBtn").onclick = ()=>{
   document.body.classList.toggle("dark");
 };
