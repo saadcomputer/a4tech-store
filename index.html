@@ -5,6 +5,12 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>A4Tech Bloody Products List</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<!-- PWA Meta Tags -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="A4Tech Products">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="theme-color" content="#00AEEF">
+<link rel="manifest" href="manifest.json">
 <style>
 /* ---------- Basic style (kept and extended from your original) ---------- */
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif}
@@ -48,7 +54,7 @@ header button:hover{background:var(--primary);color:white}
 .products-grid.list-view .product-image{display:none}
 .product-card{background:var(--card);border-radius:12px;overflow:hidden;box-shadow:0 5px 15px rgba(0,0,0,0.1);transition:0.3s;display:flex;flex-direction:column}
 .product-card:hover{transform:translateY(-4px)}
-.product-image{width:100%;height:280px;object-fit:cover;aspect-ratio:1/1} /* Square images */
+.product-image{width:100%;height:280px;object-fit:cover;aspect-ratio:1/1; cursor: pointer;} /* Added cursor pointer for images */
 .product-info{padding:15px;display:flex;flex-direction:column;gap:6px}
 .product-title{font-size:1.1rem;font-weight:600}
 .product-description{font-size:0.9rem;color:#6C757D}
@@ -140,6 +146,7 @@ header button:hover{background:var(--primary);color:white}
     object-fit: cover;
     border-radius: 6px;
     aspect-ratio: 1/1; /* Square images */
+    cursor: pointer; /* Added for image click */
 }
 
 .list-view-description {
@@ -222,6 +229,145 @@ header button:hover{background:var(--primary);color:white}
     padding: 15px 8px;
     text-align: center;
 }
+
+/* NEW: Image Popup Modal */
+.image-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    cursor: pointer;
+}
+
+.image-popup img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.image-popup.active {
+    display: flex;
+}
+
+/* NEW: Install Prompt */
+.install-prompt {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--primary);
+    color: white;
+    padding: 15px 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    z-index: 1000;
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 90%;
+    text-align: center;
+}
+
+.install-prompt.show {
+    display: flex;
+}
+
+.install-prompt-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.install-prompt button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.install-prompt .install-btn {
+    background: var(--secondary);
+    color: white;
+}
+
+.install-prompt .cancel-btn {
+    background: #666;
+    color: white;
+}
+
+/* NEW: No Image List View - Same as list view but without image column */
+.products-grid.no-image-list-view {
+    display: block;
+}
+
+.products-grid.no-image-list-view .product-card {
+    display: none; /* We'll use table instead */
+}
+
+.no-image-list-view-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.no-image-list-view-table th,
+.no-image-list-view-table td {
+    padding: 12px 8px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+    vertical-align: top;
+}
+
+.no-image-list-view-table th {
+    background: var(--primary);
+    color: white;
+    font-weight: 600;
+}
+
+.no-image-list-view-description {
+    white-space: normal;
+    word-wrap: break-word;
+    line-height: 1.4;
+}
+
+/* Column widths for no-image list view */
+.no-image-list-view-table th:nth-child(1),
+.no-image-list-view-table td:nth-child(1) {
+    width: 60px; /* S.No column */
+}
+
+.no-image-list-view-table th:nth-child(2),
+.no-image-list-view-table td:nth-child(2) {
+    width: 150px; /* Mold column */
+}
+
+.no-image-list-view-table th:nth-child(3),
+.no-image-list-view-table td:nth-child(3) {
+    width: 100px; /* Price column */
+}
+
+.no-image-list-view-table th:nth-child(4),
+.no-image-list-view-table td:nth-child(4) {
+    width: 120px; /* Carton Packing column */
+}
+
+.no-image-list-view-table th:nth-child(5),
+.no-image-list-view-table td:nth-child(5) {
+    width: auto; /* Description column - takes remaining space */
+}
+
+.no-image-list-view-table th:nth-child(6),
+.no-image-list-view-table td:nth-child(6) {
+    width: 120px; /* Action column */
+}
 </style>
 </head>
 <body>
@@ -262,6 +408,20 @@ header button:hover{background:var(--primary);color:white}
     <button class="checkout-btn" id="checkoutBtn"><i class="fab fa-whatsapp"></i> Checkout</button>
   </div>
 
+</div>
+
+<!-- Image Popup Modal -->
+<div class="image-popup" id="imagePopup">
+  <img id="popupImage" src="" alt="Product Image">
+</div>
+
+<!-- Install Prompt -->
+<div class="install-prompt" id="installPrompt">
+  <div>Add A4Tech Products to your home screen for quick access!</div>
+  <div class="install-prompt-buttons">
+    <button class="install-btn" id="installBtn">Add to Home Screen</button>
+    <button class="cancel-btn" id="cancelInstallBtn">Not Now</button>
+  </div>
 </div>
 
 <!-- Notification Element -->
@@ -433,7 +593,8 @@ let headings = [];
 let cart = [];
 let currentBrand = "All";
 let currentCategory = "All";
-let isList = false;
+// Changed to support three view modes: 'grid', 'list', 'no-image-list'
+let currentView = 'list'; // Default to list view as requested
 
 /* ----------------------------- DOM refs ----------------------------- */
 const grid = document.getElementById("productsGrid");
@@ -446,6 +607,13 @@ const cartCount = document.getElementById("cartCount");
 const cartSection = document.getElementById("cartSection");
 const searchBox = document.getElementById("searchBox");
 const notification = document.getElementById("notification");
+
+// New DOM refs for image popup and install prompt
+const imagePopup = document.getElementById("imagePopup");
+const popupImage = document.getElementById("popupImage");
+const installPrompt = document.getElementById("installPrompt");
+const installBtn = document.getElementById("installBtn");
+const cancelInstallBtn = document.getElementById("cancelInstallBtn");
 
 /* Admin modal elements */
 const adminModal = document.getElementById("adminModal");
@@ -560,25 +728,61 @@ function renderProducts(){
     grid.innerHTML = '<div style="text-align:center;padding:40px;color:#777"><i class="fas fa-box-open"></i><div>No products found</div></div>';
     return;
   }
-  if(isList){
+  
+  // Handle different view modes
+  if(currentView === 'list'){
+    renderListView(list, true);
+  } else if(currentView === 'no-image-list') {
+    renderListView(list, false);
+  } else {
+    // Grid view
+    grid.classList.remove("list-view");
+    grid.classList.remove("no-image-list-view");
+    grid.innerHTML = list.map(p=>`
+      <div class="product-card">
+        <img src="${p.image||''}" class="product-image" alt="${p.name}" onclick="openImagePopup('${p.image||''}')" onerror="this.src='https://via.placeholder.com/400x400?text=No+Image'">
+        <div class="product-info">
+          <h3 class="product-title">${p.name}</h3>
+          <!-- Description removed from grid view as requested -->
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div style="display:flex;flex-direction:column">
+              <div class="small-muted">${p.brand} • ${p.category}</div>
+              <div class="product-price">Rs. ${p.price}</div>
+            </div>
+            <button class="add-to-cart" onclick="addToCartWithNotification(${p.id})">Add to Cart</button>
+          </div>
+        </div>
+      </div>`).join("");
+  }
+}
+
+function renderListView(list, includeImages) {
+  if (includeImages) {
     grid.classList.add("list-view");
-    
-    // Group products by heading
-    const groupedProducts = {};
-    list.forEach(product => {
-      const heading = product.heading || 'Other Products';
-      if (!groupedProducts[heading]) {
-        groupedProducts[heading] = [];
-      }
-      groupedProducts[heading].push(product);
-    });
-    
+    grid.classList.remove("no-image-list-view");
+  } else {
+    grid.classList.remove("list-view");
+    grid.classList.add("no-image-list-view");
+  }
+  
+  // Group products by heading
+  const groupedProducts = {};
+  list.forEach(product => {
+    const heading = product.heading || 'Other Products';
+    if (!groupedProducts[heading]) {
+      groupedProducts[heading] = [];
+    }
+    groupedProducts[heading].push(product);
+  });
+  
+  if (includeImages) {
+    // List view WITH images
     let tableHTML = `
       <table class="list-view-table">
         <tr style="background:var(--primary);color:white;text-align:left">
           <th style="padding:8px">S.No</th>
           <th style="padding:8px">Image</th>
-          <th style="padding:8px">Model</th>
+          <th style="padding:8px">Mold</th>
           <th style="padding:8px">Price</th>
           <th style="padding:8px">Carton Packing</th>
           <th style="padding:8px">Description</th>
@@ -597,7 +801,7 @@ function renderProducts(){
       tableHTML += groupedProducts[heading].map(p => `
         <tr style="border-bottom:1px solid #ddd">
           <td style="padding:8px">${serialNo++}</td>
-          <td style="padding:8px"><img src="${p.image||''}" class="list-view-image" alt="${p.name}" onerror="this.src='https://via.placeholder.com/100x100?text=No+Image'"></td>
+          <td style="padding:8px"><img src="${p.image||''}" class="list-view-image" alt="${p.name}" onclick="openImagePopup('${p.image||''}')" onerror="this.src='https://via.placeholder.com/100x100?text=No+Image'"></td>
           <td style="padding:8px">${p.name}</td>
           <td style="padding:8px">Rs. ${p.price}</td>
           <td style="padding:8px">${p.cartonPacking || 'N/A'}</td>
@@ -609,22 +813,40 @@ function renderProducts(){
     tableHTML += '</table>';
     grid.innerHTML = tableHTML;
   } else {
-    grid.classList.remove("list-view");
-    grid.innerHTML = list.map(p=>`
-      <div class="product-card">
-        <img src="${p.image||''}" class="product-image" alt="${p.name}" onerror="this.src='https://via.placeholder.com/400x400?text=No+Image'">
-        <div class="product-info">
-          <h3 class="product-title">${p.name}</h3>
-          <!-- Description removed from grid view as requested -->
-          <div style="display:flex;justify-content:space-between;align-items:center">
-            <div style="display:flex;flex-direction:column">
-              <div class="small-muted">${p.brand} • ${p.category}</div>
-              <div class="product-price">Rs. ${p.price}</div>
-            </div>
-            <button class="add-to-cart" onclick="addToCartWithNotification(${p.id})">Add to Cart</button>
-          </div>
-        </div>
-      </div>`).join("");
+    // List view WITHOUT images
+    let tableHTML = `
+      <table class="no-image-list-view-table">
+        <tr style="background:var(--primary);color:white;text-align:left">
+          <th style="padding:8px">S.No</th>
+          <th style="padding:8px">Mold</th>
+          <th style="padding:8px">Price</th>
+          <th style="padding:8px">Carton Packing</th>
+          <th style="padding:8px">Description</th>
+          <th style="padding:8px">Action</th>
+        </tr>`;
+    
+    let serialNo = 1;
+    Object.keys(groupedProducts).forEach(heading => {
+      // Add heading row
+      tableHTML += `
+        <tr class="heading-row">
+          <td colspan="6" style="padding:8px">${heading}</td>
+        </tr>`;
+      
+      // Add products for this heading
+      tableHTML += groupedProducts[heading].map(p => `
+        <tr style="border-bottom:1px solid #ddd">
+          <td style="padding:8px">${serialNo++}</td>
+          <td style="padding:8px">${p.name}</td>
+          <td style="padding:8px">Rs. ${p.price}</td>
+          <td style="padding:8px">${p.cartonPacking || 'N/A'}</td>
+          <td style="padding:8px" class="no-image-list-view-description">${p.description||''}</td>
+          <td style="padding:8px"><button class="add-to-cart" onclick="addToCartWithNotification(${p.id})">Add to Cart</button></td>
+        </tr>`).join("");
+    });
+    
+    tableHTML += '</table>';
+    grid.innerHTML = tableHTML;
   }
 }
 
@@ -649,6 +871,100 @@ function renderCart(){
     </div>`).join("");
   const total = cart.reduce((a,c)=>a+c.price*c.qty,0);
   cartTotal.innerText = "Rs. "+total.toFixed(2);
+}
+
+/* ----------------------------- Image Popup Functions ----------------------------- */
+function openImagePopup(imageUrl) {
+  if (!imageUrl) return;
+  popupImage.src = imageUrl;
+  imagePopup.classList.add('active');
+}
+
+function closeImagePopup() {
+  imagePopup.classList.remove('active');
+}
+
+// Close popup when clicking outside the image
+imagePopup.addEventListener('click', function(e) {
+  if (e.target === imagePopup) {
+    closeImagePopup();
+  }
+});
+
+// Close popup with Escape key
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    closeImagePopup();
+  }
+});
+
+/* ----------------------------- Install Prompt Functions ----------------------------- */
+let deferredPrompt;
+
+// Show install prompt when app is ready
+window.addEventListener('beforeinstallprompt', (e) => {
+  // Prevent the mini-infobar from appearing on mobile
+  e.preventDefault();
+  // Stash the event so it can be triggered later
+  deferredPrompt = e;
+  
+  // Show our custom install prompt after a delay
+  setTimeout(() => {
+    if (deferredPrompt) {
+      installPrompt.classList.add('show');
+    }
+  }, 3000);
+});
+
+// Handle install button click
+installBtn.addEventListener('click', async () => {
+  if (!deferredPrompt) return;
+  
+  // Show the install prompt
+  deferredPrompt.prompt();
+  
+  // Wait for the user to respond to the prompt
+  const { outcome } = await deferredPrompt.userChoice;
+  
+  if (outcome === 'accepted') {
+    console.log('User accepted the install prompt');
+    showNotificationMessage('App added to home screen successfully!');
+  } else {
+    console.log('User dismissed the install prompt');
+  }
+  
+  // Clear the saved prompt since it can't be used again
+  deferredPrompt = null;
+  installPrompt.classList.remove('show');
+});
+
+// Handle cancel button click
+cancelInstallBtn.addEventListener('click', () => {
+  installPrompt.classList.remove('show');
+});
+
+// Check if app is already installed
+window.addEventListener('appinstalled', () => {
+  console.log('PWA was installed');
+  deferredPrompt = null;
+  installPrompt.classList.remove('show');
+});
+
+// Show custom notification message
+function showNotificationMessage(message) {
+  const notification = document.getElementById('notification');
+  const notificationIcon = notification.querySelector('i');
+  const notificationText = notification.querySelector('strong');
+  const notificationSubtext = notification.querySelector('div > div');
+  
+  notificationIcon.className = 'fas fa-check-circle';
+  notificationText.textContent = message;
+  notificationSubtext.textContent = 'You can now access the app from your home screen';
+  
+  notification.classList.add('show');
+  setTimeout(() => {
+    notification.classList.remove('show');
+  }, 5000);
 }
 
 /* ----------------------------- Cart functions ----------------------------- */
@@ -693,6 +1009,22 @@ document.getElementById("checkoutBtn").onclick = () => {
   const total = cart.reduce((a,c)=>a+c.price*c.qty,0);
   const url = `https://wa.me/923332200318?text=🛍%20Order%20Details:%0A${msg}%0A%0ATotal:%20Rs.${total}`;
   window.open(url,"_blank");
+}
+
+/* ----------------------------- View Toggle Function ----------------------------- */
+function toggleView() {
+  // Cycle through three view modes: grid -> list -> no-image-list -> grid
+  if (currentView === 'grid') {
+    currentView = 'list';
+    document.getElementById("viewBtn").innerHTML = '<i class="fas fa-list-ul"></i>';
+  } else if (currentView === 'list') {
+    currentView = 'no-image-list';
+    document.getElementById("viewBtn").innerHTML = '<i class="fas fa-th-list"></i>';
+  } else {
+    currentView = 'grid';
+    document.getElementById("viewBtn").innerHTML = '<i class="fas fa-border-all"></i>';
+  }
+  renderProducts();
 }
 
 /* ----------------------------- Admin modal events & logic ----------------------------- */
@@ -1032,6 +1364,10 @@ function escapeJs(str){ return (str||"").replace(/'/g,"\\'").replace(/"/g,'\\"')
 
 /* ----------------------------- Init (load data) ----------------------------- */
 (function init(){
+  // Set list view as default
+  currentView = 'list';
+  document.getElementById("viewBtn").innerHTML = '<i class="fas fa-list-ul"></i>';
+  
   // primary source = products.json in same folder
   loadFromJSON();
 })();
@@ -1052,11 +1388,8 @@ categoriesContainer.addEventListener("click", e=>{
 
 searchBox.addEventListener("input", ()=>renderProducts());
 
-document.getElementById("viewBtn").onclick = ()=>{
-  isList = !isList;
-  document.getElementById("viewBtn").innerHTML = isList?'<i class="fas fa-border-all"></i>':'<i class="fas fa-list"></i>';
-  renderProducts();
-};
+// Updated view toggle to use the new function
+document.getElementById("viewBtn").onclick = toggleView;
 
 document.getElementById("themeBtn").onclick = ()=>{
   document.body.classList.toggle("dark");
@@ -1069,6 +1402,8 @@ window.addToCartWithNotification = addToCartWithNotification;
 window.updateCartQty = updateCartQty;
 window.changeQty = changeQty;
 window.removeFromCart = removeFromCart;
+window.openImagePopup = openImagePopup;
+window.closeImagePopup = closeImagePopup;
 
 </script>
 </body>
