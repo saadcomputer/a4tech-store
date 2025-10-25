@@ -64,9 +64,9 @@ header button:hover{background:var(--primary);color:white}
 .checkout-btn{background:var(--primary);color:white;border:none;padding:12px;border-radius:10px;width:100%;font-weight:600;margin-top:10px}
 .checkout-btn:hover{background:#0088CC}
 
-/* Cart Quantity Controls */
-.qty-controls{display:flex;align-items:center;gap:6px}
-.qty-btn{width:28px;height:28px;border-radius:6px;border:1px solid #ddd;background:white;cursor:pointer;display:inline-flex;align-items:center;justify-content:center}
+/* Cart Quantity Controls - UPDATED */
+.qty-controls{display:flex;align-items:center;gap:10px}
+.qty-input{width:60px;padding:6px;border-radius:6px;border:1px solid #ddd;text-align:center}
 .delete-btn{background:none;border:none;color:#ff4d4f;cursor:pointer;font-size:1.1rem}
 
 /* Admin Modal */
@@ -96,6 +96,108 @@ header button:hover{background:var(--primary);color:white}
 .small-muted{font-size:0.85rem;color:#666}
 .flex{display:flex;gap:10px;align-items:center}
 .right{margin-left:auto}
+
+/* NEW STYLES FOR LIST VIEW CHANGES */
+.products-grid.list-view .product-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 10px;
+    gap: 15px;
+}
+
+.products-grid.list-view .product-image {
+    display: block;
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.list-view-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.list-view-table th,
+.list-view-table td {
+    padding: 12px 8px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+    vertical-align: top;
+}
+
+.list-view-table th {
+    background: var(--primary);
+    color: white;
+    font-weight: 600;
+}
+
+.list-view-image {
+    width: 100px; /* Increased size */
+    height: 100px; /* Increased size */
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.list-view-description {
+    white-space: normal;
+    word-wrap: break-word;
+    line-height: 1.4;
+}
+
+/* Notification styles */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--secondary);
+    color: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transform: translateX(150%);
+    transition: transform 0.3s ease;
+}
+
+.notification.show {
+    transform: translateX(0);
+}
+
+.notification i {
+    font-size: 1.2rem;
+}
+
+/* Column widths for list view */
+.list-view-table th:nth-child(1),
+.list-view-table td:nth-child(1) {
+    width: 120px; /* Image column */
+}
+
+.list-view-table th:nth-child(2),
+.list-view-table td:nth-child(2) {
+    width: 200px; /* Name column */
+}
+
+.list-view-table th:nth-child(3),
+.list-view-table td:nth-child(3) {
+    width: 120px; /* Price column */
+}
+
+.list-view-table th:nth-child(4),
+.list-view-table td:nth-child(4) {
+    width: auto; /* Description column - takes remaining space */
+}
+
+.list-view-table th:nth-child(5),
+.list-view-table td:nth-child(5) {
+    width: 120px; /* Action column */
+}
 </style>
 </head>
 <body>
@@ -136,6 +238,15 @@ header button:hover{background:var(--primary);color:white}
     <button class="checkout-btn" id="checkoutBtn"><i class="fab fa-whatsapp"></i> Checkout</button>
   </div>
 
+</div>
+
+<!-- Notification Element -->
+<div class="notification" id="notification">
+  <i class="fas fa-check-circle"></i>
+  <div>
+    <strong>Item added to cart!</strong>
+    <div style="font-size:0.85rem">Scroll down to view your cart</div>
+  </div>
 </div>
 
 <!-- Admin Modal -->
@@ -254,11 +365,11 @@ const ADMIN_PASSWORD = "2214721";
 
 /* ----------------------------- Default Demo Data (fallback only) ----------------------------- */
 const DEMO_PRODUCTS = [
-  {id:1,name:"M90 ANC Earphones",price:9340,image:"https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400",description:"High-quality ANC earphones",brand:"A4Tech",category:"Audio"},
-  {id:2,name:"M70 Gaming Mouse",price:8470,image:"https://images.unsplash.com/photo-1527814050087-3793815479db?w=400",description:"Gaming mouse",brand:"A4Tech",category:"Mouse"},
-  {id:3,name:"B1700 Combo Pack",price:6900,image:"https://images.unsplash.com/photo-1541140532154-b024d705b90a?w=400",description:"Keyboard + Mouse combo",brand:"A4Tech",category:"Keyboard"},
-  {id:4,name:"Bloody Headphones",price:8800,image:"https://images.unsplash.com/photo-1585298723682-7115561c51b7?w=400",description:"Gaming headset",brand:"Bloody",category:"Audio"},
-  {id:5,name:"BP-45 Mouse Pad",price:1380,image:"https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=400",description:"Waterproof Mouse Pad",brand:"Bloody",category:"Mousepad"}
+  {id:1,name:"M90 ANC Earphones",price:9340,image:"https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400",description:"High-quality ANC earphones with noise cancellation and superior sound quality",brand:"A4Tech",category:"Audio"},
+  {id:2,name:"M70 Gaming Mouse",price:8470,image:"https://images.unsplash.com/photo-1527814050087-3793815479db?w=400",description:"Professional gaming mouse with high DPI and customizable RGB lighting",brand:"A4Tech",category:"Mouse"},
+  {id:3,name:"B1700 Combo Pack",price:6900,image:"https://images.unsplash.com/photo-1541140532154-b024d705b90a?w=400",description:"Keyboard and mouse combo perfect for office and gaming use",brand:"A4Tech",category:"Keyboard"},
+  {id:4,name:"Bloody Headphones",price:8800,image:"https://images.unsplash.com/photo-1585298723682-7115561c51b7?w=400",description:"High-quality gaming headset with surround sound and comfortable ear cushions",brand:"Bloody",category:"Audio"},
+  {id:5,name:"BP-45 Mouse Pad",price:1380,image:"https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=400",description:"Large waterproof mouse pad with smooth surface for precise mouse movements",brand:"Bloody",category:"Mousepad"}
 ];
 const DEMO_BRANDS = ["All","A4Tech","Bloody"];
 const DEMO_CATEGORIES = {
@@ -286,6 +397,7 @@ const cartIcon = document.getElementById("cartIcon");
 const cartCount = document.getElementById("cartCount");
 const cartSection = document.getElementById("cartSection");
 const searchBox = document.getElementById("searchBox");
+const notification = document.getElementById("notification");
 
 /* Admin modal elements */
 const adminModal = document.getElementById("adminModal");
@@ -393,23 +505,24 @@ function renderProducts(){
   }
   if(isList){
     grid.classList.add("list-view");
-    grid.innerHTML = `<table style="width:100%;border-collapse:collapse">
-      <tr style="background:var(--primary);color:white;text-align:left">
-        <th style="padding:8px">Name</th>
-        <th style="padding:8px">Brand</th>
-        <th style="padding:8px">Category</th>
-        <th style="padding:8px">Price</th>
-        <th style="padding:8px">Action</th>
-      </tr>
-      ${list.map(p=>`
-        <tr style="border-bottom:1px solid #ddd">
-          <td style="padding:8px">${p.name}</td>
-          <td style="padding:8px">${p.brand}</td>
-          <td style="padding:8px">${p.category}</td>
-          <td style="padding:8px">Rs. ${p.price}</td>
-          <td style="padding:8px"><button class="add-to-cart" onclick="addToCart(${p.id})">Add</button></td>
-        </tr>`).join("")}
-    </table>`;
+    grid.innerHTML = `
+      <table class="list-view-table">
+        <tr style="background:var(--primary);color:white;text-align:left">
+          <th style="padding:8px">Image</th>
+          <th style="padding:8px">Name</th>
+          <th style="padding:8px">Price</th>
+          <th style="padding:8px">Description</th>
+          <th style="padding:8px">Action</th>
+        </tr>
+        ${list.map(p=>`
+          <tr style="border-bottom:1px solid #ddd">
+            <td style="padding:8px"><img src="${p.image||''}" class="list-view-image" alt="${p.name}" onerror="this.src='https://via.placeholder.com/100x100?text=No+Image'"></td>
+            <td style="padding:8px">${p.name}</td>
+            <td style="padding:8px">Rs. ${p.price}</td>
+            <td style="padding:8px" class="list-view-description">${p.description||''}</td>
+            <td style="padding:8px"><button class="add-to-cart" onclick="addToCartWithNotification(${p.id})">Add to Cart</button></td>
+          </tr>`).join("")}
+      </table>`;
   } else {
     grid.classList.remove("list-view");
     grid.innerHTML = list.map(p=>`
@@ -417,13 +530,13 @@ function renderProducts(){
         <img src="${p.image||''}" class="product-image" alt="${p.name}" onerror="this.src='https://via.placeholder.com/400x200?text=No+Image'">
         <div class="product-info">
           <h3 class="product-title">${p.name}</h3>
-          <p class="product-description">${p.description||''}</p>
+          <!-- Description removed from grid view as requested -->
           <div style="display:flex;justify-content:space-between;align-items:center">
             <div style="display:flex;flex-direction:column">
               <div class="small-muted">${p.brand} • ${p.category}</div>
               <div class="product-price">Rs. ${p.price}</div>
             </div>
-            <button class="add-to-cart" onclick="addToCart(${p.id})">Add to Cart</button>
+            <button class="add-to-cart" onclick="addToCartWithNotification(${p.id})">Add to Cart</button>
           </div>
         </div>
       </div>`).join("");
@@ -444,9 +557,7 @@ function renderCart(){
     <div class="cart-item">
       <div style="flex:1">${item.name}</div>
       <div class="qty-controls">
-        <button class="qty-btn" onclick="changeQty(${item.id},-1)">-</button>
-        <span>${item.qty}</span>
-        <button class="qty-btn" onclick="changeQty(${item.id},1)">+</button>
+        <input type="number" class="qty-input" value="${item.qty}" min="1" onchange="updateCartQty(${item.id}, this.value)">
       </div>
       <div>Rs. ${(item.price*item.qty).toFixed(2)}</div>
       <button class="delete-btn" onclick="removeFromCart(${item.id})"><i class="fas fa-trash"></i></button>
@@ -463,17 +574,34 @@ function addToCart(id){
   if(found) found.qty++; else cart.push({...prod,qty:1});
   renderCart();
 }
-function changeQty(id,delta){
+
+function addToCartWithNotification(id){
+  addToCart(id);
+  showNotification();
+}
+
+function updateCartQty(id, newQty){
   const item = cart.find(c=>c.id===id);
   if(!item) return;
-  item.qty += delta;
-  if(item.qty <= 0) cart = cart.filter(c=>c.id!==id);
+  newQty = parseInt(newQty);
+  if(newQty < 1) newQty = 1;
+  item.qty = newQty;
   renderCart();
 }
+
 function removeFromCart(id){
   cart = cart.filter(c=>c.id!==id);
   renderCart();
 }
+
+/* ----------------------------- Notification function ----------------------------- */
+function showNotification(){
+  notification.classList.add('show');
+  setTimeout(() => {
+    notification.classList.remove('show');
+  }, 3000);
+}
+
 document.getElementById("checkoutBtn").onclick = () => {
   if(cart.length===0) return alert("Cart is empty!");
   const msg = cart.map(c=>`${c.name} x${c.qty} = Rs.${c.price*c.qty}`).join("%0A");
@@ -801,6 +929,8 @@ cartIcon.onclick = ()=> cartSection.scrollIntoView({behavior:"smooth"});
 
 /* ensure global functions exist for inline onclicks */
 window.addToCart = addToCart;
+window.addToCartWithNotification = addToCartWithNotification;
+window.updateCartQty = updateCartQty;
 window.changeQty = changeQty;
 window.removeFromCart = removeFromCart;
 
