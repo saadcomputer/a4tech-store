@@ -176,26 +176,31 @@ header button:hover{background:var(--primary);color:white}
 /* Column widths for list view */
 .list-view-table th:nth-child(1),
 .list-view-table td:nth-child(1) {
-    width: 120px; /* Image column */
+    width: 100px; /* Image column */
 }
 
 .list-view-table th:nth-child(2),
 .list-view-table td:nth-child(2) {
-    width: 200px; /* Name column */
+    width: 180px; /* Name column */
 }
 
 .list-view-table th:nth-child(3),
 .list-view-table td:nth-child(3) {
-    width: 120px; /* Price column */
+    width: 100px; /* Price column */
 }
 
 .list-view-table th:nth-child(4),
 .list-view-table td:nth-child(4) {
-    width: auto; /* Description column - takes remaining space */
+    width: 120px; /* Carton Packing column */
 }
 
 .list-view-table th:nth-child(5),
 .list-view-table td:nth-child(5) {
+    width: auto; /* Description column - takes remaining space */
+}
+
+.list-view-table th:nth-child(6),
+.list-view-table td:nth-child(6) {
     width: 120px; /* Action column */
 }
 </style>
@@ -288,7 +293,10 @@ header button:hover{background:var(--primary);color:white}
           <div class="form-row">
             <select id="pBrand" class="input"></select>
             <select id="pCategory" class="input"></select>
-            <input id="pDesc" class="input" placeholder="Short description" />
+            <input id="pCartonPacking" class="input" placeholder="Carton Packing (e.g., 12 pcs)" />
+          </div>
+          <div class="form-row">
+            <input id="pDesc" class="input" placeholder="Short description" style="flex:1" />
           </div>
           <div style="display:flex;gap:8px;margin-top:8px">
             <button id="saveProductBtn" class="small-btn btn-primary">Save</button>
@@ -301,7 +309,7 @@ header button:hover{background:var(--primary);color:white}
           <table class="table" id="productsTable">
             <thead>
               <tr>
-                <th>Name</th><th>Brand</th><th>Category</th><th>Price</th><th>Actions</th>
+                <th>Name</th><th>Brand</th><th>Category</th><th>Price</th><th>Carton Packing</th><th>Actions</th>
               </tr>
             </thead>
             <tbody></tbody>
@@ -365,11 +373,11 @@ const ADMIN_PASSWORD = "2214721";
 
 /* ----------------------------- Default Demo Data (fallback only) ----------------------------- */
 const DEMO_PRODUCTS = [
-  {id:1,name:"M90 ANC Earphones",price:9340,image:"https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400",description:"High-quality ANC earphones with noise cancellation and superior sound quality",brand:"A4Tech",category:"Audio"},
-  {id:2,name:"M70 Gaming Mouse",price:8470,image:"https://images.unsplash.com/photo-1527814050087-3793815479db?w=400",description:"Professional gaming mouse with high DPI and customizable RGB lighting",brand:"A4Tech",category:"Mouse"},
-  {id:3,name:"B1700 Combo Pack",price:6900,image:"https://images.unsplash.com/photo-1541140532154-b024d705b90a?w=400",description:"Keyboard and mouse combo perfect for office and gaming use",brand:"A4Tech",category:"Keyboard"},
-  {id:4,name:"Bloody Headphones",price:8800,image:"https://images.unsplash.com/photo-1585298723682-7115561c51b7?w=400",description:"High-quality gaming headset with surround sound and comfortable ear cushions",brand:"Bloody",category:"Audio"},
-  {id:5,name:"BP-45 Mouse Pad",price:1380,image:"https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=400",description:"Large waterproof mouse pad with smooth surface for precise mouse movements",brand:"Bloody",category:"Mousepad"}
+  {id:1,name:"M90 ANC Earphones",price:9340,image:"https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400",description:"High-quality ANC earphones with noise cancellation and superior sound quality",brand:"A4Tech",category:"Audio", cartonPacking: "12 pcs"},
+  {id:2,name:"M70 Gaming Mouse",price:8470,image:"https://images.unsplash.com/photo-1527814050087-3793815479db?w=400",description:"Professional gaming mouse with high DPI and customizable RGB lighting",brand:"A4Tech",category:"Mouse", cartonPacking: "24 pcs"},
+  {id:3,name:"B1700 Combo Pack",price:6900,image:"https://images.unsplash.com/photo-1541140532154-b024d705b90a?w=400",description:"Keyboard and mouse combo perfect for office and gaming use",brand:"A4Tech",category:"Keyboard", cartonPacking: "10 pcs"},
+  {id:4,name:"Bloody Headphones",price:8800,image:"https://images.unsplash.com/photo-1585298723682-7115561c51b7?w=400",description:"High-quality gaming headset with surround sound and comfortable ear cushions",brand:"Bloody",category:"Audio", cartonPacking: "12 pcs"},
+  {id:5,name:"BP-45 Mouse Pad",price:1380,image:"https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=400",description:"Large waterproof mouse pad with smooth surface for precise mouse movements",brand:"Bloody",category:"Mousepad", cartonPacking: "50 pcs"}
 ];
 const DEMO_BRANDS = ["All","A4Tech","Bloody"];
 const DEMO_CATEGORIES = {
@@ -417,6 +425,7 @@ const pImage = document.getElementById("pImage");
 const pBrand = document.getElementById("pBrand");
 const pCategory = document.getElementById("pCategory");
 const pDesc = document.getElementById("pDesc");
+const pCartonPacking = document.getElementById("pCartonPacking");
 const saveProductBtn = document.getElementById("saveProductBtn");
 const cancelProductBtn = document.getElementById("cancelProductBtn");
 const productFormMsg = document.getElementById("productFormMsg");
@@ -511,6 +520,7 @@ function renderProducts(){
           <th style="padding:8px">Image</th>
           <th style="padding:8px">Name</th>
           <th style="padding:8px">Price</th>
+          <th style="padding:8px">Carton Packing</th>
           <th style="padding:8px">Description</th>
           <th style="padding:8px">Action</th>
         </tr>
@@ -519,6 +529,7 @@ function renderProducts(){
             <td style="padding:8px"><img src="${p.image||''}" class="list-view-image" alt="${p.name}" onerror="this.src='https://via.placeholder.com/100x100?text=No+Image'"></td>
             <td style="padding:8px">${p.name}</td>
             <td style="padding:8px">Rs. ${p.price}</td>
+            <td style="padding:8px">${p.cartonPacking || 'N/A'}</td>
             <td style="padding:8px" class="list-view-description">${p.description||''}</td>
             <td style="padding:8px"><button class="add-to-cart" onclick="addToCartWithNotification(${p.id})">Add to Cart</button></td>
           </tr>`).join("")}
@@ -660,7 +671,7 @@ let editingProductId = null;
 addProductBtn.addEventListener("click", () => {
   editingProductId = null;
   productFormTitle.innerText = "Add Product";
-  pName.value = ""; pPrice.value = ""; pImage.value = ""; pDesc.value = "";
+  pName.value = ""; pPrice.value = ""; pImage.value = ""; pDesc.value = ""; pCartonPacking.value = "";
   if(brands.length > 1) pBrand.value = brands[1];
   pCategory.innerHTML = (categories[pBrand.value] || []).map(c=>`<option value="${c}">${c}</option>`).join("");
   productFormMsg.innerText = "";
@@ -681,6 +692,7 @@ saveProductBtn.addEventListener("click", () => {
   const price = parseFloat(pPrice.value);
   const image = pImage.value.trim();
   const desc = pDesc.value.trim();
+  const cartonPacking = pCartonPacking.value.trim();
   const brandVal = pBrand.value;
   const catVal = pCategory.value;
 
@@ -692,11 +704,11 @@ saveProductBtn.addEventListener("click", () => {
   if(editingProductId){
     const idx = products.findIndex(p=>p.id===editingProductId);
     if(idx>=0){
-      products[idx] = {...products[idx], name, price, image, description:desc, brand:brandVal, category:catVal};
+      products[idx] = {...products[idx], name, price, image, description:desc, cartonPacking, brand:brandVal, category:catVal};
       productFormMsg.innerText = "Updated";
     }
   } else {
-    const newProd = {id: uid(), name, price, image, description:desc, brand:brandVal, category:catVal};
+    const newProd = {id: uid(), name, price, image, description:desc, cartonPacking, brand:brandVal, category:catVal};
     products.push(newProd);
     productFormMsg.innerText = "Added";
   }
@@ -714,6 +726,7 @@ function populateProductsTable(){
       <td>${escapeHtml(p.brand || "")}</td>
       <td>${escapeHtml(p.category || "")}</td>
       <td>Rs. ${p.price}</td>
+      <td>${escapeHtml(p.cartonPacking || "")}</td>
       <td class="inline-actions">
         <button class="small-btn" onclick="adminEditProduct(${p.id})"><i class="fas fa-edit"></i> Edit</button>
         <button class="small-btn btn-danger" onclick="adminDeleteProduct(${p.id})"><i class="fas fa-trash"></i> Delete</button>
@@ -732,6 +745,7 @@ window.adminEditProduct = function(id){
   pPrice.value = prod.price;
   pImage.value = prod.image || "";
   pDesc.value = prod.description || "";
+  pCartonPacking.value = prod.cartonPacking || "";
   pBrand.innerHTML = brands.filter(b=>b!=="All").map(b=>`<option value="${b}" ${b===prod.brand?"selected":""}>${b}</option>`).join("");
   pBrand.dispatchEvent(new Event('change'));
   const list = categories[prod.brand] || [];
