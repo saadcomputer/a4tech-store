@@ -7,7 +7,9 @@
       "image": "images/gh30.jpg",
       "description": "4mm Tempered Glass Panels, 7 Expansion Slot, Maximize Cooling Airflow.",
       "brand": "Bloody",
-      "category": "Others"
+      "category": "Others",
+      "cartonPacking": "1",
+      "heading": "BLOODY MID TOWER GAMING CASE"
     },
     {
       "id": 1761048027910,
@@ -16,7 +18,9 @@
       "image": "images/m90.jpg",
       "description": "Bluetooth V5.1, Active Noise Cancellation, Independent Transmission, Game / Music Modes, ENC Noise Cancelling,  Wireless Charging",
       "brand": "Bloody",
-      "category": "Audio"
+      "category": "Audio",
+      "cartonPacking": "1",
+      "heading": "BLOODY GAMING TWS EARBUDS"
     },
     {
       "id": 1761049936406,
@@ -25,7 +29,9 @@
       "image": "images/m70red.jpg",
       "description": "Independent Transmission, , Game / Music Modes, Bluetooth V5.2, , TYPE-C, , ENC Noise Cancelling",
       "brand": "Bloody",
-      "category": "Audio"
+      "category": "Audio",
+      "cartonPacking": "5",
+      "heading": "BLOODY GAMING TWS EARBUDS"
     },
     {
       "id": 17610474182288,
@@ -34,7 +40,9 @@
       "image": "images/b1700.jpg",
       "description": "(Full Adjustable Neon Backlit Keyboard) (Mouse Sensor: PixArt Optical Engine, Resolution: 100~6,000 CPI) (Mousepad 350*280*3 mm)",
       "brand": "Bloody",
-      "category": "Keyboard"
+      "category": "Keyboard",
+      "cartonPacking": "",
+      "heading": "BLOODY BLAZING GAMING WIRED KEYBOARD+MOUSE SETS"
     },
     {
       "id": 17610482027910,
@@ -43,7 +51,9 @@
       "image": "images/at75.jpg",
       "description": "Switch Type: Linear, Durability: 100 Million Keystrokes, Initial Force: 48 ± 3 cN Min, Total Travel Distance: 3.8 ± 0.2 mm, Actuation Point Customization Range: 0.8 ~ 3.0 mm, Report Rate: 1000Hz/1ms, Keycaps: PBT Keycaps, Backlit: 7 RGB Backlit Effects",
       "brand": "Bloody",
-      "category": "Keyboard"
+      "category": "Keyboard",
+      "cartonPacking": "10",
+      "heading": "BLOODY 7-COLOR NEON LIGHTING GAMING KEYBOARDS"
     },
     {
       "id": 1761042936406,
@@ -108,5 +118,11 @@
       "Mousepad",
       "Others"
     ]
-  }
+  },
+  "headings": [
+    "BLOODY MID TOWER GAMING CASE",
+    "BLOODY GAMING TWS EARBUDS",
+    "BLOODY BLAZING GAMING WIRED KEYBOARD+MOUSE SETS",
+    "BLOODY 7-COLOR NEON LIGHTING GAMING KEYBOARDS"
+  ]
 }
