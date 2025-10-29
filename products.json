@@ -5,7 +5,7 @@
       "name": "GH-30 ROGUE Gaming Case (5 RGB FANS)",
       "price": 23200,
       "image": "images/gh30.jpg",
-      "description": "4mm Tempered Glass Panels, 7 Expansion Slot, Maximize Cooling Airflow.",
+      "description": "4mm Tempered Glass Panels, 7 Expansion Slot, Maximize Cooling Airflow, Motherboards: Standard ATX, Micro-ATX, ITX, Power Supply: ATX Power, Video Card: Up to 310 mm (Length), Expansion Slot: 7 Slots, CPU Cooler: Up to 165 mm (Height),Input / Output Panel: HD Audio, USB 3.0*1, USB2.0*1, Hardware Space: 3.5\" HDD*1 & 2.5”SSD*1, Airflow / Liquid Cooler System: Front 120 mm Fan*3 / Rear 120 mm Fan*2/ Top 120 mm Fan*2 or 240 mm Liquid Radiator (Pre-Installed 5 RGB 120mm Fans: Front*2, Rear*2, Top*1)",
       "brand": "Bloody",
       "category": "Others",
       "cartonPacking": "1",
@@ -14,12 +14,12 @@
     {
       "id": 1761048027910,
       "name": "M90 (ANC) Black+Red",
-      "price": 9350,
+      "price": 9340,
       "image": "images/m90.jpg",
-      "description": "Bluetooth V5.1, Active Noise Cancellation, Independent Transmission, Game / Music Modes, ENC Noise Cancelling,  Wireless Charging",
+      "description": "Speaker Size: 10 mm, Frequency Response: 20 Hz-20 kHz, Earphone Sensitivity: 102 dB @ -10 dBFS, Mic. Sensitivity: -42 dB @1 kHz/Pa, Earphone Impedance: 32 ohm, Bluetooth Version: v5.1, Operation Distance: 10 m, Earphone Battery Type: Lithium Battery (40 mAh), Charging Case Battery Type: Lithium Battery (500 mAh), Charging Power: 5V=1A, Earphone Charging Time: ＜1.5H (Low Battery to Fully Charged), Case Charging Time:＜2H (Low Battery to Fully Charged), Music Playtime with Single Charge: ≈4H, Playtime from Charging Case: ≈24H, Weight: Earphone: 9 g / Charging Case: 41 g",
       "brand": "Bloody",
       "category": "Audio",
-      "cartonPacking": "1",
+      "cartonPacking": "5",
       "heading": "BLOODY GAMING TWS EARBUDS"
     },
     {
@@ -27,7 +27,7 @@
       "name": "M70 (ANC) Black+Red",
       "price": 8470,
       "image": "images/m70red.jpg",
-      "description": "Independent Transmission, , Game / Music Modes, Bluetooth V5.2, , TYPE-C, , ENC Noise Cancelling",
+      "description": "Speaker Size: 6 mm Frequency Response: 20 Hz-20 kHz, Earphone Sensitivity: 99 dB @ -10 dBFS, Mic. Sensitivity: -42 dB @1 kHz/Pa, Earphone Impedance: 16 ohm, Bluetooth Version: v5.2, Operation Distance: 10 m, Earphone Battery Type: Lithium Battery (60 mAh), Charging Case Battery Type: Lithium Battery (400 mAh), Charging Power: 5V=1A, Earphone Charging Time: ＜1.5H (Low Battery to Fully Charged), Case Charging Time:＜2H (Low Battery to Fully Charged), Music Playtime with Single Charge: ≈6H, Playtime from Charging Case: ≈24H, Weight: Earphone: 9 g / Charging Case: 47 g",
       "brand": "Bloody",
       "category": "Audio",
       "cartonPacking": "5",
@@ -38,10 +38,10 @@
       "name": "B1700 Combo Set (B140 KEYBOARD ES7 MOUSE AND BP50M MOUSEPAD)",
       "price": 6900,
       "image": "images/b1700.jpg",
-      "description": "(Full Adjustable Neon Backlit Keyboard) (Mouse Sensor: PixArt Optical Engine, Resolution: 100~6,000 CPI) (Mousepad 350*280*3 mm)",
+      "description": "NEON GAMING DESKTOP : Multi-Key Rollover, Double-Shot Injection, 6000 CPI Adjustable, 45 IPS, 256K Onboard Memory, Keyboard : Report Rate: 1000Hz, Backlit：Neon, Water-Resistant：Double Secured, Space-Bar: Screw Enhanced, Connector: USB, Cable Length : 1.8m, Wheel: Over 500,000 Scrolls, MOUSE Tracking Sensor: PixArt Optical Engine, Resolution: 100~6,000 CPI, Tracking Speed: 45 ips, Default Resolution: 1000/1200/1600/2000/6000 CPI, Frame Speed: 6,000 fps, Acceleration: 15 g, , Response Report Rate: 125~1000 Hz, Key Response:1ms,Durability Button Lifetime:Over 10 Million Clicks, Mousepad 350*280*3 mm (L*W*H)",
       "brand": "Bloody",
       "category": "Keyboard",
-      "cartonPacking": "",
+      "cartonPacking": "10",
       "heading": "BLOODY BLAZING GAMING WIRED KEYBOARD+MOUSE SETS"
     },
     {
@@ -62,7 +62,9 @@
       "image": "images/at87.jpg",
       "description": "Switch Type: Linear, Durability: 100 Million Keystrokes, Initial Force: 48 ± 3 cN Min, Total Travel Distance: 3.8 ± 0.2 mm, Actuation Point Customization Range: 0.8 ~ 3.0 mm, Report Rate: 1000Hz/1ms, Keycaps: PBT Keycaps, Backlit: 7 RGB Backlit Effects",
       "brand": "Bloody",
-      "category": "Keyboard"
+      "category": "Keyboard",
+      "cartonPacking": "10",
+      "heading": "BLOODY 7-COLOR NEON LIGHTING GAMING KEYBOARDS"
     },
     {
       "id": 1761052860419,
@@ -71,7 +73,9 @@
       "image": "images/at98.jpg",
       "description": "Switch Type: Linear, Durability: 100 Million Keystrokes, Initial Force: 48 ± 3 cN Min, Total Travel Distance: 3.8 ± 0.2 mm, Actuation Point Customization Range: 0.8 ~ 3.0 mm, Report Rate: 1000Hz/1ms, Keycaps: PBT Keycaps, Backlit: 7 RGB Backlit Effects",
       "brand": "Bloody",
-      "category": "Keyboard"
+      "category": "Keyboard",
+      "cartonPacking": "10",
+      "heading": "BLOODY 7-COLOR NEON LIGHTING GAMING KEYBOARDS"
     },
     {
       "id": 1761052920144,
@@ -80,7 +84,9 @@
       "image": "images/b135n.jpg",
       "description": "PERFORMANCE Report Rate: 1000Hz Backlit: Neon Water-Resistant: Double Secured Space-Bar: Screw Enhanced Connector: USB Cable Length: 1.8m Windows 7/ 8/ 8.1/ 10/ 11",
       "brand": "Bloody",
-      "category": "Keyboard"
+      "category": "Keyboard",
+      "cartonPacking": "10",
+      "heading": "BLOODY 7-COLOR NEON LIGHTING GAMING KEYBOARDS"
     },
     {
       "id": 1761052981468,
@@ -89,15 +95,41 @@
       "image": "images/b500n.jpg",
       "description": "Bloody Neon Mecha-Like Switch Gaming Keyboard USB Grey US Layout, Multi-Key Rollover, Centered Backlight Design, 1000Hz Report Rate, Screw Enhanced Space-Bar, Anti-Slippery Lift, Report Rate: 1000Hz Backlit：Neon, Water-Resistant：Double Secured, Space-Bar: Screw Enhanced, Connector: USB , Cable Length : 1.8m Windows 7/ 8 / 8.1 / 10",
       "brand": "Bloody",
-      "category": "Keyboard"
+      "category": "Keyboard",
+      "cartonPacking": "10",
+      "heading": "BLOODY 7-COLOR NEON LIGHTING GAMING KEYBOARDS"
     },
     {
       "id": 1761053315257,
       "name": "S87 RGB (ENERGY RED) RED SWITCH (MECHANICAL)",
       "price": 10700,
       "image": "images/s87red.jpg",
-      "description": "Hot-Swappable, Extreme Quiet Typing, Two Adjustable Feet, 10 Backlit Effects, 7 Game Modes Storage,3-Direction Cable Management, PERFORMANCE Key Style: BLMS Red Plus Switch, Key Response：1 ms, Connector: USB, Backlit: RGB, Cable Length: 1.8 m, Windows 7/ 8 /8.1 / 10 /11",
+      "description": "Bloody BLMS Customize Mechanical Switch, Hot-Swappable, Extreme Quiet Typing, Two Adjustable Feet, RGB Backlit, Default 10 Backlit Effects, 7 Game Modes Storage, 4M Onboard Memory, N-Key Rollover, 87-Key Style Keyboard, Elite Bloody KeyDominator Software, 3-Direction Cable Management, PERFORMANCE Key Style: BLMS Red Plus Switch, Key Response：1 ms, Connector: USB, Backlit: RGB, Cable Length: 1.8 m, Key Life: Up to 50 M Keystrokes, System Requirements: Windows 7/ 8 /8.1 / 10 /11",
       "brand": "Bloody",
+      "category": "Keyboard",
+      "cartonPacking": "10",
+      "heading": "BLOODY 7-COLOR NEON LIGHTING GAMING KEYBOARDS"
+    },
+    {
+      "id": 1761716869858,
+      "name": "WS98 (RED) DUAL CORE WIRELESS    RED SWITCH (MECHANICAL)",
+      "price": 12500,
+      "image": "images/ws98red.jpg",
+      "description": "Dual-Core, Multi-Mode, BLOODY BLMS Engineered Mechanical Switch, Gaming Grade PBT Keycaps, 1ms Wireless Transmission, Extreme Quiet Typing, RGB Backlit, N-Key Rollover, System Swap, Adaptive Battery Life, BLMS Switches, Wireless Transmission: 1 ms,  Connection: USB / 2.4G / Bluetooth v5.1, Backlit: RGB System Requirements: Windows 7/8/8.1/10/11",
+      "cartonPacking": "10",
+      "heading": "BLOODY 7-COLOR NEON LIGHTING GAMING KEYBOARDS",
+      "brand": "Bloody",
+      "category": "Keyboard"
+    },
+    {
+      "id": 1761716999384,
+      "name": "S98 (BLACK)  RED SWITCH (MECHANICAL)",
+      "price": 10500,
+      "image": "images/s98black.jpg",
+      "description": "BLMS Red Plus Mechanical Switch,  Hot-Swappable, Extreme Quiet Typing, 98-Key Style Keyboard, 3-Direction Cable Management, RGB Backlit, Default 10 Backlit Effects, 7 Game Modes Storage, 4M Onboard Memory, N-Key Rollover, Two Adjustable Feet, Connector: USB, Backlit: RGB, Cable Length: 1.8 m, System Requirements: Windows 7/ 8 /8.1 / 10 /11",
+      "cartonPacking": "10",
+      "heading": "BLOODY 7-COLOR NEON LIGHTING GAMING KEYBOARDS",
+      "brand": "A4Tech",
       "category": "Keyboard"
     }
   ],
