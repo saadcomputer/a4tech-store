@@ -155,6 +155,39 @@ header button:hover{background:var(--primary);color:white}
     line-height: 1.4;
 }
 
+/* NEW: See More functionality for description */
+.description-container {
+    position: relative;
+}
+
+.description-text {
+    line-height: 1.4;
+    margin-bottom: 5px;
+}
+
+.description-text.short {
+    display: block;
+}
+
+.description-text.full {
+    display: none;
+}
+
+.see-more-btn {
+    background: none;
+    border: none;
+    color: var(--primary);
+    cursor: pointer;
+    padding: 2px 0;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-decoration: underline;
+}
+
+.see-more-btn:hover {
+    color: #0088CC;
+}
+
 /* Notification styles */
 .notification {
     position: fixed;
@@ -571,11 +604,11 @@ const ADMIN_PASSWORD = "2214721";
 
 /* ----------------------------- Default Demo Data (fallback only) ----------------------------- */
 const DEMO_PRODUCTS = [
-  {id:1,name:"M90 ANC Earphones",price:9340,image:"https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400",description:"High-quality ANC earphones with noise cancellation and superior sound quality",brand:"A4Tech",category:"Audio", cartonPacking: "12 pcs", heading: "Audio Products"},
-  {id:2,name:"M70 Gaming Mouse",price:8470,image:"https://images.unsplash.com/photo-1527814050087-3793815479db?w=400",description:"Professional gaming mouse with high DPI and customizable RGB lighting",brand:"A4Tech",category:"Mouse", cartonPacking: "24 pcs", heading: "Gaming Peripherals"},
-  {id:3,name:"B1700 Combo Pack",price:6900,image:"https://images.unsplash.com/photo-1541140532154-b024d705b90a?w=400",description:"Keyboard and mouse combo perfect for office and gaming use",brand:"A4Tech",category:"Keyboard", cartonPacking: "10 pcs", heading: "Combo Packs"},
-  {id:4,name:"Bloody Headphones",price:8800,image:"https://images.unsplash.com/photo-1585298723682-7115561c51b7?w=400",description:"High-quality gaming headset with surround sound and comfortable ear cushions",brand:"Bloody",category:"Audio", cartonPacking: "12 pcs", heading: "Audio Products"},
-  {id:5,name:"BP-45 Mouse Pad",price:1380,image:"https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=400",description:"Large waterproof mouse pad with smooth surface for precise mouse movements",brand:"Bloody",category:"Mousepad", cartonPacking: "50 pcs", heading: "Accessories"}
+  {id:1,name:"M90 ANC Earphones",price:9340,image:"https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400",description:"High-quality ANC earphones with noise cancellation and superior sound quality. Perfect for gaming and music listening with comfortable fit for long hours. Features advanced audio technology with deep bass and clear highs for immersive experience.",brand:"A4Tech",category:"Audio", cartonPacking: "12 pcs", heading: "Audio Products"},
+  {id:2,name:"M70 Gaming Mouse",price:8470,image:"https://images.unsplash.com/photo-1527814050087-3793815479db?w=400",description:"Professional gaming mouse with high DPI and customizable RGB lighting. Ergonomic design for comfortable grip during long gaming sessions. Precision sensor for accurate tracking and quick response times with multiple programmable buttons.",brand:"A4Tech",category:"Mouse", cartonPacking: "24 pcs", heading: "Gaming Peripherals"},
+  {id:3,name:"B1700 Combo Pack",price:6900,image:"https://images.unsplash.com/photo-1541140532154-b024d705b90a?w=400",description:"Keyboard and mouse combo perfect for office and gaming use. Durable construction with spill-resistant design. Plug and play functionality with no drivers required for basic operation and long-lasting performance.",brand:"A4Tech",category:"Keyboard", cartonPacking: "10 pcs", heading: "Combo Packs"},
+  {id:4,name:"Bloody Headphones",price:8800,image:"https://images.unsplash.com/photo-1585298723682-7115561c51b7?w=400",description:"High-quality gaming headset with surround sound and comfortable ear cushions. Adjustable headband for perfect fit. Built-in microphone with noise cancellation for clear voice communication during intense gaming sessions.",brand:"Bloody",category:"Audio", cartonPacking: "12 pcs", heading: "Audio Products"},
+  {id:5,name:"BP-45 Mouse Pad",price:1380,image:"https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=400",description:"Large waterproof mouse pad with smooth surface for precise mouse movements. Non-slip rubber base for stability during intense gaming sessions. Easy to clean and maintain for long-lasting use with optimal performance.",brand:"Bloody",category:"Mousepad", cartonPacking: "50 pcs", heading: "Accessories"}
 ];
 const DEMO_BRANDS = ["All","A4Tech","Bloody"];
 const DEMO_CATEGORIES = {
@@ -699,6 +732,19 @@ async function loadFromJSON(){
   }
 }
 
+/* ----------------------------- NEW: Description truncation function ----------------------------- */
+function truncateDescription(description, maxWords = 20) {
+  if (!description) return { shortText: '', isTruncated: false };
+  
+  const words = description.split(' ');
+  if (words.length <= maxWords) {
+    return { shortText: description, isTruncated: false };
+  }
+  
+  const shortText = words.slice(0, maxWords).join(' ') + '...';
+  return { shortText, isTruncated: true };
+}
+
 /* ----------------------------- Render functions ----------------------------- */
 function renderBrands(){
   brandsContainer.innerHTML = brands.map(b => {
@@ -798,16 +844,28 @@ function renderListView(list, includeImages) {
         </tr>`;
       
       // Add products for this heading
-      tableHTML += groupedProducts[heading].map(p => `
+      tableHTML += groupedProducts[heading].map(p => {
+        const { shortText, isTruncated } = truncateDescription(p.description);
+        
+        return `
         <tr style="border-bottom:1px solid #ddd">
           <td style="padding:8px">${serialNo++}</td>
           <td style="padding:8px"><img src="${p.image||''}" class="list-view-image" alt="${p.name}" onclick="openImagePopup('${p.image||''}')" onerror="this.src='https://via.placeholder.com/100x100?text=No+Image'"></td>
           <td style="padding:8px">${p.name}</td>
           <td style="padding:8px">Rs. ${p.price}</td>
           <td style="padding:8px">${p.cartonPacking || 'N/A'}</td>
-          <td style="padding:8px" class="list-view-description">${p.description||''}</td>
+          <td style="padding:8px" class="list-view-description">
+            <div class="description-container">
+              <div class="description-text short">${shortText}</div>
+              ${isTruncated ? `
+              <div class="description-text full" style="display:none">${p.description}</div>
+              <button class="see-more-btn" onclick="toggleDescription(this)">See More</button>
+              ` : `<div class="description-text">${p.description}</div>`}
+            </div>
+          </td>
           <td style="padding:8px"><button class="add-to-cart" onclick="addToCartWithNotification(${p.id})">Add to Cart</button></td>
-        </tr>`).join("");
+        </tr>`;
+      }).join("");
     });
     
     tableHTML += '</table>';
@@ -834,15 +892,27 @@ function renderListView(list, includeImages) {
         </tr>`;
       
       // Add products for this heading
-      tableHTML += groupedProducts[heading].map(p => `
+      tableHTML += groupedProducts[heading].map(p => {
+        const { shortText, isTruncated } = truncateDescription(p.description);
+        
+        return `
         <tr style="border-bottom:1px solid #ddd">
           <td style="padding:8px">${serialNo++}</td>
           <td style="padding:8px">${p.name}</td>
           <td style="padding:8px">Rs. ${p.price}</td>
           <td style="padding:8px">${p.cartonPacking || 'N/A'}</td>
-          <td style="padding:8px" class="no-image-list-view-description">${p.description||''}</td>
+          <td style="padding:8px" class="no-image-list-view-description">
+            <div class="description-container">
+              <div class="description-text short">${shortText}</div>
+              ${isTruncated ? `
+              <div class="description-text full" style="display:none">${p.description}</div>
+              <button class="see-more-btn" onclick="toggleDescription(this)">See More</button>
+              ` : `<div class="description-text">${p.description}</div>`}
+            </div>
+          </td>
           <td style="padding:8px"><button class="add-to-cart" onclick="addToCartWithNotification(${p.id})">Add to Cart</button></td>
-        </tr>`).join("");
+        </tr>`;
+      }).join("");
     });
     
     tableHTML += '</table>';
@@ -872,6 +942,23 @@ function renderCart(){
   const total = cart.reduce((a,c)=>a+c.price*c.qty,0);
   cartTotal.innerText = "Rs. "+total.toFixed(2);
 }
+
+/* ----------------------------- NEW: Toggle Description Function ----------------------------- */
+window.toggleDescription = function(buttonElement) {
+  const container = buttonElement.parentElement;
+  const shortText = container.querySelector('.description-text.short');
+  const fullText = container.querySelector('.description-text.full');
+  
+  if (fullText.style.display === 'none') {
+    shortText.style.display = 'none';
+    fullText.style.display = 'block';
+    buttonElement.textContent = 'See Less';
+  } else {
+    shortText.style.display = 'block';
+    fullText.style.display = 'none';
+    buttonElement.textContent = 'See More';
+  }
+};
 
 /* ----------------------------- Image Popup Functions ----------------------------- */
 function openImagePopup(imageUrl) {
@@ -1404,6 +1491,7 @@ window.changeQty = changeQty;
 window.removeFromCart = removeFromCart;
 window.openImagePopup = openImagePopup;
 window.closeImagePopup = closeImagePopup;
+window.toggleDescription = toggleDescription;
 
 </script>
 </body>
