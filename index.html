@@ -20,7 +20,7 @@
 }
 body.dark{--light:#1E1E1E;--card:#2C2C2C;--text:#F8F9FA;background:var(--light);color:var(--text);transition:0.3s}
 body{background:var(--light);color:var(--text);transition:0.3s;line-height:1.6}
-.container{max-width:1100px;margin:0 auto;padding:0 20px}
+.container{max-width:100%;margin:0 auto;padding:0 20px} /* CHANGED: max-width: 100% for full width */
 
 /* Header */
 header{background:linear-gradient(135deg,var(--primary),#0088CC);color:white;padding:15px 0;box-shadow:0 4px 12px rgba(0,0,0,0.1)}
@@ -155,6 +155,17 @@ header button:hover{background:var(--primary);color:white}
     line-height: 1.4;
 }
 
+/* NEW: Bold product name and price in list view */
+.list-view-product-name {
+    font-weight: bold !important;
+    font-size: 1.05rem;
+}
+
+.list-view-product-price {
+    font-weight: bold !important;
+    color: var(--secondary);
+}
+
 /* NEW: See More functionality for description */
 .description-container {
     position: relative;
@@ -186,6 +197,33 @@ header button:hover{background:var(--primary);color:white}
 
 .see-more-btn:hover {
     color: #0088CC;
+}
+
+/* NEW: Mobile-specific styles for description */
+@media (max-width: 768px) {
+    .description-text.short {
+        display: none !important;
+    }
+    
+    .description-text.full {
+        display: none !important;
+    }
+    
+    .mobile-description .description-text.short {
+        display: block !important;
+    }
+    
+    .mobile-description .description-text.full {
+        display: none !important;
+    }
+    
+    .mobile-description.expanded .description-text.short {
+        display: none !important;
+    }
+    
+    .mobile-description.expanded .description-text.full {
+        display: block !important;
+    }
 }
 
 /* Notification styles */
@@ -369,6 +407,17 @@ header button:hover{background:var(--primary);color:white}
     white-space: normal;
     word-wrap: break-word;
     line-height: 1.4;
+}
+
+/* NEW: Bold product name and price in no-image list view */
+.no-image-list-view-product-name {
+    font-weight: bold !important;
+    font-size: 1.05rem;
+}
+
+.no-image-list-view-product-price {
+    font-weight: bold !important;
+    color: var(--secondary);
 }
 
 /* Column widths for no-image list view */
@@ -846,21 +895,26 @@ function renderListView(list, includeImages) {
       // Add products for this heading
       tableHTML += groupedProducts[heading].map(p => {
         const { shortText, isTruncated } = truncateDescription(p.description);
+        const isMobile = window.innerWidth <= 768;
         
         return `
         <tr style="border-bottom:1px solid #ddd">
           <td style="padding:8px">${serialNo++}</td>
           <td style="padding:8px"><img src="${p.image||''}" class="list-view-image" alt="${p.name}" onclick="openImagePopup('${p.image||''}')" onerror="this.src='https://via.placeholder.com/100x100?text=No+Image'"></td>
-          <td style="padding:8px">${p.name}</td>
-          <td style="padding:8px">Rs. ${p.price}</td>
+          <td style="padding:8px" class="list-view-product-name">${p.name}</td>
+          <td style="padding:8px" class="list-view-product-price">Rs. ${p.price}</td>
           <td style="padding:8px">${p.cartonPacking || 'N/A'}</td>
           <td style="padding:8px" class="list-view-description">
-            <div class="description-container">
-              <div class="description-text short">${shortText}</div>
-              ${isTruncated ? `
-              <div class="description-text full" style="display:none">${p.description}</div>
-              <button class="see-more-btn" onclick="toggleDescription(this)">See More</button>
-              ` : `<div class="description-text">${p.description}</div>`}
+            <div class="description-container ${isMobile ? 'mobile-description' : ''}">
+              ${isMobile ? `
+                <div class="description-text short">${shortText}</div>
+                <div class="description-text full">${p.description}</div>
+                <button class="see-more-btn" onclick="toggleMobileDescription(this)">See More</button>
+              ` : (isTruncated ? `
+                <div class="description-text short">${shortText}</div>
+                <div class="description-text full" style="display:none">${p.description}</div>
+                <button class="see-more-btn" onclick="toggleDescription(this)">See More</button>
+              ` : `<div class="description-text">${p.description}</div>`)}
             </div>
           </td>
           <td style="padding:8px"><button class="add-to-cart" onclick="addToCartWithNotification(${p.id})">Add to Cart</button></td>
@@ -894,20 +948,25 @@ function renderListView(list, includeImages) {
       // Add products for this heading
       tableHTML += groupedProducts[heading].map(p => {
         const { shortText, isTruncated } = truncateDescription(p.description);
+        const isMobile = window.innerWidth <= 768;
         
         return `
         <tr style="border-bottom:1px solid #ddd">
           <td style="padding:8px">${serialNo++}</td>
-          <td style="padding:8px">${p.name}</td>
-          <td style="padding:8px">Rs. ${p.price}</td>
+          <td style="padding:8px" class="no-image-list-view-product-name">${p.name}</td>
+          <td style="padding:8px" class="no-image-list-view-product-price">Rs. ${p.price}</td>
           <td style="padding:8px">${p.cartonPacking || 'N/A'}</td>
           <td style="padding:8px" class="no-image-list-view-description">
-            <div class="description-container">
-              <div class="description-text short">${shortText}</div>
-              ${isTruncated ? `
-              <div class="description-text full" style="display:none">${p.description}</div>
-              <button class="see-more-btn" onclick="toggleDescription(this)">See More</button>
-              ` : `<div class="description-text">${p.description}</div>`}
+            <div class="description-container ${isMobile ? 'mobile-description' : ''}">
+              ${isMobile ? `
+                <div class="description-text short">${shortText}</div>
+                <div class="description-text full">${p.description}</div>
+                <button class="see-more-btn" onclick="toggleMobileDescription(this)">See More</button>
+              ` : (isTruncated ? `
+                <div class="description-text short">${shortText}</div>
+                <div class="description-text full" style="display:none">${p.description}</div>
+                <button class="see-more-btn" onclick="toggleDescription(this)">See More</button>
+              ` : `<div class="description-text">${p.description}</div>`)}
             </div>
           </td>
           <td style="padding:8px"><button class="add-to-cart" onclick="addToCartWithNotification(${p.id})">Add to Cart</button></td>
@@ -957,6 +1016,19 @@ window.toggleDescription = function(buttonElement) {
     shortText.style.display = 'block';
     fullText.style.display = 'none';
     buttonElement.textContent = 'See More';
+  }
+};
+
+/* ----------------------------- NEW: Toggle Mobile Description Function ----------------------------- */
+window.toggleMobileDescription = function(buttonElement) {
+  const container = buttonElement.parentElement;
+  
+  if (container.classList.contains('expanded')) {
+    container.classList.remove('expanded');
+    buttonElement.textContent = 'See More';
+  } else {
+    container.classList.add('expanded');
+    buttonElement.textContent = 'See Less';
   }
 };
 
@@ -1246,7 +1318,7 @@ window.adminEditProduct = function(id){
   pBrand.dispatchEvent(new Event('change'));
   const list = categories[prod.brand] || [];
   pCategory.innerHTML = list.map(c=>`<option value="${c}" ${c===prod.category?"selected":""}>${c}</option>`).join("");
-  pHeading.innerHTML = '<option value="">No Heading</option>' + headings.map(h=>`<option value="${h}" ${h===prod.heading?"selected":""}>${h}</option>`).join("");
+  pHeading.innerHTML = '<option value="">No Heading</option>' + headings.map(h=>`<option value="${h}" ${h===prod.heading?"selected":''}>${h}</option>`).join("");
   productFormWrap.style.display = "block";
   productFormMsg.innerText = "";
 };
@@ -1492,6 +1564,7 @@ window.removeFromCart = removeFromCart;
 window.openImagePopup = openImagePopup;
 window.closeImagePopup = closeImagePopup;
 window.toggleDescription = toggleDescription;
+window.toggleMobileDescription = toggleMobileDescription;
 
 </script>
 </body>
