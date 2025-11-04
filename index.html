@@ -1,1410 +1,160 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>A4Tech Bloody Products List</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<!-- PWA Meta Tags -->
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="A4Tech Products">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="theme-color" content="#00AEEF">
-<link rel="manifest" href="manifest.json">
-<style>
-/* ---------- Basic style (kept and extended from your original) ---------- */
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif}
-:root{
-  --primary:#00AEEF;--secondary:#25D366;--accent:#FF6B35;
-  --dark:#2C3E50;--light:#F8F9FA;--card:white;--text:#2C3E50;
-}
-body.dark{--light:#1E1E1E;--card:#2C2C2C;--text:#F8F9FA;background:var(--light);color:var(--text);transition:0.3s}
-body{background:var(--light);color:var(--text);transition:0.3s;line-height:1.6}
-.container{max-width:1100px;margin:0 auto;padding:0 20px}
-
-/* Header */
-header{background:linear-gradient(135deg,var(--primary),#0088CC);color:white;padding:15px 0;box-shadow:0 4px 12px rgba(0,0,0,0.1)}
-.header-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}
-.header-left{display:flex;flex-direction:column}
-header h1{font-size:1.8rem;font-weight:700}
-header h2{font-size:0.95rem;font-weight:500;opacity:0.95;margin-top:4px}
-header .header-buttons{display:flex;gap:10px}
-header button{background:white;color:var(--primary);border:none;padding:8px 12px;border-radius:6px;font-weight:600;cursor:pointer;transition:0.25s}
-header button:hover{background:var(--primary);color:white}
-
-/* Brand & Search */
-.brand-search-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;margin:25px 0 10px}
-.brands{display:flex;flex-wrap:wrap;gap:10px}
-.brand-btn{padding:10px 20px;border:none;border-radius:8px;background:white;color:var(--dark);font-weight:600;cursor:pointer;transition:0.3s;box-shadow:0 3px 6px rgba(0,0,0,0.1)}
-.brand-btn.active{background:var(--primary);color:white}
-
-/* Search Bar */
-#searchBox{padding:10px 14px;border-radius:8px;border:1px solid #ccc;min-width:220px;box-shadow:0 3px 6px rgba(0,0,0,0.1);font-size:0.95rem}
-#searchBox:focus{outline:none;border-color:var(--primary)}
-
-/* Categories */
-.categories{display:flex;justify-content:center;flex-wrap:wrap;gap:15px;margin:15px 0 10px}
-.category-btn{padding:10px 20px;border:none;border-radius:8px;background:white;color:var(--dark);font-weight:600;cursor:pointer;transition:0.3s;box-shadow:0 3px 6px rgba(0,0,0,0.1)}
-.category-btn.active{background:var(--secondary);color:white}
-
-/* Products */
-.products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;margin:20px 0;transition:0.3s}
-.products-grid.list-view{display:block}
-.products-grid.list-view .product-card{display:flex;align-items:center;gap:10px}
-.products-grid.list-view .product-image{display:none}
-.product-card{background:var(--card);border-radius:12px;overflow:hidden;box-shadow:0 5px 15px rgba(0,0,0,0.1);transition:0.3s;display:flex;flex-direction:column}
-.product-card:hover{transform:translateY(-4px)}
-.product-image{width:100%;height:280px;object-fit:cover;aspect-ratio:1/1; cursor: pointer;} /* Added cursor pointer for images */
-.product-info{padding:15px;display:flex;flex-direction:column;gap:6px}
-.product-title{font-size:1.1rem;font-weight:600}
-.product-description{font-size:0.9rem;color:#6C757D}
-.product-price{font-weight:700;color:var(--secondary)}
-.add-to-cart{background:var(--secondary);color:white;border:none;padding:8px 12px;border-radius:8px;font-weight:600;cursor:pointer;transition:0.3s}
-.add-to-cart:hover{background:#128C7E}
-
-/* Cart */
-.cart-section{background:var(--card);padding:20px;border-radius:12px;margin:30px 0;box-shadow:0 6px 20px rgba(0,0,0,0.1)}
-.cart-item{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #ddd;gap:10px}
-.cart-item-image{width:60px;height:60px;object-fit:cover;border-radius:8px}
-.cart-total{display:flex;justify-content:space-between;font-weight:700;margin-top:10px}
-.checkout-btn{background:var(--primary);color:white;border:none;padding:12px;border-radius:10px;width:100%;font-weight:600;margin-top:10px}
-.checkout-btn:hover{background:#0088CC}
-
-/* Cart Quantity Controls - UPDATED */
-.qty-controls{display:flex;align-items:center;gap:10px}
-.qty-input{width:60px;padding:6px;border-radius:6px;border:1px solid #ddd;text-align:center}
-.delete-btn{background:none;border:none;color:#ff4d4f;cursor:pointer;font-size:1.1rem}
-
-/* Admin Modal */
-.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);display:none;align-items:center;justify-content:center;z-index:9999}
-.modal{width:95%;max-width:1000px;background:var(--card);border-radius:12px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,0.3)}
-.modal-header{display:flex;justify-content:space-between;align-items:center;padding:14px;border-bottom:1px solid #eee}
-.modal-body{padding:16px;max-height:70vh;overflow:auto}
-.modal-tabs{display:flex;gap:10px;border-bottom:1px solid #eee;padding-bottom:10px;margin-bottom:12px}
-.tab-btn{padding:8px 12px;border-radius:8px;border:none;background:#f1f1f1;cursor:pointer}
-.tab-btn.active{background:var(--primary);color:white}
-.form-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px}
-.input,select,textarea{padding:8px;border-radius:8px;border:1px solid #ccc;min-width:0}
-.table{width:100%;border-collapse:collapse}
-.table th, .table td{padding:8px;border-bottom:1px solid #eee;text-align:left}
-.small-btn{padding:6px 10px;border-radius:8px;border:none;cursor:pointer}
-.btn-danger{background:#ff4d4f;color:white}
-.btn-primary{background:var(--primary);color:white}
-.inline-actions{display:flex;gap:6px;align-items:center}
-
-/* Responsive */
-@media(max-width:700px){
-  .brand-search-row{flex-direction:column;align-items:flex-start;gap:10px}
-  .modal{width:98%}
-}
-
-/* little helpers */
-.small-muted{font-size:0.85rem;color:#666}
-.flex{display:flex;gap:10px;align-items:center}
-.right{margin-left:auto}
-
-/* NEW STYLES FOR LIST VIEW CHANGES */
-.products-grid.list-view .product-card {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 10px;
-    margin-bottom: 10px;
-    gap: 15px;
-}
-
-.products-grid.list-view .product-image {
-    display: block;
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-    border-radius: 8px;
-}
-
-.list-view-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.list-view-table th,
-.list-view-table td {
-    padding: 12px 8px;
-    border-bottom: 1px solid #ddd;
-    text-align: left;
-    vertical-align: top;
-}
-
-.list-view-table th {
-    background: var(--primary);
-    color: white;
-    font-weight: 600;
-}
-
-.list-view-image {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    border-radius: 6px;
-    aspect-ratio: 1/1; /* Square images */
-    cursor: pointer; /* Added for image click */
-}
-
-.list-view-description {
-    white-space: normal;
-    word-wrap: break-word;
-    line-height: 1.4;
-}
-
-/* Notification styles */
-.notification {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: var(--secondary);
-    color: white;
-    padding: 15px 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    transform: translateX(150%);
-    transition: transform 0.3s ease;
-}
-
-.notification.show {
-    transform: translateX(0);
-}
-
-.notification i {
-    font-size: 1.2rem;
-}
-
-/* Column widths for list view */
-.list-view-table th:nth-child(1),
-.list-view-table td:nth-child(1) {
-    width: 60px; /* S.No column */
-}
-
-.list-view-table th:nth-child(2),
-.list-view-table td:nth-child(2) {
-    width: 100px; /* Image column */
-}
-
-.list-view-table th:nth-child(3),
-.list-view-table td:nth-child(3) {
-    width: 150px; /* Model column */
-}
-
-.list-view-table th:nth-child(4),
-.list-view-table td:nth-child(4) {
-    width: 100px; /* Price column */
-}
-
-.list-view-table th:nth-child(5),
-.list-view-table td:nth-child(5) {
-    width: 120px; /* Carton Packing column */
-}
-
-.list-view-table th:nth-child(6),
-.list-view-table td:nth-child(6) {
-    width: auto; /* Description column - takes remaining space */
-}
-
-.list-view-table th:nth-child(7),
-.list-view-table td:nth-child(7) {
-    width: 120px; /* Action column */
-}
-
-/* Heading row styles - UPDATED COLOR */
-.heading-row {
-    background: #16697f !important; /* Updated color */
-    color: white;
-    font-weight: bold;
-    font-size: 1.1rem;
-}
-
-.heading-row td {
-    padding: 15px 8px;
-    text-align: center;
-}
-
-/* NEW: Image Popup Modal */
-.image-popup {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.9);
-    display: none;
-    justify-content: center;
-    align-items: center;
-    z-index: 10000;
-    cursor: pointer;
-}
-
-.image-popup img {
-    max-width: 90%;
-    max-height: 90%;
-    object-fit: contain;
-    border-radius: 8px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-}
-
-.image-popup.active {
-    display: flex;
-}
-
-/* NEW: Install Prompt */
-.install-prompt {
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--primary);
-    color: white;
-    padding: 15px 20px;
-    border-radius: 10px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-    z-index: 1000;
-    display: none;
-    flex-direction: column;
-    gap: 10px;
-    max-width: 90%;
-    text-align: center;
-}
-
-.install-prompt.show {
-    display: flex;
-}
-
-.install-prompt-buttons {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-}
-
-.install-prompt button {
-    padding: 8px 16px;
-    border: none;
-    border-radius: 6px;
-    font-weight: 600;
-    cursor: pointer;
-}
-
-.install-prompt .install-btn {
-    background: var(--secondary);
-    color: white;
-}
-
-.install-prompt .cancel-btn {
-    background: #666;
-    color: white;
-}
-
-/* NEW: No Image List View - Same as list view but without image column */
-.products-grid.no-image-list-view {
-    display: block;
-}
-
-.products-grid.no-image-list-view .product-card {
-    display: none; /* We'll use table instead */
-}
-
-.no-image-list-view-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.no-image-list-view-table th,
-.no-image-list-view-table td {
-    padding: 12px 8px;
-    border-bottom: 1px solid #ddd;
-    text-align: left;
-    vertical-align: top;
-}
-
-.no-image-list-view-table th {
-    background: var(--primary);
-    color: white;
-    font-weight: 600;
-}
-
-.no-image-list-view-description {
-    white-space: normal;
-    word-wrap: break-word;
-    line-height: 1.4;
-}
-
-/* Column widths for no-image list view */
-.no-image-list-view-table th:nth-child(1),
-.no-image-list-view-table td:nth-child(1) {
-    width: 60px; /* S.No column */
-}
-
-.no-image-list-view-table th:nth-child(2),
-.no-image-list-view-table td:nth-child(2) {
-    width: 150px; /* Model column */
-}
-
-.no-image-list-view-table th:nth-child(3),
-.no-image-list-view-table td:nth-child(3) {
-    width: 100px; /* Price column */
-}
-
-.no-image-list-view-table th:nth-child(4),
-.no-image-list-view-table td:nth-child(4) {
-    width: 120px; /* Carton Packing column */
-}
-
-.no-image-list-view-table th:nth-child(5),
-.no-image-list-view-table td:nth-child(5) {
-    width: auto; /* Description column - takes remaining space */
-}
-
-.no-image-list-view-table th:nth-child(6),
-.no-image-list-view-table td:nth-child(6) {
-    width: 120px; /* Action column */
-}
-</style>
-</head>
-<body>
-
-<header>
-  <div class="container header-inner">
-    <div class="header-left">
-      <h1>A4Tech Bloody Products List</h1>
-      <!-- Manual editable subtitle: change this text directly in the HTML when you want to update the date -->
-      <h2 id="manualLastUpdated">Last Updated: 21-Oct-2025</h2>
-    </div>
-    <div class="header-buttons">
-      <button id="themeBtn" title="Toggle theme"><i class="fas fa-moon"></i></button>
-      <button id="viewBtn" title="Toggle view"><i class="fas fa-list"></i></button>
-      <button id="cartIcon" title="Cart"><i class="fas fa-shopping-cart"></i><span class="count" id="cartCount">0</span></button>
-      <button id="openAdminBtn" title="Open Admin"><i class="fas fa-user-shield"></i> Admin</button>
-    </div>
-  </div>
-</header>
-
-<div class="container">
-
-  <div class="brand-search-row">
-    <div class="brands" id="brandsContainer">
-      <button class="brand-btn active" data-brand="All">All</button>
-      <!-- dynamic brand buttons -->
-    </div>
-    <input type="text" id="searchBox" placeholder="Search products...">
-  </div>
-
-  <div class="categories" id="categories"></div>
-  <div class="products-grid" id="productsGrid"></div>
-
-  <div class="cart-section" id="cartSection">
-    <h2>Your Cart</h2>
-    <div id="cartItems">Your cart is empty</div>
-    <div class="cart-total"><span>Total:</span><span id="cartTotal">Rs. 0.00</span></div>
-    <button class="checkout-btn" id="checkoutBtn"><i class="fab fa-whatsapp"></i> Checkout</button>
-  </div>
-
-</div>
-
-<!-- Image Popup Modal -->
-<div class="image-popup" id="imagePopup">
-  <img id="popupImage" src="" alt="Product Image">
-</div>
-
-<!-- Install Prompt -->
-<div class="install-prompt" id="installPrompt">
-  <div>Add A4Tech Products to your home screen for quick access!</div>
-  <div class="install-prompt-buttons">
-    <button class="install-btn" id="installBtn">Add to Home Screen</button>
-    <button class="cancel-btn" id="cancelInstallBtn">Not Now</button>
-  </div>
-</div>
-
-<!-- Notification Element -->
-<div class="notification" id="notification">
-  <i class="fas fa-check-circle"></i>
-  <div>
-    <strong>Item added to cart!</strong>
-    <div style="font-size:0.85rem">Scroll down to view your cart</div>
-  </div>
-</div>
-
-<!-- Admin Modal -->
-<div class="modal-overlay" id="adminModal">
-  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="adminTitle">
-    <div class="modal-header">
-      <div>
-        <strong id="adminTitle">Admin Panel</strong>
-        <div class="small-muted">Manage products, brands & categories</div>
-      </div>
-      <div>
-        <button id="exportBtn" class="small-btn" title="Export data">Export JSON</button>
-        <button id="closeAdminBtn" class="small-btn btn-danger"><i class="fas fa-times"></i> Close</button>
-      </div>
-    </div>
-    <div class="modal-body">
-      <div class="modal-tabs" id="modalTabs">
-        <button class="tab-btn active" data-tab="products">Products</button>
-        <button class="tab-btn" data-tab="brands">Brands</button>
-        <button class="tab-btn" data-tab="categories">Categories</button>
-        <button class="tab-btn" data-tab="headings">Headings</button>
-        <button class="tab-btn" data-tab="import">Import</button>
-      </div>
-
-      <!-- PRODUCTS TAB -->
-      <div id="tab-products" class="tab-content">
-        <div style="display:flex;gap:10px;margin-bottom:8px;align-items:center">
-          <button class="small-btn btn-primary" id="addProductBtn"><i class="fas fa-plus"></i> Add Product</button>
-          <button class="small-btn" id="reloadDefaultsBtn" title="Load demo products">Load Demo</button>
-          <div class="small-muted right">Use Export to publish changes to products.json</div>
-        </div>
-
-        <div id="productFormWrap" style="margin-bottom:12px;display:none;border:1px solid #eee;padding:10px;border-radius:8px">
-          <h4 id="productFormTitle">Add Product</h4>
-          <div class="form-row">
-            <input id="pName" class="input" placeholder="Product name" />
-            <input id="pPrice" class="input" placeholder="Price (numbers only)" />
-            <input id="pImage" class="input" placeholder="Image URL" />
-          </div>
-          <div class="form-row">
-            <select id="pBrand" class="input"></select>
-            <select id="pCategory" class="input"></select>
-            <select id="pHeading" class="input">
-              <option value="">No Heading</option>
-            </select>
-          </div>
-          <div class="form-row">
-            <input id="pCartonPacking" class="input" placeholder="Carton Packing (e.g., 12 pcs)" />
-            <input id="pDesc" class="input" placeholder="Short description" style="flex:1" />
-          </div>
-          <div style="display:flex;gap:8px;margin-top:8px">
-            <button id="saveProductBtn" class="small-btn btn-primary">Save</button>
-            <button id="cancelProductBtn" class="small-btn">Cancel</button>
-            <div class="small-muted right" id="productFormMsg"></div>
-          </div>
-        </div>
-
-        <div style="overflow:auto">
-          <table class="table" id="productsTable">
-            <thead>
-              <tr>
-                <th>Name</th><th>Brand</th><th>Category</th><th>Price</th><th>Carton Packing</th><th>Heading</th><th>Actions</th>
-              </tr>
-            </thead>
-            <tbody></tbody>
-          </table>
-        </div>
-      </div>
-
-      <!-- BRANDS TAB -->
-      <div id="tab-brands" class="tab-content" style="display:none">
-        <div style="display:flex;gap:8px;align-items:center;margin-bottom:10px">
-          <input id="newBrandInput" class="input" placeholder="New brand name" />
-          <button id="addBrandBtn" class="small-btn btn-primary">Add Brand</button>
-          <div class="small-muted">Add brand then assign categories to it below.</div>
-        </div>
-        <div style="overflow:auto">
-          <table class="table" id="brandsTable">
-            <thead><tr><th>Brand</th><th>Actions</th></tr></thead>
-            <tbody></tbody>
-          </table>
-        </div>
-      </div>
-
-      <!-- CATEGORIES TAB -->
-      <div id="tab-categories" class="tab-content" style="display:none">
-    <div style="display:flex;gap:8px;align-items:center;margin-bottom:10px">
-      <select id="catBrandSelect" class="input"></select>
-      <input id="newCatInput" class="input" placeholder="New category for selected brand" />
-      <button id="addCatBtn" class="small-btn btn-primary">Add Category</button>
-    </div>
-    <div style="overflow:auto">
-      <table class="table" id="catsTable">
-        <thead><tr><th>Brand</th><th>Category</th><th>Actions</th></tr></thead>
-        <tbody></tbody>
-      </table>
-    </div>
-  </div>
-
-      <!-- HEADINGS TAB -->
-      <div id="tab-headings" class="tab-content" style="display:none">
-        <div style="display:flex;gap:8px;align-items:center;margin-bottom:10px">
-          <input id="newHeadingInput" class="input" placeholder="New heading name" />
-          <button id="addHeadingBtn" class="small-btn btn-primary">Add Heading</button>
-          <div class="small-muted">Add headings to organize products in list view</div>
-        </div>
-        <div style="overflow:auto">
-          <table class="table" id="headingsTable">
-            <thead><tr><th>Heading</th><th>Actions</th></tr></thead>
-            <tbody></tbody>
-          </table>
-        </div>
-      </div>
-
-      <!-- IMPORT TAB -->
-      <div id="tab-import" class="tab-content" style="display:none">
-        <div style="display:flex;gap:8px;flex-direction:column">
-          <div>
-            <label class="small-muted">Paste exported JSON here (products, brands, categories) and click Import</label>
-            <textarea id="importArea" style="width:100%;height:160px;padding:10px;border-radius:8px;border:1px solid #ccc"></textarea>
-          </div>
-          <div style="display:flex;gap:8px;margin-top:8px">
-            <button id="importBtn" class="small-btn btn-primary">Import</button>
-            <button id="clearStorageBtn" class="small-btn btn-danger">Clear Local Storage</button>
-            <button id="showStorageBtn" class="small-btn">Show Storage</button>
-          </div>
-          <div id="importMsg" class="small-muted" style="margin-top:6px"></div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-<script>
-/* ----------------------------- ADMIN PASSWORD ----------------------------- */
-const ADMIN_PASSWORD = "2214721";
-
-/* ----------------------------- Default Demo Data (fallback only) ----------------------------- */
-const DEMO_PRODUCTS = [
-  {id:1,name:"M90 ANC Earphones",price:9340,image:"https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400",description:"High-quality ANC earphones with noise cancellation and superior sound quality",brand:"A4Tech",category:"Audio", cartonPacking: "12 pcs", heading: "Audio Products"},
-  {id:2,name:"M70 Gaming Mouse",price:8470,image:"https://images.unsplash.com/photo-1527814050087-3793815479db?w=400",description:"Professional gaming mouse with high DPI and customizable RGB lighting",brand:"A4Tech",category:"Mouse", cartonPacking: "24 pcs", heading: "Gaming Peripherals"},
-  {id:3,name:"B1700 Combo Pack",price:6900,image:"https://images.unsplash.com/photo-1541140532154-b024d705b90a?w=400",description:"Keyboard and mouse combo perfect for office and gaming use",brand:"A4Tech",category:"Keyboard", cartonPacking: "10 pcs", heading: "Combo Packs"},
-  {id:4,name:"Bloody Headphones",price:8800,image:"https://images.unsplash.com/photo-1585298723682-7115561c51b7?w=400",description:"High-quality gaming headset with surround sound and comfortable ear cushions",brand:"Bloody",category:"Audio", cartonPacking: "12 pcs", heading: "Audio Products"},
-  {id:5,name:"BP-45 Mouse Pad",price:1380,image:"https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=400",description:"Large waterproof mouse pad with smooth surface for precise mouse movements",brand:"Bloody",category:"Mousepad", cartonPacking: "50 pcs", heading: "Accessories"}
-];
-const DEMO_BRANDS = ["All","A4Tech","Bloody"];
-const DEMO_CATEGORIES = {
-  "A4Tech":["Audio","Mouse","Keyboard"],
-  "Bloody":["Audio","Keyboard","Mousepad"]
-};
-const DEMO_HEADINGS = ["Audio Products", "Gaming Peripherals", "Combo Packs", "Accessories"];
-
-/* ----------------------------- App State ----------------------------- */
-let products = [];
-let brands = [];
-let categories = {}; // {brand: [cat1,cat2]}
-let headings = [];
-
-let cart = [];
-let currentBrand = "All";
-let currentCategory = "All";
-// Changed to support three view modes: 'grid', 'list', 'no-image-list'
-let currentView = 'list'; // Default to list view as requested
-
-/* ----------------------------- DOM refs ----------------------------- */
-const grid = document.getElementById("productsGrid");
-const brandsContainer = document.getElementById("brandsContainer");
-const categoriesContainer = document.getElementById("categories");
-const cartItems = document.getElementById("cartItems");
-const cartTotal = document.getElementById("cartTotal");
-const cartIcon = document.getElementById("cartIcon");
-const cartCount = document.getElementById("cartCount");
-const cartSection = document.getElementById("cartSection");
-const searchBox = document.getElementById("searchBox");
-const notification = document.getElementById("notification");
-
-// New DOM refs for image popup and install prompt
-const imagePopup = document.getElementById("imagePopup");
-const popupImage = document.getElementById("popupImage");
-const installPrompt = document.getElementById("installPrompt");
-const installBtn = document.getElementById("installBtn");
-const cancelInstallBtn = document.getElementById("cancelInstallBtn");
-
-/* Admin modal elements */
-const adminModal = document.getElementById("adminModal");
-const closeAdminBtn = document.getElementById("closeAdminBtn");
-const openAdminBtn = document.getElementById("openAdminBtn");
-const modalTabs = document.getElementById("modalTabs");
-const tabButtons = modalTabs.querySelectorAll(".tab-btn");
-
-/* Products tab refs */
-const productsTableBody = document.querySelector("#productsTable tbody");
-const addProductBtn = document.getElementById("addProductBtn");
-const productFormWrap = document.getElementById("productFormWrap");
-const productFormTitle = document.getElementById("productFormTitle");
-const pName = document.getElementById("pName");
-const pPrice = document.getElementById("pPrice");
-const pImage = document.getElementById("pImage");
-const pBrand = document.getElementById("pBrand");
-const pCategory = document.getElementById("pCategory");
-const pDesc = document.getElementById("pDesc");
-const pCartonPacking = document.getElementById("pCartonPacking");
-const pHeading = document.getElementById("pHeading");
-const saveProductBtn = document.getElementById("saveProductBtn");
-const cancelProductBtn = document.getElementById("cancelProductBtn");
-const productFormMsg = document.getElementById("productFormMsg");
-const reloadDefaultsBtn = document.getElementById("reloadDefaultsBtn");
-
-/* Brands tab refs */
-const newBrandInput = document.getElementById("newBrandInput");
-const addBrandBtn = document.getElementById("addBrandBtn");
-const brandsTableBody = document.querySelector("#brandsTable tbody");
-
-/* Categories tab refs */
-const catBrandSelect = document.getElementById("catBrandSelect");
-const newCatInput = document.getElementById("newCatInput");
-const addCatBtn = document.getElementById("addCatBtn");
-const catsTableBody = document.querySelector("#catsTable tbody");
-
-/* Headings tab refs */
-const newHeadingInput = document.getElementById("newHeadingInput");
-const addHeadingBtn = document.getElementById("addHeadingBtn");
-const headingsTableBody = document.querySelector("#headingsTable tbody");
-
-/* Import tab refs */
-const importArea = document.getElementById("importArea");
-const importBtn = document.getElementById("importBtn");
-const clearStorageBtn = document.getElementById("clearStorageBtn");
-const showStorageBtn = document.getElementById("showStorageBtn");
-const importMsg = document.getElementById("importMsg");
-const exportBtn = document.getElementById("exportBtn");
-
-/* ----------------------------- Utilities ----------------------------- */
-function uid(){return Math.floor(Date.now() + Math.random()*9999);}
-
-// disable localStorage persistence - we use products.json as source of truth
-function saveToStorage(){ /* intentionally empty - do not persist to localStorage */ }
-
-function loadFromStorage(){
-  // kept for fallback but not used as primary; returns false to indicate not used
-  return false;
-}
-
-/* ----------------------------- Load from products.json (primary source) ----------------------------- */
-async function loadFromJSON(){
-  try{
-    const resp = await fetch('products.json?nocache=' + new Date().getTime());
-    if(!resp.ok) throw new Error('Fetch failed: ' + resp.status);
-    const data = await resp.json();
-    products = data.products || [];
-    brands = data.brands || [];
-    categories = data.categories || {};
-    headings = data.headings || [];
-    if(!brands.includes("All")) brands.unshift("All");
-    // render using loaded data
-    renderAll();
-  }catch(err){
-    console.error('Failed loading products.json', err);
-    // fallback to demo data only (and render)
-    products = JSON.parse(JSON.stringify(DEMO_PRODUCTS));
-    brands = JSON.parse(JSON.stringify(DEMO_BRANDS));
-    categories = JSON.parse(JSON.stringify(DEMO_CATEGORIES));
-    headings = JSON.parse(JSON.stringify(DEMO_HEADINGS));
-    renderAll();
-  }
-}
-
-/* ----------------------------- Render functions ----------------------------- */
-function renderBrands(){
-  brandsContainer.innerHTML = brands.map(b => {
-    return `<button class="brand-btn ${b===currentBrand?'active':''}" data-brand="${b}">${b}</button>`;
-  }).join("");
-  pBrand.innerHTML = brands.filter(b=>b!=="All").map(b=>`<option value="${b}">${b}</option>`).join("");
-  catBrandSelect.innerHTML = brands.filter(b=>b!=="All").map(b=>`<option value="${b}">${b}</option>`).join("");
-}
-
-function renderCategories(){
-  if(currentBrand==="All"){
-    categoriesContainer.innerHTML = "";
-    return;
-  }
-  const list = categories[currentBrand] || [];
-  categoriesContainer.innerHTML = list.map(c=>`<button class="category-btn ${c===currentCategory?'active':''}" data-cat="${c}">${c}</button>`).join("");
-}
-
-function renderProducts(){
-  let list = products.slice();
-  if(currentBrand!=="All") list = list.filter(p=>p.brand===currentBrand);
-  if(currentCategory!=="All") list = list.filter(p=>p.category===currentCategory);
-  const term = searchBox.value.trim().toLowerCase();
-  if(term) list = list.filter(p => (p.name||"").toLowerCase().includes(term) || (p.description||"").toLowerCase().includes(term));
-
-  if(list.length===0){
-    grid.innerHTML = '<div style="text-align:center;padding:40px;color:#777"><i class="fas fa-box-open"></i><div>No products found</div></div>';
-    return;
-  }
-  
-  // Handle different view modes
-  if(currentView === 'list'){
-    renderListView(list, true);
-  } else if(currentView === 'no-image-list') {
-    renderListView(list, false);
-  } else {
-    // Grid view
-    grid.classList.remove("list-view");
-    grid.classList.remove("no-image-list-view");
-    grid.innerHTML = list.map(p=>`
-      <div class="product-card">
-        <img src="${p.image||''}" class="product-image" alt="${p.name}" onclick="openImagePopup('${p.image||''}')" onerror="this.src='https://via.placeholder.com/400x400?text=No+Image'">
-        <div class="product-info">
-          <h3 class="product-title">${p.name}</h3>
-          <!-- Description removed from grid view as requested -->
-          <div style="display:flex;justify-content:space-between;align-items:center">
-            <div style="display:flex;flex-direction:column">
-              <div class="small-muted">${p.brand} • ${p.category}</div>
-              <div class="product-price">Rs. ${p.price}</div>
-            </div>
-            <button class="add-to-cart" onclick="addToCartWithNotification(${p.id})">Add to Cart</button>
-          </div>
-        </div>
-      </div>`).join("");
-  }
-}
-
-function renderListView(list, includeImages) {
-  if (includeImages) {
-    grid.classList.add("list-view");
-    grid.classList.remove("no-image-list-view");
-  } else {
-    grid.classList.remove("list-view");
-    grid.classList.add("no-image-list-view");
-  }
-  
-  // Group products by heading
-  const groupedProducts = {};
-  list.forEach(product => {
-    const heading = product.heading || 'Other Products';
-    if (!groupedProducts[heading]) {
-      groupedProducts[heading] = [];
+{
+  "products": [
+    {
+      "id": 1761047418288,
+      "name": "GH-30 ROGUE Gaming Case (5 RGB FANS)",
+      "price": 23200,
+      "image": "images/gh-30.webp",
+      "description": "4mm Tempered Glass Panels, 7 Expansion Slot, Maximize Cooling Airflow, Motherboards: Standard ATX, Micro-ATX, ITX, Power Supply: ATX Power, Video Card: Up to 310 mm (Length), Expansion Slot: 7 Slots, CPU Cooler: Up to 165 mm (Height),Input / Output Panel: HD Audio, USB 3.0*1, USB2.0*1, Hardware Space: 3.5\" HDD*1 & 2.5”SSD*1, Airflow / Liquid Cooler System: Front 120 mm Fan*3 / Rear 120 mm Fan*2/ Top 120 mm Fan*2 or 240 mm Liquid Radiator (Pre-Installed 5 RGB 120mm Fans: Front*2, Rear*2, Top*1)",
+      "brand": "Bloody",
+      "category": "Others",
+      "cartonPacking": "1",
+      "heading": "BLOODY MID TOWER GAMING CASE"
+    },
+    {
+      "id": 1761048027910,
+      "name": "M90 (ANC) Black+Red",
+      "price": 9340,
+      "image": "images/m90.jpg",
+      "description": "Speaker Size: 10 mm, Frequency Response: 20 Hz-20 kHz, Earphone Sensitivity: 102 dB @ -10 dBFS, Mic. Sensitivity: -42 dB @1 kHz/Pa, Earphone Impedance: 32 ohm, Bluetooth Version: v5.1, Operation Distance: 10 m, Earphone Battery Type: Lithium Battery (40 mAh), Charging Case Battery Type: Lithium Battery (500 mAh), Charging Power: 5V=1A, Earphone Charging Time: ＜1.5H (Low Battery to Fully Charged), Case Charging Time:＜2H (Low Battery to Fully Charged), Music Playtime with Single Charge: ≈4H, Playtime from Charging Case: ≈24H, Weight: Earphone: 9 g / Charging Case: 41 g",
+      "brand": "Bloody",
+      "category": "Audio",
+      "cartonPacking": "5",
+      "heading": "BLOODY GAMING TWS EARBUDS"
+    },
+    {
+      "id": 1761049936406,
+      "name": "M70 (ANC) Black+Red",
+      "price": 8470,
+      "image": "images/m70red.jpg",
+      "description": "Speaker Size: 6 mm Frequency Response: 20 Hz-20 kHz, Earphone Sensitivity: 99 dB @ -10 dBFS, Mic. Sensitivity: -42 dB @1 kHz/Pa, Earphone Impedance: 16 ohm, Bluetooth Version: v5.2, Operation Distance: 10 m, Earphone Battery Type: Lithium Battery (60 mAh), Charging Case Battery Type: Lithium Battery (400 mAh), Charging Power: 5V=1A, Earphone Charging Time: ＜1.5H (Low Battery to Fully Charged), Case Charging Time:＜2H (Low Battery to Fully Charged), Music Playtime with Single Charge: ≈6H, Playtime from Charging Case: ≈24H, Weight: Earphone: 9 g / Charging Case: 47 g",
+      "brand": "Bloody",
+      "category": "Audio",
+      "cartonPacking": "5",
+      "heading": "BLOODY GAMING TWS EARBUDS"
+    },
+    {
+      "id": 17610474182288,
+      "name": "B1700 Combo Set (B140 KEYBOARD ES7 MOUSE AND BP50M MOUSEPAD)",
+      "price": 6900,
+      "image": "images/b1700.jpg",
+      "description": "NEON GAMING DESKTOP : Multi-Key Rollover, Double-Shot Injection, 6000 CPI Adjustable, 45 IPS, 256K Onboard Memory, Keyboard : Report Rate: 1000Hz, Backlit：Neon, Water-Resistant：Double Secured, Space-Bar: Screw Enhanced, Connector: USB, Cable Length : 1.8m, Wheel: Over 500,000 Scrolls, MOUSE Tracking Sensor: PixArt Optical Engine, Resolution: 100~6,000 CPI, Tracking Speed: 45 ips, Default Resolution: 1000/1200/1600/2000/6000 CPI, Frame Speed: 6,000 fps, Acceleration: 15 g, , Response Report Rate: 125~1000 Hz, Key Response:1ms,Durability Button Lifetime:Over 10 Million Clicks, Mousepad 350*280*3 mm (L*W*H)",
+      "brand": "Bloody",
+      "category": "Keyboard",
+      "cartonPacking": "10",
+      "heading": "BLOODY BLAZING GAMING WIRED KEYBOARD+MOUSE SETS"
+    },
+    {
+      "id": 17610482027910,
+      "name": "AT75 ALPHA OPTICAL SWITCH (MECHANICAL) Voice-Activated LED Lighting Bar",
+      "price": 14600,
+      "image": "images/at75.jpg",
+      "description": "Switch Type: Linear, Durability: 100 Million Keystrokes, Initial Force: 48 ± 3 cN Min, Total Travel Distance: 3.8 ± 0.2 mm, Actuation Point Customization Range: 0.8 ~ 3.0 mm, Report Rate: 1000Hz/1ms, Keycaps: PBT Keycaps, Backlit: 7 RGB Backlit Effects",
+      "brand": "Bloody",
+      "category": "Keyboard",
+      "cartonPacking": "10",
+      "heading": "BLOODY 7-COLOR NEON LIGHTING GAMING KEYBOARDS"
+    },
+    {
+      "id": 1761042936406,
+      "name": "AT87 ALPHA RED SWITCH (MECHANICAL)",
+      "price": 11400,
+      "image": "images/at87.jpg",
+      "description": "Switch Type: Linear, Durability: 100 Million Keystrokes, Initial Force: 48 ± 3 cN Min, Total Travel Distance: 3.8 ± 0.2 mm, Actuation Point Customization Range: 0.8 ~ 3.0 mm, Report Rate: 1000Hz/1ms, Keycaps: PBT Keycaps, Backlit: 7 RGB Backlit Effects",
+      "brand": "Bloody",
+      "category": "Keyboard",
+      "cartonPacking": "10",
+      "heading": "BLOODY 7-COLOR NEON LIGHTING GAMING KEYBOARDS"
+    },
+    {
+      "id": 1761052860419,
+      "name": "AT98 ALPHA RED SWITCH (MECHANICAL)",
+      "price": 11800,
+      "image": "images/at98.jpg",
+      "description": "Switch Type: Linear, Durability: 100 Million Keystrokes, Initial Force: 48 ± 3 cN Min, Total Travel Distance: 3.8 ± 0.2 mm, Actuation Point Customization Range: 0.8 ~ 3.0 mm, Report Rate: 1000Hz/1ms, Keycaps: PBT Keycaps, Backlit: 7 RGB Backlit Effects",
+      "brand": "Bloody",
+      "category": "Keyboard",
+      "cartonPacking": "10",
+      "heading": "BLOODY 7-COLOR NEON LIGHTING GAMING KEYBOARDS"
+    },
+    {
+      "id": 1761052920144,
+      "name": "B135N",
+      "price": 3350,
+      "image": "images/b135n.jpg",
+      "description": "PERFORMANCE Report Rate: 1000Hz Backlit: Neon Water-Resistant: Double Secured Space-Bar: Screw Enhanced Connector: USB Cable Length: 1.8m Windows 7/ 8/ 8.1/ 10/ 11",
+      "brand": "Bloody",
+      "category": "Keyboard",
+      "cartonPacking": "10",
+      "heading": "BLOODY 7-COLOR NEON LIGHTING GAMING KEYBOARDS"
+    },
+    {
+      "id": 1761052981468,
+      "name": "B500N (BLACK)",
+      "price": 5600,
+      "image": "images/b500n.jpg",
+      "description": "Bloody Neon Mecha-Like Switch Gaming Keyboard USB Grey US Layout, Multi-Key Rollover, Centered Backlight Design, 1000Hz Report Rate, Screw Enhanced Space-Bar, Anti-Slippery Lift, Report Rate: 1000Hz Backlit：Neon, Water-Resistant：Double Secured, Space-Bar: Screw Enhanced, Connector: USB , Cable Length : 1.8m Windows 7/ 8 / 8.1 / 10",
+      "brand": "Bloody",
+      "category": "Keyboard",
+      "cartonPacking": "10",
+      "heading": "BLOODY 7-COLOR NEON LIGHTING GAMING KEYBOARDS"
+    },
+    {
+      "id": 1761053315257,
+      "name": "S87 RGB (ENERGY RED) RED SWITCH (MECHANICAL)",
+      "price": 10700,
+      "image": "images/s87red.jpg",
+      "description": "Bloody BLMS Customize Mechanical Switch, Hot-Swappable, Extreme Quiet Typing, Two Adjustable Feet, RGB Backlit, Default 10 Backlit Effects, 7 Game Modes Storage, 4M Onboard Memory, N-Key Rollover, 87-Key Style Keyboard, Elite Bloody KeyDominator Software, 3-Direction Cable Management, PERFORMANCE Key Style: BLMS Red Plus Switch, Key Response：1 ms, Connector: USB, Backlit: RGB, Cable Length: 1.8 m, Key Life: Up to 50 M Keystrokes, System Requirements: Windows 7/ 8 /8.1 / 10 /11",
+      "brand": "Bloody",
+      "category": "Keyboard",
+      "cartonPacking": "10",
+      "heading": "BLOODY 7-COLOR NEON LIGHTING GAMING KEYBOARDS"
+    },
+    {
+      "id": 1761716869858,
+      "name": "WS98 (RED) DUAL CORE WIRELESS    RED SWITCH (MECHANICAL)",
+      "price": 12500,
+      "image": "images/ws98red.jpg",
+      "description": "Dual-Core, Multi-Mode, BLOODY BLMS Engineered Mechanical Switch, Gaming Grade PBT Keycaps, 1ms Wireless Transmission, Extreme Quiet Typing, RGB Backlit, N-Key Rollover, System Swap, Adaptive Battery Life, BLMS Switches, Wireless Transmission: 1 ms,  Connection: USB / 2.4G / Bluetooth v5.1, Backlit: RGB System Requirements: Windows 7/8/8.1/10/11",
+      "cartonPacking": "10",
+      "heading": "BLOODY 7-COLOR NEON LIGHTING GAMING KEYBOARDS",
+      "brand": "Bloody",
+      "category": "Keyboard"
+    },
+    {
+      "id": 1761716999384,
+      "name": "S98 (BLACK)  RED SWITCH (MECHANICAL)",
+      "price": 10500,
+      "image": "images/s98black.jpg",
+      "description": "BLMS Red Plus Mechanical Switch,  Hot-Swappable, Extreme Quiet Typing, 98-Key Style Keyboard, 3-Direction Cable Management, RGB Backlit, Default 10 Backlit Effects, 7 Game Modes Storage, 4M Onboard Memory, N-Key Rollover, Two Adjustable Feet, Connector: USB, Backlit: RGB, Cable Length: 1.8 m, System Requirements: Windows 7/ 8 /8.1 / 10 /11",
+      "cartonPacking": "10",
+      "heading": "BLOODY 7-COLOR NEON LIGHTING GAMING KEYBOARDS",
+      "brand": "A4Tech",
+      "category": "Keyboard"
     }
-    groupedProducts[heading].push(product);
-  });
-  
-  if (includeImages) {
-    // List view WITH images
-    let tableHTML = `
-      <table class="list-view-table">
-        <tr style="background:var(--primary);color:white;text-align:left">
-          <th style="padding:8px">S.No</th>
-          <th style="padding:8px">Image</th>
-          <th style="padding:8px">Model</th>
-          <th style="padding:8px">Price</th>
-          <th style="padding:8px">Carton Packing</th>
-          <th style="padding:8px">Description</th>
-          <th style="padding:8px">Action</th>
-        </tr>`;
-    
-    let serialNo = 1;
-    Object.keys(groupedProducts).forEach(heading => {
-      // Add heading row
-      tableHTML += `
-        <tr class="heading-row">
-          <td colspan="7" style="padding:8px">${heading}</td>
-        </tr>`;
-      
-      // Add products for this heading
-      tableHTML += groupedProducts[heading].map(p => `
-        <tr style="border-bottom:1px solid #ddd">
-          <td style="padding:8px">${serialNo++}</td>
-          <td style="padding:8px"><img src="${p.image||''}" class="list-view-image" alt="${p.name}" onclick="openImagePopup('${p.image||''}')" onerror="this.src='https://via.placeholder.com/100x100?text=No+Image'"></td>
-          <td style="padding:8px">${p.name}</td>
-          <td style="padding:8px">Rs. ${p.price}</td>
-          <td style="padding:8px">${p.cartonPacking || 'N/A'}</td>
-          <td style="padding:8px" class="list-view-description">${p.description||''}</td>
-          <td style="padding:8px"><button class="add-to-cart" onclick="addToCartWithNotification(${p.id})">Add to Cart</button></td>
-        </tr>`).join("");
-    });
-    
-    tableHTML += '</table>';
-    grid.innerHTML = tableHTML;
-  } else {
-    // List view WITHOUT images
-    let tableHTML = `
-      <table class="no-image-list-view-table">
-        <tr style="background:var(--primary);color:white;text-align:left">
-          <th style="padding:8px">S.No</th>
-          <th style="padding:8px">Model</th>
-          <th style="padding:8px">Price</th>
-          <th style="padding:8px">Carton Packing</th>
-          <th style="padding:8px">Description</th>
-          <th style="padding:8px">Action</th>
-        </tr>`;
-    
-    let serialNo = 1;
-    Object.keys(groupedProducts).forEach(heading => {
-      // Add heading row
-      tableHTML += `
-        <tr class="heading-row">
-          <td colspan="6" style="padding:8px">${heading}</td>
-        </tr>`;
-      
-      // Add products for this heading
-      tableHTML += groupedProducts[heading].map(p => `
-        <tr style="border-bottom:1px solid #ddd">
-          <td style="padding:8px">${serialNo++}</td>
-          <td style="padding:8px">${p.name}</td>
-          <td style="padding:8px">Rs. ${p.price}</td>
-          <td style="padding:8px">${p.cartonPacking || 'N/A'}</td>
-          <td style="padding:8px" class="no-image-list-view-description">${p.description||''}</td>
-          <td style="padding:8px"><button class="add-to-cart" onclick="addToCartWithNotification(${p.id})">Add to Cart</button></td>
-        </tr>`).join("");
-    });
-    
-    tableHTML += '</table>';
-    grid.innerHTML = tableHTML;
-  }
+  ],
+  "brands": [
+    "All",
+    "A4Tech",
+    "Bloody"
+  ],
+  "categories": {
+    "A4Tech": [
+      "Audio",
+      "Mouse",
+      "Keyboard"
+    ],
+    "Bloody": [
+      "Audio",
+      "Keyboard",
+      "Mousepad",
+      "Others"
+    ]
+  },
+  "headings": [
+    "BLOODY MID TOWER GAMING CASE",
+    "BLOODY GAMING TWS EARBUDS",
+    "BLOODY BLAZING GAMING WIRED KEYBOARD+MOUSE SETS",
+    "BLOODY 7-COLOR NEON LIGHTING GAMING KEYBOARDS"
+  ]
 }
-
-function renderCart(){
-  if(cart.length===0){
-    cartItems.innerHTML="Your cart is empty";
-    cartTotal.innerText="Rs. 0.00";
-    cartIcon.style.display="none";
-    cartCount.innerText="0";
-    return;
-  }
-  cartIcon.style.display="inline-block";
-  cartCount.innerText = cart.reduce((a,c)=>a+c.qty,0);
-  cartItems.innerHTML = cart.map(item=>`
-    <div class="cart-item">
-      <div style="flex:1">${item.name}</div>
-      <div class="qty-controls">
-        <input type="number" class="qty-input" value="${item.qty}" min="1" onchange="updateCartQty(${item.id}, this.value)">
-      </div>
-      <div>Rs. ${(item.price*item.qty).toFixed(2)}</div>
-      <button class="delete-btn" onclick="removeFromCart(${item.id})"><i class="fas fa-trash"></i></button>
-    </div>`).join("");
-  const total = cart.reduce((a,c)=>a+c.price*c.qty,0);
-  cartTotal.innerText = "Rs. "+total.toFixed(2);
-}
-
-/* ----------------------------- Image Popup Functions ----------------------------- */
-function openImagePopup(imageUrl) {
-  if (!imageUrl) return;
-  popupImage.src = imageUrl;
-  imagePopup.classList.add('active');
-}
-
-function closeImagePopup() {
-  imagePopup.classList.remove('active');
-}
-
-// Close popup when clicking outside the image
-imagePopup.addEventListener('click', function(e) {
-  if (e.target === imagePopup) {
-    closeImagePopup();
-  }
-});
-
-// Close popup with Escape key
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') {
-    closeImagePopup();
-  }
-});
-
-/* ----------------------------- Install Prompt Functions ----------------------------- */
-let deferredPrompt;
-
-// Show install prompt when app is ready
-window.addEventListener('beforeinstallprompt', (e) => {
-  // Prevent the mini-infobar from appearing on mobile
-  e.preventDefault();
-  // Stash the event so it can be triggered later
-  deferredPrompt = e;
-  
-  // Show our custom install prompt after a delay
-  setTimeout(() => {
-    if (deferredPrompt) {
-      installPrompt.classList.add('show');
-    }
-  }, 3000);
-});
-
-// Handle install button click
-installBtn.addEventListener('click', async () => {
-  if (!deferredPrompt) return;
-  
-  // Show the install prompt
-  deferredPrompt.prompt();
-  
-  // Wait for the user to respond to the prompt
-  const { outcome } = await deferredPrompt.userChoice;
-  
-  if (outcome === 'accepted') {
-    console.log('User accepted the install prompt');
-    showNotificationMessage('App added to home screen successfully!');
-  } else {
-    console.log('User dismissed the install prompt');
-  }
-  
-  // Clear the saved prompt since it can't be used again
-  deferredPrompt = null;
-  installPrompt.classList.remove('show');
-});
-
-// Handle cancel button click
-cancelInstallBtn.addEventListener('click', () => {
-  installPrompt.classList.remove('show');
-});
-
-// Check if app is already installed
-window.addEventListener('appinstalled', () => {
-  console.log('PWA was installed');
-  deferredPrompt = null;
-  installPrompt.classList.remove('show');
-});
-
-// Show custom notification message
-function showNotificationMessage(message) {
-  const notification = document.getElementById('notification');
-  const notificationIcon = notification.querySelector('i');
-  const notificationText = notification.querySelector('strong');
-  const notificationSubtext = notification.querySelector('div > div');
-  
-  notificationIcon.className = 'fas fa-check-circle';
-  notificationText.textContent = message;
-  notificationSubtext.textContent = 'You can now access the app from your home screen';
-  
-  notification.classList.add('show');
-  setTimeout(() => {
-    notification.classList.remove('show');
-  }, 5000);
-}
-
-/* ----------------------------- Cart functions ----------------------------- */
-function addToCart(id){
-  const prod = products.find(p=>p.id===id);
-  if(!prod) return;
-  const found = cart.find(c=>c.id===id);
-  if(found) found.qty++; else cart.push({...prod,qty:1});
-  renderCart();
-}
-
-function addToCartWithNotification(id){
-  addToCart(id);
-  showNotification();
-}
-
-function updateCartQty(id, newQty){
-  const item = cart.find(c=>c.id===id);
-  if(!item) return;
-  newQty = parseInt(newQty);
-  if(newQty < 1) newQty = 1;
-  item.qty = newQty;
-  renderCart();
-}
-
-function removeFromCart(id){
-  cart = cart.filter(c=>c.id!==id);
-  renderCart();
-}
-
-/* ----------------------------- Notification function ----------------------------- */
-function showNotification(){
-  notification.classList.add('show');
-  setTimeout(() => {
-    notification.classList.remove('show');
-  }, 3000);
-}
-
-document.getElementById("checkoutBtn").onclick = () => {
-  if(cart.length===0) return alert("Cart is empty!");
-  const msg = cart.map(c=>`${c.name} x${c.qty} = Rs.${c.price*c.qty}`).join("%0A");
-  const total = cart.reduce((a,c)=>a+c.price*c.qty,0);
-  const url = `https://wa.me/923332200318?text=🛍%20Order%20Details:%0A${msg}%0A%0ATotal:%20Rs.${total}`;
-  window.open(url,"_blank");
-}
-
-/* ----------------------------- View Toggle Function ----------------------------- */
-function toggleView() {
-  // Cycle through three view modes: grid -> list -> no-image-list -> grid
-  if (currentView === 'grid') {
-    currentView = 'list';
-    document.getElementById("viewBtn").innerHTML = '<i class="fas fa-list-ul"></i>';
-  } else if (currentView === 'list') {
-    currentView = 'no-image-list';
-    document.getElementById("viewBtn").innerHTML = '<i class="fas fa-th-list"></i>';
-  } else {
-    currentView = 'grid';
-    document.getElementById("viewBtn").innerHTML = '<i class="fas fa-border-all"></i>';
-  }
-  renderProducts();
-}
-
-/* ----------------------------- Admin modal events & logic ----------------------------- */
-openAdminBtn.addEventListener("click", () => {
-  const pass = prompt("Enter admin password:");
-  if(pass === null) return;
-  if(pass === ADMIN_PASSWORD){
-    showAdminModal();
-  } else {
-    alert("Incorrect password!");
-  }
-});
-
-closeAdminBtn.addEventListener("click", () => {
-  hideAdminModal();
-});
-
-function showAdminModal(){
-  adminModal.style.display = "flex";
-  setActiveTab("products");
-  refreshAdminLists();
-}
-
-function hideAdminModal(){
-  adminModal.style.display = "none";
-}
-
-/* Modal tab switching */
-modalTabs.addEventListener("click", (e) => {
-  if(!e.target.matches(".tab-btn")) return;
-  const tab = e.target.dataset.tab;
-  setActiveTab(tab);
-});
-function setActiveTab(tab){
-  tabButtons.forEach(b=>b.classList.toggle("active", b.dataset.tab===tab));
-  document.querySelectorAll(".tab-content").forEach(div => div.style.display = "none");
-  const el = document.getElementById("tab-"+tab);
-  if(el) el.style.display = "block";
-  if(tab === "products"){
-    productFormWrap.style.display = "none";
-  }
-  if(tab === "categories"){
-    populateCatsTable();
-  }
-}
-
-/* ----------------------------- Admin: Products CRUD ----------------------------- */
-let editingProductId = null;
-
-addProductBtn.addEventListener("click", () => {
-  editingProductId = null;
-  productFormTitle.innerText = "Add Product";
-  pName.value = ""; pPrice.value = ""; pImage.value = ""; pDesc.value = ""; pCartonPacking.value = "";
-  if(brands.length > 1) pBrand.value = brands[1];
-  pCategory.innerHTML = (categories[pBrand.value] || []).map(c=>`<option value="${c}">${c}</option>`).join("");
-  pHeading.innerHTML = '<option value="">No Heading</option>' + headings.map(h=>`<option value="${h}">${h}</option>`).join("");
-  productFormMsg.innerText = "";
-  productFormWrap.style.display = "block";
-});
-
-pBrand.addEventListener("change", () => {
-  const list = categories[pBrand.value] || [];
-  pCategory.innerHTML = list.map(c=>`<option value="${c}">${c}</option>`).join("");
-});
-
-cancelProductBtn.addEventListener("click", () => {
-  productFormWrap.style.display = "none";
-});
-
-saveProductBtn.addEventListener("click", () => {
-  const name = pName.value.trim();
-  const price = parseFloat(pPrice.value);
-  const image = pImage.value.trim();
-  const desc = pDesc.value.trim();
-  const cartonPacking = pCartonPacking.value.trim();
-  const heading = pHeading.value;
-  const brandVal = pBrand.value;
-  const catVal = pCategory.value;
-
-  if(!name) { productFormMsg.innerText = "Name required"; return; }
-  if(Number.isNaN(price)) { productFormMsg.innerText = "Enter valid price"; return; }
-  if(!brandVal || brandVal==="All"){ productFormMsg.innerText = "Select brand"; return; }
-  if(!catVal){ productFormMsg.innerText = "Select category"; return; }
-
-  if(editingProductId){
-    const idx = products.findIndex(p=>p.id===editingProductId);
-    if(idx>=0){
-      products[idx] = {...products[idx], name, price, image, description:desc, cartonPacking, heading, brand:brandVal, category:catVal};
-      productFormMsg.innerText = "Updated";
-    }
-  } else {
-    const newProd = {id: uid(), name, price, image, description:desc, cartonPacking, heading, brand:brandVal, category:catVal};
-    products.push(newProd);
-    productFormMsg.innerText = "Added";
-  }
-  // do NOT persist to localStorage; user should Export JSON to publish changes
-  renderAll();
-  productFormWrap.style.display = "none";
-  setTimeout(()=>productFormMsg.innerText="", 1500);
-});
-
-/* Render products table in admin */
-function populateProductsTable(){
-  productsTableBody.innerHTML = products.map(p=>`
-    <tr>
-      <td>${escapeHtml(p.name || "")}</td>
-      <td>${escapeHtml(p.brand || "")}</td>
-      <td>${escapeHtml(p.category || "")}</td>
-      <td>Rs. ${p.price}</td>
-      <td>${escapeHtml(p.cartonPacking || "")}</td>
-      <td>${escapeHtml(p.heading || "")}</td>
-      <td class="inline-actions">
-        <button class="small-btn" onclick="adminEditProduct(${p.id})"><i class="fas fa-edit"></i> Edit</button>
-        <button class="small-btn btn-danger" onclick="adminDeleteProduct(${p.id})"><i class="fas fa-trash"></i> Delete</button>
-      </td>
-    </tr>
-  `).join("");
-}
-
-/* Admin edit/delete callable from row buttons */
-window.adminEditProduct = function(id){
-  const prod = products.find(p=>p.id===id);
-  if(!prod) return alert("Product not found");
-  editingProductId = id;
-  productFormTitle.innerText = "Edit Product";
-  pName.value = prod.name;
-  pPrice.value = prod.price;
-  pImage.value = prod.image || "";
-  pDesc.value = prod.description || "";
-  pCartonPacking.value = prod.cartonPacking || "";
-  pBrand.innerHTML = brands.filter(b=>b!=="All").map(b=>`<option value="${b}" ${b===prod.brand?"selected":""}>${b}</option>`).join("");
-  pBrand.dispatchEvent(new Event('change'));
-  const list = categories[prod.brand] || [];
-  pCategory.innerHTML = list.map(c=>`<option value="${c}" ${c===prod.category?"selected":""}>${c}</option>`).join("");
-  pHeading.innerHTML = '<option value="">No Heading</option>' + headings.map(h=>`<option value="${h}" ${h===prod.heading?"selected":""}>${h}</option>`).join("");
-  productFormWrap.style.display = "block";
-  productFormMsg.innerText = "";
-};
-
-window.adminDeleteProduct = function(id){
-  if(!confirm("Delete product?")) return;
-  products = products.filter(p=>p.id!==id);
-  renderAll();
-};
-
-/* ----------------------------- Admin: Brands CRUD ----------------------------- */
-addBrandBtn.addEventListener("click", () => {
-  const q = newBrandInput.value.trim();
-  if(!q) return;
-  if(brands.includes(q)){
-    alert("Brand already exists");
-    return;
-  }
-  brands.push(q);
-  categories[q] = categories[q] || [];
-  newBrandInput.value = "";
-  refreshAdminLists();
-});
-
-/* populate brands table */
-function populateBrandsTable(){
-  brandsTableBody.innerHTML = brands.filter(b=>b!=="All").map(b=>`
-    <tr>
-      <td>${escapeHtml(b)}</td>
-      <td>
-        <button class="small-btn btn-danger" onclick="adminDeleteBrand('${escapeJs(b)}')"><i class="fas fa-trash"></i> Delete</button>
-      </td>
-    </tr>
-  `).join("");
-}
-
-/* Delete brand: remove brand and its categories; also remove brand from products */
-window.adminDeleteBrand = function(b){
-  if(!confirm("Delete brand and its categories? This will remove brand from products as well.")) return;
-  brands = brands.filter(x=>x!==b);
-  delete categories[b];
-  products = products.filter(p=>p.brand !== b);
-  refreshAdminLists();
-  renderAll();
-};
-
-/* ----------------------------- Admin: Categories CRUD ----------------------------- */
-addCatBtn.addEventListener("click", () => {
-  const brand = catBrandSelect.value;
-  const cat = newCatInput.value.trim();
-  if(!brand) return alert("Select brand");
-  if(!cat) return;
-  categories[brand] = categories[brand] || [];
-  if(categories[brand].includes(cat)) return alert("Category exists");
-  categories[brand].push(cat);
-  newCatInput.value = "";
-  refreshAdminLists();
-});
-
-function populateCatsTable(){
-  catsTableBody.innerHTML = Object.keys(categories).map(brand => {
-    return (categories[brand]||[]).map(cat => `
-      <tr>
-        <td>${escapeHtml(brand)}</td>
-        <td>${escapeHtml(cat)}</td>
-        <td><button class="small-btn btn-danger" onclick="adminDeleteCategory('${escapeJs(brand)}','${escapeJs(cat)}')"><i class="fas fa-trash"></i> Delete</button></td>
-      </tr>
-    `).join("");
-  }).join("");
-}
-
-window.adminDeleteCategory = function(brand,cat){
-  if(!confirm("Delete category? Products in this category will be removed.")) return;
-  categories[brand] = (categories[brand]||[]).filter(c=>c!==cat);
-  products = products.filter(p => !(p.brand===brand && p.category===cat));
-  refreshAdminLists();
-  renderAll();
-};
-
-/* ----------------------------- Admin: Headings CRUD ----------------------------- */
-addHeadingBtn.addEventListener("click", () => {
-  const q = newHeadingInput.value.trim();
-  if(!q) return;
-  if(headings.includes(q)){
-    alert("Heading already exists");
-    return;
-  }
-  headings.push(q);
-  newHeadingInput.value = "";
-  refreshAdminLists();
-});
-
-/* populate headings table */
-function populateHeadingsTable(){
-  headingsTableBody.innerHTML = headings.map(h=>`
-    <tr>
-      <td>${escapeHtml(h)}</td>
-      <td>
-        <button class="small-btn btn-danger" onclick="adminDeleteHeading('${escapeJs(h)}')"><i class="fas fa-trash"></i> Delete</button>
-      </td>
-    </tr>
-  `).join("");
-}
-
-/* Delete heading: remove heading from products */
-window.adminDeleteHeading = function(h){
-  if(!confirm("Delete heading? Products with this heading will have their heading removed.")) return;
-  headings = headings.filter(x=>x!==h);
-  products.forEach(p => {
-    if(p.heading === h) {
-      p.heading = '';
-    }
-  });
-  refreshAdminLists();
-  renderAll();
-};
-
-/* ----------------------------- Import / Export ----------------------------- */
-exportBtn.addEventListener("click", () => {
-  const data = {products, brands, categories, headings};
-  const blob = new Blob([JSON.stringify(data, null, 2)], {type:'application/json'});
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = 'products.json';
-  a.click();
-  URL.revokeObjectURL(url);
-});
-
-importBtn.addEventListener("click", () => {
-  const txt = importArea.value.trim();
-  if(!txt) return importMsg.innerText = "Paste JSON to import.";
-  try{
-    const obj = JSON.parse(txt);
-    if(!obj.products || !obj.brands || !obj.categories) return importMsg.innerText = "Invalid format. Expect {products, brands, categories}.";
-    products = obj.products;
-    brands = obj.brands;
-    categories = obj.categories;
-    headings = obj.headings || [];
-    refreshAdminLists();
-    renderAll();
-    importMsg.innerText = "Imported to current session (not saved to server).";
-  }catch(e){
-    importMsg.innerText = "Invalid JSON.";
-  }
-});
-
-clearStorageBtn.addEventListener("click", () => {
-  if(!confirm("Reset data to demo defaults?")) return;
-  products = JSON.parse(JSON.stringify(DEMO_PRODUCTS));
-  brands = JSON.parse(JSON.stringify(DEMO_BRANDS));
-  categories = JSON.parse(JSON.stringify(DEMO_CATEGORIES));
-  headings = JSON.parse(JSON.stringify(DEMO_HEADINGS));
-  refreshAdminLists();
-  renderAll();
-  alert("Reset to demo data (local only).");
-});
-
-showStorageBtn.addEventListener("click", () => {
-  const data = {products, brands, categories, headings};
-  alert(JSON.stringify(data, null, 2).slice(0,2000) + (JSON.stringify(data, null, 2).length>2000 ? "\n\n(too long, truncated)" : ""));
-});
-
-/* reload demo button */
-reloadDefaultsBtn.addEventListener("click", () => {
-  if(!confirm("Load demo products/brands/categories? This will overwrite current data.")) return;
-  products = JSON.parse(JSON.stringify(DEMO_PRODUCTS));
-  brands = JSON.parse(JSON.stringify(DEMO_BRANDS));
-  categories = JSON.parse(JSON.stringify(DEMO_CATEGORIES));
-  headings = JSON.parse(JSON.stringify(DEMO_HEADINGS));
-  refreshAdminLists();
-  renderAll();
-});
-
-/* ----------------------------- Helpers & render orchestration ----------------------------- */
-function refreshAdminLists(){
-  renderBrands();
-  renderCategories();
-  populateProductsTable();
-  populateBrandsTable();
-  populateCatsTable();
-  populateHeadingsTable();
-}
-
-function renderAll(){
-  renderBrands();
-  renderCategories();
-  renderProducts();
-  renderCart();
-  populateProductsTable();
-  populateBrandsTable();
-  populateCatsTable();
-  populateHeadingsTable();
-}
-
-/* escape helpers */
-function escapeHtml(str){
-  if(!str) return "";
-  return str.replace(/[&<>"']/g, function(m){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]);});
-}
-function escapeJs(str){ return (str||"").replace(/'/g,"\\'").replace(/"/g,'\\"'); }
-
-/* ----------------------------- Init (load data) ----------------------------- */
-(function init(){
-  // Set list view as default
-  currentView = 'list';
-  document.getElementById("viewBtn").innerHTML = '<i class="fas fa-list-ul"></i>';
-  
-  // primary source = products.json in same folder
-  loadFromJSON();
-})();
-
-/* ----------------------------- UI events outside admin ----------------------------- */
-brandsContainer.addEventListener("click", e=>{
-  if(!e.target.matches(".brand-btn")) return;
-  currentBrand = e.target.dataset.brand;
-  currentCategory = "All";
-  renderBrands(); renderCategories(); renderProducts();
-});
-
-categoriesContainer.addEventListener("click", e=>{
-  if(!e.target.matches(".category-btn")) return;
-  currentCategory = e.target.dataset.cat;
-  renderCategories(); renderProducts();
-});
-
-searchBox.addEventListener("input", ()=>renderProducts());
-
-// Updated view toggle to use the new function
-document.getElementById("viewBtn").onclick = toggleView;
-
-document.getElementById("themeBtn").onclick = ()=>{
-  document.body.classList.toggle("dark");
-};
-cartIcon.onclick = ()=> cartSection.scrollIntoView({behavior:"smooth"});
-
-/* ensure global functions exist for inline onclicks */
-window.addToCart = addToCart;
-window.addToCartWithNotification = addToCartWithNotification;
-window.updateCartQty = updateCartQty;
-window.changeQty = changeQty;
-window.removeFromCart = removeFromCart;
-window.openImagePopup = openImagePopup;
-window.closeImagePopup = closeImagePopup;
-
-</script>
-</body>
-</html>
