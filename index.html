@@ -176,10 +176,6 @@ header button:hover{background:var(--primary);color:white}
     margin-bottom: 5px;
 }
 
-.description-text.short {
-    display: block;
-}
-
 .description-text.full {
     display: none;
 }
@@ -199,31 +195,42 @@ header button:hover{background:var(--primary);color:white}
     color: #0088CC;
 }
 
-/* NEW: Mobile-specific styles for description */
+/* NEW: Mobile-specific styles for description - UPDATED */
 @media (max-width: 768px) {
-    .description-text.short {
+    .description-container:not(.expanded) .description-text.full {
         display: none !important;
     }
     
-    .description-text.full {
-        display: none !important;
-    }
-    
-    .mobile-description .description-text.short {
+    .description-container.expanded .description-text.full {
         display: block !important;
     }
     
-    .mobile-description .description-text.full {
-        display: none !important;
-    }
-    
-    .mobile-description.expanded .description-text.short {
-        display: none !important;
-    }
-    
-    .mobile-description.expanded .description-text.full {
+    /* Always show see-more button on mobile when there is description */
+    .description-container .see-more-btn {
         display: block !important;
     }
+    
+    /* Hide short description completely in list view on mobile */
+    .list-view-description .description-text.short,
+    .no-image-list-view-description .description-text.short {
+        display: none !important;
+    }
+}
+
+/* Desktop styles for list view - HIDE SHORT DESCRIPTION */
+.list-view-description .description-text.short,
+.no-image-list-view-description .description-text.short {
+    display: none !important;
+}
+
+.list-view-description .description-text.full,
+.no-image-list-view-description .description-text.full {
+    display: none;
+}
+
+.list-view-description .description-container.expanded .description-text.full,
+.no-image-list-view-description .description-container.expanded .description-text.full {
+    display: block;
 }
 
 /* Notification styles */
@@ -895,7 +902,6 @@ function renderListView(list, includeImages) {
       // Add products for this heading
       tableHTML += groupedProducts[heading].map(p => {
         const { shortText, isTruncated } = truncateDescription(p.description);
-        const isMobile = window.innerWidth <= 768;
         
         return `
         <tr style="border-bottom:1px solid #ddd">
@@ -905,16 +911,9 @@ function renderListView(list, includeImages) {
           <td style="padding:8px" class="list-view-product-price">Rs. ${p.price}</td>
           <td style="padding:8px">${p.cartonPacking || 'N/A'}</td>
           <td style="padding:8px" class="list-view-description">
-            <div class="description-container ${isMobile ? 'mobile-description' : ''}">
-              ${isMobile ? `
-                <div class="description-text short">${shortText}</div>
-                <div class="description-text full">${p.description}</div>
-                <button class="see-more-btn" onclick="toggleMobileDescription(this)">See More</button>
-              ` : (isTruncated ? `
-                <div class="description-text short">${shortText}</div>
-                <div class="description-text full" style="display:none">${p.description}</div>
-                <button class="see-more-btn" onclick="toggleDescription(this)">See More</button>
-              ` : `<div class="description-text">${p.description}</div>`)}
+            <div class="description-container">
+              <div class="description-text full">${p.description}</div>
+              ${p.description ? `<button class="see-more-btn" onclick="toggleMobileDescription(this)">See More</button>` : 'No description'}
             </div>
           </td>
           <td style="padding:8px"><button class="add-to-cart" onclick="addToCartWithNotification(${p.id})">Add to Cart</button></td>
@@ -948,7 +947,6 @@ function renderListView(list, includeImages) {
       // Add products for this heading
       tableHTML += groupedProducts[heading].map(p => {
         const { shortText, isTruncated } = truncateDescription(p.description);
-        const isMobile = window.innerWidth <= 768;
         
         return `
         <tr style="border-bottom:1px solid #ddd">
@@ -957,16 +955,9 @@ function renderListView(list, includeImages) {
           <td style="padding:8px" class="no-image-list-view-product-price">Rs. ${p.price}</td>
           <td style="padding:8px">${p.cartonPacking || 'N/A'}</td>
           <td style="padding:8px" class="no-image-list-view-description">
-            <div class="description-container ${isMobile ? 'mobile-description' : ''}">
-              ${isMobile ? `
-                <div class="description-text short">${shortText}</div>
-                <div class="description-text full">${p.description}</div>
-                <button class="see-more-btn" onclick="toggleMobileDescription(this)">See More</button>
-              ` : (isTruncated ? `
-                <div class="description-text short">${shortText}</div>
-                <div class="description-text full" style="display:none">${p.description}</div>
-                <button class="see-more-btn" onclick="toggleDescription(this)">See More</button>
-              ` : `<div class="description-text">${p.description}</div>`)}
+            <div class="description-container">
+              <div class="description-text full">${p.description}</div>
+              ${p.description ? `<button class="see-more-btn" onclick="toggleMobileDescription(this)">See More</button>` : 'No description'}
             </div>
           </td>
           <td style="padding:8px"><button class="add-to-cart" onclick="addToCartWithNotification(${p.id})">Add to Cart</button></td>
