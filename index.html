@@ -22,8 +22,16 @@ body.dark{--light:#1E1E1E;--card:#2C2C2C;--text:#F8F9FA;background:var(--light);
 body{background:var(--light);color:var(--text);transition:0.3s;line-height:1.6}
 .container{max-width:100%;margin:0 auto;padding:0 20px} /* CHANGED: max-width: 100% for full width */
 
-/* Header */
-header{background:linear-gradient(135deg,var(--primary),#0088CC);color:white;padding:15px 0;box-shadow:0 4px 12px rgba(0,0,0,0.1)}
+/* Header - STICKY BANAYA GAYA */
+header{
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background:linear-gradient(135deg,var(--primary),#0088CC);
+  color:white;
+  padding:15px 0;
+  box-shadow:0 4px 12px rgba(0,0,0,0.1)
+}
 .header-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}
 .header-left{display:flex;flex-direction:column}
 header h1{font-size:1.8rem;font-weight:700}
