@@ -51,14 +51,14 @@
     {
       "name": "AT75 ALPHA CYPHER GHOST OPTICAL SWITCH (MECHANICAL) Voice-Activated LED Lighting Bar",
       "price": 14600,
-      "image": "images/at75cg.jpg",
+      "image": "images/at75cypherghost.png",
       "description": "Switch Type: Linear, Durability: 100 Million Keystrokes, Initial Force: 48 ± 3 cN Min, Total Travel Distance: 3.8 ± 0.2 mm, Actuation Point Customization Range: 0.8 ~ 3.0 mm, Report Rate: 1000Hz/1ms, Keycaps: PBT Keycaps, Backlit: 7 RGB Backlit Effects",
       "brand": "Bloody",
       "category": "Keyboard",
       "cartonpacking": "10 PSc",
       "heading": "BLOODY 7-COLOR NEON LIGHTING GAMING KEYBOARDS",
       "id": 5,
-      "cartonPacking": ""
+      "cartonPacking": "10"
     },
     {
       "name": "AT75 ALPHA (BLACK) OPTICAL SWITCH (MECHANICAL) Voice-Activated LED Lighting Bar",
