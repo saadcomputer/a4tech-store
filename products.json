@@ -3,57 +3,62 @@
     {
       "name": "GH-30 ROGUE Gaming Case (5 RGB FANS) (4mm Tempered Glass)",
       "price": 23200,
-      "image": "images/bloody_placeholder.jpg",
+      "image": "images/gh30.jpg",
       "description": "4mm Tempered Glass Panels, 7 Expansion Slot, Maximize Cooling Airflow, Motherboards: Standard ATX, Micro-ATX, ITX, Power Supply: ATX Power, Video Card: Up to 310 mm (Length), Expansion Slot: 7 Slots, CPU Cooler: Up to 165 mm (Height), Input / Output Panel: HD Audio, USB 3.0*1, USB2.0*1, Hardware Space: 3.5\" HDD*1 & 2.5\"SSD*1, Airflow / Liquid Cooler System: Front 120 mm Fan*3 / Rear 120 mm Fan*2/ Top 120 mm Fan*2 or 240 mm Liquid Radiator (Pre-Installed 5 RGB 120mm Fans: Front*2, Rear*2, Top*1)",
       "brand": "Bloody",
       "category": "Others",
       "cartonpacking": "1 PC",
       "heading": "BLOODY MID TOWER GAMING CASE",
-      "id": 1
+      "id": 1,
+      "cartonPacking": "1"
     },
     {
       "name": "M90 (ANC) Black+Red",
       "price": 9340,
-      "image": "images/bloody_placeholder.jpg",
+      "image": "images/m90.jpg",
       "description": "Speaker Size: 10 mm, Frequency Response: 20 Hz-20 kHz, Earphone Sensitivity: 102 dB @ -10 dBFS, Mic. Sensitivity: -42 dB @1 kHz/Pa, Earphone Impedance: 32 ohm, Bluetooth Version: v5.1, Operation Distance: 10 m, Earphone Battery Type: Lithium Battery (40 mAh), Charging Case Battery Type: Lithium Battery (500 mAh), Charging Power: 5V=1A, Earphone Charging Time: <1.5H (Low Battery to Fully Charged), Case Charging Time: <2H (Low Battery to Fully Charged), Music Playtime with Single Charge: ≈4H, Playtime from Charging Case: ≈24H, Weight: Earphone: 9 g / Charging Case: 41 g",
       "brand": "Bloody",
       "category": "Audio",
       "cartonpacking": "40 PCs",
       "heading": "BLOODY GAMING TWS EARBUDS",
-      "id": 2
+      "id": 2,
+      "cartonPacking": "10"
     },
     {
       "name": "M70 (ANC) Black+Red Black+BLUE",
       "price": 8470,
-      "image": "images/bloody_placeholder.jpg",
+      "image": "images/m70.jpg",
       "description": "Speaker Size: 6 mm Frequency Response: 20 Hz-20 kHz, Earphone Sensitivity: 99 dB @ -10 dBFS, Mic. Sensitivity: -42 dB @1 kHz/Pa, Earphone Impedance: 16 ohm, Bluetooth Version: v5.2, Operation Distance: 10 m, Earphone Battery Type: Lithium Battery (60 mAh), Charging Case Battery Type: Lithium Battery (400 mAh), Charging Power: 5V=1A, Earphone Charging Time: <1.5H (Low Battery to Fully Charged), Case Charging Time: <2H (Low Battery to Fully Charged), Music Playtime with Single Charge: ≈6H, Playtime from Charging Case: ≈24H, Weight: Earphone: 9 g / Charging Case: 47 g",
       "brand": "Bloody",
       "category": "Audio",
       "cartonpacking": "40 PCs",
       "heading": "BLOODY GAMING TWS EARBUDS",
-      "id": 3
+      "id": 3,
+      "cartonPacking": "10"
     },
     {
       "name": "B1700 (B140 KEYBOARD ES7 MOUSE AND BP50M MOUSEPAD)",
       "price": 6900,
-      "image": "images/bloody_placeholder.jpg",
+      "image": "images/b1700.jpg",
       "description": "NEON GAMING DESKTOP : Multi-Key Rollover, Double-Shot Injection, 6000 CPI Adjustable, 45 IPS, 256K Onboard Memory, Keyboard : Report Rate: 1000Hz, Backlit：Neon, Water-Resistant：Double Secured, Space-Bar: Screw Enhanced, Connector: USB, Cable Length : 1.8m, Wheel: Over 500,000 Scrolls, MOUSE Tracking Sensor: PixArt Optical Engine, Resolution: 100~6,000 CPI, Tracking Speed: 45 ips, Default Resolution: 1000/1200/1600/2000/6000 CPI, Frame Speed: 6,000 fps, Acceleration: 15 g, Response Report Rate: 125~1000 Hz, Key Response:1ms,Durability Button Lifetime:Over 10 Million Clicks, Mousepad 350*280*3 mm (L*W*H)",
       "brand": "Bloody",
       "category": "Keyboard",
       "cartonpacking": "10 PCs",
       "heading": "BLOODY BLAZING GAMING WIRED KEYBOARD+MOUSE SETS",
-      "id": 4
+      "id": 4,
+      "cartonPacking": "10"
     },
     {
       "name": "AT75 ALPHA CYPHER GHOST OPTICAL SWITCH (MECHANICAL) Voice-Activated LED Lighting Bar",
       "price": 14600,
-      "image": "images/bloody_placeholder.jpg",
+      "image": "images/at75cg.jpg",
       "description": "Switch Type: Linear, Durability: 100 Million Keystrokes, Initial Force: 48 ± 3 cN Min, Total Travel Distance: 3.8 ± 0.2 mm, Actuation Point Customization Range: 0.8 ~ 3.0 mm, Report Rate: 1000Hz/1ms, Keycaps: PBT Keycaps, Backlit: 7 RGB Backlit Effects",
       "brand": "Bloody",
       "category": "Keyboard",
       "cartonpacking": "10 PSc",
       "heading": "BLOODY 7-COLOR NEON LIGHTING GAMING KEYBOARDS",
-      "id": 5
+      "id": 5,
+      "cartonPacking": ""
     },
     {
       "name": "AT75 ALPHA (BLACK) OPTICAL SWITCH (MECHANICAL) Voice-Activated LED Lighting Bar",
@@ -69,35 +74,38 @@
     {
       "name": "AT87 ALPHA RED SWITCH (MECHANICAL)",
       "price": 11400,
-      "image": "images/BloodyAT87AlphaOpticalSwitchKeyboard-BloodyRed.jpg?v=1742451301",
+      "image": "images/at87.jpg",
       "description": "Switch Type: Linear, Durability: 100 Million Keystrokes, Initial Force: 48 ± 3 cN Min, Total Travel Distance: 3.8 ± 0.2 mm, Actuation Point Customization Range: 0.8 ~ 3.0 mm, Report Rate: 1000Hz/1ms, Keycaps: PBT Keycaps, Backlit: 7 RGB Backlit Effects",
       "brand": "Bloody",
       "category": "Keyboard",
       "cartonpacking": "10 PSc",
       "heading": "BLOODY 7-COLOR NEON LIGHTING GAMING KEYBOARDS",
-      "id": 7
+      "id": 7,
+      "cartonPacking": "10"
     },
     {
       "name": "AT98 ALPHA RED SWITCH (MECHANICAL)",
       "price": 11800,
-      "image": "images/71jBwPSDDXL._UF350,350_QL80_.jpg",
+      "image": "images/at98.jpg",
       "description": "Switch Type: Linear, Durability: 100 Million Keystrokes, Initial Force: 48 ± 3 cN Min, Total Travel Distance: 3.8 ± 0.2 mm, Actuation Point Customization Range: 0.8 ~ 3.0 mm, Report Rate: 1000Hz/1ms, Keycaps: PBT Keycaps, Backlit: 7 RGB Backlit Effects",
       "brand": "Bloody",
       "category": "Keyboard",
       "cartonpacking": "10 PSc",
       "heading": "BLOODY 7-COLOR NEON LIGHTING GAMING KEYBOARDS",
-      "id": 8
+      "id": 8,
+      "cartonPacking": "10"
     },
     {
       "name": "B135N",
       "price": 3350,
-      "image": "images/images?q=tbn:ANd9GcRxyZGTZZLjPbTTpPcNsiu2VnsJSPMJVSAKzA&s",
+      "image": "images/b135n.jpg",
       "description": "PERFORMANCE Report Rate: 1000Hz Backlit: Neon Water-Resistant: Double Secured Space-Bar: Screw Enhanced Connector: USB Cable Length: 1.8m Windows 7/ 8/ 8.1/ 10/ 11",
       "brand": "Bloody",
       "category": "Keyboard",
       "cartonpacking": "10 PSc",
       "heading": "BLOODY 7-COLOR NEON LIGHTING GAMING KEYBOARDS",
-      "id": 9
+      "id": 9,
+      "cartonPacking": ""
     },
     {
       "name": "B310N (BLACK)",
@@ -2038,27 +2046,30 @@
     {
       "name": "FH200i Noise Cancelling",
       "price": 2930,
-      "image": "images/B500N-EEZEPC-1-1.jpg",
+      "image": "images/fh200i.jpg",
       "description": "Speaker Unit:50 mm Frequency Response: 20 Hz - 20 KHz Sensitivity: 100 dB Impedance:16 ohm Microphone Frequency Response: 100 Hz-10 KHz Sensitivity: -44 dB Cable Material: Tangle-Free Braided Cable Cable Length: 180 cm PC Extension Adaptor: 15 cm Port: 3.5 mm. (15cm Extension Adaptor Included)",
       "brand": "A4Tech",
       "category": "Audio",
       "cartonpacking": "20 PCs",
       "heading": "A4TECH HEADPHONES WITH SINGLE PIN MIC (FOR MOBILE/PC/LAPTOP/PS5/XBOX)",
-      "id": 186
+      "id": 186,
+      "cartonPacking": "20"
     },
     {
       "name": "HS-8i (BLACK)",
       "price": 1945,
-      "image": "images/B500N-EEZEPC-1-1.jpg",
+      "image": "images/hs-8i.jpg",
       "description": "SINGLE PIN COMFORT FIT STEREO HEADSET/FLEXIBLE MIC ,REMOVABLE AND WASHABLE EAR CUSHION, 2M CABLE LENGTH , 4 PIN CONVERTER ADAPTER CABLE",
       "brand": "A4Tech",
       "category": "Audio",
       "cartonpacking": "30 PCs",
       "heading": "A4TECH HEADPHONES WITH SINGLE PIN MIC (FOR MOBILE/PC/LAPTOP/PS5/XBOX)",
-      "id": 187
+      "id": 187,
+      "cartonPacking": "30"
     }
   ],
   "brands": [
+    "All",
     "Bloody",
     "A4Tech"
   ],
