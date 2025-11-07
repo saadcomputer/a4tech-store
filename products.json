@@ -1,7 +1,7 @@
 {
   "products": [
     {
-      "name": "GH-30 ROGUE Gaming Case",
+      "name": "GH-30 ROGUE Gaming Case (5 RGB FANS) (4mm Tempered Glass)",
       "price": 23200,
       "image": "images/gh30.jpg",
       "description": "4mm Tempered Glass Panels, 7 Expansion Slot, Maximize Cooling Airflow, Motherboards: Standard ATX, Micro-ATX, ITX, Power Supply: ATX Power, Video Card: Up to 310 mm (Length), Expansion Slot: 7 Slots, CPU Cooler: Up to 165 mm (Height), Input / Output Panel: HD Audio, USB 3.0*1, USB2.0*1, Hardware Space: 3.5\" HDD*1 & 2.5\"SSD*1, Airflow / Liquid Cooler System: Front 120 mm Fan*3 / Rear 120 mm Fan*2/ Top 120 mm Fan*2 or 240 mm Liquid Radiator (Pre-Installed 5 RGB 120mm Fans: Front*2, Rear*2, Top*1)",
@@ -10,7 +10,7 @@
       "cartonpacking": "1 PC",
       "heading": "BLOODY MID TOWER GAMING CASE",
       "id": 1,
-      "cartonPacking": 1
+      "cartonPacking": "1"
     },
     {
       "name": "M90 (ANC) Black+Red",
@@ -19,10 +19,10 @@
       "description": "Speaker Size: 10 mm, Frequency Response: 20 Hz-20 kHz, Earphone Sensitivity: 102 dB @ -10 dBFS, Mic. Sensitivity: -42 dB @1 kHz/Pa, Earphone Impedance: 32 ohm, Bluetooth Version: v5.1, Operation Distance: 10 m, Earphone Battery Type: Lithium Battery (40 mAh), Charging Case Battery Type: Lithium Battery (500 mAh), Charging Power: 5V=1A, Earphone Charging Time: <1.5H (Low Battery to Fully Charged), Case Charging Time: <2H (Low Battery to Fully Charged), Music Playtime with Single Charge: ≈4H, Playtime from Charging Case: ≈24H, Weight: Earphone: 9 g / Charging Case: 41 g",
       "brand": "Bloody",
       "category": "Audio",
-      "cartonpacking": "10 PCs",
+      "cartonpacking": "40 PCs",
       "heading": "BLOODY GAMING TWS EARBUDS",
       "id": 2,
-      "cartonPacking": 10
+      "cartonPacking": "10"
     },
     {
       "name": "M70 (ANC) Black+Red Black+BLUE",
@@ -31,13 +31,13 @@
       "description": "Speaker Size: 6 mm Frequency Response: 20 Hz-20 kHz, Earphone Sensitivity: 99 dB @ -10 dBFS, Mic. Sensitivity: -42 dB @1 kHz/Pa, Earphone Impedance: 16 ohm, Bluetooth Version: v5.2, Operation Distance: 10 m, Earphone Battery Type: Lithium Battery (60 mAh), Charging Case Battery Type: Lithium Battery (400 mAh), Charging Power: 5V=1A, Earphone Charging Time: <1.5H (Low Battery to Fully Charged), Case Charging Time: <2H (Low Battery to Fully Charged), Music Playtime with Single Charge: ≈6H, Playtime from Charging Case: ≈24H, Weight: Earphone: 9 g / Charging Case: 47 g",
       "brand": "Bloody",
       "category": "Audio",
-      "cartonpacking": "11 PCs",
+      "cartonpacking": "40 PCs",
       "heading": "BLOODY GAMING TWS EARBUDS",
       "id": 3,
-      "cartonPacking": 10
+      "cartonPacking": "10"
     },
     {
-      "name": "B1700 (KEYBOARD MOUSE AND MOUSEPAD)",
+      "name": "B1700 (B140 KEYBOARD ES7 MOUSE AND BP50M MOUSEPAD)",
       "price": 6900,
       "image": "images/b1700.jpg",
       "description": "NEON GAMING DESKTOP : Multi-Key Rollover, Double-Shot Injection, 6000 CPI Adjustable, 45 IPS, 256K Onboard Memory, Keyboard : Report Rate: 1000Hz, Backlit：Neon, Water-Resistant：Double Secured, Space-Bar: Screw Enhanced, Connector: USB, Cable Length : 1.8m, Wheel: Over 500,000 Scrolls, MOUSE Tracking Sensor: PixArt Optical Engine, Resolution: 100~6,000 CPI, Tracking Speed: 45 ips, Default Resolution: 1000/1200/1600/2000/6000 CPI, Frame Speed: 6,000 fps, Acceleration: 15 g, Response Report Rate: 125~1000 Hz, Key Response:1ms,Durability Button Lifetime:Over 10 Million Clicks, Mousepad 350*280*3 mm (L*W*H)",
@@ -46,7 +46,7 @@
       "cartonpacking": "10 PCs",
       "heading": "BLOODY BLAZING GAMING WIRED KEYBOARD+MOUSE SETS",
       "id": 4,
-      "cartonPacking": 10
+      "cartonPacking": "10"
     },
     {
       "name": "AT75 ALPHA CYPHER GHOST OPTICAL SWITCH (MECHANICAL) Voice-Activated LED Lighting Bar",
@@ -55,22 +55,21 @@
       "description": "Switch Type: Linear, Durability: 100 Million Keystrokes, Initial Force: 48 ± 3 cN Min, Total Travel Distance: 3.8 ± 0.2 mm, Actuation Point Customization Range: 0.8 ~ 3.0 mm, Report Rate: 1000Hz/1ms, Keycaps: PBT Keycaps, Backlit: 7 RGB Backlit Effects",
       "brand": "Bloody",
       "category": "Keyboard",
-      "cartonpacking": "10 PCs",
+      "cartonpacking": "10 PSc",
       "heading": "BLOODY 7-COLOR NEON LIGHTING GAMING KEYBOARDS",
       "id": 5,
-      "cartonPacking": 10
+      "cartonPacking": ""
     },
     {
       "name": "AT75 ALPHA (BLACK) OPTICAL SWITCH (MECHANICAL) Voice-Activated LED Lighting Bar",
-      "price": 14600,
-      "image": "images/at75black.jpg",
+      "price": "",
+      "image": "images/bloody_placeholder.jpg",
       "description": "Switch Type: Linear, Durability: 100 Million Keystrokes, Initial Force: 48 ± 3 cN Min, Total Travel Distance: 3.8 ± 0.2 mm, Actuation Point Customization Range: 0.8 ~ 3.0 mm, Report Rate: 1000Hz/1ms, Keycaps: PBT Keycaps, Backlit: 7 RGB Backlit Effects",
       "brand": "Bloody",
       "category": "Keyboard",
-      "cartonpacking": "10 PCs",
+      "cartonpacking": "10 PSc",
       "heading": "BLOODY 7-COLOR NEON LIGHTING GAMING KEYBOARDS",
-      "id": 6,
-      "cartonPacking": 10
+      "id": 6
     },
     {
       "name": "AT87 ALPHA RED SWITCH (MECHANICAL)",
@@ -79,10 +78,10 @@
       "description": "Switch Type: Linear, Durability: 100 Million Keystrokes, Initial Force: 48 ± 3 cN Min, Total Travel Distance: 3.8 ± 0.2 mm, Actuation Point Customization Range: 0.8 ~ 3.0 mm, Report Rate: 1000Hz/1ms, Keycaps: PBT Keycaps, Backlit: 7 RGB Backlit Effects",
       "brand": "Bloody",
       "category": "Keyboard",
-      "cartonpacking": "10 PCs",
+      "cartonpacking": "10 PSc",
       "heading": "BLOODY 7-COLOR NEON LIGHTING GAMING KEYBOARDS",
       "id": 7,
-      "cartonPacking": 10
+      "cartonPacking": "10"
     },
     {
       "name": "AT98 ALPHA RED SWITCH (MECHANICAL)",
@@ -91,2134 +90,1958 @@
       "description": "Switch Type: Linear, Durability: 100 Million Keystrokes, Initial Force: 48 ± 3 cN Min, Total Travel Distance: 3.8 ± 0.2 mm, Actuation Point Customization Range: 0.8 ~ 3.0 mm, Report Rate: 1000Hz/1ms, Keycaps: PBT Keycaps, Backlit: 7 RGB Backlit Effects",
       "brand": "Bloody",
       "category": "Keyboard",
-      "cartonpacking": "10 PCs",
+      "cartonpacking": "10 PSc",
       "heading": "BLOODY 7-COLOR NEON LIGHTING GAMING KEYBOARDS",
       "id": 8,
-      "cartonPacking": 10
+      "cartonPacking": "10"
     },
     {
       "name": "B135N",
       "price": 3350,
-      "image": "images/b.jpg+C44n",
+      "image": "images/b135n.jpg",
       "description": "PERFORMANCE Report Rate: 1000Hz Backlit: Neon Water-Resistant: Double Secured Space-Bar: Screw Enhanced Connector: USB Cable Length: 1.8m Windows 7/ 8/ 8.1/ 10/ 11",
       "brand": "Bloody",
       "category": "Keyboard",
-      "cartonpacking": "10 PCs",
+      "cartonpacking": "10 PSc",
       "heading": "BLOODY 7-COLOR NEON LIGHTING GAMING KEYBOARDS",
       "id": 9,
-      "cartonPacking": 10
+      "cartonPacking": ""
     },
     {
       "name": "B310N (BLACK)",
       "price": 4860,
-      "image": "images/b135n.jpg",
+      "image": "images/images?q=tbn:ANd9GcRaJF5-OrZG2nxPrtdwbXtj_4NKnEzzvhW7Ow&s",
       "description": "Innovative patented Mecha-Like Switch, Sounds like Mechanical, 7-color backlight, 1ms Key Response PERFORMANCE Report Rate: 1000Hz Backlit：Neon Water-Resistant：Double Secured Space-Bar: Screw Enhanced Connector: USB Cable Length : 1.8m Windows 7/ 8 / 8.1 / 10",
       "brand": "Bloody",
       "category": "Keyboard",
-      "cartonpacking": "10 PCs",
+      "cartonpacking": "10 PSc",
       "heading": "BLOODY 7-COLOR NEON LIGHTING GAMING KEYBOARDS",
-      "id": 10,
-      "cartonPacking": 10
+      "id": 10
     },
     {
       "name": "B500N (BLACK) MECHA LIKE SWITCH",
       "price": 5600,
-      "image": "images/b500n.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Bloody Neon Mecha-Like Switch Gaming Keyboard USB Grey US Layout, Multi-Key Rollover, Centered Backlight Design, 1000Hz Report Rate, Screw Enhanced Space-Bar, Anti-Slippery Lift, Report Rate: 1000Hz Backlit：Neon, Water-Resistant：Double Secured, Space-Bar: Screw Enhanced, Connector: USB , Cable Length : 1.8m Windows 7/ 8 / 8.1 / 10",
       "brand": "Bloody",
       "category": "Keyboard",
-      "cartonpacking": "10 PCs",
+      "cartonpacking": "10 PSc",
       "heading": "BLOODY 7-COLOR NEON LIGHTING GAMING KEYBOARDS",
-      "id": 11,
-      "cartonPacking": 10
+      "id": 11
     },
     {
       "name": "S87 (WHITE) RED SWITCH (MECHANICAL)",
       "price": 10700,
-      "image": "images/s87white.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Bloody BLMS Customize Mechanical Switch, Hot-Swappable, Extreme Quiet Typing, Two Adjustable Feet, RGB Backlit, Default 10 Backlit Effects, 7 Game Modes Storage, 4M Onboard Memory, N-Key Rollover, 87-Key Style Keyboard, Elite Bloody KeyDominator Software, 3-Direction Cable Management, PERFORMANCE Key Style: BLMS Red Plus Switch, Key Response：1 ms, Connector: USB, Backlit: RGB, Cable Length: 1.8 m, Key Life: Up to 50 M Keystrokes, System Requirements: Windows 7/ 8 /8.1 / 10 /11",
       "brand": "Bloody",
       "category": "Keyboard",
-      "cartonpacking": "10 PCs",
+      "cartonpacking": "10 PSc",
       "heading": "BLOODY 7-COLOR NEON LIGHTING GAMING KEYBOARDS",
-      "id": 12,
-      "cartonPacking": 10
+      "id": 12
     },
     {
       "name": "S87 (ENERGY RED) RED SWITCH (MECHANICAL)",
       "price": 10700,
-      "image": "images/s87red.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Bloody BLMS Customize Mechanical Switch, Hot-Swappable, Extreme Quiet Typing, Two Adjustable Feet, RGB Backlit, Default 10 Backlit Effects, 7 Game Modes Storage, 4M Onboard Memory, N-Key Rollover, 87-Key Style Keyboard, Elite Bloody KeyDominator Software, 3-Direction Cable Management, PERFORMANCE Key Style: BLMS Red Plus Switch, Key Response：1 ms, Connector: USB, Backlit: RGB, Cable Length: 1.8 m, Key Life: Up to 50 M Keystrokes, System Requirements: Windows 7/ 8 /8.1 / 10 /12",
       "brand": "Bloody",
       "category": "Keyboard",
-      "cartonpacking": "10 PCs",
+      "cartonpacking": "10 PSc",
       "heading": "BLOODY 7-COLOR NEON LIGHTING GAMING KEYBOARDS",
-      "id": 13,
-      "cartonPacking": 10
+      "id": 13
     },
     {
       "name": "WS98 (RED) DUAL CORE WIRELESS RED SWITCH (MECHANICAL)",
       "price": 12500,
-      "image": "images/ws98red.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Dual-Core, Multi-Mode, BLOODY BLMS Engineered Mechanical Switch, Gaming Grade PBT Keycaps, 1ms Wireless Transmission, Extreme Quiet Typing, RGB Backlit, N-Key Rollover, System Swap, Adaptive Battery Life, BLMS Switches, Wireless Transmission: 1 ms, Connection: USB / 2.4G / Bluetooth v5.1, Backlit: RGB System Requirements: Windows 7/8/8.1/10/11",
       "brand": "Bloody",
       "category": "Keyboard",
-      "cartonpacking": "10 PCs",
+      "cartonpacking": "10 PSc",
       "heading": "BLOODY 7-COLOR NEON LIGHTING GAMING KEYBOARDS",
-      "id": 14,
-      "cartonPacking": 10
+      "id": 14
     },
     {
       "name": "S98 (BLACK) RED SWITCH (MECHANICAL)",
       "price": 10500,
-      "image": "images/s98black.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "BLMS Red Plus Mechanical Switch, Hot-Swappable, Extreme Quiet Typing, 98-Key Style Keyboard, 3-Direction Cable Management, RGB Backlit, Default 10 Backlit Effects, 7 Game Modes Storage, 4M Onboard Memory, N-Key Rollover, Two Adjustable Feet, Connector: USB, Backlit: RGB, Cable Length: 1.8 m, System Requirements: Windows 7/ 8 /8.1 / 10 /11",
       "brand": "Bloody",
       "category": "Keyboard",
-      "cartonpacking": "10 PCs",
+      "cartonpacking": "10 PSc",
       "heading": "BLOODY 7-COLOR NEON LIGHTING GAMING KEYBOARDS",
-      "id": 15,
-      "cartonPacking": 10
+      "id": 15
     },
     {
       "name": "S98 (NARAKA) RED SWITCH (MECHANICAL)",
       "price": 12300,
-      "image": "images/s98naraka.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "BLMS Red Plus Mechanical Switch, Hot-Swappable, Extreme Quiet Typing, 98-Key Style Keyboard, 3-Direction Cable Management, RGB Backlit, Default 10 Backlit Effects, 7 Game Modes Storage, 4M Onboard Memory, N-Key Rollover, Two Adjustable Feet, Connector: USB, Backlit: RGB, Cable Length: 1.8 m, System Requirements: Windows 7/ 8 /8.1 / 10 /11",
       "brand": "Bloody",
       "category": "Keyboard",
-      "cartonpacking": "10 PCs",
+      "cartonpacking": "10 PSc",
       "heading": "BLOODY 7-COLOR NEON LIGHTING GAMING KEYBOARDS",
-      "id": 16,
-      "cartonPacking": 10
+      "id": 16
     },
     {
       "name": "S98 (AVIATOR) RED SWITCH (MECHANICAL)",
       "price": 12300,
-      "image": "images/s988aviator.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "BLMS Red Plus Mechanical Switch, Hot-Swappable, Extreme Quiet Typing, 98-Key Style Keyboard, 3-Direction Cable Management, RGB Backlit, Default 10 Backlit Effects, 7 Game Modes Storage, 4M Onboard Memory, N-Key Rollover, Two Adjustable Feet, Connector: USB, Backlit: RGB, Cable Length: 1.8 m, System Requirements: Windows 7/ 8 /8.1 / 10 /11",
       "brand": "Bloody",
       "category": "Keyboard",
-      "cartonpacking": "10 PCs",
+      "cartonpacking": "10 PSc",
       "heading": "BLOODY 7-COLOR NEON LIGHTING GAMING KEYBOARDS",
-      "id": 17,
-      "cartonPacking": 10
+      "id": 17
     },
     {
       "name": "S98 (PIXEL RED) RED SWITCH (MECHANICAL)",
       "price": 9650,
-      "image": "images/s98pixelred.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "BLMS Red Plus Mechanical Switch, Hot-Swappable, Extreme Quiet Typing, 98-Key Style Keyboard, 3-Direction Cable Management, RGB Backlit, Default 10 Backlit Effects, 7 Game Modes Storage, 4M Onboard Memory, N-Key Rollover, Two Adjustable Feet, Connector: USB, Backlit: RGB, Cable Length: 1.8 m, System Requirements: Windows 7/ 8 /8.1 / 10 /11",
       "brand": "Bloody",
       "category": "Keyboard",
-      "cartonpacking": "10 PCs",
+      "cartonpacking": "10 PSc",
       "heading": "BLOODY 7-COLOR NEON LIGHTING GAMING KEYBOARDS",
-      "id": 18,
-      "cartonPacking": 10
+      "id": 18
     },
     {
       "name": "S520N (ICY WHITE) MECHA LIKE SWITCH",
       "price": 8500,
-      "image": "images/s520nwhite",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "BLMS Red Plus Mechanical Switch, Hot-Swappable, 1 ms Key Response, Combination FN Hotkeys, Mix & Match Keycaps, No More Accidental-Click, N-Key Rollover, 10 Preset RGB Effects, 4MB Expanded Memory, 1000Hz Report Rate, Double-Shot Injection Keycaps, Elite Bloody KeyDominator Software, Connector: USB, Key Response：1 ms, Key Style: BLMS Switches, Backlit: 10 Preset RGB Effects, Cable Length: 1.8 m, Key Life: Up to 50 M Keystrokes, System Requirements: Windows 7/ 8 /8.1 / 10 /10",
       "brand": "Bloody",
       "category": "Keyboard",
-      "cartonpacking": "10 PCs",
+      "cartonpacking": "10 PSc",
       "heading": "BLOODY 7-COLOR NEON LIGHTING GAMING KEYBOARDS",
-      "id": 19,
-      "cartonPacking": 10
+      "id": 19
     },
     {
       "name": "S520N (FIRE BLACK) MECHA LIKE SWITCH",
       "price": 8450,
-      "image": "images/s520nfireblack",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "BLMS Red Plus Mechanical Switch, Hot-Swappable, 1 ms Key Response, Combination FN Hotkeys, Mix & Match Keycaps, No More Accidental-Click, N-Key Rollover, 10 Preset RGB Effects, 4MB Expanded Memory, 1000Hz Report Rate, Double-Shot Injection Keycaps, Elite Bloody KeyDominator Software, Connector: USB, Key Response：1 ms, Key Style: BLMS Switches, Backlit: 10 Preset RGB Effects, Cable Length: 1.8 m, Key Life: Up to 50 M Keystrokes, System Requirements: Windows 7/ 8 /8.1 / 10 /10",
       "brand": "Bloody",
       "category": "Keyboard",
-      "cartonpacking": "10 PCs",
+      "cartonpacking": "10 PSc",
       "heading": "BLOODY 7-COLOR NEON LIGHTING GAMING KEYBOARDS",
-      "id": 20,
-      "cartonPacking": 10
+      "id": 20
     },
     {
       "name": "S520N (PUDING BLACK) MECHA LIKE SWITCH",
       "price": 8500,
-      "image": "images/s520npuddingblack",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "BLMS Red Plus Mechanical Switch, Hot-Swappable, 1 ms Key Response, Combination FN Hotkeys, Mix & Match Keycaps, No More Accidental-Click, N-Key Rollover, 10 Preset RGB Effects, 4MB Expanded Memory, 1000Hz Report Rate, Double-Shot Injection Keycaps, Elite Bloody KeyDominator Software, Connector: USB, Key Response：1 ms, Key Style: BLMS Switches, Backlit: 10 Preset RGB Effects, Cable Length: 1.8 m, Key Life: Up to 50 M Keystrokes, System Requirements: Windows 7/ 8 /8.1 / 10 /10",
       "brand": "Bloody",
       "category": "Keyboard",
-      "cartonpacking": "10 PCs",
+      "cartonpacking": "10 PSc",
       "heading": "BLOODY 7-COLOR NEON LIGHTING GAMING KEYBOARDS",
-      "id": 21,
-      "cartonPacking": 10
+      "id": 21
     },
     {
       "name": "S310N (ENERGY RED) MECHA LIKE SWITCH",
       "price": 8200,
-      "image": "images/s310nred",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Lighting Effects: FN + F12 ( Solid / Breathing / Off ) Brightness: FN + ↑ / ↓, Customize your favourite game with 9 individually programmable keys., Press FN + F1 ~ F7 to apply multimedia hotkeys. Mute, volume - / +, play/pause, stop, previous/next track. Press Fn+F8 will disable the \"Window\" keys to avoid interruption during the game session. Instantaneous execution is guaranteed with the 1000 Hz ultra polling technology, giving you a response time of ultra-fast 1ms. Use a unique manufacturing process in which two pieces of plastic get moulded together. Ensures that the legends will never fade over time. It provides support and promotes a comfortable wrist position. Dual screws + dual springs + balancing bar equals stronger durability. Create your own macro keys with the Bloody KeyDominator software available for download at bloody.com.",
       "brand": "Bloody",
       "category": "Keyboard",
-      "cartonpacking": "10 PCs",
+      "cartonpacking": "10 PSc",
       "heading": "BLOODY 7-COLOR NEON LIGHTING GAMING KEYBOARDS",
-      "id": 22,
-      "cartonPacking": 10
+      "id": 22
     },
     {
       "name": "S310N (ENERGY WHITE) MECHA LIKE SWITCH",
       "price": 8200,
-      "image": "images/s310nwhite",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Lighting Effects: FN + F12 ( Solid / Breathing / Off ) Brightness: FN + ↑ / ↓, Customize your favourite game with 9 individually programmable keys., Press FN + F1 ~ F7 to apply multimedia hotkeys. Mute, volume - / +, play/pause, stop, previous/next track. Press Fn+F8 will disable the \"Window\" keys to avoid interruption during the game session. Instantaneous execution is guaranteed with the 1000 Hz ultra polling technology, giving you a response time of ultra-fast 1ms. Use a unique manufacturing process in which two pieces of plastic get moulded together. Ensures that the legends will never fade over time. It provides support and promotes a comfortable wrist position. Dual screws + dual springs + balancing bar equals stronger durability. Create your own macro keys with the Bloody KeyDominator software available for download at bloody.com.",
       "brand": "Bloody",
       "category": "Keyboard",
-      "cartonpacking": "10 PCs",
+      "cartonpacking": "10 PSc",
       "heading": "BLOODY 7-COLOR NEON LIGHTING GAMING KEYBOARDS",
-      "id": 23,
-      "cartonPacking": 10
+      "id": 23
     },
     {
       "name": "PR-30 KEYBOARD WRIST REST 441 x 75 x 22 mm",
       "price": 1780,
-      "image": "images/pr30",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Soft & Comfortable Material, Non-Slip Rubber Base, Ergonomic Design, Wide Compatibility",
       "brand": "Bloody",
       "category": "Others",
       "cartonpacking": "20 PCs",
       "heading": "BLOODY GAMING REST",
-      "id": 24,
-      "cartonPacking": 20
+      "id": 24
     },
     {
       "name": "BP-45 W CYPHER GHOST Waterproof Mouse Pad",
       "price": 1380,
-      "image": "images/bp45w",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "The Bloody BP-45W X Savage Waterproof Mouse Pad - Cypher Ghost is designed for precision gaming with a smooth surface that ensures accurate tracking. It features durable stitched edges to prevent fraying, a non-slip rubber base for stability, and a water-resistant coating for easy maintenance. The pad measures 450mm x 400mm, providing ample space for fluid mouse movements., Smooth Tracking, Waterproof Design, Durable Stitched Edges, Non-Slip Design",
       "brand": "Bloody",
       "category": "Mous Pads",
       "cartonpacking": "30 PCs",
       "heading": "BLOODY GAMING MOUSE PADS",
-      "id": 25,
-      "cartonPacking": 30
+      "id": 25
     },
     {
       "name": "BP-45 NARAKA 450*400*3mm",
       "price": 1330,
-      "image": "images/bp45naraka",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Exceptional Fine Knitting Craft Edges | Easy to Move and Stop | Smooth Surface | Non-Slip Rubber Base",
       "brand": "Bloody",
       "category": "Mous Pads",
       "cartonpacking": "30 PCs",
       "heading": "BLOODY GAMING MOUSE PADS",
-      "id": 26,
-      "cartonPacking": 30
+      "id": 26
     },
     {
       "name": "BP-45 MIDNIGHT 450*400*3mm",
       "price": 1300,
-      "image": "images/bp45midnight",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Exceptional Fine Knitting Craft Edges | Easy to Move and Stop | Smooth Surface | Non-Slip Rubber Base",
       "brand": "Bloody",
       "category": "Mous Pads",
       "cartonpacking": "30 PCs",
       "heading": "BLOODY GAMING MOUSE PADS",
-      "id": 27,
-      "cartonPacking": 30
+      "id": 27
     },
     {
       "name": "BP-45 PROXY BOOM FIRE 450*400*3mm",
       "price": 1300,
-      "image": "images/bp45fire",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Exceptional Fine Knitting Craft Edges | Easy to Move and Stop | Smooth Surface | Non-Slip Rubber Base",
       "brand": "Bloody",
       "category": "Mous Pads",
       "cartonpacking": "30 PCs",
       "heading": "BLOODY GAMING MOUSE PADS",
-      "id": 28,
-      "cartonPacking": 30
+      "id": 28
     },
     {
       "name": "BP-45 PROXY BOOM INK 450*400*3mm",
       "price": 1300,
-      "image": "images/bp45ink",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Exceptional Fine Knitting Craft Edges | Easy to Move and Stop | Smooth Surface | Non-Slip Rubber Base",
       "brand": "Bloody",
       "category": "Mous Pads",
       "cartonpacking": "30 PCs",
       "heading": "BLOODY GAMING MOUSE PADS",
-      "id": 29,
-      "cartonPacking": 30
+      "id": 29
     },
     {
       "name": "BP-30M 350*280*3mm",
       "price": 1160,
-      "image": "images/bp30",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Exceptional Fine Knitting Craft Edges | Easy to Move and Stop | Smooth Surface | Non-Slip Rubber Base",
       "brand": "Bloody",
       "category": "Mous Pads",
       "cartonpacking": "30 PCs",
       "heading": "BLOODY GAMING MOUSE PADS",
-      "id": 30,
-      "cartonPacking": 30
+      "id": 30
     },
     {
       "name": "B-088S EXTENDED (800 x 300 x 2 mm)",
       "price": 1310,
-      "image": "images/b088s",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Exceptional Fine Knitting Craft Edges | Easy to Move and Stop | Smooth Surface | Non-Slip Rubber Base",
       "brand": "Bloody",
       "category": "Mous Pads",
       "cartonpacking": "30 PCs",
       "heading": "BLOODY GAMING MOUSE PADS",
-      "id": 31,
-      "cartonPacking": 30
+      "id": 31
     },
     {
       "name": "R36 ULTRA 2.4G+USB RECHARGEABLE 12000 CPI",
       "price": 6190,
-      "image": "images/r36",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "DUAL MODE WIRELESS GAMING MOUSE, RapidSnapReboundTechnology, Full SpeedDual Mode, 1msWireless Transmission,WaveLinkConnectivity, Esports-GradePerformance, Adjustable 12000CPI Resolution, 7Programmable Buttons, Wireless M-Esport Editor, Rechargeable Lithium Battery",
       "brand": "Bloody",
       "category": "Mouse",
       "cartonpacking": "20PCs",
       "heading": "BLOODY ULTRA DUAL MODE RECHARGEABLE WIRELESS GAMING MOUSE",
-      "id": 32,
-      "cartonPacking": 20
+      "id": 32
     },
     {
       "name": "R72 PRO Duo 2.4GHz / USB 20,000 CPI",
       "price": 10660,
-      "image": "images/r72",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "2.4GHz / USB Connection, Alpha 20K Engine, 20,000 CPI Resolution, 1000Hz Full Speed, 1ms Wireless Transmission, Play Time 75H, Sensor: Alpha 20K Engineered Engine, Wireless Transmission: 1ms, Operation Range: 10 m, Default Resolution: 400-800-1,000-1,200-1,600-2,000 CPI, Adjustable by Software: 50~20,000 CPI, Frame Speed: Self-Adjusting, Adjustable by Software: Self-Adjusting, Acceleration: 40 G, Tracking Speed: 350 IPS, Report Rate: 1000Hz Adjustable, Battery: 300 mAh Lithium Battery, Charging Time: ≤ 1.5 Hours, Playtime: ≤ 75 Hours, Micro-Switch: Over 30 Million Clicks (Left / Right Button), Wheel: Over 800,000 Scrolls, USB Type-C Soft Braided Cable: 180 cm, USB Type-C PVC Cable: 180 cm.",
       "brand": "Bloody",
       "category": "Mouse",
       "cartonpacking": "20PCs",
       "heading": "BLOODY ULTRA DUAL MODE RECHARGEABLE WIRELESS GAMING MOUSE",
-      "id": 33,
-      "cartonPacking": 20
+      "id": 33
     },
     {
       "name": "R73 Ultra Duo CYPHER GHOST 2.4GHz / USB 20,000 CPI",
       "price": 9180,
-      "image": "images/r73",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "2.4GHz / USB Connection, Alpha 20K Engine, 20,000 CPI Resolution, 1000Hz Full Speed, 1ms Wireless Transmission, Play Time 75H, Sensor: Alpha 20K Engineered Engine, Wireless Transmission: 1ms, Operation Range: 10 m, Default Resolution: 400-800-1,000-1,200-1,600-2,000 CPI, Adjustable by Software: 50~20,000 CPI, Frame Speed: Self-Adjusting, Adjustable by Software: Self-Adjusting, Acceleration: 40 G, Tracking Speed: 350 IPS, Report Rate: 1000Hz Adjustable, Battery: 300 mAh Lithium Battery, Charging Time: ≤ 1.5 Hours, Playtime: ≤ 75 Hours, Micro-Switch: Over 30 Million Clicks (Left / Right Button), Wheel: Over 800,000 Scrolls, USB Type-C Soft Braided Cable: 180 cm, USB Type-C PVC Cable: 180 cm.",
       "brand": "Bloody",
       "category": "Mouse",
       "cartonpacking": "20PCs",
       "heading": "BLOODY ULTRA DUAL MODE RECHARGEABLE WIRELESS GAMING MOUSE",
-      "id": 34,
-      "cartonPacking": 20
+      "id": 34
     },
     {
       "name": "W60 MAX MINI LIGHT WEIGHT 10,000 CPI",
       "price": 4530,
-      "image": "images/w60mini",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "TranslucentHoneycombShell,BC3332-ASensor,Self-tomize RGB Animation ,4 Manual Report Rate, 4 Types Setting Switch, 4M Onboard Memory, Light weight Braided Cable, Anti-Slip Stickers, Report Rate:125~2000Hz, Key Response:1ms, DURABILITY, Micro-Switch: Over 20 Million Clicks ( Left / Right Button ), Wheel: Over 500,000 Scrolls",
       "brand": "Bloody",
       "category": "Mouse",
       "cartonpacking": "20PCs",
       "heading": "BLOODY ULTRA CORE ACTIVATED RGB ANIMATION GAMING MOUSE",
-      "id": 35,
-      "cartonPacking": 20
+      "id": 35
     },
     {
       "name": "W60 MAX (BLACK) 10,000 CPI",
       "price": 4680,
-      "image": "images/w60black",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Translucent Honeycomb Shell, BC3332-A Sensor, Self-ustomize RGB Animation, 4 Manual Report Rate, 4 Types Setting Switch, 4 M Onboard Memory, Lightweight Braided Cable, Anti-SlipStickers, Report Rate:125~2000Hz, Key Response:1ms, DURABILITY, Micro-Switch: Over 20 Million Clicks ( Left / Right Button ), Wheel: Over 500,000 Scrolls",
       "brand": "Bloody",
       "category": "Mouse",
       "cartonpacking": "20PCs",
       "heading": "BLOODY ULTRA CORE ACTIVATED RGB ANIMATION GAMING MOUSE",
-      "id": 36,
-      "cartonPacking": 20
+      "id": 36
     },
     {
       "name": "W63 MAX (SUNSET) 10,000 CPI",
       "price": 4540,
-      "image": "images/w63sunset",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "BC3332-A Sensor, 4M Onboard Memory, 4 Manual Report Rate, LOD Setting Switch, RGB Backlit, Lightweight Braided Cable, PERFORMANCE Tracking, Sensor: MAX BC3332-A 12K, Resolution: 100~12,000 CPI, Tracking Speed: 250 ips, Frame Speed: 8000 fps, Acceleration: 35 g, Response, Report Rate: 125~2000 Hz, Key Response: 1 ms, Durability, Micro-Switch: Over 20 Million Clicks ( Left / Right Button ), Wheel: Over 800,000 Scrolls",
       "brand": "Bloody",
       "category": "Mouse",
       "cartonpacking": "20PCs",
       "heading": "BLOODY ULTRA CORE ACTIVATED RGB ANIMATION GAMING MOUSE",
-      "id": 37,
-      "cartonPacking": 20
+      "id": 37
     },
     {
       "name": "W63 MAX (PROXY BOOM) 10,000 CPI",
       "price": 4540,
-      "image": "images/w63boom",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "BC3332-A Sensor, 4M Onboard Memory, 4 Manual Report Rate, LOD Setting Switch, RGB Backlit, Lightweight Braided Cable, PERFORMANCE Tracking, Sensor: MAX BC3332-A 12K, Resolution: 100~12,000 CPI, Tracking Speed: 250 ips, Frame Speed: 8000 fps, Acceleration: 35 g, Response, Report Rate: 125~2000 Hz, Key Response: 1 ms, Durability, Micro-Switch: Over 20 Million Clicks ( Left / Right Button ), Wheel: Over 800,000 Scrolls",
       "brand": "Bloody",
       "category": "Mouse",
       "cartonpacking": "20PCs",
       "heading": "BLOODY ULTRA CORE ACTIVATED RGB ANIMATION GAMING MOUSE",
-      "id": 38,
-      "cartonPacking": 20
+      "id": 38
     },
     {
       "name": "W63 MAX (MIDNIGHT) 10,000 CPI",
       "price": 4540,
-      "image": "images/w63midnight",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "BC3332-A Sensor, 4M Onboard Memory, 4 Manual Report Rate, LOD Setting Switch, RGB Backlit, Lightweight Braided Cable, PERFORMANCE Tracking, Sensor: MAX BC3332-A 12K, Resolution: 100~12,000 CPI, Tracking Speed: 250 ips, Frame Speed: 8000 fps, Acceleration: 35 g, Response, Report Rate: 125~2000 Hz, Key Response: 1 ms, Durability, Micro-Switch: Over 20 Million Clicks ( Left / Right Button ), Wheel: Over 800,000 Scrolls",
       "brand": "Bloody",
       "category": "Mouse",
       "cartonpacking": "20PCs",
       "heading": "BLOODY ULTRA CORE ACTIVATED RGB ANIMATION GAMING MOUSE",
-      "id": 39,
-      "cartonPacking": 20
+      "id": 39
     },
     {
       "name": "W70 MAX (WHITE) 10,000 CPI",
       "price": 4600,
-      "image": "images/w70white",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Tracking Sensor: MAX BC3332-A 10K Sensor Resolution: 100~10,000 CPI Frame Speed: 8000 fps Acceleration: 35 g Tracking Speed: 250 ips Response Report Rate: 125~2000 Hz Key Response: 1 ms Durability Micro-Switch: Over 50 Million Clicks ( Left / Right Button ) Wheel: Over 500,000 Scrolls Metal X'Glide Armor Boot: Over 300 Kms, 4 Types LOD Setting Switch, Precision Control Key, Extra Fire Wheel",
       "brand": "Bloody",
       "category": "Mouse",
       "cartonpacking": "20PCs",
       "heading": "BLOODY ULTRA CORE ACTIVATED RGB ANIMATION GAMING MOUSE",
-      "id": 40,
-      "cartonPacking": 20
+      "id": 40
     },
     {
       "name": "W70 MAX (BLACK) 10,000 CPI",
       "price": 4600,
-      "image": "images/w70black",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Tracking Sensor: MAX BC3332-A 10K Sensor Resolution: 100~10,000 CPI Frame Speed: 8000 fps Acceleration: 35 g Tracking Speed: 250 ips Response Report Rate: 125~2000 Hz Key Response: 1 ms Durability Micro-Switch: Over 50 Million Clicks ( Left / Right Button ) Wheel: Over 500,000 Scrolls Metal X'Glide Armor Boot: Over 300 Kms, 4 Types LOD Setting Switch, Precision Control Key, Extra Fire Wheel",
       "brand": "Bloody",
       "category": "Mouse",
       "cartonpacking": "20PCs",
       "heading": "BLOODY ULTRA CORE ACTIVATED RGB ANIMATION GAMING MOUSE",
-      "id": 41,
-      "cartonPacking": 20
+      "id": 41
     },
     {
       "name": "W70 MAX PUNK YELLOW 10,000 CPI",
       "price": 4900,
-      "image": "images/w70yellow",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Tracking Sensor: MAX BC3332-A 10K Sensor Resolution: 100~10,000 CPI Frame Speed: 8000 fps Acceleration: 35 g Tracking Speed: 250 ips Response Report Rate: 125~2000 Hz Key Response: 1 ms Durability Micro-Switch: Over 50 Million Clicks ( Left / Right Button ) Wheel: Over 500,000 Scrolls Metal X'Glide Armor Boot: Over 300 Kms, 4 Types LOD Setting Switch, Precision Control Key, Extra Fire Wheel",
       "brand": "Bloody",
       "category": "Mouse",
       "cartonpacking": "20 PCs",
       "heading": "BLOODY ULTRA CORE ACTIVATED RGB ANIMATION GAMING MOUSE",
-      "id": 42,
-      "cartonPacking": 20
+      "id": 42
     },
     {
       "name": "W72 ULTRA BLACK 20,000 CPI",
       "price": 4820,
-      "image": "images/w72black",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Sensor: Alpha 20K Gaming Engine, Resolution: 50~20,000 CPI, Frame Speed: Self-Adjusting, Acceleration:40 G, Tracking Speed: 350 lPS, RESPONSE Report Rate: 125~2000 Hz, Key Response: 1 ms, DURABILITY Micro-Switch: Over 30 Million Clicks (Left / Right Button), Wheel: Over 800,000 Scrolls",
       "brand": "Bloody",
       "category": "Mouse",
       "cartonpacking": "20 PCs",
       "heading": "BLOODY ULTRA CORE ACTIVATED RGB ANIMATION GAMING MOUSE",
-      "id": 43,
-      "cartonPacking": 20
+      "id": 43
     },
     {
       "name": "W95 MAX (STONE BLACK) 12,000 CPI",
       "price": 4820,
-      "image": "images/w95black",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Tracking Sensor: MAX BC3332-A 10K Sensor Resolution: 100~10,000 CPI Frame Speed: 8000 fps Acceleration: 35 g Tracking Speed: 250 ips Response Report Rate: 125~2000 Hz Key Response: 1 ms Durability Micro-Switch: Over 50 Million Clicks ( Left / Right Button ) Wheel: Over 500,000 Scrolls Metal X'Glide Armor Boot: Over 300 Kms, 4 Types LOD Setting Switch, Dual-Injection Keys",
       "brand": "Bloody",
       "category": "Mouse",
       "cartonpacking": "20 PCs",
       "heading": "BLOODY ULTRA CORE ACTIVATED RGB ANIMATION GAMING MOUSE",
-      "id": 44,
-      "cartonPacking": 20
+      "id": 44
     },
     {
       "name": "W95 MAX (SPORT RED) 12,000 CPI",
       "price": 4810,
-      "image": "images/w95red",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Tracking Sensor: MAX BC3332-A 10K Sensor Resolution: 100~10,000 CPI Frame Speed: 8000 fps Acceleration: 35 g Tracking Speed: 250 ips Response Report Rate: 125~2000 Hz Key Response: 1 ms Durability Micro-Switch: Over 50 Million Clicks ( Left / Right Button ) Wheel: Over 500,000 Scrolls Metal X'Glide Armor Boot: Over 300 Kms, 4 Types LOD Setting Switch, Dual-Injection Keys",
       "brand": "Bloody",
       "category": "Mouse",
       "cartonpacking": "20 PCs",
       "heading": "BLOODY ULTRA CORE ACTIVATED RGB ANIMATION GAMING MOUSE",
-      "id": 45,
-      "cartonPacking": 20
+      "id": 45
     },
     {
       "name": "W95 MAX (NARAKA) 12,000 CPI",
       "price": 5000,
-      "image": "images/w95naraka",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Tracking Sensor: MAX BC3332-A 10K Sensor Resolution: 100~10,000 CPI Frame Speed: 8000 fps Acceleration: 35 g Tracking Speed: 250 ips Response Report Rate: 125~2000 Hz Key Response: 1 ms Durability Micro-Switch: Over 50 Million Clicks ( Left / Right Button ) Wheel: Over 500,000 Scrolls Metal X'Glide Armor Boot: Over 300 Kms, 4 Types LOD Setting Switch, Dual-Injection Keys",
       "brand": "Bloody",
       "category": "Mouse",
       "cartonpacking": "20 PCs",
       "heading": "BLOODY ULTRA CORE ACTIVATED RGB ANIMATION GAMING MOUSE",
-      "id": 46,
-      "cartonPacking": 20
+      "id": 46
     },
     {
       "name": "J95s (BLACK) 8,000 CPI",
       "price": 4320,
-      "image": "images/j95s",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "TRACKING Sensor:BC3332-S Gaming Engine Resolution: 100~8,000 CPI Frame Speed: Adjustable Acceleration: 25g Tracking Speed: 150 ips RESPONSE Report Rate: 125~2,000 Hz Key Response:1ms DURABILITY Micro-Switch: Over 20 Million Clicks (Left/Right Button) Wheel: 500,000 ScrollsMetal X'Glide Armor Boot: Over 300 Kms",
       "brand": "Bloody",
       "category": "Mouse",
       "cartonpacking": "40 PCs",
       "heading": "BLOODY ULTRA CORE ACTIVATED RGB ANIMATION GAMING MOUSE",
-      "id": 47,
-      "cartonPacking": 10
+      "id": 47
     },
     {
       "name": "V8M MAX (BLACK) 12,000 CPI",
       "price": 3990,
-      "image": "images/v8mmax",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Sensor: MAX BC3332-A 12K Sensor, Resolution: 100~12,000 CPI, Frame Speed: 8000 fps, Acceleration: 35 g, Tracking Speed: 250 ips, Response, Report Rate: 125~2000 Hz, Key Response: 1 ms, Durability, Button Over 20 Million Clicks ( Left / Right Button ), Wheel: Over 800,000 Scrolls, Metal X'Glide Armor Boot: Over 300 Kms",
       "brand": "Bloody",
       "category": "Mouse",
       "cartonpacking": "20 PCs",
       "heading": "BLOODY ULTRA CORE ACTIVATED RGB ANIMATION GAMING MOUSE",
-      "id": 48,
-      "cartonPacking": 20
+      "id": 48
     },
     {
       "name": "ES5 (BLACK) 3200 CPI",
       "price": 2720,
-      "image": "images/es5",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "For Champions 🏆 A4tech Bloody ES9 Plus 10,000 CPI RGB Esports Gaming Mouse 🔥 Bloody Esports Software | BC3332-A 10K Sensor | 15-Zone RGB Animation | Self-Customize M Button | 512K Onboard Memory | Metal X'Glide Armor Boot | 1ms Key Response",
       "brand": "Bloody",
       "category": "Mouse",
       "cartonpacking": "40 PCs",
       "heading": "BLOODY ESPORTS PROFESSIONAL TOURNAMENT RGB GAMING MOUSE",
-      "id": 49,
-      "cartonPacking": 40
+      "id": 49
     },
     {
       "name": "ES7 (BLACK) 6000 CPI",
       "price": 2840,
-      "image": "images/es7",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "For Champions 🏆 A4tech Bloody ES9 Plus 10,000 CPI RGB Esports Gaming Mouse 🔥 Bloody Esports Software | BC3332-A 10K Sensor | 15-Zone RGB Animation | Self-Customize M Button | 512K Onboard Memory | Metal X'Glide Armor Boot | 1ms Key Response",
       "brand": "Bloody",
       "category": "Mouse",
       "cartonpacking": "40 PCs",
       "heading": "BLOODY ESPORTS PROFESSIONAL TOURNAMENT RGB GAMING MOUSE",
-      "id": 50,
-      "cartonPacking": 40
+      "id": 50
     },
     {
       "name": "ES8 (FIRE BLACK) 6000 CPI",
       "price": 2830,
-      "image": "images/es8black",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Tracking Sensor: PixArt Optical Engine, Resolution: 100~6,000 CPI, Default Resolution：, 1000/1200/1600/2000/3200 CPI, Frame Speed: Self-Adjusting, Acceleration: 15 g, Tracking Speed: 45 ips, Response, Report Rate: 125~1,000 Hz, Key Response: 1 ms, Durability, Micro Switch: Over 10M Clicks (Left / Right Button), Wheel: Over 800,000 Scrolls",
       "brand": "Bloody",
       "category": "Mouse",
       "cartonpacking": "40 PCs",
       "heading": "BLOODY ESPORTS PROFESSIONAL TOURNAMENT RGB GAMING MOUSE",
-      "id": 51,
-      "cartonPacking": 40
+      "id": 51
     },
     {
       "name": "ES8 (PANDA) 6000 CPI",
       "price": 2760,
-      "image": "images/es8panda",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Tracking Sensor: PixArt Optical Engine, Resolution: 100~6,000 CPI, Default Resolution：, 1000/1200/1600/2000/3200 CPI, Frame Speed: Self-Adjusting, Acceleration: 15 g, Tracking Speed: 45 ips, Response, Report Rate: 125~1,000 Hz, Key Response: 1 ms, Durability, Micro Switch: Over 10M Clicks (Left / Right Button), Wheel: Over 800,000 Scrolls",
       "brand": "Bloody",
       "category": "Mouse",
       "cartonpacking": "40 PCs",
       "heading": "BLOODY ESPORTS PROFESSIONAL TOURNAMENT RGB GAMING MOUSE",
-      "id": 52,
-      "cartonPacking": 40
+      "id": 52
     },
     {
       "name": "L65 MAX (BLACK) HONEY COMB 12,000 CPI",
       "price": 3940,
-      "image": "images/l65black",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Sensor Exclusive BC3332-A Sensor, DPI 10000 CPI, Tracking Speed 250 IPS, Fine-Tuning CPI ±100~10000CPI, Acceleration 35 g, 4 Customizable Sensor Sensitivity, Personalized Customizable CPI Button, 3-Manual Adjustable Lift off Distance Setting [LOD], 4-Manual Adjustable Report Rate [R-Hz], AFC System, Over 50 Million Clicks, Over 500,000 Scrolls, RGB Lighting Effects Setting",
       "brand": "Bloody",
       "category": "Mouse",
       "cartonpacking": "20 PCs",
       "heading": "BLOODY ESPORTS PROFESSIONAL TOURNAMENT RGB GAMING MOUSE",
-      "id": 53,
-      "cartonPacking": 20
+      "id": 53
     },
     {
       "name": "L65 MAX (NARAKA) 12,000 CPI",
       "price": 4100,
-      "image": "images/l65naraka",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Sensor Exclusive BC3332-A Sensor, DPI 10000 CPI, Tracking Speed 250 IPS, Fine-Tuning CPI ±100~10000CPI, Acceleration 35 g, 4 Customizable Sensor Sensitivity, Personalized Customizable CPI Button, 3-Manual Adjustable Lift off Distance Setting [LOD], 4-Manual Adjustable Report Rate [R-Hz], AFC System, Over 50 Million Clicks, Over 500,000 Scrolls, RGB Lighting Effects Setting",
       "brand": "Bloody",
       "category": "Mouse",
       "cartonpacking": "20 PCs",
       "heading": "BLOODY ESPORTS PROFESSIONAL TOURNAMENT RGB GAMING MOUSE",
-      "id": 54,
-      "cartonPacking": 20
+      "id": 54
     },
     {
       "name": "A60 Black Light Strike Activated 6200CPI,",
       "price": 4290,
-      "image": "images/a60black",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "LIGHTHT STRIKE GAMING MOUSE, Click Response Less 0.2 ms, Infrared-Wheel, 6200 CPI, 3 Shooting Modes in Left Button, 6 Sniper Modes, No Double-Click, Metal X'Glide Armor Boot, Optimal MMO (Ultra Core 4 & Macros), Built-In 160K Memory, Memory: 160K, Acceleration: 20 g~23 g, Frame Speed: 6,666 fps, Infrared-Wheel: Over 1 Million Scrolls, Tracking Speed: 60~160 inches/sec(ips), Image Processing: 2.41 Mega pixels/sec, Metal X' Glide Armor Boot: Over 300 Kms Infrared-Micro-Switch: Over 20 million clicks, Report Rate: 125~1000 Hz, Type: Wired, Button Numbers: 8, Net Weight: 150 g, Cable Length: 1.8 M, Sensor: Optical Engine, Connector: USB(2.0/ 3.0), System Requirements: Windows XP/ Vista/ 7/ 8 /8.1 / 10 or later",
       "brand": "Bloody",
       "category": "Mouse",
       "cartonpacking": "30 PCs",
       "heading": "BLOODY ULTRA CORE /MULTI CORE GAMING MOUSE",
-      "id": 55,
-      "cartonPacking": 30
+      "id": 55
     },
     {
       "name": "A70 BLACK CRACK DRAG CLICKING NEON BACKLIT ACTIVATED 6,200 CPI",
       "price": 4320,
-      "image": "images/a70black",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "LIGHTHT STRIKE GAMING MOUSE, Click Response Less 0.2 ms, Infrared-Wheel, 6200 CPI, 3 Shooting Modes in Left Button, 6 Sniper Modes, No Double-Click, Metal X'Glide Armor Boot, Optimal MMO (Ultra Core 4 & Macros), Built-In 160K Memory, Memory: 160K, Acceleration: 20 g~23 g, Frame Speed: 6,666 fps, Infrared-Wheel: Over 1 Million Scrolls, Tracking Speed: 60~160 inches/sec(ips), Image Processing: 2.41 Mega pixels/sec, Metal X' Glide Armor Boot: Over 300 Kms Infrared-Micro-Switch: Over 20 million clicks, Report Rate: 125~1000 Hz, Type: Wired, Button Numbers: 8, Net Weight: 150 g, Cable Length: 1.8 M, Sensor: Optical Engine, Connector: USB(2.0/ 3.0), System Requirements: Windows XP/ Vista/ 7/ 8 /8.1 / 10 or later",
       "brand": "Bloody",
       "category": "Mouse",
       "cartonpacking": "40 PCs",
       "heading": "BLOODY ULTRA CORE /MULTI CORE GAMING MOUSE",
-      "id": 56,
-      "cartonPacking": 40
+      "id": 56
     },
     {
       "name": "A70 MATT BLACK DRAG CLICKING NEON BACKLIT ACTIVATED 6,200 CPI",
       "price": 4270,
-      "image": "images/a70matt",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "LIGHTHT STRIKE GAMING MOUSE, Click Response Less 0.2 ms, Infrared-Wheel, 6200 CPI, 3 Shooting Modes in Left Button, 6 Sniper Modes, No Double-Click, Metal X'Glide Armor Boot, Optimal MMO (Ultra Core 4 & Macros), Built-In 160K Memory, Memory: 160K, Acceleration: 20 g~23 g, Frame Speed: 6,666 fps, Infrared-Wheel: Over 1 Million Scrolls, Tracking Speed: 60~160 inches/sec(ips), Image Processing: 2.41 Mega pixels/sec, Metal X' Glide Armor Boot: Over 300 Kms , Infrared-Micro-Switch: Over 20 million clicks, Report Rate: 125~1000 Hz, Type: Wired, Button Numbers: 8, Net Weight: 150 g, Cable Length: 1.8 M, Sensor: Optical Engine, Connector: USB(2.0/ 3.0), System Requirements: Windows XP/ Vista/ 7/ 8 /8.1 / 10 or later",
       "brand": "Bloody",
       "category": "Mouse",
       "cartonpacking": "30 PCs",
       "heading": "BLOODY ULTRA CORE /MULTI CORE GAMING MOUSE",
-      "id": 57,
-      "cartonPacking": 30
+      "id": 57
     },
     {
       "name": "V8M (METAL X'GLIDE MULTICORE)",
       "price": 3250,
-      "image": "images/v8m",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "METAL FEET MULTICORE GAMING MOUSE,ZERO-SHOT DELAY, 3 MODES OF LEFT KEY,8 BUTTONS, RESOLUTION:3200DPI, IMAGE:368MEGA PIXELS/SEC, TRACKING SPEED:74 INCHES/SEC, REPORT RATE:125-1000HZ,CLICK RESPONSE TIME:1MS",
       "brand": "Bloody",
       "category": "Mouse",
       "cartonpacking": "30 PCs",
       "heading": "BLOODY ULTRA CORE /MULTI CORE GAMING MOUSE",
-      "id": 58,
-      "cartonPacking": 30
+      "id": 58
     },
     {
       "name": "M320 (ANC) (BLACK) (Bluetooth v5.0)",
       "price": 15300,
-      "image": "images/bloody_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Bluetooth v5.0 , 4-Pin 3.5mm Wired Audio, Operating Range: Up to 10m (32 feet), Bulit-in Battery: 500mAh Lithium Battery, Playback Time: 25H (ANC Off) / 15H (ANC On), HEADPHONE, Graphene Driver: 40mm, Frequency: 20Hz - 20KHz Impedance: 32ohm, Sensitivity: 100dB, MICROPHONE Mic. Type: Omni-directional (CVC Noise Cancelling), Frequency: 100Hz - 10KHz, Sensitivity: -42dB, Cable Length, Type-C Charging Cable: 60 cm, 3.5mm Audio Cable: 150 cm, Weight: 252 g (w/ battery)",
       "brand": "Bloody",
       "category": "Audio",
       "cartonpacking": "10 PCs",
       "heading": "Bloody's First Premium All-in-One Bluetooth RGB Wireless Gaming Headset",
-      "id": 59,
-      "cartonPacking": 10
+      "id": 59
     },
     {
       "name": "MR720 (NARAKA ) 2.4G+BT V5.3",
       "price": 10290,
-      "image": "images/bloody_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "A4tech Bloody MR720 Bluetooth v5.3 + 2.4Ghz Wireless + Wired Multi-Mode RGB Gaming Headphones Compatible with PC/Tablet/ Mobile/Android/MAC/PS4,5/Xbox/Switch",
       "brand": "Bloody",
       "category": "Audio",
       "cartonpacking": "10 PCs",
       "heading": "Bloody's First Premium All-in-One Bluetooth RGB Wireless Gaming Headset",
-      "id": 60,
-      "cartonPacking": 10
+      "id": 60
     },
     {
       "name": "MR710 (GREY) 2.4G+BT V5.3",
       "price": 10100,
-      "image": "images/bloody_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "A4tech Bloody MR710 Bluetooth v5.3 + 2.4Ghz Wireless + Wired Multi-Mode RGB Gaming Headphones Compatible with PC/Tablet/ Mobile/Android/MAC/PS4,5/Xbox/Switch",
       "brand": "Bloody",
       "category": "Audio",
       "cartonpacking": "10 PCs",
       "heading": "Bloody's First Premium All-in-One Bluetooth RGB Wireless Gaming Headset",
-      "id": 61,
-      "cartonPacking": 10
+      "id": 61
     },
     {
       "name": "MR590 (BLACK) 2.4G+BT V5.3 Dual ENC Mic.",
       "price": 9200,
-      "image": "images/bloody_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "2.4GHz Wireless , Bluetooth v5.3 , 3.5mm Wired Audio, Operating Range: Up to 20m, Bulit-in Battery: 1050mAh Lithium Battery , Playback Time: 60H (Light Off) / 35H (Light On), HEADPHONE, Speaker: 50mm, Frequency: 20Hz - 20KHz, Impedance: 16ohm, Sensitivity: 105dB MICROPHONE, Mic. Type: Dual ENC Unidirectional",
       "brand": "Bloody",
       "category": "Audio",
       "cartonpacking": "10 PCs",
       "heading": "Bloody's First Premium All-in-One Bluetooth RGB Wireless Gaming Headset",
-      "id": 62,
-      "cartonPacking": 10
+      "id": 62
     },
     {
       "name": "MR575 (BLACK) 2.4G+BT V5.2 7.1 Virtual Surround Sound",
       "price": 9720,
-      "image": "images/bloody_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "2.4GHz Wireless Bluetooth v5.2 3.5mm Wired Audio Operating Range: Up to 12m (40 feet) Bulit-in Battery: 1050mAh Lithium Battery Playback Time: 40H (Light Off) / 20H (Light On) HEADPHONE Speaker: 50mm Frequency: 20Hz - 20KHz Impedance: 16ohm Sensitivity: 105dB MICROPHONE Mic.Type: Unidirectional Frequency: 100Hz - 10KHz Sensitivity: -42dB",
       "brand": "Bloody",
       "category": "Audio",
       "cartonpacking": "10 PCs",
       "heading": "Bloody's First Premium All-in-One Bluetooth RGB Wireless Gaming Headset",
-      "id": 63,
-      "cartonPacking": 10
+      "id": 63
     },
     {
       "name": "MH360 (BLACK) Bluetooth v5.3 ENC Omni-Directional Mic.",
       "price": 5160,
-      "image": "images/bloody_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Bluetooth Version: v5.3 Operating Range: Up to 10m (32 feet) Built-in Battery: 400mAh Lithium Battery Playback Time: 35H HEADPHONE Speaker Unit: 40mm Hybrid Diaphragm Frequency: 20Hz - 20KHz lmpedance: 32ohm Sensitivity: 100dB MICROPHONE Mic.Type: ENC Omni-Directional Frequency: 100Hz- 10KHz Sensitivity: -42dB CABLE 3.5mm Audio Cable: 100 cmUSB Type-C Charging Cable: 30 cm",
       "brand": "Bloody",
       "category": "Audio",
       "cartonpacking": "20 PCs",
       "heading": "Bloody's First Premium All-in-One Bluetooth RGB Wireless Gaming Headset",
-      "id": 64,
-      "cartonPacking": 20
+      "id": 64
     },
     {
       "name": "MH390 (BLACK) (WHITE) Bluetooth v5.3 ENC Omni-Directional Mic.",
       "price": 6370,
-      "image": "images/bloody_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Bluetooth Version: v5.3 Operating Range: Up to 10m (32 feet) Built-in Battery: 400mAh Lithium Battery Playback Time: 35H HEADPHONE Speaker Unit: 40mm Hybrid Diaphragm Frequency: 20Hz - 20KHz lmpedance: 32ohm Sensitivity: 100dB MICROPHONE Mic. Type: ENC Omni-Directional Frequency: 100Hz- 10KHz Sensitivity: -42dB CABLE 3.5mm Audio Cable: 100 cm USB Type-C Charging Cable: 50 cm",
       "brand": "Bloody",
       "category": "Audio",
       "cartonpacking": "20 PCs",
       "heading": "Bloody's First Premium All-in-One Bluetooth RGB Wireless Gaming Headset",
-      "id": 65,
-      "cartonPacking": 20
+      "id": 65
     },
     {
       "name": "GR230 (BLACK) 2.4G+BT V5.3",
       "price": 6600,
-      "image": "images/bloody_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Bluetooth Version: v5.3 Operating Range: Up to 10m (32 feet) Built-in Battery: 400mAh Lithium Battery Playback Time: 35H HEADPHONE Speaker Unit: 40mm Hybrid Diaphragm Frequency: 20Hz - 20KHz lmpedance: 32ohm Sensitivity: 100dB MICROPHONE Mic. Type: ENC Omni-Directional Frequency: 100Hz- 10KHz Sensitivity: -42dB CABLE 3.5mm Audio Cable: 100 cm USB Type-C Charging Cable: 50 cm",
       "brand": "Bloody",
       "category": "Audio",
       "cartonpacking": "20 PCs",
       "heading": "Bloody's First Premium All-in-One Bluetooth RGB Wireless Gaming Headset",
-      "id": 66,
-      "cartonPacking": 20
+      "id": 66
     },
     {
       "name": "GR270 (BLACK) 2.4GHz Wireless + BT v5.2",
       "price": 8030,
-      "image": "images/bloody_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "2.4GHz Wireless Bluetooth v5.2, 3.5mm Wired Audio Operating Range: Up to 12m (40 feet) Headset Speaker: 50mm Frequency: 20Hz - 20KHz Sensitivity: 105dB Impedance: 16ohm Microphone Frequency: 100Hz - 10KHz Sensitivity: -42dB Cable USB Type-C Charging Cable: 50 cm AUX 4-Pin 3.5 mm Audio Cable: 150 cm Extension Dock Cable: 130 cm Battery Capacity: 1050mAh Lithium Battery Playback Time: 40H (Light Off) / 20H (Light On)",
       "brand": "Bloody",
       "category": "Audio",
       "cartonpacking": "10 PCs",
       "heading": "Bloody's First Premium All-in-One Bluetooth RGB Wireless Gaming Headset",
-      "id": 67,
-      "cartonPacking": 10
+      "id": 67
     },
     {
       "name": "GR280 (BLACK) 2.4G+BT V5.3",
       "price": 6180,
-      "image": "images/bloody_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "2.4GHz Wireless Bluetooth v5.2 3.5mm Wired Audio Operating Range: Up to 12m (40 feet) Headset Speaker: 50mm Frequency: 20Hz - 20KHz Sensitivity: 105dB Impedance: 16ohm Microphone Frequency: 100Hz - 10KHz Sensitivity: -42dB Cable USB Type-C Charging Cable: 50 cm AUX 4-Pin 3.5 mm Audio Cable: 150 cm Extension Dock Cable: 130 cm Battery Capacity: 1050mAh Lithium Battery Playback Time: 40H (Light Off) / 20H (Light On)",
       "brand": "Bloody",
       "category": "Audio",
       "cartonpacking": "10 PCs",
       "heading": "Bloody's First Premium All-in-One Bluetooth RGB Wireless Gaming Headset",
-      "id": 68,
-      "cartonPacking": 10
+      "id": 68
     },
     {
       "name": "GR280 (SPORT WHITE) 2.4G+BT V5.3",
       "price": 6180,
-      "image": "images/bloody_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "2.4GHz Wireless Bluetooth v5.2 3.5mm Wired Audio Operating Range: Up to 12m (40 feet) Headset Speaker: 50mm Frequency: 20Hz - 20KHz Sensitivity: 105dB Impedance: 16ohm Microphone Frequency: 100Hz - 10KHz Sensitivity: -42dB Cable USB Type-C Charging Cable: 50 cm AUX 4-Pin 3.5 mm Audio Cable: 150 cm Extension Dock Cable: 130 cm Battery Capacity: 1050mAh Lithium Battery Playback Time: 40H (Light Off) / 20H (Light On)",
       "brand": "Bloody",
       "category": "Audio",
       "cartonpacking": "10 PCs",
       "heading": "Bloody's First Premium All-in-One Bluetooth RGB Wireless Gaming Headset",
-      "id": 69,
-      "cartonPacking": 10
+      "id": 69
     },
     {
       "name": "GR370 (BLACK) 2.4G+BT V5.3",
       "price": 6550,
-      "image": "images/bloody_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "2.4GHz Wireless, Bluetooth v5.3, 3.5mm Wired Audio, Operating Range: Up to 12m, Built-in Battery: 1050mAh Lithium Battery, Playback Time: 45H (Light Off) / 25H (Light On), Headphone, Speaker Unit: 50mm, Frequency: 20Hz - 20KHz, lmpedance: 16ohm, Sensitivity: 105dB, Microphone, Mic. Type: Unidirectional, Frequency: 100Hz - 10KHz, Sensitivity: -42dB",
       "brand": "Bloody",
       "category": "Audio",
       "cartonpacking": "10 PCs",
       "heading": "Bloody's First Premium All-in-One Bluetooth RGB Wireless Gaming Headset",
-      "id": 70,
-      "cartonPacking": 10
+      "id": 70
     },
     {
       "name": "G260 (BLACK)",
       "price": 4100,
-      "image": "images/bloody_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "7.1 Virtual Surround Sound, 50 mm Speaker Unit, RGB Flow Backlight, Noise Cancelling Mic., In-Line Controller, Premium Comfort, Cable : Tangle-Free Braided Cable, Cable Length: 200 cm, Port: USB Plug",
       "brand": "Bloody",
       "category": "Audio",
       "cartonpacking": "10 PCs",
       "heading": "BLOODY USB GAMING HEADPHONES 7.1 VIRTUAL SURROUND SOUND & NOISE CANCELLATION",
-      "id": 71,
-      "cartonPacking": 10
+      "id": 71
     },
     {
       "name": "G230 (BLACK)",
       "price": 4050,
-      "image": "images/bloody_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Headset Speaker Unit: 50mm Frequency Response: 20 Hz - 20 KHz Sensitivity: 105 Db Impedance: 16 ohm Microphone Frequency Response: 100 Hz-10 KHz Sensitivity : - 42 dB Cable Material: Tangle-Free Braided Cable Cable Length: 200 cm Port: USB Plug",
       "brand": "Bloody",
       "category": "Audio",
       "cartonpacking": "10 PCs",
       "heading": "BLOODY USB GAMING HEADPHONES 7.1 VIRTUAL SURROUND SOUND & NOISE CANCELLATION",
-      "id": 72,
-      "cartonPacking": 10
+      "id": 72
     },
     {
       "name": "G521 (WHITE)",
       "price": 5070,
-      "image": "images/bloody_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "7 COLOR LIGHT Drive unit: Φ50mm, large neodymium iron boron magnet.Frequency response: 20Hz-20K Hz Sensitivity: 105 dB Impedance: 16 ohm/1KHz microphone Frequency response: 100Hz-15KHz Sensitivity: -45dB wire length: 1.8 meters 7.1",
       "brand": "Bloody",
       "category": "Audio",
       "cartonpacking": "10 PCs",
       "heading": "BLOODY USB GAMING HEADPHONES 7.1 VIRTUAL SURROUND SOUND & NOISE CANCELLATION",
-      "id": 73,
-      "cartonPacking": 10
+      "id": 73
     },
     {
       "name": "G521 (BLACK)",
       "price": 4970,
-      "image": "images/bloody_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "7 COLOR LIGHT Drive unit: Φ50mm, large neodymium iron boron magnet.Frequency response: 20Hz-20K Hz Sensitivity: 105 dB Impedance: 16 ohm/1KHz microphone Frequency response: 100Hz-15KHz Sensitivity: -45dB wire length: 1.8 meters 7.1",
       "brand": "Bloody",
       "category": "Audio",
       "cartonpacking": "10 PCs",
       "heading": "BLOODY USB GAMING HEADPHONES 7.1 VIRTUAL SURROUND SOUND & NOISE CANCELLATION",
-      "id": 74,
-      "cartonPacking": 10
+      "id": 74
     },
     {
       "name": "G535 (BLACK+WHITE)",
       "price": 5900,
-      "image": "images/bloody_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "7.1 Virtual Sound, Single-Directional nopise Cancelling Mic., Large Leather Ear Pads, Extremely Lightweight, In-Line Controller, Headset Speaker Unit: 50mm Driver Frequency Response: 20 Hz - 20 KHz Sensitivity: 105 dB Impedance: 16 ohm Microphone Frequency Response: 100 Hz-10 KHz Sensitivity : - 44 dB Cable Material: Tangle-Free Braided Cable Cable Length: 200 cm Port: USB",
       "brand": "Bloody",
       "category": "Audio",
       "cartonpacking": "10 PCs",
       "heading": "BLOODY USB GAMING HEADPHONES 7.1 VIRTUAL SURROUND SOUND & NOISE CANCELLATION",
-      "id": 75,
-      "cartonPacking": 10
+      "id": 75
     },
     {
       "name": "G535 (BLCK + SILVER)",
       "price": 5900,
-      "image": "images/bloody_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "7.1 Virtual Sound, Single-Directional nopise Cancelling Mic., Large Leather Ear Pads, Extremely Lightweight, In-Line Controller, Headset Speaker Unit: 50mm Driver Frequency Response: 20 Hz - 20 KHz Sensitivity: 105 dB Impedance: 16 ohm Microphone Frequency Response: 100 Hz-10 KHz Sensitivity : - 44 dB Cable Material: Tangle-Free Braided Cable Cable Length: 200 cm Port: USB",
       "brand": "Bloody",
       "category": "Audio",
       "cartonpacking": "10 PCs",
       "heading": "BLOODY USB GAMING HEADPHONES 7.1 VIRTUAL SURROUND SOUND & NOISE CANCELLATION",
-      "id": 76,
-      "cartonPacking": 10
+      "id": 76
     },
     {
       "name": "G560 (SPORT RED)",
       "price": 5750,
-      "image": "images/bloody_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "7.1 Virtual Sound, Single-Directional nopise Cancelling Mic., Large Leather Ear Pads, Extremely Lightweight, In-Line Controller, Headset Speaker Unit: 50mm Driver Frequency Response: 20 Hz - 20 KHz Sensitivity: 105 dB Impedance: 16 ohm Microphone Frequen",
       "brand": "Bloody",
       "category": "Audio",
       "cartonpacking": "10 PCs",
       "heading": "BLOODY USB GAMING HEADPHONES 7.1 VIRTUAL SURROUND SOUND & NOISE CANCELLATION",
-      "id": 77,
-      "cartonPacking": 10
+      "id": 77
     },
     {
       "name": "G560 (NARAKA)",
       "price": 5750,
-      "image": "images/bloody_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "7.1 Virtual Sound, Single-Directional nopise Cancelling Mic., Large Leather Ear Pads, Extremely Lightweight, In-Line Controller, Headset Speaker Unit: 50mm Driver Frequency Response: 20 Hz - 20 KHz Sensitivity: 105 dB Impedance: 16 ohm Microphone Frequen",
       "brand": "Bloody",
       "category": "Audio",
       "cartonpacking": "10 PCs",
       "heading": "BLOODY USB GAMING HEADPHONES 7.1 VIRTUAL SURROUND SOUND & NOISE CANCELLATION",
-      "id": 78,
-      "cartonPacking": 10
+      "id": 78
     },
     {
       "name": "G565 (ENERGY BLACK)",
       "price": 5110,
-      "image": "images/bloody_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "7.1 Virtual Sound, Single-Directional nopise Cancelling Mic., Large Leather Ear Pads, Extremely Lightweight, In-Line Controller, Headset Speaker Unit: 50mm Driver Frequency Response: 20 Hz - 20 KHz Sensitivity: 105 dB Impedance: 16 ohm Microphone Frequen",
       "brand": "Bloody",
       "category": "Audio",
       "cartonpacking": "10 PCs",
       "heading": "BLOODY USB GAMING HEADPHONES 7.1 VIRTUAL SURROUND SOUND & NOISE CANCELLATION",
-      "id": 79,
-      "cartonPacking": 10
+      "id": 79
     },
     {
       "name": "G565 (ENERGY WHITE)",
       "price": 4600,
-      "image": "images/bloody_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "7.1 Virtual Sound, Single-Directional nopise Cancelling Mic., Large Leather Ear Pads, Extremely Lightweight, In-Line Controller, Headset Speaker Unit: 50mm Driver Frequency Response: 20 Hz - 20 KHz Sensitivity: 105 dB Impedance: 16 ohm Microphone Frequen",
       "brand": "Bloody",
       "category": "Audio",
       "cartonpacking": "10 PCs",
       "heading": "BLOODY USB GAMING HEADPHONES 7.1 VIRTUAL SURROUND SOUND & NOISE CANCELLATION",
-      "id": 80,
-      "cartonPacking": 10
+      "id": 80
     },
     {
       "name": "G575 (BLACK)",
       "price": 5650,
-      "image": "images/bloody_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Flying Wing Suspension Headband, 7.1 Virtual Sound, RGB Light, Detachable Single-Directional Noise Cancelling Mic, In-Line Controller. Premium Comfort, Headset Speaker Unit: 50mm HD Driver Frequency Response: 20 Hz - 20 KHz Sensitivity: 105 dB Impedance: 16 ohm Microphone Frequency Response: 100 Hz-10 KHz Sensitivity : - 44 dB, Cables 2.0 m USB Braided Cable",
       "brand": "Bloody",
       "category": "Audio",
       "cartonpacking": "10 PCs",
       "heading": "BLOODY USB GAMING HEADPHONES 7.1 VIRTUAL SURROUND SOUND & NOISE CANCELLATION",
-      "id": 81,
-      "cartonPacking": 10
+      "id": 81
     },
     {
       "name": "G575 (PUNK YELLOW)",
       "price": 5950,
-      "image": "images/bloody_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Flying Wing Suspension Headband, 7.1 Virtual Sound, RGB Light, Detachable Single-Directional Noise Cancelling Mic, In-Line Controller. Premium Comfort, Headset Speaker Unit: 50mm HD Driver Frequency Response: 20 Hz - 20 KHz Sensitivity: 105 dB Impedance: 16 ohm Microphone Frequency Response: 100 Hz-10 KHz Sensitivity : - 44 dB, Cables 2.0 m USB Braided Cable",
       "brand": "Bloody",
       "category": "Audio",
       "cartonpacking": "10 PCs",
       "heading": "BLOODY USB GAMING HEADPHONES 7.1 VIRTUAL SURROUND SOUND & NOISE CANCELLATION",
-      "id": 82,
-      "cartonPacking": 10
+      "id": 82
     },
     {
       "name": "G575 PRO (GREY)",
       "price": 7000,
-      "image": "images/bloody_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Flying Wing Suspension Headband, 7.1 Virtual Sound, RGB Light, Detachable Single-Directional Noise Cancelling Mic, In-Line Controller. Premium Comfort, Headset Speaker Unit: 50mm HD Driver Frequency Response: 20 Hz - 20 KHz Sensitivity: 105 dB Impedance: 16 ohm Microphone Frequency Response: 100 Hz-10 KHz Sensitivity : - 44 dB, Cables 2.0 m USB Braided Cable",
       "brand": "Bloody",
       "category": "Audio",
       "cartonpacking": "10 PCs",
       "heading": "BLOODY USB GAMING HEADPHONES 7.1 VIRTUAL SURROUND SOUND & NOISE CANCELLATION",
-      "id": 83,
-      "cartonPacking": 10
+      "id": 83
     },
     {
       "name": "G580 (BLACK)",
       "price": 6200,
-      "image": "images/bloody_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "7.1 Virtual Sound Rotatable Single-Directional Mic. Metal Adjustable Headband Braided Tangle-Free Cable Large Protein Leather Ear Pads Headset Speaker Unit: 50mm HD Driver Frequency Response: 20 Hz - 20 KHz Sensitivity: 105 Db Impedance: 16 ohm Microphone Frequency Response: 100 Hz-10 KHz Sensitivity : - 44 dB",
       "brand": "Bloody",
       "category": "Audio",
       "cartonpacking": "10 PCs",
       "heading": "BLOODY USB GAMING HEADPHONES 7.1 VIRTUAL SURROUND SOUND & NOISE CANCELLATION",
-      "id": 84,
-      "cartonPacking": 10
+      "id": 84
     },
     {
       "name": "M590i (BLACK)",
       "price": 6510,
-      "image": "images/bloody_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Virtual 7.1 Sound Card, Impedance: 16 ohm, Microphone, Mic. Type: Single-Directional, Frequency Response: 100 Hz -10 KHz, Sensitivity: - 42 dB, Cable, Material: Durable Braided Cable, Length: 100 cm, USB Extension Adaptor: 200 cm, Port: 4-Pin 3.5 mm Plug, Extension USB Plug, Compatible With: Xbox, PS 4/5, Switch, Mobile, PC",
       "brand": "Bloody",
       "category": "Audio",
       "cartonpacking": "10 PCs",
       "heading": "BLOODY USB GAMING HEADPHONES 7.1 VIRTUAL SURROUND SOUND & NOISE CANCELLATION",
-      "id": 85,
-      "cartonPacking": 10
+      "id": 85
     },
     {
       "name": "G200 (Black Red)",
       "price": 3250,
-      "image": "images/bloody_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Headset Speaker Unit: 50mm Driver Frequency Response: 20 Hz - 20 KHz Sensitivity: 100 dB Impedance: 16 ohm Microphone Frequency Response: 100 Hz-10 KHz Sensitivity : - 44 dB Cable Material: Tangle-Free Braided Cable Cable Length: 200 cm PC Extension Adaptor: 15 cm Port: 3.5 mm for Audio, USB for Light Up, For Mobile/Xbox/PS4&5/Switch/PC/Laptop",
       "brand": "Bloody",
       "category": "Audio",
       "cartonpacking": "20 PCs",
       "heading": "BLOODY GAMING HEADPHONES SURROUND SOUND & NOISE CANCELLATION (MOBILE/XBOX/PLAYSTATION4 & 5/SWITCH/PC/LAPTOP)",
-      "id": 86,
-      "cartonPacking": 20
+      "id": 86
     },
     {
       "name": "G220 (Black)",
       "price": 3520,
-      "image": "images/bloody_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Headset Speaker Unit: 50mm Driver Frequency Response: 20 Hz - 20 KHz Sensitivity: 100 dB Impedance: 16 ohm Microphone Frequency Response: 100 Hz-10 KHz Sensitivity : - 44 dB Cable Material: Tangle-Free Braided Cable Cable Length: 200 cm PC Extension Adaptor: 15 cmPort: 3.5 mm for Audio, USB for Light Up, For Mobile/Xbox/PS4&5/Switch/PC/Laptop",
       "brand": "Bloody",
       "category": "Audio",
       "cartonpacking": "20 PCs",
       "heading": "BLOODY GAMING HEADPHONES SURROUND SOUND & NOISE CANCELLATION (MOBILE/XBOX/PLAYSTATION4 & 5/SWITCH/PC/LAPTOP)",
-      "id": 87,
-      "cartonPacking": 20
+      "id": 87
     },
     {
       "name": "G230P (BLACK)",
       "price": 3100,
-      "image": "images/bloody_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "SURROUND SOUND GAMING HEADSET, Cool RGB Light, Detachable Single-Directional Mic., In-Line Controller, Premium Comfort, 50mm Speaker Unit, Frequency Response: 20 Hz - 20 KHz, Sensitivity: 105 Db, Impedance: 16 ohm...Microphone Frequency Response: 100 Hz-10 KHz, Sensitivity : - 44 dB, .....Cable Material: Tangle-Free Braided Cable, Cable Length: 200 cm., PC Extension Adaptor: 15 cm, Port: 3.5 mm for Audio, USB for Light Up",
       "brand": "Bloody",
       "category": "Audio",
       "cartonpacking": "20 PCs",
       "heading": "BLOODY GAMING HEADPHONES SURROUND SOUND & NOISE CANCELLATION (MOBILE/XBOX/PLAYSTATION4 & 5/SWITCH/PC/LAPTOP)",
-      "id": 88,
-      "cartonPacking": 20
+      "id": 88
     },
     {
       "name": "G260P (BLACK)",
       "price": 3720,
-      "image": "images/bloody_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "In-Line Controller, RGB Flow Backlight, Noise Cancelling Mic., Stereo Surround Sound, SPECIFICATIONS Headset, Speaker Unit: 50 mm, Frequency Response: 20 Hz - 20 KHz, Sensitivity: 100 dB, Impedance: 16 ohm, Microphone, Frequency Response: 100 Hz -10 KHz, Sensitivity : - 42 dB, Cable, Material: Tangle-Free Braided Cable, Cable Length: 200 cm, PC Extension Adaptor: 15 cm, Port: 3.5 mm for Audio, USB for Light Up",
       "brand": "Bloody",
       "category": "Audio",
       "cartonpacking": "20 PCs",
       "heading": "BLOODY GAMING HEADPHONES SURROUND SOUND & NOISE CANCELLATION (MOBILE/XBOX/PLAYSTATION4 & 5/SWITCH/PC/LAPTOP)",
-      "id": 89,
-      "cartonPacking": 20
+      "id": 89
     },
     {
       "name": "G575P (BLACK)",
       "price": 5000,
-      "image": "images/bloody_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "SURROUND SOUND GAMING HEADSET, Cool RGB Light, Detachable Single-Directional Mic., In-Line Controller, Premium Comfort, 50mm Speaker Unit, Frequency Response: 20 Hz - 20 KHz, Sensitivity: 105 Db, Impedance: 16 ohm...Microphone Frequency Response: 100 Hz-10 KHz, Sensitivity : - 44 dB, .....Cable Material: Tangle-Free Braided Cable, Cable Length: 200 cm., PC Extension Adaptor: 15 cm, Port: 3.5 mm for Audio, USB for Light Up",
       "brand": "Bloody",
       "category": "Audio",
       "cartonpacking": "10 PCs",
       "heading": "BLOODY GAMING HEADPHONES SURROUND SOUND & NOISE CANCELLATION (MOBILE/XBOX/PLAYSTATION4 & 5/SWITCH/PC/LAPTOP)",
-      "id": 90,
-      "cartonPacking": 10
+      "id": 90
     },
     {
       "name": "G535P (BLACK+SILVER)",
       "price": 5200,
-      "image": "images/bloody_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "SURROUND SOUND GAMING HEADSET, Cool RGB Light, Detachable Single-Directional Mic., In-Line Controller, Premium Comfort, 50mm Speaker Unit, Frequency Response: 20 Hz - 20 KHz, Sensitivity: 105 Db, Impedance: 16 ohm...Microphone Frequency Response: 100 Hz-10 KHz, Sensitivity : - 44 dB, .....Cable Material: Tangle-Free Braided Cable, Cable Length: 200 cm., PC Extension Adaptor: 15 cm, Port: 3.5 mm for Audio, USB for Light Up",
       "brand": "Bloody",
       "category": "Audio",
       "cartonpacking": "10 PCs",
       "heading": "BLOODY GAMING HEADPHONES SURROUND SOUND & NOISE CANCELLATION (MOBILE/XBOX/PLAYSTATION4 & 5/SWITCH/PC/LAPTOP)",
-      "id": 91,
-      "cartonPacking": 10
+      "id": 91
     },
     {
       "name": "G521S (GREY)",
       "price": 3700,
-      "image": "images/bloody_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Stereo Surround Sound, 50mm Speaker Unit, Omni-Directional Noise-Canceling Mic., Suspended Headband, 7-Color Circular Breathing Light, Headset Speaker Unit: 50 mm, Frequency Response: 20 Hz - 20 KHz, Sensitivity: 105 dB, Impedance: 16 ohm, Microphone, Frequency Response: 100 Hz -10 KHz, Sensitivity : - 45 dB, Cable, Material: Tangle-Free Cable, Cable Length: 230 cm, Port: USB",
       "brand": "Bloody",
       "category": "Audio",
       "cartonpacking": "20 PCs",
       "heading": "BLOODY 2.0 STEREO SOUND GAMING HEADPHONES",
-      "id": 92,
-      "cartonPacking": 20
+      "id": 92
     },
     {
       "name": "G200S (Black Red)",
       "price": 3520,
-      "image": "images/bloody_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Headset Speaker Unit: 50mm Driver Frequency Response: 20 Hz - 20 KHz Sensitivity: 100 dB Impedance: 16 ohm Microphone Frequency Response: 100 Hz-10 KHz Sensitivity : - 44 dB Cable Material: Tangle-Free Braided Cable Cable Length: 200 cm Port: USB",
       "brand": "Bloody",
       "category": "Audio",
       "cartonpacking": "20 PCs",
       "heading": "BLOODY 2.0 STEREO SOUND GAMING HEADPHONES",
-      "id": 93,
-      "cartonPacking": 20
+      "id": 93
     },
     {
       "name": "G220S (Black)",
       "price": 3800,
-      "image": "images/bloody_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Headset Speaker Unit: 50mm Driver Frequency Response: 20 Hz - 20 KHz Sensitivity: 100 dB Impedance: 16 ohm Microphone Frequency Response: 100 Hz-10 KHz Sensitivity : - 44 dB Cable Material: Tangle-Free Braided Cable Cable Length: 200 cm Port: USB",
       "brand": "Bloody",
       "category": "Audio",
       "cartonpacking": "20 PCs",
       "heading": "BLOODY 2.0 STEREO SOUND GAMING HEADPHONES",
-      "id": 94,
-      "cartonPacking": 20
+      "id": 94
     },
     {
       "name": "GM50 PRO USB Gaming Microphone",
-      "price": 6000,
-      "image": "images/bloody_placeholder.jpg",
-      "description": NaN,
+      "price": "",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
+      "description": "",
       "brand": "Bloody",
       "category": "Others",
       "cartonpacking": "20 PCs",
       "heading": "BLOODY GAMING MICROPHONE",
-      "id": 95,
-      "cartonPacking": 20
+      "id": 95
     },
     {
       "name": "GM20 USB Gaming Microphone",
       "price": 4025,
-      "image": "images/bloody_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "High-Definition Microphone, Cardioid Pickup Pattern, Press to Mute Microphone, Volume Control Adjustment, Built-in Pop Filter, Tripod Stand, PERFORMANCE, Bit Depth: 16 bit, Sample Rates: 48 kHz, Polar Pattern: Cardioid, Capsules: 10 mm Electret Condenser Microphone, Power Consumption: 5V / 50 mA, Mic. Frequency Response: 20 Hz – 20 kHz, Mic. Sensitivity: - 40 dB ± 3 dB, Cable: Braided 230 cm USB Cable",
       "brand": "Bloody",
       "category": "Others",
       "cartonpacking": "20 PCs",
       "heading": "BLOODY GAMING MICROPHONE",
-      "id": 96,
-      "cartonPacking": 20
+      "id": 96
     },
     {
       "name": "GK30 1080P Full HD Auto Focus",
       "price": 7800,
-      "image": "images/bloody_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "PERFORMANCE SPECIFICATIONS:, Resolution: FHD1080P 1920 *1080, Frame Speed: 30fps, Built-in Mic: Single-Directional Digital Mic., Lens: FHD Glass, Focus Type: Auto Focus*, Viewing Angle: 75°, USB: USB 2.0,",
       "brand": "Bloody",
       "category": "Others",
       "cartonpacking": "40 PCs",
       "heading": "BLOODY WEBCAM",
-      "id": 97,
-      "cartonPacking": 40
+      "id": 97
     },
     {
       "name": "FBK27C AS QuietKey (BLACK) BLUETOOTH / WIRELESS RECHARGEABLE KEYBOARD",
       "price": 4190,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Quiet Key Keyboard, Switch up to 3 Devices, System Swap, Anti-Sleep Setting Mode, 8 Smart Hotkeys, USB Type-C Rechargeable, New Anti-Sleep Setting Mode For PC, Wide Compatibility,",
       "brand": "A4Tech",
       "category": "Keyboard",
       "cartonpacking": "20 PCs",
       "heading": "A4TECH BLUETOOTH WIRELESS KEYBOARD (FOR TABLET/MOBILE/PC/LAPTOP/IPAD/MAC/ANDROID/SMART TV)",
-      "id": 98,
-      "cartonPacking": 20
+      "id": 98
     },
     {
       "name": "FBK25 QuietKey BLUETOOTH & WIRELESS KEYBOARD",
       "price": 3750,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "2.4G/Bluetooth, Switch up to 4 Devices, Operating System Swap, Ultra-Slim Keycap Structure, 2-Section Compact Size, On/Off Power Switch, Additional Color Plate Included, Integrated Smartphone Cradle, Layout: Windows ｜Android｜Mac｜iOS",
       "brand": "A4Tech",
       "category": "Keyboard",
       "cartonpacking": "20 PCs",
       "heading": "A4TECH BLUETOOTH WIRELESS KEYBOARD (FOR TABLET/MOBILE/PC/LAPTOP/IPAD/MAC/ANDROID/SMART TV)",
-      "id": 99,
-      "cartonPacking": 20
+      "id": 99
     },
     {
       "name": "FBX55C (BLACK) BLUETOOTH & WIRELESS RECHARGEABLE KEYBOARD",
       "price": 6350,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Bluetooth /2.4G, Switch up to 4 Devices, Operating System Swap,Rechargeable Design, Built-in 300mAh, Lithium Battery, Nano Receiver, Includes: Keyboard, Nano Receiver, USB Extension Cable, Type-C Charging Cable , System Platform：Windows / Mac / iOS / Chrome / Android / Harmony OS...",
       "brand": "A4Tech",
       "category": "Keyboard",
       "cartonpacking": "20 PCs",
       "heading": "A4TECH BLUETOOTH WIRELESS KEYBOARD (FOR TABLET/MOBILE/PC/LAPTOP/IPAD/MAC/ANDROID/SMART TV)",
-      "id": 100,
-      "cartonPacking": 20
+      "id": 100
     },
     {
       "name": "FBX50C (BLACK) BLUETOOTH & WIRELESS RECHARGEABLE KEYBOARD",
       "price": 6100,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Bluetooth /2.4G, Switch up to 4 Devices, Operating System Swap,Rechargeable Design, Built-in 300mAh, Lithium Battery, Nano Receiver, Includes: Keyboard, Nano Receiver, USB Extension Cable, Type-C Charging Cable , System Platform：Windows / Mac / iOS / Chrome / Android / Harmony OS...",
       "brand": "A4Tech",
       "category": "Keyboard",
       "cartonpacking": "20 PCs",
       "heading": "A4TECH BLUETOOTH WIRELESS KEYBOARD (FOR TABLET/MOBILE/PC/LAPTOP/IPAD/MAC/ANDROID/SMART TV)",
-      "id": 101,
-      "cartonPacking": 20
+      "id": 101
     },
     {
       "name": "FBK22AS MINI BLUETOOTH & WIRELESS KEYBOARD",
       "price": 3470,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Multi-Device QuietKey Wireless Keyboard, 2.4G and Bluetooth Dual Mode, Up to 4 Devices, Portable with Integrated Stand for Mac iOS Windows Android",
       "brand": "A4Tech",
       "category": "Keyboard",
       "cartonpacking": "20 PCs",
       "heading": "A4TECH WIRELESS MINI KEYBOARD (WITHOUT NUMERIC) (FOR TABLET/MOBILE/PC/LAPTOP/IPAD/MAC/ANDROID/SMART TV)",
-      "id": 102,
-      "cartonPacking": 20
+      "id": 102
     },
     {
       "name": "FBK30 MINI (AVOCADO / BLACK ) BLUETOOTH WIRELESS KEYBOARD",
       "price": 3700,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Multi-Device QuietKey Wireless Keyboard, 2.4G and Bluetooth Dual Mode, Up to 4 Devices, Portable with Integrated Stand for Mac iOS Windows Android",
       "brand": "A4Tech",
       "category": "Keyboard",
       "cartonpacking": "20 PCs",
       "heading": "A4TECH WIRELESS MINI KEYBOARD (WITHOUT NUMERIC) (FOR TABLET/MOBILE/PC/LAPTOP/IPAD/MAC/ANDROID/SMART TV)",
-      "id": 103,
-      "cartonPacking": 20
+      "id": 103
     },
     {
       "name": "FBK36C AS QuietKey MINI (BLACK) BLUETOOTH / WIRELESS RECHARGEABLE KEYBOARD",
       "price": 4080,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Quiet Key Keyboard, Switch up to 3 Devices, System Swap, Anti-Sleep Setting Mode, USB Type-C Rechargeable, 4 Smart Hotkeys, , Connection: Bluetooth / 2.4GHz, Multi-Device: Bluetooth x 2, 2.4G x 1, Operation Range: 5~10 m, Report Rate: 125 Hz, Character: Laser Engraving, Includes: Keyboard, Nano Receiver, Type-C Adaptor, USB Extension Cable, Type-C Charging Cable, User Manual, System Platform: Windows / Mac / iOS / Chrome / Android / Harmony OS...",
       "brand": "A4Tech",
       "category": "Keyboard",
       "cartonpacking": "20 PCs",
       "heading": "A4TECH WIRELESS MINI KEYBOARD (WITHOUT NUMERIC) (FOR TABLET/MOBILE/PC/LAPTOP/IPAD/MAC/ANDROID/SMART TV)",
-      "id": 104,
-      "cartonPacking": 20
+      "id": 104
     },
     {
       "name": "FBX51C MINI BLACK / WHITE BLUETOOTH & WIRELESS MINI SLIM KEYBOARD",
       "price": 5300,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "2.4G/Bluetooth, Switch up to 4 Devices, Operating System Swap, Ultra-Slim Keycap Structure, 2-Section Compact Size, On/Off Power Switch, Windows ｜Android｜Mac｜iOS",
       "brand": "A4Tech",
       "category": "Keyboard",
       "cartonpacking": "10 PCs",
       "heading": "A4TECH WIRELESS MINI KEYBOARD (WITHOUT NUMERIC) (FOR TABLET/MOBILE/PC/LAPTOP/IPAD/MAC/ANDROID/SMART TV)",
-      "id": 105,
-      "cartonPacking": 10
+      "id": 105
     },
     {
       "name": "FB2800C AIR2 BLUETOOTH AND WIRELESS RECHARGABLE COMBO SET",
       "price": 6300,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "A4tech Fstyler FB2535CS Dual Mode Bluetooth / 2.4G Wireless Keyboard & Silent Click Type-C Rechargeable Mouse Desktop Set - Easy Switch up to 4 Devices for Windows, Mac, Chrome OS, Android, iPad, iPhone, Apple TV",
       "brand": "A4Tech",
       "category": "Keyboard",
       "cartonpacking": "10 PCs",
       "heading": "A4TECH PADLESS WIRELESS KEYBOARD+MOUSE COMBO SETS",
-      "id": 106,
-      "cartonPacking": 10
+      "id": 106
     },
     {
       "name": "FB2535CS BLUETOOTH AND WIRELESS COMBO SET",
       "price": 5940,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "A4tech Fstyler FB2535CS Dual Mode Bluetooth / 2.4G Wireless Keyboard & Silent Click Type-C Rechargeable Mouse Desktop Set - Easy Switch up to 4 Devices for Windows, Mac, Chrome OS, Android, iPad, iPhone, Apple TV",
       "brand": "A4Tech",
       "category": "Keyboard",
       "cartonpacking": "20 PCs",
       "heading": "A4TECH PADLESS WIRELESS KEYBOARD+MOUSE COMBO SETS",
-      "id": 107,
-      "cartonPacking": 20
+      "id": 107
     },
     {
       "name": "3000NS (MULTIMEDIA) GK-85 + G3-200NS SILENT CLICK",
       "price": 4070,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Consistent Wireless Stability, Up to 12 Months Battery Life, Auto Power Saving, Smart Wireless SoC Technology, 16-in-One, 4-way Wheel, Keyboard: GK-85 / 12 Fn Hotkeys / Laser Engraving Mouse: G3-200N / Resolution: 1000 DPI System Requirements：Windows XP / Vista / 7 / 8 / 8.1 / 10",
       "brand": "A4Tech",
       "category": "Keyboard",
       "cartonpacking": "10 PCs",
       "heading": "A4TECH PADLESS WIRELESS KEYBOARD+MOUSE COMBO SETS",
-      "id": 108,
-      "cartonPacking": 10
+      "id": 108
     },
     {
       "name": "3330NS (MULTIMEDIA) GK-3 + G3-330NS SILENT CLICK",
       "price": 3930,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "PADLESS WIRELESS DESKTOP, 2.4G UPTO 15M RANGE, 3D PADLESS MOUSE, GOLD PLATED NANO RECEIVER. Keyboard: GK-3 Traditional Keycaps, 12 Fn Hotkeys, Laser Engraving Adjustable Keyboard Rating: 3 V / 2 mA Mouse: G3-330NS, 125 Hz, 1200 DPI, 3 Buttons Symmetric Design, Receiver Storage,",
       "brand": "A4Tech",
       "category": "Keyboard",
       "cartonpacking": "10 PCs",
       "heading": "A4TECH PADLESS WIRELESS KEYBOARD+MOUSE COMBO SETS",
-      "id": 109,
-      "cartonPacking": 10
+      "id": 109
     },
     {
       "name": "4200NS (MULTIMEDIA) GR-92+G3-200NS Silent Click",
       "price": 4050,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Up to 12 Months Battery Life, Smart Wireless SoC Technology, Drain Holes Design, FN Hot Key, Comfort RoundEdge Keycaps, Adjustable Keyboard Height, 16-in-One, 4-way Wheel, Keyboard: GR-92/ Round Edge/ 12 Fn Hotkeys/ Laser Engraving Mouse: G3-200NS SILENT CLICK / 1000 DPI / 3 Buttons Symmetric Design",
       "brand": "A4Tech",
       "category": "Keyboard",
       "cartonpacking": "10 PCs",
       "heading": "A4TECH PADLESS WIRELESS KEYBOARD+MOUSE COMBO SETS",
-      "id": 110,
-      "cartonPacking": 10
+      "id": 110
     },
     {
       "name": "FG1010S GREY (MULTIMEDIA) FGK10 + FG10S SILENT CLICK",
       "price": 4270,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "FSTYLER 2.4GHz Power Saving Multimedia Wireless Combo Set, Ultra Sleek and Thin, Round Sqaure Keycaps, Durable Fonts, Drain Holes Design, 3-Level Adjustable DPI, 1000-1600-2000 DPI, Anti Slippery Side, 8-in One Gesture, 4-Way Smart Wheel, Up to 12 Months Battery Life.",
       "brand": "A4Tech",
       "category": "Keyboard",
       "cartonpacking": "10 PCs",
       "heading": "A4TECH PADLESS WIRELESS KEYBOARD+MOUSE COMBO SETS",
-      "id": 111,
-      "cartonPacking": 10
+      "id": 111
     },
     {
       "name": "FG1010S WHITE (MULTIMEDIA) FGK10 + FG10S SILENT CLICK",
       "price": 4400,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "FSTYLER 2.4GHz Power Saving Multimedia Wireless Combo Set, Ultra Sleek and Thin, Round Sqaure Keycaps, Durable Fonts, Drain Holes Design, 3-Level Adjustable DPI, 1000-1600-2000 DPI, Anti Slippery Side, 8-in One Gesture, 4-Way Smart Wheel, Up to 12 Months Battery Life.",
       "brand": "A4Tech",
       "category": "Keyboard",
       "cartonpacking": "10 PCs",
       "heading": "A4TECH PADLESS WIRELESS KEYBOARD+MOUSE COMBO SETS",
-      "id": 112,
-      "cartonPacking": 10
+      "id": 112
     },
     {
       "name": "FG1012S (MULTIMEDIA) FGK10 + FG12S SILENT CLICK",
       "price": 4150,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "FSTYLER 2.4GHz Power Saving Multimedia Wireless Combo Set, Ultra Sleek and Thin, Round Sqaure Keycaps, Durable Fonts, Drain Holes Design, 3-Level Adjustable DPI, 1000- 1600-2000 DPI, Anti Slippery Side, 8-in One Gesture, 4-Way Smart Wheel, Up to 12 Months Battery Life.",
       "brand": "A4Tech",
       "category": "Keyboard",
       "cartonpacking": "10 PCs",
       "heading": "A4TECH PADLESS WIRELESS KEYBOARD+MOUSE COMBO SETS",
-      "id": 113,
-      "cartonPacking": 10
+      "id": 113
     },
     {
       "name": "FG2400 AIR2 QUITE KEY (MULTIMEDIA) BLACK",
       "price": 4680,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Consistent Wireless Stability, [ Desk + Air ] Dual Functions, 2000 DPI 4-Level Adjustable, Screen Capture, On/Off Power Switch, 16-in-One, 2 Thumb Side Buttons, , Quiet Key, Type in Comfort Chocolate Keycaps, Operating System Swap, 4 Smart Hotkeys, High-Elasticity Silicon",
       "brand": "A4Tech",
       "category": "Keyboard",
       "cartonpacking": "10 PCs",
       "heading": "A4TECH PADLESS WIRELESS KEYBOARD+MOUSE COMBO SETS",
-      "id": 114,
-      "cartonPacking": 10
+      "id": 114
     },
     {
       "name": "FG3300 AIR2 QUITE KEY 2 ZONE (MULTIMEDIA) GREY",
       "price": 4750,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Consistent Wireless Stability, [ Desk + Air ] Dual Functions, 2000 DPI 4-Level Adjustable, Wider Scroll Wheel, 16-in-One, Quiet Key, Operating System Swap, One-Touch Hotkeys, High-Elasticity Silicon, Multimedia Hot Keys Access, Nano Receiver Storage, On/Off Power Switch",
       "brand": "A4Tech",
       "category": "Keyboard",
       "cartonpacking": "10 PCs",
       "heading": "A4TECH PADLESS WIRELESS KEYBOARD+MOUSE COMBO SETS",
-      "id": 115,
-      "cartonPacking": 10
+      "id": 115
     },
     {
       "name": "FGS1110Q QUITE KEY (GREY)",
       "price": 3800,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "FSTYLER 2.4GHz Power Saving Multimedia Wireless Combo Set, Ultra Sleek and Thin, Round Sqaure Keycaps, Durable Fonts, Drain Holes Design, 3-Level Adjustable DPI, 1000-1600-2000 DPI, Anti Slippery Side, 8-in One Gesture, 4-Way Smart Wheel, Up to 12 Months Battery Life.",
       "brand": "A4Tech",
       "category": "Keyboard",
       "cartonpacking": "10 PCs",
       "heading": "A4TECH PADLESS MINI WIRELESS KEYBOARD+MOUSE SETS (SLIM & WITHOUT NUMERIC)",
-      "id": 116,
-      "cartonPacking": 10
+      "id": 116
     },
     {
       "name": "FG1112S (BLACK) (FG12+FGK11) SILENT CLICK MOUSE",
       "price": 4000,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "FSTYLER 2.4GHz Power Saving Multimedia Wireless Combo Set, Ultra Sleek and Thin, Round Sqaure Keycaps, Durable Fonts, Drain Holes Design, 3-Level Adjustable DPI, 1000-1600-2000 DPI, Anti Slippery Side, 8-in One Gesture, 4-Way Smart Wheel, Up to 12 Months Battery Life.",
       "brand": "A4Tech",
       "category": "Keyboard",
       "cartonpacking": "10 PCs",
       "heading": "A4TECH PADLESS MINI WIRELESS KEYBOARD+MOUSE SETS (SLIM & WITHOUT NUMERIC)",
-      "id": 117,
-      "cartonPacking": 10
+      "id": 117
     },
     {
       "name": "FG2200 AIR2 QUITE KEY (BLACK)",
       "price": 4220,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "2.4GHz Wireless, Type-C Adaptor, Silent Clicks, [ Desk + Air ] Dual Functions, 1200 DPI, Button Sound Decibel 13 dB, Wider Scroll Wheel, 16-in-One, Chocolate Keycaps, High-Elasticity Silicon, Quiet Key Key Sound Decibel 14 dB, Multimedia Hot Keys Access, Nano Receiver Storage, On/Off Power Switch",
       "brand": "A4Tech",
       "category": "Keyboard",
       "cartonpacking": "10 PCs",
       "heading": "A4TECH PADLESS MINI WIRELESS KEYBOARD+MOUSE SETS (SLIM & WITHOUT NUMERIC)",
-      "id": 118,
-      "cartonPacking": 10
+      "id": 118
     },
     {
       "name": "FG2200 AIR2 QUITE KEY (BEIGE)",
       "price": 4350,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "2.4GHz Wireless, Type-C Adaptor, Silent Clicks, [ Desk + Air ] Dual Functions, 1200 DPI, Button Sound Decibel 13 dB, Wider Scroll Wheel, 16-in-One, Chocolate Keycaps, High-Elasticity Silicon, Quiet Key Key Sound Decibel 14 dB, Multimedia Hot Keys Access, Nano Receiver Storage, On/Off Power Switch",
       "brand": "A4Tech",
       "category": "Keyboard",
       "cartonpacking": "10 PCs",
       "heading": "A4TECH PADLESS MINI WIRELESS KEYBOARD+MOUSE SETS (SLIM & WITHOUT NUMERIC)",
-      "id": 119,
-      "cartonPacking": 10
+      "id": 119
     },
     {
       "name": "FG3200 AIR2 QUITE KEY (GREY)",
       "price": 4550,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Consistent Wireless Stability, Type-C Adaptor, [ Desk + Air ] Dual Functions, 2000 DPI 4-Level Adjustable, 16-in-One, Silent Click 13dB, On/Off Power Switch, Quiet Key, Ultra-Slim Keycaps, Operating System Swap, Multimedia Hot Keys, High-Elasticity Silicon",
       "brand": "A4Tech",
       "category": "Keyboard",
       "cartonpacking": "10 PCs",
       "heading": "A4TECH PADLESS MINI WIRELESS KEYBOARD+MOUSE SETS (SLIM & WITHOUT NUMERIC)",
-      "id": 120,
-      "cartonPacking": 10
+      "id": 120
     },
     {
       "name": "KK-3330S (MULTIMEDIA) KK-3 + OP-330S SILENT CLICK MOUSE",
       "price": 2400,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "FN Hot Keys, Laser Inscribed Keys, Adjustable Keyboard Height, Large Enter Key, Drain, Holes Design, 5 M Clicks Button Lifetime, Wider Wheel, 1200 DPI, Silent Clicks, System Requirements: Windows 7 / 8 / 8.1 / 10",
       "brand": "A4Tech",
       "category": "Keyboard",
       "cartonpacking": "20 PCs",
       "heading": "A4TECH WIRED KEYBOARD+MOUSE COMBO SETS",
-      "id": 121,
-      "cartonPacking": 20
+      "id": 121
     },
     {
       "name": "FS300 Panda White Backlit Mechanical Keyboard",
       "price": 8500,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Hot-Swappable Mechanical Keyboard, White Backlit, 4M Memory, Master Software, Quiet Typing, 98-Key Style Keyboard, Operating System Swap, OMA Profile Double-Shot Injection Keycaps, Extreme Quiet Typing, Two-Angle Keyboard Feet, 3-Direction Cable Management, Balance Satellite Shaft, Default 10 Backlit Effects, Keyboard Master Editing Software, Cable Length: 1.8 m, Backlit: White, System Requirements: Windows 7 / 8 / 8.1 / 10 /11 or later",
       "brand": "A4Tech",
       "category": "Keyboard",
       "cartonpacking": "20 PCs",
       "heading": "A4TECH Hot-Swappable Mechanical Keyboard",
-      "id": 122,
-      "cartonPacking": 20
+      "id": 122
     },
     {
       "name": "FX51 (BLACK)",
       "price": 3800,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "High-Elasticity Silicon, FN Hot Keys, Laser Inscribed Keys, Adjustable Keyboard Height, Large Enter Key, Drain Holes Design",
       "brand": "A4Tech",
       "category": "Keyboard",
       "cartonpacking": "20 PCs",
       "heading": "A4TECH MULTIMEDIA WIRED MINI KEYBOARD",
-      "id": 123,
-      "cartonPacking": 20
+      "id": 123
     },
     {
       "name": "FX60 (BLACK) SLIM BACKLIT NEON",
       "price": 5500,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Scissor Switch, Illuminated Backlit, Operating System Swap, Smooth Scissor Switch Keys Structure, Multimedia Hot Keys Access, Anti-Slippery, Rubber Pads, Illuminate Backlit, Low-Profile Chocolate Keycaps",
       "brand": "A4Tech",
       "category": "Keyboard",
       "cartonpacking": "10 PCs",
       "heading": "A4TECH MULTIMEDIA WIRED KEYBOARD",
-      "id": 124,
-      "cartonPacking": 10
+      "id": 124
     },
     {
       "name": "FK12",
       "price": 1880,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Keycaps: Sleek Round-Square, Hotkeys: 12, Character: Laser Engraving, Splash Proof: Yes, Adjustable Keyboard Legs: Yes, Rating: 5 V / 100 mA, Size: 445(L) x 145(W) x 29(H) mm, Weight: 523 g, Cable: 150 cm, Port: USB, Illuminated: No, System Requirements: Windows 10 / 11",
       "brand": "A4Tech",
       "category": "Keyboard",
       "cartonpacking": "10 PCs",
       "heading": "A4TECH MULTIMEDIA WIRED KEYBOARD",
-      "id": 125,
-      "cartonPacking": 10
+      "id": 125
     },
     {
       "name": "KK-3 (BLACK)",
       "price": 1640,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "High-Elasticity Silicon, FN Hot Keys, Laser Inscribed Keys, Adjustable Keyboard Height, Large Enter Key, Drain Holes Design",
       "brand": "A4Tech",
       "category": "Keyboard",
       "cartonpacking": "20 PCs",
       "heading": "A4TECH MULTIMEDIA WIRED KEYBOARD",
-      "id": 126,
-      "cartonPacking": 20
+      "id": 126
     },
     {
       "name": "KR-85 MULTIMEDIA (BLACK)",
       "price": 1700,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "FN Hot Keys, Laser Inscribed Keys, Adjustable Keyboard Height, Large Enter Key, Drain Holes Design",
       "brand": "A4Tech",
       "category": "Keyboard",
       "cartonpacking": "20 PCs",
       "heading": "A4TECH MULTIMEDIA WIRED KEYBOARD",
-      "id": 127,
-      "cartonPacking": 20
+      "id": 127
     },
     {
       "name": "FGK21C 2.4G Wireless Numpad",
       "price": 2530,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Consistent Wireless Stability, Rechargeable Design, Dual Modes Num Lock, Laser Inscribed Keys",
       "brand": "A4Tech",
       "category": "Keyboard",
       "cartonpacking": "60 PCs",
       "heading": "A4TECH WIRELESS NUMERIC PAD",
-      "id": 128,
-      "cartonPacking": 60
+      "id": 128
     },
     {
       "name": "FK13P Wired Numpad",
       "price": 1200,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Sleek Round-Square Keycaps, Numeric Keypad, High-Elasticity Silicon",
       "brand": "A4Tech",
       "category": "Keyboard",
       "cartonpacking": "60 PCs",
       "heading": "A4TECH WIRELESS NUMERIC PAD",
-      "id": 129,
-      "cartonPacking": 60
+      "id": 129
     },
     {
       "name": "FM50S PLUS (GREY) SILENT CLICK",
       "price": 1840,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Sensor: Optical, Report Rate:125-250-500-1000 Hz, Resolution: 1000-1200-1600-2000-3200 DPI, (Up to 4000 DPI by Software), Buttons No.: 7, Style: Symmetric, Cable: 150 cm, Plug: USB, Includes: Mouse, System: Windows 10/11",
       "brand": "A4Tech",
       "category": "Mouse",
       "cartonpacking": "60 PCs",
       "heading": "A4TECH OPTICAL MOUSES",
-      "id": 130,
-      "cartonPacking": 60
+      "id": 130
     },
     {
       "name": "FM45S AIR (GREY) SILENT CLICK",
       "price": 1950,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Multi-Mode Setting, Desk + Air, Screen Capture, 256K Onboard Memory, 2400 DPI 4-Level Adjustable, Adjustable 1000 Hz Report Rate, Silent Clicks, Right-Handed Fit, 2 Thumb Side Buttons [ Desk + Air ] Dual Functions The innovative Air Mouse Function provides dual [Desk+Air] usage modes, turn your mouse into a multimedia controller by simply lift it in the air. No software installation required.",
       "brand": "A4Tech",
       "category": "Mouse",
       "cartonpacking": "60 PCs",
       "heading": "A4TECH OPTICAL MOUSES",
-      "id": 131,
-      "cartonPacking": 60
+      "id": 131
     },
     {
       "name": "OP-330S SILENT CLICK",
       "price": 750,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Silent Clicks, 5 M Clicks Button Lifetime, 1200 DPI, Wider Scroll Wheel, 8-in-One, 4-Way Whee, Buttons No.: 3, Cable Length: 150 cm, System Req.: Windows 7 / 8 / 8.1 / 10",
       "brand": "A4Tech",
       "category": "Mouse",
       "cartonpacking": "60 PCs",
       "heading": "A4TECH OPTICAL MOUSES",
-      "id": 132,
-      "cartonPacking": 60
+      "id": 132
     },
     {
       "name": "OP-620D 2X CLICK",
       "price": 950,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Model：OP-620D / OP-620DS Type: Wired Ergonomic Design: Symmetric Sensor: Optical Resolution: 1000 DPI Buttons No.: 4 Port: USB Cable Length: 150 cm Net Weight:91 g (w/ cable) System Requirements: Windows XP / Vista / 7 / 8 / 8.1 / 10",
       "brand": "A4Tech",
       "category": "Mouse",
       "cartonpacking": "100 PCs",
       "heading": "A4TECH OPTICAL MOUSES",
-      "id": 133,
-      "cartonPacking": 10
+      "id": 133
     },
     {
       "name": "OP-720S (BLACK) SILENT CLICK",
       "price": 750,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Silent Clicks, 1200 DPI, Dust-resistant and 4-way Wheel, Cable Length:150cm, Windows XP/Vista / 7/ 8/10",
       "brand": "A4Tech",
       "category": "Mouse",
       "cartonpacking": "100 PCs",
       "heading": "A4TECH OPTICAL MOUSES",
-      "id": 134,
-      "cartonPacking": 10
+      "id": 134
     },
     {
       "name": "N-530S Illuminated Backlit SILENT CLICK MOUSE",
       "price": 1150,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Sensor: Optical Report Rate: 125 Hz DPI: 1200 Buttons: 3 Style: Symmetric Voltage: 5V / 100mA Cable: 150 cm Port: USB, Includes: Mouse System: Windows 7 / 8 / 8.1 / 10 / 11",
       "brand": "A4Tech",
       "category": "Mouse",
       "cartonpacking": "40 PCs",
       "heading": "A4TECH V-TRACK OPTICAL MOUSES (CAN WORKS ON UNEVEN SURFACE, MARBLE, BED & FURS)",
-      "id": 135,
-      "cartonPacking": 40
+      "id": 135
     },
     {
       "name": "FB50CS PLUS Rechargeable (BLACK)",
       "price": 2960,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Advanced 2.4 GHz powerful wireless connection with distance up to 10-15m., Auto 4-level power saving. It will be in sleep mode in 0.2s of inactivity, Adjustable resolution 1000/1200/1600/2000/3200 DPI., The F key integrates a double-click function to boost office efficiency instantly, Symmetric design is adopted for both right/left handed users, Extreme quality offer over 5 million clicks guaranteed.",
       "brand": "A4Tech",
       "category": "Mouse",
       "cartonpacking": "40 PCs",
       "heading": "A4TECH FSTYLER BLUETOOTH & 2.4G WIRELESS MOUSE (FOR TABLET/MOBILE/PC/LAPTOP/IPAD/MAC/ANDROID)",
-      "id": 136,
-      "cartonPacking": 40
+      "id": 136
     },
     {
       "name": "FB45CS AIR2 Rechargeable (STONE GREY)",
       "price": 3040,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Features dual-mode Bluetooth and 2.4GHz technology, providing steady connection enabled pairing, Connect with up to 3 devices at the same time. 1 with 2.4Ghz connection 2 with Bluetooth connection, [ Desk + Air ] Dual Functions, Silent Clicks, Adjustable resolution 1000-1200-1600-2000 DPI. Anti-Sleep Setting Mode, Screen Capture, Charge with the Type-C USB connector, On/Off Power Switch.",
       "brand": "A4Tech",
       "category": "Mouse",
       "cartonpacking": "40 PCs",
       "heading": "A4TECH FSTYLER BLUETOOTH & 2.4G WIRELESS MOUSE (FOR TABLET/MOBILE/PC/LAPTOP/IPAD/MAC/ANDROID)",
-      "id": 137,
-      "cartonPacking": 40
+      "id": 137
     },
     {
       "name": "FB35CS Rechargeable (ICE WHITE)",
       "price": 2880,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Dual Connectivity Mode [BT+2.4GHz], Silent Clicks, Switch up to 3 Devices, 2 Thumb Side Buttons, Charge with the Type-C USB connector, 3-Level DPI Adjustable Shift between 1200/1600/2000 DPI, 16 gestures to perform selectable hotkey commands, On/Off Power Switch",
       "brand": "A4Tech",
       "category": "Mouse",
       "cartonpacking": "40 PCs",
       "heading": "A4TECH FSTYLER BLUETOOTH & 2.4G WIRELESS MOUSE (FOR TABLET/MOBILE/PC/LAPTOP/IPAD/MAC/ANDROID)",
-      "id": 138,
-      "cartonPacking": 40
+      "id": 138
     },
     {
       "name": "FB35CS Rechargeable (SMOKY GREY)",
       "price": 2880,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Dual Connectivity Mode [BT+2.4GHz], Silent Clicks, Switch up to 3 Devices, 2 Thumb Side Buttons, Charge with the Type-C USB connector, 3-Level DPI Adjustable Shift between 1200/1600/2000 DPI, 16 gestures to perform selectable hotkey commands, On/Off Power Switch",
       "brand": "A4Tech",
       "category": "Mouse",
       "cartonpacking": "40 PCs",
       "heading": "A4TECH FSTYLER BLUETOOTH & 2.4G WIRELESS MOUSE (FOR TABLET/MOBILE/PC/LAPTOP/IPAD/MAC/ANDROID)",
-      "id": 139,
-      "cartonPacking": 40
+      "id": 139
     },
     {
       "name": "FB35CS Rechargeable (MIDNIGHT GREEN)",
       "price": 2880,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Dual Connectivity Mode [BT+2.4GHz], Silent Clicks, Switch up to 3 Devices, 2 Thumb Side Buttons, Charge with the Type-C USB connector, 3-Level DPI Adjustable Shift between 1200/1600/2000 DPI, 16 gestures to perform selectable hotkey commands, On/Off Power Switch",
       "brand": "A4Tech",
       "category": "Mouse",
       "cartonpacking": "40 PCs",
       "heading": "A4TECH FSTYLER BLUETOOTH & 2.4G WIRELESS MOUSE (FOR TABLET/MOBILE/PC/LAPTOP/IPAD/MAC/ANDROID)",
-      "id": 140,
-      "cartonPacking": 40
+      "id": 140
     },
     {
       "name": "FB26CS AIR2 (Backlit) Rechargeable (SMOKEY GREY)",
       "price": 2970,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "BT + 2.4GHz, Switch up to 3 Devices, White Backlit, On / Off Power Switch, Rechargeable Design, 2.4G Nano Receiver, 4 -Level Adjustable, Auto-Channel Sort, Silent Clicks, [ Desk + Air ] Dual Functions The innovative Air Mouse Function provides dual [Desk+Air] usage modes, turn your mouse into a multimedia controller by simply lift it in the air. No software installation required.",
       "brand": "A4Tech",
       "category": "Mouse",
       "cartonpacking": "40 PCs",
       "heading": "A4TECH FSTYLER BLUETOOTH & 2.4G WIRELESS MOUSE (FOR TABLET/MOBILE/PC/LAPTOP/IPAD/MAC/ANDROID)",
-      "id": 141,
-      "cartonPacking": 40
+      "id": 141
     },
     {
       "name": "FB26CS AIR2 (Backlit) Rechargeable (ICE WHITE)",
       "price": 2970,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "BT + 2.4GHz, Switch up to 3 Devices, White Backlit, On / Off Power Switch, Rechargeable Design, 2.4G Nano Receiver, 4 -Level Adjustable, Auto-Channel Sort, Silent Clicks, [ Desk + Air ] Dual Functions The innovative Air Mouse Function provides dual [Desk+Air] usage modes, turn your mouse into a multimedia controller by simply lift it in the air. No software installation required.",
       "brand": "A4Tech",
       "category": "Mouse",
       "cartonpacking": "40 PCs",
       "heading": "A4TECH FSTYLER BLUETOOTH & 2.4G WIRELESS MOUSE (FOR TABLET/MOBILE/PC/LAPTOP/IPAD/MAC/ANDROID)",
-      "id": 142,
-      "cartonPacking": 40
+      "id": 142
     },
     {
       "name": "FB20S (SMOKY GREY )",
       "price": 2460,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Bluetooth / 2.4GHz Up to 3 Devices: Bluetooth x 2, 2.4GHz x 1 , Sensor: Optical Distance: 5~10 m Report Rate: 125 Hz DPI: 1200-1600-2000 Buttons: 4 Style: Symmetric Receiver: Nano Receiver Includes: Wireless Mouse, 2*AAA Batteries, Nano Receiver System: Windows / Mac / Chrome OS / Android..",
       "brand": "A4Tech",
       "category": "Mouse",
       "cartonpacking": "60 PCs",
       "heading": "A4TECH FSTYLER BLUETOOTH & 2.4G WIRELESS MOUSE (FOR TABLET/MOBILE/PC/LAPTOP/IPAD/MAC/ANDROID)",
-      "id": 143,
-      "cartonPacking": 60
+      "id": 143
     },
     {
       "name": "FB12S (BLACK)",
       "price": 2000,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Silent Clicks, Bluetooth /2.4G, Wider Scroll Wheel,1200 DPI, Switch up to 3 Devices, Up to 12 Months Battery Life, Auto Power Saving, 5M Clicks Lifecycle, 8-in-One",
       "brand": "A4Tech",
       "category": "Mouse",
       "cartonpacking": "60 PCs",
       "heading": "A4TECH FSTYLER BLUETOOTH & 2.4G WIRELESS MOUSE (FOR TABLET/MOBILE/PC/LAPTOP/IPAD/MAC/ANDROID)",
-      "id": 144,
-      "cartonPacking": 60
+      "id": 144
     },
     {
       "name": "FB10CS Rechargeable (STONE BLACK)",
       "price": 2570,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Silent Clicks, Bluetooth /2.4G, Switch up to 3 Devices, Anti-Slippery Side, Type-C , 2400 DPI 16-in-One, On/Off Power Switch, Silent Clicks, Built-in Li-Battery, , Nano Receiver",
       "brand": "A4Tech",
       "category": "Mouse",
       "cartonpacking": "40 PCs",
       "heading": "A4TECH FSTYLER BLUETOOTH & 2.4G WIRELESS MOUSE (FOR TABLET/MOBILE/PC/LAPTOP/IPAD/MAC/ANDROID)",
-      "id": 145,
-      "cartonPacking": 40
+      "id": 145
     },
     {
       "name": "FB10CS Rechargeable GRAYISH WHITE (NEW VERIANT)",
       "price": 2570,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Silent Clicks, Bluetooth /2.4G, Switch up to 3 Devices, Anti-Slippery Side, Type-C , 2400 DPI 16-in-One, On/Off Power Switch, Silent Clicks, Built-in Li-Battery, , Nano Receiver",
       "brand": "A4Tech",
       "category": "Mouse",
       "cartonpacking": "40 PCs",
       "heading": "A4TECH FSTYLER BLUETOOTH & 2.4G WIRELESS MOUSE (FOR TABLET/MOBILE/PC/LAPTOP/IPAD/MAC/ANDROID)",
-      "id": 146,
-      "cartonPacking": 40
+      "id": 146
     },
     {
       "name": "FG10S (GREY)",
       "price": 1825,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "SILENT 2.4GHz Wireless Mouse, 3-Level Adjustable DPI, 1000-1600-2000 DPI, Anti Slippery Side, 8-in One Gesture, 4-Way Smart Wheel, On/Off Power Switch, Power Saving: Auto Sleep Mode, Upto 12 Month Battery",
       "brand": "A4Tech",
       "category": "Mouse",
       "cartonpacking": "60 PCs",
       "heading": "A4TECH PADLESS V-TRACK WIRELESS MOUSES (RUNS ANYWHERE WITHOUT A PAD)",
-      "id": 147,
-      "cartonPacking": 60
+      "id": 147
     },
     {
       "name": "FG10S (WHITE)",
       "price": 1820,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "SILENT 2.4GHz Wireless Mouse, 3-Level Adjustable DPI, 1000-1600-2000 DPI, Anti Slippery Side, 8-in One Gesture, 4-Way Smart Wheel, On/Off Power Switch, Power Saving: Auto Sleep Mode, Upto 12 Month Battery Life.",
       "brand": "A4Tech",
       "category": "Mouse",
       "cartonpacking": "60 PCs",
       "heading": "A4TECH PADLESS V-TRACK WIRELESS MOUSES (RUNS ANYWHERE WITHOUT A PAD)",
-      "id": 148,
-      "cartonPacking": 60
+      "id": 148
     },
     {
       "name": "FG12S (WHITE)",
       "price": 1635,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "SILENT 2.4GHz Wireless Mouse, 3-Level Adjustable DPI, 1000-1600-2000 DPI, Anti Slippery Side, 8-in One Gesture, 4-Way Smart Wheel, On/Off Power Switch, Power Saving: Auto Sleep Mode, Upto 12 Month Battery Life.",
       "brand": "A4Tech",
       "category": "Mouse",
       "cartonpacking": "60 PCs",
       "heading": "A4TECH PADLESS V-TRACK WIRELESS MOUSES (RUNS ANYWHERE WITHOUT A PAD)",
-      "id": 149,
-      "cartonPacking": 60
+      "id": 149
     },
     {
       "name": "FG12S PANDA",
       "price": 1625,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "SILENT 2.4GHz Wireless Mouse, 3-Level Adjustable DPI, 1000-1600-2000 DPI, Anti Slippery Side, 8-in One Gesture, 4-Way Smart Wheel, On/Off Power Switch, Power Saving: Auto Sleep Mode, Upto 12 Month Battery Life.",
       "brand": "A4Tech",
       "category": "Mouse",
       "cartonpacking": "60 PCs",
       "heading": "A4TECH PADLESS V-TRACK WIRELESS MOUSES (RUNS ANYWHERE WITHOUT A PAD)",
-      "id": 150,
-      "cartonPacking": 60
+      "id": 150
     },
     {
       "name": "FG16CS AIR2 Rechargeable",
       "price": 2470,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "SILENT 2.4GHz Wireless, Desk + Air, 2000 DPI 4-Level Adjustable, 4 Types Screenshots, Silent Clicks, Rechargeable Design Screen Capture 4 types screenshots (rectangular snip, free-form snip, windows snip, full-screen snip) for better working.",
       "brand": "A4Tech",
       "category": "Mouse",
       "cartonpacking": "60 PCs",
       "heading": "A4TECH PADLESS V-TRACK WIRELESS MOUSES (RUNS ANYWHERE WITHOUT A PAD)",
-      "id": 151,
-      "cartonPacking": 60
+      "id": 151
     },
     {
       "name": "FG20S (GREY) (WHITE) SILENT CLICK",
       "price": 1900,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "SILENT Wireless Connection: 2.4G Hz Operating Range: 10-15m Ergonomic Design: Right-Handed Fit Sensor: Optical Resolution : 1000/1600/2000 DPI Report Rate: 125Hz Buttons No.: 6 Receiver: Nano USB Receiver Demension: 105 × 70 × 42 mm Weight: 76 g ( Batteries not included ) Battery: 1AA Alkaline Battery System Requirements: Windows XP / Vista /7/8/ 10",
       "brand": "A4Tech",
       "category": "Mouse",
       "cartonpacking": "60 PCs",
       "heading": "A4TECH PADLESS V-TRACK WIRELESS MOUSES (RUNS ANYWHERE WITHOUT A PAD)",
-      "id": 152,
-      "cartonPacking": 60
+      "id": 152
     },
     {
       "name": "FG30S SILENT CLICK",
       "price": 2080,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "SILENT Wireless Connection: 2.4G Hz Operating Range: 10-15m Ergonomic Design: Right-Handed Fit Sensor: OpticalResolution: 1000/1600/2000 DPI Report Rate: 125Hz Buttons No.: 6 Receiver: Nano USB Receiver Demension: 105 × 70 × 42 mm Weight: 76 g ( Batteries not included ) Battery: 1AA Alkaline Battery System Requirements: Windows XP / Vista /7/8/ 10",
       "brand": "A4Tech",
       "category": "Mouse",
       "cartonpacking": "60 PCs",
       "heading": "A4TECH PADLESS V-TRACK WIRELESS MOUSES (RUNS ANYWHERE WITHOUT A PAD)",
-      "id": 153,
-      "cartonPacking": 60
+      "id": 153
     },
     {
       "name": "FG45CS AIR Rechargeable (GREY) ( RED) SILENT CLICK",
       "price": 2715,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "2.4GHz Wireless, Desk + Air, 2000 DPI 4-Level Adjustable, 4 Types Screenshots, Silent Clicks, Rechargeable Design Screen Capture 4 types screenshots (rectangular snip, free-form snip, windows snip, full-screen snip) for better working.",
       "brand": "A4Tech",
       "category": "Mouse",
       "cartonpacking": "60 PCs",
       "heading": "A4TECH PADLESS V-TRACK WIRELESS MOUSES (RUNS ANYWHERE WITHOUT A PAD)",
-      "id": 154,
-      "cartonPacking": 60
+      "id": 154
     },
     {
       "name": "G7-810S AIR2 (BLACK) SILENT CLICK",
       "price": 2280,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "2.4GHz Wireless, Desk + Air, 2000 DPI 4-Level Adjustable, 4 Types Screenshots, On / Off Power Switch, Right-Handed Fit, Anti-Sleep Setting Mode, Silent Clicks (Model No.: G7-810 S Air2), Nano Receiver Storage, lncludes: 2.4G Wireless Mouse, Nano Receiver, Type-C Adaptor, 1*AA Battery, User Manual, System: Windows 7/8/8.1/10/11",
       "brand": "A4Tech",
       "category": "Mouse",
       "cartonpacking": "60 PCs",
       "heading": "A4TECH PADLESS V-TRACK WIRELESS MOUSES (RUNS ANYWHERE WITHOUT A PAD)",
-      "id": 155,
-      "cartonPacking": 60
+      "id": 155
     },
     {
       "name": "G3-200NS (BLACK) SILENT CLICK",
       "price": 1545,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Energy-saving Wireless Silent Clicks Mouse, 1200 DPI, Consistent Wireless Stability, Up to 12 Months Battery Life, Smart Wireless SOC Technology, Auto Power Saving, 16-in- One, System Requirements: Windows XP / Vista / 7 / 8 / 8.1 / 10",
       "brand": "A4Tech",
       "category": "Mouse",
       "cartonpacking": "60 PCs",
       "heading": "A4TECH PADLESS V-TRACK WIRELESS MOUSES (RUNS ANYWHERE WITHOUT A PAD)",
-      "id": 156,
-      "cartonPacking": 60
+      "id": 156
     },
     {
       "name": "G3-280NS (MINI) (GLOSSY GREY) SILENT CLICK",
       "price": 1545,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Energy-saving Wireless Silent Clicks Mouse, 1200 DPI, Consistent Wireless Stability, Up, to 12 Months Battery Life, Smart Wireless SOC Technology, Auto Power Saving, 16-in- One, System Requirements: Windows XP / Vista / 7 / 8 / 8.1 / 10",
       "brand": "A4Tech",
       "category": "Mouse",
       "cartonpacking": "60 PCs",
       "heading": "A4TECH PADLESS V-TRACK WIRELESS MOUSES (RUNS ANYWHERE WITHOUT A PAD)",
-      "id": 157,
-      "cartonPacking": 60
+      "id": 157
     },
     {
       "name": "G3-300NS (BLACK) SILENT CLICK",
       "price": 1545,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Energy-saving Wireless Silent Clicks Mouse, 1200 DPI, Consistent Wireless Stability, Up, to 12 Months Battery Life, Smart Wireless SOC Technology, Auto Power Saving, 16-in- One, System Requirements: Windows XP / Vista / 7 / 8 / 8.1 / 10",
       "brand": "A4Tech",
       "category": "Mouse",
       "cartonpacking": "60 PCs",
       "heading": "A4TECH PADLESS V-TRACK WIRELESS MOUSES (RUNS ANYWHERE WITHOUT A PAD)",
-      "id": 158,
-      "cartonPacking": 60
+      "id": 158
     },
     {
       "name": "G3-330NS (BLACK) SILENT CLICK",
       "price": 1510,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Energy-saving Wireless Silent Clicks Mouse, 1200 DPI, Consistent Wireless Stability, Up, to 12 Months Battery Life, Smart Wireless SOC Technology, Auto Power Saving, 16-in- One, System Requirements: Windows XP / Vista / 7 / 8 / 8.1 / 10",
       "brand": "A4Tech",
       "category": "Mouse",
       "cartonpacking": "60 PCs",
       "heading": "A4TECH PADLESS V-TRACK WIRELESS MOUSES (RUNS ANYWHERE WITHOUT A PAD)",
-      "id": 159,
-      "cartonPacking": 60
+      "id": 159
     },
     {
       "name": "FP20 (BLACK) 250 X 200 X 2 MM",
       "price": 550,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Made of premium textured cloth mouse pad ensures smoother mouse control and pinpoint accuracy. Non-Slip Rubber Base, Fine Knit Edges L 25 cm x W 20 cm x H 0.2 cm, Sleek",
       "brand": "A4Tech",
       "category": "Mouse Pads",
       "cartonpacking": "80 PCs",
       "heading": "A4TECH Fstyler Mouse Pad",
-      "id": 160,
-      "cartonPacking": 80
+      "id": 160
     },
     {
       "name": "FP70 (BLACK) 750 X 300 X 2 MM",
       "price": 1180,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Made of premium textured cloth mouse pad ensures smoother mouse control and pinpoint accuracy. Non-Slip Rubber Base, Fine Knit Edges L 25 cm x W 20 cm x H 0.2 cm, Sleek",
       "brand": "A4Tech",
       "category": "Mouse Pads",
       "cartonpacking": "30 PCs",
       "heading": "A4TECH Fstyler Mouse Pad",
-      "id": 161,
-      "cartonPacking": 30
+      "id": 161
     },
     {
       "name": "AP-20S",
       "price": 480,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Made of premium textured cloth mouse pad ensures smoother mouse control and pinpoint accuracy. Non-Slip Rubber Base, Fine Knit Edges L 25 cm x W 20 cm x H 0.2 cm, Sleek",
       "brand": "A4Tech",
       "category": "Mouse Pads",
       "cartonpacking": "80 PCs",
       "heading": "A4TECH GAMING PRODUCTS",
-      "id": 162,
-      "cartonPacking": 80
+      "id": 162
     },
     {
       "name": "PK-1000HA UHD 4K Pro AutoFocus Webcam",
       "price": 22400,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "SPECIFICATIONS : Resolution: UHD 2160P/3840*2160 (Compatible with 1080P and 720P) , Frame Speed: 30fps, Mic: Built-in Dual Noise-Cancelling Microphones, Lens: UHD Glass, Focus: Auto Focus, Focus Range: 10cm and Beyond, View Angle: 95°, USB: USB 3.0, System Requirements, Compatible with: Windows 7 /8 / 8.1 / 10",
       "brand": "A4Tech",
       "category": "Webcam",
       "cartonpacking": "30 PCs",
       "heading": "A4TECH GAMING PRODUCTS",
-      "id": 163,
-      "cartonPacking": 30
+      "id": 163
     },
     {
       "name": "PK-910H (Full HD 1080P)",
       "price": 4750,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "1080p Full-HD WebCam, Records true HD-quality video at up to 30 fps. Still image resolution up to 16 Megapixel ( software interpolated), Compact Design, High-fidelity Built-in Microphone, Plug and Play without any drivers, USB 2.0, Stable mounting clip on Lcd, 360 degree full-rotational design makes calling and recording easier at any angle.",
       "brand": "A4Tech",
       "category": "Webcam",
       "cartonpacking": "80 PCs",
       "heading": "A4TECH 16.0 MEGA PIXEL FULL HD 1080P WEBCAM",
-      "id": 164,
-      "cartonPacking": 80
+      "id": 164
     },
     {
       "name": "PK-925H (Full HD 1080P)",
       "price": 4730,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "1080p Full-HD WebCam, Records true HD-quality video at up to 30 fps. Still image resolution up to 16 Megapixel ( software interpolated), Compact Design, High-fidelity Built-in Microphone, Plug and Play without any drivers, USB 2.0, Stable mounting clip on Lcd, 360 degree full-rotational design makes calling and recording easier at any angle.",
       "brand": "A4Tech",
       "category": "Webcam",
       "cartonpacking": "80 PCs",
       "heading": "A4TECH 16.0 MEGA PIXEL FULL HD 1080P WEBCAM",
-      "id": 165,
-      "cartonPacking": 80
+      "id": 165
     },
     {
       "name": "PK-940HA FHD 1080P AutoFocus Webcam",
       "price": 8000,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Resolution: Full HD 1080P, 1920*1080 Pixels, Lens Type: Full HD AF Glass Lens, Viewing Angle: 75 Wide Degrees, Focus Type: Auto Focus, Focus Range: 10cm and Beyond, Built-in Mic.: Single Digital Mic., Output Format: MJPEG, Frame Rate: 30fps, USB: USB 2.0,",
       "brand": "A4Tech",
       "category": "Webcam",
       "cartonpacking": "40 PCs",
       "heading": "A4TECH 16.0 MEGA PIXEL FULL HD 1080P WEBCAM",
-      "id": 166,
-      "cartonPacking": 40
+      "id": 166
     },
     {
       "name": "PK-980HA FHD 1080P AutoFocus Webcam",
       "price": 9250,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Resolution: Full HD 1080P, 1920*1080 Pixels, Lens Type: Full HD AF Glass Lens, Viewing Angle: 75 Wide Degrees, Focus Type: Auto Focus, Focus Range: 10cm and Beyond, Built-in Mic.: Single Digital Mic., Output Format: MJPEG, Frame Rate: 30fps, USB: USB 2.0, System Requirements, Compatible with: Windows 7 /8 / 8.1 / 10 or Later,",
       "brand": "A4Tech",
       "category": "Webcam",
       "cartonpacking": "40 PCs",
       "heading": "A4TECH 16.0 MEGA PIXEL FULL HD 1080P WEBCAM",
-      "id": 167,
-      "cartonPacking": 40
+      "id": 167
     },
     {
       "name": "PK-635P",
       "price": 3690,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "16.0 M.P. ANTI GLARE WEBCAM, Still Image: Up to 16 Megapixel, 4608x3456 (Software Interpolated), Built-in Microphone, Flexible Pivoting Tube (Allows 360 degrees rotation),",
       "brand": "A4Tech",
       "category": "Webcam",
       "cartonpacking": "30 PCs",
       "heading": "A4TECH 720P HD WEBCAM",
-      "id": 168,
-      "cartonPacking": 30
+      "id": 168
     },
     {
       "name": "PK-6354G",
       "price": 3050,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Resolution: 480P, 640*480 Pixels, Lens Type: Coating Lens, Viewing Angle: 52 Degrees, Focus Type: Fixed Focus, Focus Range: 60cm and Beyond, Built-in Mic.: Single Mic., Output Format: MJPEG, Frame Rate: 30fps, USB: USB 2.0, System Requirements, Compatible with: Windows 7 /8 / 8.1 / 10 or Later, Works in USB Video Device Class (UVC) Mode:, Mac OS 10.10 or Later, Linux OS 2.6 or Later, Chrome OS 6.0 or Later, Android V6.0 or Later, Compatible with social and video calling software of the above system.",
       "brand": "A4Tech",
       "category": "Webcam",
       "cartonpacking": "30 PCS",
       "heading": "A4TECH 16.0 MEGA PIXEL ANTI-GLARE WEBCAM (WITH 10 MONTHS WARRANTY)",
-      "id": 169,
-      "cartonPacking": 30
+      "id": 169
     },
     {
       "name": "PK-810G",
       "price": 3450,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "16.0 m.P. Hd (software interpolated), anti-glare coating to avoid disturbing reflections and generate perfect colour image, supperior low light performance, fluent video transmission, magic effect for personalized style, built in mic, 360 deg. Rotation",
       "brand": "A4Tech",
       "category": "Webcam",
       "cartonpacking": "30 PCS",
       "heading": "A4TECH 16.0 MEGA PIXEL ANTI-GLARE WEBCAM (WITH 10 MONTHS WARRANTY)",
-      "id": 170,
-      "cartonPacking": 30
+      "id": 170
     },
     {
       "name": "BH350C (Black) 3-Ways Folding Bluetooth Headset Active Noise Cancelling",
       "price": 5750,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "CONNECTION, Bluetooth Version: v5.3, Operating Range: Up to 10m (32 feet), Built-in Battery: 500mAh Lithium Battery, Playback Time: 50H (ANC Off), 30H (ANC On), HEADPHONE, Speaker Unit: 40mm Hybrid Diaphragm, Frequency: 20Hz - 20KHz, lmpedance: 32ohm, Sensitivity: 100dB, Size: 175(L) x 92(W) x 200(H) mm, Weight: 263 g, MICROPHONE, Mic. Type: ENC Omni-Directional, Frequency: 100Hz - 10KHz, Sensitivity: -42dB, CABLE, USB Type-C Charging Cable: 50 cm",
       "brand": "A4Tech",
       "category": "Audio",
       "cartonpacking": "20 PCs",
       "heading": "A4TECH BLUETOOTH WIRELESS HEADPHONE",
-      "id": 171,
-      "cartonPacking": 20
+      "id": 171
     },
     {
       "name": "BH235 (BLACK) Bluetooth Headset USB Bluetooth Adaptor Advanced Noise Cancelling Microphone",
       "price": 4930,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Instantly transform your computer, TV, or other audio source device into a Bluetooth-enabled one with the Bluetooth Adaptor. CONNECTION Bluetooth Version: v5.3, Operating Range: Up to 10m (32 feet), Built-in Battery: 400mAh Lithium Battery, Playback Time: 55H, Charging Time: 1.5H, HEADPHONE, Speaker Unit: 40mm, Frequency: 20Hz - 20KHz, lmpedance: 32ohm, Sensitivity: 98dB, Size: 148(L) x 75(W) x 180(H) mm, Weight: 156 g, MICROPHONE Mic. Type: ENC Single-Directional, Frequency: 100Hz - 10KHz, Sensitivity: -42dB, CABLE, Type-C Charging Cable: 50 cm",
       "brand": "A4Tech",
       "category": "Audio",
       "cartonpacking": "20 PCs",
       "heading": "A4TECH BLUETOOTH WIRELESS HEADPHONE",
-      "id": 172,
-      "cartonPacking": 20
+      "id": 172
     },
     {
       "name": "BH230 (BLACK ) Bluetooth Headset Advanced Noise Cancelling Microphone",
       "price": 4410,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "CONNECTION Bluetooth Version: v5.3, Operating Range Up to 10m (32 feet), Built-in Battery: 400mAh Lithium Battery, Playback Time: 55H, Charging Time: 1.5H, HEADPHONE, Speaker Unit: 40mm, Frequency: 20Hz - 20KHz, lmpedance: 32ohm, Sensitivity: 98dB, Size: 148(L) x 75(W) x 180(H) mm, Weight: 156 g, MICROPHONE, Mic. Type: ENC Single-Directional, Frequency: 100Hz - 10KHz, Sensitivity: -42dB, Type-C Charging Cable: 50 cm",
       "brand": "A4Tech",
       "category": "Audio",
       "cartonpacking": "20 PCs",
       "heading": "A4TECH BLUETOOTH WIRELESS HEADPHONE",
-      "id": 173,
-      "cartonPacking": 20
+      "id": 173
     },
     {
       "name": "BH220 (BLACK / WHITE) Bluetooth Headset ENC Omni-Directional Mic. 3-Ways Folding",
       "price": 4410,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "M.O.C.I. [ Mycelium Of Carbon It ], Bluetooth v5.3 Wireless Technologym, Soft Mesh Fabric Padded Headband, Soft Mesh Fabric Ear Pads, ENC Omni-Directional Mic., Remote Functional Control, USB Type-C Rechargeable, 3-Ways Folding, Playtime 40H, CABLE : USB Type-C Charging Cable: 50 cm",
       "brand": "A4Tech",
       "category": "Audio",
       "cartonpacking": "20 PCs",
       "heading": "A4TECH BLUETOOTH WIRELESS HEADPHONE",
-      "id": 174,
-      "cartonPacking": 20
+      "id": 174
     },
     {
       "name": "FH100U USB (PANDA) Rotatable Unidirectional Mic.",
       "price": 2700,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Speaker Unit: 50 mm Frequency Response: 20 Hz - 20 KHz Sensitivity: 100 dB, Impedance: 16 ohm Microphone Frequency Response: 100 Hz-10 KHzSensitivity : -44 dB Cable Material: Tangle-Free Braided Cable Cable Length: 200 cm Port: USB System Requirement：Windows 7/8/8.1/10，Mac OS X",
       "brand": "A4Tech",
       "category": "Audio",
       "cartonpacking": "30 PCs",
       "heading": "A4TECH HEADPHONES WITH USB MIC",
-      "id": 175,
-      "cartonPacking": 30
+      "id": 175
     },
     {
       "name": "FH100U USB (STONE BLACK) Rotatable Unidirectional Mic.",
       "price": 2700,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Speaker Unit: 50 mm Frequency Response: 20 Hz - 20 KHz Sensitivity: 100 dB, Impedance: 16 ohm Microphone Frequency Response: 100 Hz-10 KHzSensitivity : -44 dB Cable Material: Tangle-Free Braided Cable Cable Length: 200 cm Port: USB System Requirement：Windows 7/8/8.1/10，Mac OS X",
       "brand": "A4Tech",
       "category": "Audio",
       "cartonpacking": "30 PCs",
       "heading": "A4TECH HEADPHONES WITH USB MIC",
-      "id": 176,
-      "cartonPacking": 30
+      "id": 176
     },
     {
       "name": "FH150U USB (BLACK) In-Line Convenient Controller",
       "price": 2970,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "DSP Stereo Sound, 40mm Speaker Unit, Leather Padded Headband, On-Ear Soft Leather Ear Pads, Flexible Rotating Microphone, In-Line Convenient Controller, Speaker Unit: 40 mm, Frequency Response: 20 Hz - 20 KHz, Sensitivity: 98 dB, Impedance: 32 ohm, Microphone, Frequency Response: 100 Hz -10 KHz, Sensitivity : - 42 dB, Cable, Cable Length: 200 cm, Port: USB Plug, Windows 7 / 8 / 8.1 / 10 / 11, Mac OS X",
       "brand": "A4Tech",
       "category": "Audio",
       "cartonpacking": "30 PCs",
       "heading": "A4TECH HEADPHONES WITH USB MIC",
-      "id": 177,
-      "cartonPacking": 30
+      "id": 177
     },
     {
       "name": "FH200U USB (GREY) Noise Cancelling",
       "price": 3295,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Speaker Unit: 50 mm Frequency Response: 20 Hz - 20 KHz Sensitivity: 100 dB Impedance: 16 ohm Microphone Frequency Response: 100 Hz-10 KHzSensitivity : -44 dB Cable Material: Tangle-Free Braided Cable Cable Length: 200 cm Port: USB System Requirement：Windows 7/8/8.1/10，Mac OS X",
       "brand": "A4Tech",
       "category": "Audio",
       "cartonpacking": "20 PCs",
       "heading": "A4TECH HEADPHONES WITH USB MIC",
-      "id": 178,
-      "cartonPacking": 20
+      "id": 178
     },
     {
       "name": "FH280U USB (BLACK) Noise Cancelling Conference Over-Ear Foldable with Mute Button",
       "price": 3450,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Speaker Unit: 40 mm, Frequency Response: 20 Hz - 20 KHz, Sensitivity: 100 dB, Impedance: 32 ohm, Microphone,Mic. Size: Φ10 mm, Frequency Response: 100 Hz -10 KHz, Sensitivity: - 40 dB, Cable, Material: Tangle-Free Braided Cable, Cable Length: 200 cm, Port: USB, System Requirement:, Windows 7 / 8 / 8.1 / 10 / 11, Mac OS X",
       "brand": "A4Tech",
       "category": "Audio",
       "cartonpacking": "20 PCs",
       "heading": "A4TECH HEADPHONES WITH USB MIC",
-      "id": 179,
-      "cartonPacking": 20
+      "id": 179
     },
     {
       "name": "FH280U USB (WHITE) Noise Cancelling Conference Over-Ear Foldable with Mute Button",
       "price": 3450,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Speaker Unit: 40 mm, Frequency Response: 20 Hz - 20 KHz, Sensitivity: 100 dB, Impedance: 32 ohm, Microphone,Mic. Size: Φ10 mm, Frequency Response: 100 Hz -10 KHz, Sensitivity: - 40 dB, Cable, Material: Tangle-Free Braided Cable, Cable Length: 200 cm, Port: USB, System Requirement:, Windows 7 / 8 / 8.1 / 10 / 11, Mac OS X",
       "brand": "A4Tech",
       "category": "Audio",
       "cartonpacking": "20 PCs",
       "heading": "A4TECH HEADPHONES WITH USB MIC",
-      "id": 180,
-      "cartonPacking": 20
+      "id": 180
     },
     {
       "name": "FH300U USB (BLACK) Noise Cancelling NEON BACKLIT",
       "price": 2820,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Speaker Unit: 50 mm Frequency Response: 20 Hz - 20 KHz Sensitivity: 100 dB Impedance: 16 ohm Microphone Frequency Response: 100 Hz-10 KHzSensitivity : -44 dB Cable Material: Tangle-Free Braided Cable Cable Length: 200 cm Port: USB System Requirement：Windows 7/8/8.1/10，Mac OS X",
       "brand": "A4Tech",
       "category": "Audio",
       "cartonpacking": "20 PCs",
       "heading": "A4TECH HEADPHONES WITH USB MIC",
-      "id": 181,
-      "cartonPacking": 20
+      "id": 181
     },
     {
       "name": "HU-8 USB",
       "price": 2140,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Rotatable Mic. Boom, 40 mm Speaker Unit, Omnidirectional Noise-canceling Mic. Tangle-free Cable, Soft Ear Cushions, High Performance,Volume Switch, Light-Weight Design, Adjustable Headband",
       "brand": "A4Tech",
       "category": "Audio",
       "cartonpacking": "30 PCs",
       "heading": "A4TECH HEADPHONES WITH USB MIC",
-      "id": 182,
-      "cartonPacking": 30
+      "id": 182
     },
     {
       "name": "HU-35 USB",
       "price": 2545,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Superior Sound Quality, Single-Directional Mic., Superior Ear Cushions, Adjustable Headband, Single-Directional Mic., High Performance, Stereo Sound, ,USB Plug, Controller: Volume knob on the headset",
       "brand": "A4Tech",
       "category": "Audio",
       "cartonpacking": "20 PCs",
       "heading": "A4TECH HEADPHONES WITH USB MIC",
-      "id": 183,
-      "cartonPacking": 20
+      "id": 183
     },
     {
       "name": "HU-50 USB",
       "price": 2930,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Superior Sound Quality, Single-Directional Mic., Adjustable Headband, Quadrate Ear Cushion, Stereo Sound, USB Plug Frequency Range: 20 Hz - 20 KHz / Impedance: 32 ohm / Sensitivity: 97 dB Controller: In line volume control / Cable Length: 2 m System Requirements: Windows 7 / 8 / 8.1 / 10 / Mac OS X",
       "brand": "A4Tech",
       "category": "Audio",
       "cartonpacking": "20 PCs",
       "heading": "A4TECH HEADPHONES WITH USB MIC",
-      "id": 184,
-      "cartonPacking": 20
+      "id": 184
     },
     {
       "name": "HU-7P USB",
       "price": 2640,
-      "image": "images/a4tech_placeholder.jpg",
+      "image": "images/B500N-EEZEPC-1-1.jpg",
       "description": "Crystal Clear Chat Headset, Single-Directional Mic., Tangle-free Cable, Adjustable Headband, Leather Cushions, Speaker: 40 mm / Frequency Range: 20 Hz - 20 KHz / Impedance: 32 ohm Sensitivity: 97 dB / Plug: USB / Controller: In line volume control Cable Length: 2 m System Requirements: Windows 7 / 8 / 8.1 / 10 / Mac OS X",
       "brand": "A4Tech",
       "category": "Audio",
       "cartonpacking": "20 PCs",
       "heading": "A4TECH HEADPHONES WITH USB MIC",
-      "id": 185,
-      "cartonPacking": 20
+      "id": 185
     },
     {
       "name": "FH200i Noise Cancelling",
@@ -2230,7 +2053,7 @@
       "cartonpacking": "20 PCs",
       "heading": "A4TECH HEADPHONES WITH SINGLE PIN MIC (FOR MOBILE/PC/LAPTOP/PS5/XBOX)",
       "id": 186,
-      "cartonPacking": 20
+      "cartonPacking": "20"
     },
     {
       "name": "HS-8i (BLACK)",
@@ -2242,7 +2065,67 @@
       "cartonpacking": "30 PCs",
       "heading": "A4TECH HEADPHONES WITH SINGLE PIN MIC (FOR MOBILE/PC/LAPTOP/PS5/XBOX)",
       "id": 187,
-      "cartonPacking": 30
+      "cartonPacking": "30"
     }
+  ],
+  "brands": [
+    "All",
+    "Bloody",
+    "A4Tech"
+  ],
+  "categories": {
+    "Bloody": [
+      "Others",
+      "Audio",
+      "Keyboard",
+      "Mous Pads",
+      "Mouse"
+    ],
+    "A4Tech": [
+      "Keyboard",
+      "Mouse",
+      "Mouse Pads",
+      "Webcam",
+      "Audio"
+    ]
+  },
+  "headings": [
+    "BLOODY MID TOWER GAMING CASE",
+    "BLOODY GAMING TWS EARBUDS",
+    "BLOODY BLAZING GAMING WIRED KEYBOARD+MOUSE SETS",
+    "BLOODY 7-COLOR NEON LIGHTING GAMING KEYBOARDS",
+    "BLOODY GAMING REST",
+    "BLOODY GAMING MOUSE PADS",
+    "BLOODY ULTRA DUAL MODE RECHARGEABLE WIRELESS GAMING MOUSE",
+    "BLOODY ULTRA CORE ACTIVATED RGB ANIMATION GAMING MOUSE",
+    "BLOODY ESPORTS PROFESSIONAL TOURNAMENT RGB GAMING MOUSE",
+    "BLOODY ULTRA CORE /MULTI CORE GAMING MOUSE",
+    "Bloody's First Premium All-in-One Bluetooth RGB Wireless Gaming Headset",
+    "BLOODY USB GAMING HEADPHONES 7.1 VIRTUAL SURROUND SOUND & NOISE CANCELLATION",
+    "BLOODY GAMING HEADPHONES SURROUND SOUND & NOISE CANCELLATION (MOBILE/XBOX/PLAYSTATION4 & 5/SWITCH/PC/LAPTOP)",
+    "BLOODY 2.0 STEREO SOUND GAMING HEADPHONES",
+    "BLOODY GAMING MICROPHONE",
+    "BLOODY WEBCAM",
+    "A4TECH BLUETOOTH WIRELESS KEYBOARD (FOR TABLET/MOBILE/PC/LAPTOP/IPAD/MAC/ANDROID/SMART TV)",
+    "A4TECH WIRELESS MINI KEYBOARD (WITHOUT NUMERIC) (FOR TABLET/MOBILE/PC/LAPTOP/IPAD/MAC/ANDROID/SMART TV)",
+    "A4TECH PADLESS WIRELESS KEYBOARD+MOUSE COMBO SETS",
+    "A4TECH PADLESS MINI WIRELESS KEYBOARD+MOUSE SETS (SLIM & WITHOUT NUMERIC)",
+    "A4TECH WIRED KEYBOARD+MOUSE COMBO SETS",
+    "A4TECH Hot-Swappable Mechanical Keyboard",
+    "A4TECH MULTIMEDIA WIRED MINI KEYBOARD",
+    "A4TECH MULTIMEDIA WIRED KEYBOARD",
+    "A4TECH WIRELESS NUMERIC PAD",
+    "A4TECH OPTICAL MOUSES",
+    "A4TECH V-TRACK OPTICAL MOUSES (CAN WORKS ON UNEVEN SURFACE, MARBLE, BED & FURS)",
+    "A4TECH FSTYLER BLUETOOTH & 2.4G WIRELESS MOUSE (FOR TABLET/MOBILE/PC/LAPTOP/IPAD/MAC/ANDROID)",
+    "A4TECH PADLESS V-TRACK WIRELESS MOUSES (RUNS ANYWHERE WITHOUT A PAD)",
+    "A4TECH Fstyler Mouse Pad",
+    "A4TECH GAMING PRODUCTS",
+    "A4TECH 16.0 MEGA PIXEL FULL HD 1080P WEBCAM",
+    "A4TECH 720P HD WEBCAM",
+    "A4TECH 16.0 MEGA PIXEL ANTI-GLARE WEBCAM (WITH 10 MONTHS WARRANTY)",
+    "A4TECH BLUETOOTH WIRELESS HEADPHONE",
+    "A4TECH HEADPHONES WITH USB MIC",
+    "A4TECH HEADPHONES WITH SINGLE PIN MIC (FOR MOBILE/PC/LAPTOP/PS5/XBOX)"
   ]
 }
